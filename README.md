@@ -1,9 +1,10 @@
 学习计划
 ======
 ---------------
-先学markdown 写 README.md
 
-[教程地址](http://www.appinn.com/markdown/ "markdown教程")
+1.跟着公司大神盛慢慢做一些比较有思想的东西。算法什么的慢慢捡起来.
+
+2.跟着扣大的[github](https://github.com/cody1991/learn)学习.
 
 ------
 
