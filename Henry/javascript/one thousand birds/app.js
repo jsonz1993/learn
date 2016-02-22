@@ -10,72 +10,104 @@
  *  几类鸟里面实现死的方式
  */
 
-
-
-/** 工厂模式
- * 创建一个对象，在该对象上加属性和方法，最后再return出来
+/**
+ * 创建接口对象
+ * @param name 接口名
+ * @param methods 接口的方法
+ * @constructor
  */
-function birds(name,die){
-    var bird = {};
-    bird.name = name;
-    bird.die = die;
+var Interface = function (name, methods) {
+    if (arguments.length !== 2) {
+        throw new Error('请传入两个参数，当前参数为' + arguments.length);
+    }
 
-    bird.sayName = function () {
-        return this.name;
-    };
+    this.name = name;
+    this.methods = [];
 
-    bird.fly = function(){
-        return 'I believe I can fly';
-    };
-
-    bird.died = function () {
-        if (this.die) {
-            return this.die;
-        } else {
-            return '不会死';
+    for (var i = 0,len = methods.length; i < len; i++) {
+        if (typeof methods[i] !== 'string') {
+            throw new Error('接口方法名必须是string');
         }
-    };
+
+        this.methods.push(methods[i]);
+    }
+};
+
+
+/**
+ * 接口的实现
+ * @param object 实现接口对象
+ * @param other 定义的接口
+ */
+Interface.ensureImplements = function (object) {
+    if (arguments.length < 2) {
+        throw new Error('请传入两个以上的参数,当前参数个数为' + arguments.length);
+    }
+
+    for (var i = 1, len = arguments.length; i < len; i++) {
+        var interface = arguments[i];
+
+        if (interface.constructor !== Interface) {
+            throw new Error('请定义接口');
+        }
+
+        for (var j = 0,interfaceLen = interface.methods.length; j < interfaceLen; j++) {
+            var method = interface.methods[j];
+
+            if (!object[method] || (typeof object[method] !== 'function')) {
+                throw new Error('接口名' + interface.name + ' ，方法名 ' + method + ' 未找到');
+            }
+        }
+    }
+};
+
+//鸟的基类
+function Birds(name) {
+    this.name = name;
+
+    //定义接口
+    this.birdInterface = new Interface('bird',['die']);
+}
+
+Birds.prototype = {
+    sayName : function(){
+        return this.name;
+    },
+    getInterface : function(){
+        return this.birdInterface;
+    }
+};
+
+
+//第一种特殊的鸟
+function Birds_first() {
+    var bird = new Birds('第一种鸟');
+
+    var methods = Birds_first.methods;
+
+    //实现接口
+    Interface.ensureImplements(methods,bird.birdInterface);
+
+    for (var i in methods) {
+        bird[i] = methods[i];
+    }
 
     return bird;
 }
 
-
-var birdList = [],
-    dieList = [
-        {
-            index : 3,
-            die : '撞树上'
-        },
-        {
-            index : 4,
-            die : '撞飞机'
-        }
-    ],
-    dieStr;
-
-
-for (var i = 0; i < 100; i++) {
-
-
-
-    for (var j = 0; j < dieList.length; j++) {
-        if (i == dieList[j].index) {
-            dieStr = dieList[j].die;
-        }
+Birds_first.methods = {
+    die : function(){
+        return '死掉';
     }
-
-    birdList[i] = birds('第' + (i + 1) + '种鸟',dieStr);
-
-    dieStr = '';
-
-    console.log(birdList[i].sayName());
-
-}
+};
 
 
 
 
+var bird1 = Birds_first();
+var bird2 = Birds_first();
 
+console.log(bird1.sayName() + ' ' + bird1.die());
 
 
 
