@@ -17,3 +17,4 @@
 * [深入理解JavaScript系列（3）：全面解析Module模式](http://www.cnblogs.com/TomXu/archive/2011/12/30/2288372.html)
 	* 创建的时候用到一个new ？？？
 	* 一些不理解的东西用？？？ 写在里面了。
+* [深入理解JavaScript系列（4）：立即调用的函数表达式](http://www.cnblogs.com/TomXu/archive/2011/12/31/2289423.html)
