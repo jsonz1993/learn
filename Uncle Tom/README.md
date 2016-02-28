@@ -22,4 +22,5 @@
 * [深入理解JavaScript系列（5）：强大的原型和原型链](http://http://www.cnblogs.com/TomXu/archive/2012/01/05/2305453.html)
 	* 或许是之前对原型链理解比较透彻，看着觉得说压力不是很大。
 	* 有点疑惑的地方可能就是**constructor** 指向自己这一点
-	 
+* [深入理解JavaScript系列（6）：S.O.L.I.D五大原则之单一职责SRP](http://www.cnblogs.com/TomXu/archive/2012/01/06/2305513.html)
+	* 订阅者模式 完全看愣比了  
