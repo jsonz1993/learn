@@ -1,10 +1,10 @@
 /**
  * Created by Jsonz on 2016/2/27.
- * ¸Ğ¾õ¶ÔÔ­ĞÍÁ´µÄÀí½â±È½ÏÍ¸³¹£¬¹é¸ùÓÚ¸ß³ÌºÍÃæÏò¶ÔÏó±à³ÌÖ¸ÄÏ
- * ¿´×Å´óÊåµÄÕâ¸ö½Ì³Ì£¬ºÁÎŞÑ¹Á¦= =£»
+ * æ„Ÿè§‰å¯¹åŸå‹é“¾çš„ç†è§£æ¯”è¾ƒé€å½»ï¼Œå½’æ ¹äºé«˜ç¨‹å’Œé¢å‘å¯¹è±¡ç¼–ç¨‹æŒ‡å—
+ * çœ‹ç€å¤§å”çš„è¿™ä¸ªæ•™ç¨‹ï¼Œæ¯«æ— å‹åŠ›= =ï¼›
  */
 
-// Ò»°ãĞ´·¨
+// ä¸€èˆ¬å†™æ³•
 var decimalDigits = 2,
     tax = 5;
 
@@ -48,7 +48,7 @@ Calcuator.prototype = function(){
 
 
 var BaseCalculator = function(){
-    // ÎªÃ¿¸öÊµÀı¶¼ÉùÃ÷Ò»¸öĞ¡Î»Êı
+    // ä¸ºæ¯ä¸ªå®ä¾‹éƒ½å£°æ˜ä¸€ä¸ªå°ä½æ•°
     this.decimalDigits = 2;
 };
 
@@ -60,16 +60,16 @@ BaseCalculator.prototype.subtract = function(x, y) {
     return x - y;
 };
 
-// ¼Ì³Ğ
+// ç»§æ‰¿
 var Calculator = function(){
     this.tax = 5;
 };
 
-// ²»¹Ü´´½¨¶àÉÙ¸ö new BaseCalculator¡£ ¶¼ÊÇÖ¸ÏòÔ­ĞÍÁ´ÉÏ
+// ä¸ç®¡åˆ›å»ºå¤šå°‘ä¸ª new BaseCalculatorã€‚ éƒ½æ˜¯æŒ‡å‘åŸå‹é“¾ä¸Š
 Calculator.prototype = new BaseCalculator();
 
 
-// Ô­ĞÍÁ´
+// åŸå‹é“¾
 function Foo() {
     this.value = 42;
 }
@@ -81,19 +81,19 @@ Foo.prototype = {
 
 function Bar() {}
 
-// ÉèÖÃBarµÄprototypeÊôĞÔÎªFoo¶ÔÏó
+// è®¾ç½®Barçš„prototypeå±æ€§ä¸ºFooå¯¹è±¡
 Bar.prototype = new Foo();
 Bar.prototype.foo = 'Hello World';
 
-// ĞŞÕıBar.prototype.constructor Îª Bar ±¾Éí
+// ä¿®æ­£Bar.prototype.constructor ä¸º Bar æœ¬èº«
 Bar.prototype.constructor = Bar;
 
 var test = new Bar();
 
-// Ô­ĞÍÁ´
+// åŸå‹é“¾
 /*
- test [Bar µÄÊµÀı]
-    Bar.prototype [Foo µÄÊµÀı]
+ test [Bar çš„å®ä¾‹]
+    Bar.prototype [Foo çš„å®ä¾‹]
         { foo : 'Hello World'}
         Foo.prototype
             {method : .. }
@@ -101,7 +101,7 @@ var test = new Bar();
                 {toString : .. };
  */
 
-// hasOwnPrototype ÅĞ¶Ï×Ô¶¨ÒåÊéÏã»¹ÊÇÔ­ĞÍÁ´ÉÏµÄ
+// hasOwnPrototype åˆ¤æ–­è‡ªå®šä¹‰ä¹¦é¦™è¿˜æ˜¯åŸå‹é“¾ä¸Šçš„
 Object.prototype.bar = 1;
 var foo = {
     goo : undefined,
@@ -114,9 +114,9 @@ foo.bar; // 1
 'bar' in foo; // true
 
 foo.hasOwnProperty('bar'); // false;
-foo.hasOwnProperty('goo'); // ±¾À´ÊÇtrue£¬µ«ÊÇ·½·¨±»ÖØĞ´ ·µ»Øfalse
+foo.hasOwnProperty('goo'); // æœ¬æ¥æ˜¯trueï¼Œä½†æ˜¯æ–¹æ³•è¢«é‡å†™ è¿”å›false
 
-// ½â¾ö¸Õ²ÅµÄÎÊÌâ
+// è§£å†³åˆšæ‰çš„é—®é¢˜
 new Object().hasOwnProperty.call(foo, 'bar');
 
 Object.prototype.bar = 1;
@@ -124,13 +124,13 @@ Object.prototype.bar = 1;
 var foo = {moo : 2};
 
 for (var i in foo) {
-    console.log(i); // Êä³öÁ½¸öÊôĞÔ
+    console.log(i); // è¾“å‡ºä¸¤ä¸ªå±æ€§
 }
 
-// foo ±äÁ¿ÊÇÉÏÀıÖĞµÄ
+// foo å˜é‡æ˜¯ä¸Šä¾‹ä¸­çš„
 for (var i in foo) {
     if (foo.hasOwnProperty(i)) {
-        console.log(i); // Êä³öÒ»¸ö
+        console.log(i); // è¾“å‡ºä¸€ä¸ª
     }
 }
 

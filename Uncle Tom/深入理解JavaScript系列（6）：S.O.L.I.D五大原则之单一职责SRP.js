@@ -2,7 +2,7 @@
  * Created by Jsonz on 2016/2/28.
  */
 
-// Ôã¸âµÄ´úÂë
+// ç³Ÿç³•çš„ä»£ç 
 (function(){
 
     function Product(id, description) {
@@ -56,14 +56,14 @@
 }());
 
 
-// ÖØ¹¹ºóµÄ
+// é‡æ„åçš„
 /*
- ÕâÓ¦¸Ã¾ÍÊÇ¶©ÔÄÕßÄ£Ê½£¬ÍêÈ«¿´²»¶®
+ è¿™åº”è¯¥å°±æ˜¯è®¢é˜…è€…æ¨¡å¼ï¼Œå®Œå…¨çœ‹ä¸æ‡‚
 
- ²Î¿¼ÁËmartinfowlerµÄÊÂ¼ş¾ÛºÏ£¨Event Aggregator£©ÀíÂÛÔÚ´¦Àí´úÂëÒÔ±ã¸÷¶ÔÏóÖ®¼ä½øĞĞÍ¨ĞÅ¡£
+ å‚è€ƒäº†martinfowlerçš„äº‹ä»¶èšåˆï¼ˆEvent Aggregatorï¼‰ç†è®ºåœ¨å¤„ç†ä»£ç ä»¥ä¾¿å„å¯¹è±¡ä¹‹é—´è¿›è¡Œé€šä¿¡ã€‚
 
- Ê×ÏÈÎÒÃÇÏÈÀ´ÊµÏÖÊÂ¼ş¾ÛºÏµÄ¹¦ÄÜ£¬
- ¸Ã¹¦ÄÜ·ÖÎª2²¿·Ö£¬1¸öÊÇEvent£¬ÓÃÓÚHandler»Øµ÷µÄ´úÂë£¬1¸öÊÇEventAggregatorÓÃÀ´¶©ÔÄºÍ·¢²¼Event.
+ é¦–å…ˆæˆ‘ä»¬å…ˆæ¥å®ç°äº‹ä»¶èšåˆçš„åŠŸèƒ½ï¼Œ
+ è¯¥åŠŸèƒ½åˆ†ä¸º2éƒ¨åˆ†ï¼Œ1ä¸ªæ˜¯Eventï¼Œç”¨äºHandlerå›è°ƒçš„ä»£ç ï¼Œ1ä¸ªæ˜¯EventAggregatorç”¨æ¥è®¢é˜…å’Œå‘å¸ƒEvent.
  */
 
 function Event(name) {
@@ -124,7 +124,7 @@ function EventAggregator() {
     };
 }
 
-// ÉùÃ÷ Product ¶ÔÏó
+// å£°æ˜ Product å¯¹è±¡
 function Product(id, description) {
     this.getId = function(){
         return id;
@@ -135,7 +135,7 @@ function Product(id, description) {
     }
 }
 
-// ÉùÃ÷ Cart ¶ÔÏó£¬¸Ã¶ÔÏóµÄaddItem µÄfunctionÀïÎÒÃÇÒª´¥·¢·¢²¼Ò»¸öÊÂ¼ş itemAdded,È»ºó½«item´«½øÈ¥
+// å£°æ˜ Cart å¯¹è±¡ï¼Œè¯¥å¯¹è±¡çš„addItem çš„functioné‡Œæˆ‘ä»¬è¦è§¦å‘å‘å¸ƒä¸€ä¸ªäº‹ä»¶ itemAdded,ç„¶åå°†itemä¼ è¿›å»
 function Cart(eventAggregator) {
     var items = [];
 
@@ -144,7 +144,7 @@ function Cart(eventAggregator) {
         eventAggregator.publish('itemAdded',item);
     }
 }
-// CartController Ö÷ÒªÊÇ½ÓÊÜcart¶ÔÏóºÍÊÂ¼ş¾ÛºÏÆ÷£¬Í¨¹ı¶©ÔÄitemAddedÀ´Ôö¼ÓÒ»¸öliÔªËØ½Úµã£¬Í¨¹ı¶©ÔÄproductSelectedÊÂ¼şÀ´Ìí¼Óproduct.
+// CartController ä¸»è¦æ˜¯æ¥å—cartå¯¹è±¡å’Œäº‹ä»¶èšåˆå™¨ï¼Œé€šè¿‡è®¢é˜…itemAddedæ¥å¢åŠ ä¸€ä¸ªliå…ƒç´ èŠ‚ç‚¹ï¼Œé€šè¿‡è®¢é˜…productSelectedäº‹ä»¶æ¥æ·»åŠ product.
 function CartController(cart, eventAggregator) {
     eventAggregator.subscribe('itemAdded', function(eventArgs){
         var newItem = $('<li></li>').html(eventArgs.getDescription()).attr('id-cart',
@@ -156,7 +156,7 @@ function CartController(cart, eventAggregator) {
     });
 }
 
-//Repository µÄÄ¿µÄÊÇÎªÁË»ñÈ¡Êı¾İ(¿ÉÒÔ´ÓajaxÀï»ñÈ¡£©È»ºó±©Â¶getÊı¾İµÄ·½·¨
+//Repository çš„ç›®çš„æ˜¯ä¸ºäº†è·å–æ•°æ®(å¯ä»¥ä»ajaxé‡Œè·å–ï¼‰ç„¶åæš´éœ²getæ•°æ®çš„æ–¹æ³•
 function ProductRepository() {
     var products = [
         new Product(1,'Star Wars Lego Ship'),
@@ -169,7 +169,7 @@ function ProductRepository() {
     }
 }
 
-// ProductController Àï¶¨ÒåÁËÒ»¸öonProductSelect·½·¨£¬Ö÷ÒªÊÇ·¢²¼´¥·¢productSelectedÊÂ¼ş£¬forEachÖ÷ÒªÊÇÓÃÓÚ°ó¶¨Êı¾İµ½²úÆ·ÁĞ±íÉÏ
+// ProductController é‡Œå®šä¹‰äº†ä¸€ä¸ªonProductSelectæ–¹æ³•ï¼Œä¸»è¦æ˜¯å‘å¸ƒè§¦å‘productSelectedäº‹ä»¶ï¼ŒforEachä¸»è¦æ˜¯ç”¨äºç»‘å®šæ•°æ®åˆ°äº§å“åˆ—è¡¨ä¸Š
 
 function ProductController(eventAggregator, productRepository) {
     var products = productRepository.getProducts();
@@ -193,7 +193,7 @@ function ProductController(eventAggregator, productRepository) {
     })
 }
 
-// ×îºóÉùÃ÷ÄäÃûº¯Êı£¨ĞèÒªÈ·±£HTML¶¼¼ÓÔØÍêÁË²ÅÖ´ĞĞÕâ¶Î´úÂë£¬±ÈÈç·ÅÔÚjQueryµÄready·½·¨ÀïÃæ£©
+// æœ€åå£°æ˜åŒ¿åå‡½æ•°ï¼ˆéœ€è¦ç¡®ä¿HTMLéƒ½åŠ è½½å®Œäº†æ‰æ‰§è¡Œè¿™æ®µä»£ç ï¼Œæ¯”å¦‚æ”¾åœ¨jQueryçš„readyæ–¹æ³•é‡Œé¢ï¼‰
 (function(){
     var eventAggregator = new EventAggregator(),
         cart = new Cart(eventAggregator),

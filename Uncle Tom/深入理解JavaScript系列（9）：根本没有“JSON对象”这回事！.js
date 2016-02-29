@@ -4,10 +4,10 @@
  */
 
 
-// JSON×Ö·û´®
+// JSONå­—ç¬¦ä¸²
 var foo = '{"prop":"val"}';
 
-// ¶ÔÏó×ÖÃæÁ¿
+// å¯¹è±¡å­—é¢é‡
 var bar = { "prop" : "val"};
 
 
