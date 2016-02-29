@@ -6,7 +6,7 @@
 
 2.跟着扣大的[github](https://github.com/cody1991/learn)学习.
 
-3.看汤姆大叔博客 深入理解JavaScript系列
+3.看汤姆大叔博客 [深入理解JavaScript系列](http://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html)
 
 4.js设计模式
 
