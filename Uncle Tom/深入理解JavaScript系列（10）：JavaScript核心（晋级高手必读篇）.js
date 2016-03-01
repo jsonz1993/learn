@@ -126,9 +126,208 @@ console.log(
 
 // Global VO;  foo : 10 , bar : <function>
 
+// 活动对象
+function fooD(x,y) {
+    var z = 30;
+    function bar() {} // 函数声明
+    (function baz(){}); // 函数表达式
+}
+fooD(10,20);
+// 函数 fooD 的上下文的下一个激活对象(AO) Activation object
+// x 10; y 20; arguments {0:10, 2:20,...}; z 30; bar <function> 同样的 函数表达式不在里面
+
+/*
+ * 作用域链
+ */
+
+var x = 10;
+(function foo(){
+    var y = 20;
+    (function bar(){
+        var z = 30;
+        // "x" 和 "y" 是自由变量
+        // 会在作用域链 的下一个对象中找到（函数"bar"的互动对象之后）
+        console.log(x + y + z);
+    })();
+})();
 
 
+(function(){
+    Object.prototype.x = 10;
 
+    var y = 30;
+
+    // 在全局对象里
+    // 例如，全局上下文的变量对象是从"Object.prototype" 继承到的
+    // 所以我们可以得到 " 没有声明的全局变量"
+    // 因为可以从原型链中获取
+
+    console.log(x); // 10
+
+    (function foo(){
+        // foo 是局部变量
+        var w = 40;
+        var x = 100;
+
+        // x 可以从 Object.prototype 得到,注意值是10
+        // 因为 { z : 50 } 是从他那里继承的。 作用域指向 {} obj
+
+        with ({z : 50}) {
+            console.log(w , x , y ,z); // 40 10 30 50
+        }
+
+        // 在 with 对象从作用域链删除之后
+        // x 又可以从foo的上下文中得到了，注意这次的值又回到了100哦
+        // w 也是局部变量
+        console.log(x, y); // 100 40
+
+        // 值要所有外部函数的变量对象都存在，那么从内部函数引用外部数据则没有特别之处，我们只要遍历作用域链表，查找所需变量。
+        // 然后，当一个上下文终止之后，其状态与自身将会被销毁，同时内部函数将会从外部函数中返回。此外，这个返回的函数之后可能会在其他的上下文中被激活。
+        // 那么如果一个之前被终止的包含自由变量的上下文再次被激活，这被成为闭包。
+    })();
+}());
+
+/**
+ * 重头戏闭包
+ * 作用域 = 活动对象 + [[Scope}}
+ */
+
+(function(){
+    function foo() {
+        var x = 10;
+        return function bar() {
+            console.log(x);
+        }
+    }
+
+// fooB 返回的也是一个 function
+// 并且这个返回的 function 可以随意使用内部的变量x
+
+    var returnedFunction = foo();
+
+    // 全局变量 x
+    var x = 20;
+
+    returnedFunction(); // 结果是 10 这种行为被解释为静态作用域
+}());
+
+// 怎么改为他传进去 然后作用域是 x = 20
+(function(){
+    var x = 10;
+    var foo = function () {
+        console.log(x);
+    };
+
+    (function (funArg){
+        var x = 20;
+
+        // 我们使用 foo函数的 [[Scope]] 里保存的全局变量 x
+        // 并不是 caller作用域的 x; 因为函数在声明的时候就已经确定上下文了
+        funArg();
+    })(foo);
+}());
+
+(function(){
+
+    function baz() {
+        var x = 1;
+        return {
+            foo : function foo() {return ++x; },
+            bar : function bar() {return --x; }
+        }
+    }
+
+    var closures = baz();
+
+    // 作用域会共享，变量会影响另一个闭包
+    console.log(
+        closures.foo(),// 输出2 ，执行之后 x 的值会变成 x = 2。等同于在外面修改 x++;
+        closures.bar()
+    );
+
+    // 如果在创建的函数中使用循环变量(如”k”)，那么所有的函数都使用同样的循环变量，导致一些程序员经常会得不到预期值。
+    // 因为所有函数共享同一个[[Scope]]，其中循环变量为最后一次复赋值。
+
+    var data = [];
+
+    for (var k = 0; k < 3; k++) {
+        data[k] = function(){
+            alert(k);
+        }
+    }
+    data[0]();
+    data[1]();
+    data[2]();
+
+
+    (function(){
+        var data = [];
+
+        for (var k = 0; k < 3; k++) {
+            data[k] = (function(k){
+                return function(){
+                    alert(k);
+                }
+            })(k);
+
+            /*
+             data[k] = function(){
+                alert(i)
+             }.call(i)
+             */
+        }
+        data[0]();
+        data[1]();
+        data[2]();
+    })()
+
+}());
+
+
+/**
+ *  this
+ *  this 只是一个执行上下文的属性，不是某个变量对象的属性
+ *  this 会由 caller 提供
+ */
+
+(function(){
+    function foo(){
+        alert(this);
+    }
+
+    foo(); // 全局
+
+    foo.prototype.constructor(); // foo.prototype
+})();
+
+// 实现 this()
+(function(){
+
+    function a(){
+        this();
+    }
+
+    function b(){
+       alert(1);
+    }
+
+    a.call(b);
+
+})();
+
+
+(function(){
+    var x = 10;
+    var foo = function () {
+        console.log(x);
+    };
+
+    (function (funArg){
+        var x = 20;
+
+        funArg();
+    })(foo);
+}());
 
 
 
