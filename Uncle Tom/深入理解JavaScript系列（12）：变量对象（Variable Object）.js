@@ -2,7 +2,7 @@
  * Created by Jsonz on 2016/3/2.
  */
 
-var a = 10; // È«¾ÖÉÏÏÂÎÄÖÐµÄ±äÁ¿
+var a = 10; // å…¨å±€ä¸Šä¸‹æ–‡ä¸­çš„å˜é‡
 
 (function(){
     var b = 20;
@@ -21,15 +21,15 @@ alert(k);
  String: <...>
  ...
  ...
- window: global //ÒýÓÃ×ÔÉí
+ window: global //å¼•ç”¨è‡ªèº«
  };
  */
 
 /*
- ±äÁ¿¶ÔÏó(ËõÐ´ÎªVO)ÊÇÒ»¸öÓëÖ´ÐÐÉÏÏÂÎÄÏà¹ØµÄÌØÊâ¶ÔÏó£¬Ëü´æ´¢×ÅÔÚÉÏÏÂÎÄÖÐÉùÃ÷µÄÒÔÏÂÄÚÈÝ£º
- ±äÁ¿ (var, ±äÁ¿ÉùÃ÷);
- º¯ÊýÉùÃ÷ (FunctionDeclaration, ËõÐ´ÎªFD);
- º¯ÊýµÄÐÎ²Î
+ å˜é‡å¯¹è±¡(ç¼©å†™ä¸ºVO)æ˜¯ä¸€ä¸ªä¸Žæ‰§è¡Œä¸Šä¸‹æ–‡ç›¸å…³çš„ç‰¹æ®Šå¯¹è±¡ï¼Œå®ƒå­˜å‚¨ç€åœ¨ä¸Šä¸‹æ–‡ä¸­å£°æ˜Žçš„ä»¥ä¸‹å†…å®¹ï¼š
+ å˜é‡ (var, å˜é‡å£°æ˜Ž);
+ å‡½æ•°å£°æ˜Ž (FunctionDeclaration, ç¼©å†™ä¸ºFD);
+ å‡½æ•°çš„å½¢å‚
 
  */
 
@@ -42,13 +42,13 @@ function test(x) {
 test(30);
 
 /*
- // È«¾ÖÉÏÏÂÎÄµÄ±äÁ¿¶ÔÏó
+ // å…¨å±€ä¸Šä¸‹æ–‡çš„å˜é‡å¯¹è±¡
  VO(globalContext) = {
  a: 10,
  test: <reference to function>
  };
 
- // testº¯ÊýÉÏÏÂÎÄµÄ±äÁ¿¶ÔÏó
+ // testå‡½æ•°ä¸Šä¸‹æ–‡çš„å˜é‡å¯¹è±¡
  VO(test functionContext) = {
  x: 30,
  b: 20
@@ -56,25 +56,25 @@ test(30);
 
 
 
- È«¾Ö¶ÔÏó(Global object) ÊÇÔÚ½øÈëÈÎºÎÖ´ÐÐÉÏÏÂÎÄÖ®Ç°¾ÍÒÑ¾­´´½¨ÁËµÄ¶ÔÏó£»
- Õâ¸ö¶ÔÏóÖ»´æÔÚÒ»·Ý£¬ËüµÄÊôÐÔÔÚ³ÌÐòÖÐÈÎºÎµØ·½¶¼¿ÉÒÔ·ÃÎÊ£¬È«¾Ö¶ÔÏóµÄÉúÃüÖÜÆÚÖÕÖ¹ÓÚ³ÌÐòÍË³öÄÇÒ»¿Ì¡£
- ´´½¨½×¶Î½«Math¡¢String¡¢Date¡¢parseIntµÈ×÷Îª×ÔÉíÊôÐÔ
+ å…¨å±€å¯¹è±¡(Global object) æ˜¯åœ¨è¿›å…¥ä»»ä½•æ‰§è¡Œä¸Šä¸‹æ–‡ä¹‹å‰å°±å·²ç»åˆ›å»ºäº†çš„å¯¹è±¡ï¼›
+ è¿™ä¸ªå¯¹è±¡åªå­˜åœ¨ä¸€ä»½ï¼Œå®ƒçš„å±žæ€§åœ¨ç¨‹åºä¸­ä»»ä½•åœ°æ–¹éƒ½å¯ä»¥è®¿é—®ï¼Œå…¨å±€å¯¹è±¡çš„ç”Ÿå‘½å‘¨æœŸç»ˆæ­¢äºŽç¨‹åºé€€å‡ºé‚£ä¸€åˆ»ã€‚
+ åˆ›å»ºé˜¶æ®µå°†Mathã€Stringã€Dateã€parseIntç­‰ä½œä¸ºè‡ªèº«å±žæ€§
  */
 
 /*
- »î¶¯¶ÔÏóÊÇÔÚ½øÈëº¯ÊýÉÏÏÂÎÄÊ±¿Ì±»´´½¨µÄ£¬ËüÍ¨¹ýº¯ÊýµÄargumentsÊôÐÔ³õÊ¼»¯¡£
- arguments ÊôÐÔµÄÖµÊÇArguments¶ÔÏó£º
- Argument¶ÔÏó°üÀ¨ 1.callee Ö¸Ïòµ±Ç°º¯ÊýµÄÒýÓÃ¡£ 2.length ÕæÕý´«µÝµÄ²ÎÊý¸öÊý¡£3. properties-indexes ²»ÖªµÀÊÇÉ¶¡£ChromeÒ²µ¯²»³ö
+ æ´»åŠ¨å¯¹è±¡æ˜¯åœ¨è¿›å…¥å‡½æ•°ä¸Šä¸‹æ–‡æ—¶åˆ»è¢«åˆ›å»ºçš„ï¼Œå®ƒé€šè¿‡å‡½æ•°çš„argumentså±žæ€§åˆå§‹åŒ–ã€‚
+ arguments å±žæ€§çš„å€¼æ˜¯Argumentså¯¹è±¡ï¼š
+ Argumentå¯¹è±¡åŒ…æ‹¬ 1.callee æŒ‡å‘å½“å‰å‡½æ•°çš„å¼•ç”¨ã€‚ 2.length çœŸæ­£ä¼ é€’çš„å‚æ•°ä¸ªæ•°ã€‚3. properties-indexes ä¸çŸ¥é“æ˜¯å•¥ã€‚Chromeä¹Ÿå¼¹ä¸å‡º
  */
 
 function foo(x, y, z){
-    // ÉùÃ÷µÄº¯Êý²ÎÊýÊýÁ¿ arguments (x, y, z)
+    // å£°æ˜Žçš„å‡½æ•°å‚æ•°æ•°é‡ arguments (x, y, z)
     console.log(foo.length); // 3
 
-    //ÕæÕý´«½øÀ´µÄ²ÎÊý¸öÊý only x y
+    //çœŸæ­£ä¼ è¿›æ¥çš„å‚æ•°ä¸ªæ•° only x y
     console.log(arguments.length); // 2
 
-    // ²ÎÊý¹²Ïí
+    // å‚æ•°å…±äº«
     console.log(x === arguments[0]); // true
     console.log(x);  // 10
 
@@ -84,10 +84,10 @@ function foo(x, y, z){
     x = 30;
     console.log(arguments[0]); // 30
 
-    // ²»¹ý£¬Ã»ÓÐ´«½øÀ´µÄ²ÎÊýzºÍ²ÎÊýµÄµÚÈý¸öË÷ÒýÖµÊÇ²»¹±Ï×µÄ
+    // ä¸è¿‡ï¼Œæ²¡æœ‰ä¼ è¿›æ¥çš„å‚æ•°zå’Œå‚æ•°çš„ç¬¬ä¸‰ä¸ªç´¢å¼•å€¼æ˜¯ä¸è´¡çŒ®çš„
 
     z = 40;
-    console.log(arguments[2]); // undefined ´ú±íËûÃÇ²»ÊÇÍ¬¸öÄÚ´æ Ö»ÊÇ¹²ÏíÊý¾Ý
+    console.log(arguments[2]); // undefined ä»£è¡¨ä»–ä»¬ä¸æ˜¯åŒä¸ªå†…å­˜ åªæ˜¯å…±äº«æ•°æ®
 
     arguments[2] = 50;
     console.log(z); // undefined;
@@ -95,7 +95,7 @@ function foo(x, y, z){
 
 foo(10,20);
 
-// ½øÈëÖ´ÐÐÉÏÏÂÎÄ
+// è¿›å…¥æ‰§è¡Œä¸Šä¸‹æ–‡
 function test(a, b) {
     var c = 10;
     function d(){}
@@ -106,7 +106,7 @@ function test(a, b) {
 
 test(10); // call
 /*
- ½øÈëÉÏÏÂÎÄÊ±£ºAO ÓÐÒÔÏÂÊôÐÔ
+ è¿›å…¥ä¸Šä¸‹æ–‡æ—¶ï¼šAO æœ‰ä»¥ä¸‹å±žæ€§
  AO(test) = {
     a : 10,
     b : undefined,
@@ -114,10 +114,10 @@ test(10); // call
     d : <reference to FunctionDeclaration "d">,
     e : undefined
  };
- _e ºÍ x Ã»ÓÐ±»·ÖÅä ÒòÎªËûÃÇÊÇº¯Êý±í´ïÊ½²»ÊÇº¯ÊýÉùÃ÷
- ÔÚÕâÖ®ºó£¬½øÈë´¦ÀíÉÏÏÂÎÄ´úÂëµÄµÚ¶þ¸ö½×¶Î -- Ö´ÐÐ´úÂë
- ÔÚ´úÂë½âÊÍÆÚ¼äÒÑ¾­ÓÐ a ºÍ d ´æÔÚ
- ÒòÎª _e ±£´æÔÚe ÉÏ,ËùÒÔËûÈÔÈ»ÔÚÄÚ´æÖÐ¡£¶ø x ÊÇÃ»±»±£´æµÄº¯Êý±í´ïÊ½£¬ËùÒÔÖ»ÓÐËû×Ô¼ºµÄ¶¨Òå»òµÝ¹éÖÐ²Å¿ÉÒÔµ÷ÓÃ
+ _e å’Œ x æ²¡æœ‰è¢«åˆ†é… å› ä¸ºä»–ä»¬æ˜¯å‡½æ•°è¡¨è¾¾å¼ä¸æ˜¯å‡½æ•°å£°æ˜Ž
+ åœ¨è¿™ä¹‹åŽï¼Œè¿›å…¥å¤„ç†ä¸Šä¸‹æ–‡ä»£ç çš„ç¬¬äºŒä¸ªé˜¶æ®µ -- æ‰§è¡Œä»£ç 
+ åœ¨ä»£ç è§£é‡ŠæœŸé—´å·²ç»æœ‰ a å’Œ d å­˜åœ¨
+ å› ä¸º _e ä¿å­˜åœ¨e ä¸Š,æ‰€ä»¥ä»–ä»ç„¶åœ¨å†…å­˜ä¸­ã€‚è€Œ x æ˜¯æ²¡è¢«ä¿å­˜çš„å‡½æ•°è¡¨è¾¾å¼ï¼Œæ‰€ä»¥åªæœ‰ä»–è‡ªå·±çš„å®šä¹‰æˆ–é€’å½’ä¸­æ‰å¯ä»¥è°ƒç”¨
  */
 
 (function(){
@@ -133,8 +133,8 @@ test(10); // call
 
     alert(x); // 20
 /*
-ÕâÀïx ÊÇ function ÊÇÒòÎª º¯ÊýÉùÃ÷ÊÇÔÚ½øÈëÉÏÏÂÎÄµÄÊ±ºò¾ÍÌîÈëµÄ¡£
-ËäÈ»º¯ÊýÉùÃ÷xÉÏÃæÓÐ±äÁ¿x¡£µ«ÊÇ±äÁ¿ÉùÃ÷µÄË³ÐòÊÇÔÚº¯ÊýÉùÃ÷ºÍÐÎÊ½²ÎÊýÉùÃ÷Ö®ºóµÄ
+è¿™é‡Œx æ˜¯ function æ˜¯å› ä¸º å‡½æ•°å£°æ˜Žæ˜¯åœ¨è¿›å…¥ä¸Šä¸‹æ–‡çš„æ—¶å€™å°±å¡«å…¥çš„ã€‚
+è™½ç„¶å‡½æ•°å£°æ˜Žxä¸Šé¢æœ‰å˜é‡xã€‚ä½†æ˜¯å˜é‡å£°æ˜Žçš„é¡ºåºæ˜¯åœ¨å‡½æ•°å£°æ˜Žå’Œå½¢å¼å‚æ•°å£°æ˜Žä¹‹åŽçš„
  */
 
     if (true) {
@@ -142,11 +142,11 @@ test(10); // call
     } else {
         var b = 2;
     }
-    // ËäÈ»b = 2²»»á±»Ö´ÐÐ£¬µ«ÊÇb ÒÑ¾­´æÔÚVOÖÐ£¬ÖµÊÇundefined
+    // è™½ç„¶b = 2ä¸ä¼šè¢«æ‰§è¡Œï¼Œä½†æ˜¯b å·²ç»å­˜åœ¨VOä¸­ï¼Œå€¼æ˜¯undefined
 }());
 
 
-// ±äÁ¿ÓÐÒ»¸öÖØÒªµÄÖ»ÊÇµã£¬ËûÓÐÒ»¸öattribute : {DontDelete}
+// å˜é‡æœ‰ä¸€ä¸ªé‡è¦çš„åªæ˜¯ç‚¹ï¼Œä»–æœ‰ä¸€ä¸ªattribute : {DontDelete}
 a = 10;
 alert(window.a); // 10
 alert(delete a); // true
@@ -157,15 +157,15 @@ alert(window.b); // 10
 alert(delete b); // false
 alert(window.b); // 10;
 
-// ÒòÎª±äÁ¿ÓÐ DontDelete,µ«ÊÇevalÉÏÏÂÎÄµÄ±äÁ¿Ã»ÓÐ{DontDelete}ÌØÐÔ¡£µ«ÊÇÎÒÔÚchromeµ÷ÊÔ·¢ÏÖÒ²ÊÇÓÐ DontDelete
+// å› ä¸ºå˜é‡æœ‰ DontDelete,ä½†æ˜¯evalä¸Šä¸‹æ–‡çš„å˜é‡æ²¡æœ‰{DontDelete}ç‰¹æ€§ã€‚ä½†æ˜¯æˆ‘åœ¨chromeè°ƒè¯•å‘çŽ°ä¹Ÿæ˜¯æœ‰ DontDelete
 eval('val c = 10;');
 alert(window.c); // 10
 alert(delete c); // true
 alert(window.c); // undefined
 
-// __parent__ ÔÚChromeÖÐÃ»ÓÐ·µ»Ø
+// __parent__ åœ¨Chromeä¸­æ²¡æœ‰è¿”å›ž
 
-// ÔÚÆÀÂÛÇø¿´µ½Ò»¸ö¸É»õ
+// åœ¨è¯„è®ºåŒºçœ‹åˆ°ä¸€ä¸ªå¹²è´§
 var aaa = 10;
 var date1 = new Date();
 for (var i = 0; i < 10000000; i++) {
@@ -182,7 +182,7 @@ for (i = 0; i < 10000000; i++) {
     window.window.window.window.window.window.window.aaa;
 }
 console.log(new Date() - date3);
-// ÔÚ¾ÉFF IEµÈ²î¾àÍ¦´óµÄ¡£ÒòÎªÈç¹ûÊÇaµÄ»°£¬ÊÇÈ«¾Ö.a;Èç¹ûÊÇwindow.aµÄ»°£¬ÊÇÈ«¾Ö.window.a¡£Èç¹ûÊÇwindow.window.window.window.aµÄ»°¸üÂý Ô­ÒòÍ¬ÉÏ¡£
+// åœ¨æ—§FF IEç­‰å·®è·æŒºå¤§çš„ã€‚å› ä¸ºå¦‚æžœæ˜¯açš„è¯ï¼Œæ˜¯å…¨å±€.a;å¦‚æžœæ˜¯window.açš„è¯ï¼Œæ˜¯å…¨å±€.window.aã€‚å¦‚æžœæ˜¯window.window.window.window.açš„è¯æ›´æ…¢ åŽŸå› åŒä¸Šã€‚
 
 
 

@@ -14,11 +14,11 @@
         return bar;
     }
 
-    foo()(); // 30 вВсцсРа╢ AO(bar) AO(foo) VO(global)
+    foo()(); // 30 Д╫°Г■╗Е÷÷И⌠╬ AO(bar) AO(foo) VO(global)
 }());
 
 /*
- ╨╞йЩиообнд╣двВсцсРа╢тз╨╞йЩ╣Всцй╠╢╢╫╗╣дё╛╟Эю╗╩Н╤╞╤тоС╨муБ╦Ж╨╞йЩдз╡©╣д[[scope]]йТпт
+ Е┤╫Ф∙╟Д╦┼Д╦▀Ф√┤Г └Д╫°Г■╗Е÷÷И⌠╬Е°╗Е┤╫Ф∙╟Х╟┐Г■╗Ф≈╤Е┬⌡Е╩╨Г └О╪▄Е▄┘Ф▀╛Ф╢╩Е┼╗Е╞╧Х╠║Е▓▄Х©≥Д╦╙Е┤╫Ф∙╟Е├┘И┐╗Г └[[scope]]Е╠·Ф─╖
 
  activeExecutionContext = {
     VO : {...}, // or AO
@@ -31,7 +31,7 @@
  */
 
 /*
- ╨╞йЩиЗцЭжэфз
+ Е┤╫Ф∙╟Г■÷Е▒╫Е▒╗Ф°÷
  */
 
 var x = 10;
@@ -41,10 +41,10 @@ function foo() {
 }
 /*
  fooContext.AO = {
-    y : undefined// ╫ЬхКиообнд╣дй╠╨Р╠Д 20
+    y : undefined// Х©⌡Е┘╔Д╦┼Д╦▀Ф√┤Г └Ф≈╤Е─≥Е▐≤ 20
  }
-  ╨╞йЩм╗╧Щ[[Scope]]х╔╥цнй╣╫x║ё тз╨╞йЩ╢╢╫╗╣дй╠╨Р╬м╠╩╢Ф╢╒ё╛ж╠╣╫╨╞йЩ╢щ╩ы╤╪╡╩╩А╦д╠Д║ё╪╢й╧╡╩╣Всц╨╞йЩё╛[[Scope]]р╡╩А╠╩п╢хКйТпт
-  тзуБюО
+  Е┤╫Ф∙╟И─ Х©┤[[Scope]]Е▌╩Х╝©И≈╝Е┬╟xЦ─┌ Е°╗Е┤╫Ф∙╟Е┬⌡Е╩╨Г └Ф≈╤Е─≥Е╟╠Х╒╚Е╜≤Е┌╗О╪▄Г⌡╢Е┬╟Е┤╫Ф∙╟Ф▒╖Ф╞│И┐╫Д╦█Д╪ Ф■╧Е▐≤Ц─┌Е█ЁД╫©Д╦█Х╟┐Г■╗Е┤╫Ф∙╟О╪▄[[Scope]]Д╧÷Д╪ Х╒╚Е├≥Е┘╔Е╠·Ф─╖
+  Е°╗Х©≥И┤▄
   foo.[[Scope]] = [
     globalContext.VO // === Global
   ]
@@ -72,42 +72,42 @@ foo(); // 30;
     foo(); // 60
 
     /*
-     х╚╬жиообнд╣д╠Да©
+     Е┘╗Е╠─Д╦┼Д╦▀Ф√┤Г └Е▐≤И┤▐
      globalContext.VO === Global = {
         x : 10,
         foo : <reference to function>
      }
 
-     ╢╢╫╗ foo ╣дй╠╨Р foo ╣д [[scope]] йТпт
+     Е┬⌡Е╩╨ foo Г └Ф≈╤Е─≥ foo Г └ [[scope]] Е╠·Ф─╖
      foo.[[Scope]] = {
         globalContext.VO
      }
 
-     тз foo ╪╓╩Нё╗╫ЬхКиообндё╘,foo иообнд╣д╩Н╤╞╤тоС
+     Е°╗ foo Ф©─Ф╢╩О╪┬Х©⌡Е┘╔Д╦┼Д╦▀Ф√┤О╪┴,foo Д╦┼Д╦▀Ф√┤Г └Ф╢╩Е┼╗Е╞╧Х╠║
      fooContext.AO = {
         y : 20,
         bar : <reference to function>
      };
 
-     foo иообндвВсцсРа╢
+     foo Д╦┼Д╦▀Ф√┤Д╫°Г■╗Е÷÷И⌠╬
      fooContext.Scope = fooContext.AO + foo.[[Scope]]
      fooContext.Scope = [
         fooContext.AO,
         globalContext.VO
      ];
 
-     дз╡©╨╞йЩ bar ╢╢╫╗й╠ [[scope]]
+     Е├┘И┐╗Е┤╫Ф∙╟ bar Е┬⌡Е╩╨Ф≈╤ [[scope]]
      bar.[[Scope]] = [
         fooContext.A0,
         globalContext.VO
      ];
 
-    тзbar ╪╓╩Нё╛bar иообнд╩Н╤╞╤тоСн╙
+    Е°╗bar Ф©─Ф╢╩О╪▄bar Д╦┼Д╦▀Ф√┤Ф╢╩Е┼╗Е╞╧Х╠║Д╦╨
     barContext.AO = {
         z : 30
     };
 
-    bar иообнд╣двВсцсРа╢н╙
+    bar Д╦┼Д╦▀Ф√┤Г └Д╫°Г■╗Е÷÷И⌠╬Д╦╨
     barContext.Scope = barContext.AO + bar.[[Scope]]
     barContext.Scope = [
         barContext.AO,
@@ -115,7 +115,7 @@ foo(); // 30;
         globalContext.VO
     ]
 
-    ╤т 'x' 'y' 'z'╣д╠Йй╤╥Ш╫БнЖхГоб
+    Е╞╧ 'x' 'y' 'z'Г └Ф═┤Х╞├Г╛╕Х╖ёФ·░Е╕┌Д╦▀
     - x
     -- barContext.AO // not found
     -- fooContext.AO // not found
