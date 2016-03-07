@@ -36,6 +36,7 @@
 	* 理论较多 干货较少或者我还没到那个层次 感觉没什么好看的
 * [深入理解JavaScript系列（12）：变量对象（Variable Object）](http://www.cnblogs.com/TomXu/archive/2012/01/16/2309728.html)
 	* 感觉写的很精彩
-	* 很多以前没想到的东西都有，评论区也有个干货 a 和 window.a 调用的差别。虽然在现在的chrome版本差别不会很大。但是查找的方式不同，一个是global.a 一个是 global.window.a 虽然在进入全局上下文的时候 global.window = global。但是跨了一层之后还是会有所延迟   
+	* 很多以前没想到的东西都有，评论区也有个干货 a 和 window.a 调用的差别。虽然在现在的chrome版本差别不会很大。但是查找的方式不同，一个是global.a 一个是 global.window.a 虽然在进入全局上下文的时候 global.window = global。但是跨了一层之后还是会有所延迟
+* 
 
 
