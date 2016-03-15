@@ -49,6 +49,7 @@
 	* 理解之后总有种恍然大悟的感觉 ①
 	* 用call 实现继承
 * [深入理解JavaScript系列（17）：面向对象编程之概论](http://www.cnblogs.com/TomXu/archive/2012/02/03/2330295.html)
-	*   
+	* ① 原型理解 so easy;
+	* ②   
 	
 
