@@ -56,14 +56,61 @@ var foo2 = function foo_2(){
         ? function () {alert(0); }
         : function () {alert(1); }
     );
-
-    //if (foo % 2 === 0 ) { function bar () {alert(0) } } else { function bar () { alert(1 ) } } 会挂掉
     bar();
 })();
 
+(function(){
+    // foo 是一个函数声明，坐在进入上下文的时候创建
+    alert(foo);
 
+    function foo(x) {
+        alert(x);
+    }(1); // 这里是一个分组操作符，不是函数调用。
 
+    foo(10);
+}());
 
+(function(){
+   var foo = {
+       bar : function(x){
+           return x % 2 != 0 ? 'yes' : 'no';
+       }
+   };
+
+    alert(foo.bar()); // yes
+}());
+
+//
+// 命名函数表达式的特性
+(function foo(bar){
+    if (bar) {
+        alert(bar);
+        return;
+    }
+
+    foo(1);
+}());
+
+(function(){
+    Object.prototype.x = 10;
+
+    function foo(){
+        var x = 20;
+
+        function bar() {
+            alert(x);
+        }
+
+        bar(); // 20; 从 foo的变量对象AO中查询
+
+        // 匿名函数表达式也是一样
+        (function(){
+            alert(x); // 20
+        }());
+    }
+
+    foo();
+}());
 
 
 

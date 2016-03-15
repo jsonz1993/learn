@@ -40,6 +40,7 @@
 ###### 表单验证
 ###### 弹幕
 ###### Bootstrap
+###### [背景图](http://www.alquimiawrg.com/#/home)
 
 
 

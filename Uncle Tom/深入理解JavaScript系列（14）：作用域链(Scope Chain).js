@@ -128,7 +128,125 @@ foo(); // 30;
     - z
     -- barContext.AO // found - 30
      */
+
+    //
 }());
+
+// 作用域特征 闭包
+(function(){
+    var x = 10;
+
+    function foo(){
+        alert(x); // 10
+    }
+
+    (function(){
+        var x = 20;
+        foo();
+    }());
+}());
+
+// 作用域特征 通过构造函数创建的函数的[[scope]]
+(function(){
+    var x = 10;
+
+    function foo(){
+        var y = 20;
+
+        function barFD(){
+            alert(x); // 10;
+            alert(y); // 20
+        }
+
+        var barFE = function(){
+            alert(x);
+            alert(y);
+        };
+
+        var barFn = Function('alert(x);alert(y);');
+
+        barFD(); // 10 20
+        barFE(); // 10 20
+        barFn(); // 10, y is not defined
+    }
+
+    foo();
+}());
+
+// 作用域特征 二维作用域链查找
+(function(){
+
+    function foo() {
+        alert(x);
+    }
+
+    Object.prototype.x = 10;
+
+    foo(); // 10;
+
+    (function(){
+        function foo() {
+            var x = 20;
+
+            function bar() {
+                alert(x);
+            }
+
+            bar();
+        }
+
+        Object.prototype.x = 10;
+
+        foo(); // 20;
+    }())
+}());
+
+// 作用域特性 代码执行时对作用域链的影响 with 和 catch
+// Scope = withObject | catchObject + AO|VO + [[Scope]]
+(function(){
+    var foo = {x : 10, y : 20};
+
+    with (foo) {
+        alert(x); // 10
+        alert(y); // 20
+    }
+    // 此处作用域链变为 Scope = foo + AO|VO + [[Scope]]
+}());
+
+(function(){
+    var x = 10, y = 10;
+    with({x : 20}) {
+        var x = 30, y = 30;
+        alert(x); // 30;
+        alert(y); // 30;
+    }
+
+    alert(x); // 10;
+    alert(y); // 30
+    /**
+     *  在进入上下文的时候
+     *  1. x = 10, y = 10;
+     *  2.对象 {x : 20 } 添加到作用域的前端
+     *  3.在with内部，遇到了var 声明，但是什么都没创建，因为进入上下文的时候，所有的变量都被解析添加了。
+     *  4.在第二步的时候，仅修改变量x，实际上对象中的x现在正在被解析，并添加到作用域链的最前端，x 从20变成30.
+     *  5. 同时也有变量对象 y 的修改，被解析后值由10 变成30
+     *  6. 在声明with后，他的特定对象从作用域移除，（已改变的x 变为30也被移除）,既作用域回复到with 加强以前的状态。
+     *  7. 在最后两个alert中，当前变量对象的x 保持同一，y等于现在的30。在with声明运行中已发生改变。
+     */
+}());
+
+// catch
+(function(){
+    try {
+        return 1;
+    } catch(e) {
+        alert(e);
+    }
+    // 在catch语句完成后，作用域恢复到以前的状态
+}());
+
+
+
 
 
 

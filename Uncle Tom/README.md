@@ -40,5 +40,15 @@
 * [深入理解JavaScript系列（13）：This? Yes,this!](http://www.cnblogs.com/TomXu/archive/2012/01/17/2310479.html)
 	* 和想象中不同，以为讲的是this的各种情况。但看起来更像是更底层的东西
 	* 看到要吐血。不懂暂搁，感觉以后会不会突然的跑去看C#
-
+* [深入理解JavaScript系列（14）：作用域链(Scope Chain)](http://www.cnblogs.com/TomXu/archive/2012/01/18/2312463.html)
+	* 写的好棒，特别是with那一部分。
+	* 感觉写的循序渐进 一层一层的解释的很透彻，以前都是知道是这样，但不知道为什么这样 
+* [深入理解JavaScript系列（15）：函数（Functions）](http://www.cnblogs.com/TomXu/archive/2012/01/30/2326372.html)
+	* 看着有点乱。很多都用不上
+* [深入理解JavaScript系列（16）：闭包（Closures）](http://www.cnblogs.com/TomXu/archive/2012/01/31/2330252.html)
+	* 理解之后总有种恍然大悟的感觉 ①
+	* 用call 实现继承
+* [深入理解JavaScript系列（17）：面向对象编程之概论](http://www.cnblogs.com/TomXu/archive/2012/02/03/2330295.html)
+	*   
+	
 
