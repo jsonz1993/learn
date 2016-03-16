@@ -51,5 +51,43 @@
 * [深入理解JavaScript系列（17）：面向对象编程之概论](http://www.cnblogs.com/TomXu/archive/2012/02/03/2330295.html)
 	* ① 原型理解 so easy;
 	* ② 不懂的装饰着模式
+* [深入理解JavaScript系列（18）：面向对象编程之ECMAScript实现（推荐）](http://www.cnblogs.com/TomXu/archive/2012/02/06/2330609.html)
+	*  Object.freeze(o) 冻结对象 Object.isFreeze(o) 获取冻结状态
+	*  Object.defineProperty(o)定义属性 
+		  **如value，writable（只读），configurable（不可配置）等**
+	* Object.preventExtensions(o) **防止扩展** 既可以修改也可以删除但不可以添加
+	* **对象转换** valueOf() toString()
 	
+			valueOf()	
+			对象和日期对象都会返回this。
+			既var a = {x : 10},a.valueOf() === a; 
+			new Date().getTime() === new Date().valueOf();
+
+			运算符操作优先调用 valueOf()
+			字符串运算优先调用 toString()
+	* 类型转换 ？？？ var a = '10'; var b = +a; // 10,number
+	 
+			[[Prototype]] 对象的原型
+     		[[Class]] 字符串对象的表示Array, Function 等      Object.prototype.toString()
+     		[[Get]] 获取属性值的方法
+     		[[Put]] 设置属性值的方法
+     		[[CanPut]] 检查属性是否可写
+     		[[HasProperty]] 检查对象是否拥有该属性
+     		[[Delete]] 从对象删除该属性
+     		[[DefaultValue]] 返回对象对应的原始值（会调用valueOf方法）
+
+			var getClass = Object.prototype.toString;
+    		getClass.call({}); // [object Object]
+   			getClass.call([]); // [object Array]
+   			getClass.call(1); // [object Number]
+					
+	* **构造函数**
+	
+			function A(){};A.prototype.x = 10; var a = new A(); a.x; //10
+			var __newPrototype = { constructor : A, x : 0, y : 20};
+			A.prototype = __newPrototype; var b = new A(); b.y; // 20;  a.y; // undefined;  a.x; // 10
+			a.prototype = __newPrototype; a.x; // 10 还是旧的原型
+			a.__proto__ = __newPrototype; a.x; // 20 更新到新的原型
+
+
 
