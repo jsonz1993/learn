@@ -50,6 +50,6 @@
 	* 用call 实现继承
 * [深入理解JavaScript系列（17）：面向对象编程之概论](http://www.cnblogs.com/TomXu/archive/2012/02/03/2330295.html)
 	* ① 原型理解 so easy;
-	* ②   
+	* ② 不懂的装饰着模式
 	
 

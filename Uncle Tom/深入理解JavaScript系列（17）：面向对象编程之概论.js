@@ -153,7 +153,31 @@ agregate.delegate = {
 agregate.foo(); // foo from new delegate;
 
 // AOP 特性
+// ②说是装饰着模式，不懂什么模式。后面有模式讲解
+function checkDecorator(originalFunction) {
+    return function() {
+        if (fooBar != 'test') {
+            alert('wrong parameter');
+            return false;
+        }
 
+        return originalFunction();
+    };
+}
+
+function test() {
+    alert('test function');
+}
+
+var testWithCheck = checkDecorator(test);
+var fooBar = false;
+
+test(); // test function
+testWithCheck(); // wrong parameter
+
+fooBar = 'test';
+test(); // test function
+testWithCheck(); // test function
 
 
 
