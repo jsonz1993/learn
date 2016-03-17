@@ -100,7 +100,8 @@
 * [深入理解JavaScript系列（19）：求值策略(Evaluation strategy)](http://www.cnblogs.com/TomXu/archive/2012/02/08/2341439.html)
 	* 没什么干货
 * [你真懂JavaScript吗？(20)](http://www.cnblogs.com/TomXu/archive/2012/02/10/2342098.html)
-	* 
+	* ① 变量对象问题 __答对__ 
+	* ②  __答对__
 
 
 
