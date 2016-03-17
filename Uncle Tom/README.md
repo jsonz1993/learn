@@ -88,6 +88,15 @@
 			A.prototype = __newPrototype; var b = new A(); b.y; // 20;  a.y; // undefined;  a.x; // 10
 			a.prototype = __newPrototype; a.x; // 10 还是旧的原型
 			a.__proto__ = __newPrototype; a.x; // 20 更新到新的原型
+	* 读写属性
+		* __[[Get]] 和 [[Put]] 伪代码写的太好了__ 如果以后有学C#看 V8这些应该懂的更多一点
+		* 理解了伪代码的话，原型那块就可以理解了。
+	* 原型
+		* 大叔很喜欢写自定义属性如 superproto 猜不透= =以为是js的属性
+		* ③好难理解的语法糖和继承
+		* ④ Object.create ES 标准化的继承 
+		* 用的时候先判断，如果存在就用那个，不存在就封装一个类似的函数 
+	* **刷完好累**  
 
 
 
