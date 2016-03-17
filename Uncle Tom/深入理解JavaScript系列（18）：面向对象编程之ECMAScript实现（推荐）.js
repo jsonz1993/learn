@@ -9,26 +9,26 @@ var a = undefined,
     e = 10;
 
 if (typeof  b === 'object') {
-    console.log('null µÄ type ÊÇ object');
+    console.log('null çš„ type æ˜¯ object');
 }
 
-// ¾²Ì¬¶ÔÏó²»ÄÜÍØÕ¹ĞÂÊôĞÔ¡£¿ÉÒÔÍ¨¹ı Object.freeze()¶³½á¶ÔÏó
+// é™æ€å¯¹è±¡ä¸èƒ½æ‹“å±•æ–°å±æ€§ã€‚å¯ä»¥é€šè¿‡ Object.freeze()å†»ç»“å¯¹è±¡
 (function(){
     var foo = {
         x : 10
     };
 
-    Object.freeze(foo); // ¶³½á¶ÔÏó
-    console.log(Object.isFrozen(foo)); // ¼ì²é¶³½á×´Ì¬
+    Object.freeze(foo); // å†»ç»“å¯¹è±¡
+    console.log(Object.isFrozen(foo)); // æ£€æŸ¥å†»ç»“çŠ¶æ€
 
-    foo.x = 1000; // ²»ÄÜĞŞ¸Ä
-    foo.y = 200; // ²»ÄÜÍØÕ¹
+    foo.x = 1000; // ä¸èƒ½ä¿®æ”¹
+    foo.y = 200; // ä¸èƒ½æ‹“å±•
 
     delete foo.x;
     console.log(foo);
 }());
 
-// Ê¹ÓÃ Object.preventExtensions(o) ·½·¨·ÀÖ¹À©Õ¹£¬Ê¹ÓÃObject.defineProperty(o)¶¨ÒåÊôĞÔ
+// ä½¿ç”¨ Object.preventExtensions(o) æ–¹æ³•é˜²æ­¢æ‰©å±•ï¼Œä½¿ç”¨Object.defineProperty(o)å®šä¹‰å±æ€§
 
 (function(){
     var foo = {
@@ -37,15 +37,15 @@ if (typeof  b === 'object') {
 
     Object.defineProperty(foo, 'y', {
         value : 20,
-        writable : false, // Ö»¶Á
-        configurable : false // ²»¿ÉÅäÖÃ
+        writable : false, // åªè¯»
+        configurable : false // ä¸å¯é…ç½®
     });
 
-    foo.y = 200; // ²»¿ÉĞŞ¸Ä
+    foo.y = 200; // ä¸å¯ä¿®æ”¹
 
-    delete foo.y; // false ²»ÄÜÉ¾³ı
+    delete foo.y; // false ä¸èƒ½åˆ é™¤
 
-    Object.preventExtensions(foo); // ·ÀÖ¹À©Õ¹ ²»¿ÉÌí¼Ó£¬µ«ÊÇ¿ÉÒÔĞŞ¸ÄÆäËûÊôĞÔ
+    Object.preventExtensions(foo); // é˜²æ­¢æ‰©å±• ä¸å¯æ·»åŠ ï¼Œä½†æ˜¯å¯ä»¥ä¿®æ”¹å…¶ä»–å±æ€§
 
     foo.z = 30;
     foo.x = 20;
@@ -57,21 +57,21 @@ if (typeof  b === 'object') {
 
 
 (function(){
-    // Æ½Ê±½¨Òé²»ÒªÓÃ£¬ÈİÒ×³ö´íÓÖÃ»ÂÑÓÃ¡£ new Boolean(false) // typeof === 'object' ËùÒÔÅĞ¶ÏµÄÊ±ºòÊÇtrue
+    // å¹³æ—¶å»ºè®®ä¸è¦ç”¨ï¼Œå®¹æ˜“å‡ºé”™åˆæ²¡åµç”¨ã€‚ new Boolean(false) // typeof === 'object' æ‰€ä»¥åˆ¤æ–­çš„æ—¶å€™æ˜¯true
 
-    // ¶ÔÏó
+    // å¯¹è±¡
     var c = new Boolean(true);
     var d = new String('test');
     var e = new Number(10);
 
-    // ×ª»Ø»ù±¾ÀàĞÍ
+    // è½¬å›åŸºæœ¬ç±»å‹
     c = Boolean(c);
     d = String(d);
     e = Number(e);
 
 }());
 
-// ×ÖÃæÁ¿Literal
+// å­—é¢é‡Literal
 (function(){
     var getClass = Object.prototype.toString;
     Object = Number;
@@ -80,15 +80,15 @@ if (typeof  b === 'object') {
     alert([foo,getClass.call(foo)]);
 }());
 
-// ¶ÔÏó×ª»»
+// å¯¹è±¡è½¬æ¢
 (function(){
     var a = new Number(1);
-    var primitiveA = Number(a); // ÒşÊ½µ÷ÓÃ valueOf
-    var alsoPrimitiveA = a.valueOf(); // ÏÔÊ¾µ÷ÓÃ
+    var primitiveA = Number(a); // éšå¼è°ƒç”¨ valueOf
+    var alsoPrimitiveA = a.valueOf(); // æ˜¾ç¤ºè°ƒç”¨
 
     console.log(a, primitiveA, alsoPrimitiveA); // obj num num
 
-    // valueOf() ¶ÔÏó»á·µ»Øthis; ÈÕÆÚ¶ÔÏó»á·µ»Ø .getTime()
+    // valueOf() å¯¹è±¡ä¼šè¿”å›this; æ—¥æœŸå¯¹è±¡ä¼šè¿”å› .getTime()
 
     var b = {
         valueOf : function(){
@@ -99,13 +99,13 @@ if (typeof  b === 'object') {
         }
     };
 
-    alert(b); // µ÷ÓÃµÄÊÇ toString
-    alert(b + 10); // µ÷ÓÃµÄÊÇvalueOf
+    alert(b); // è°ƒç”¨çš„æ˜¯ toString
+    alert(b + 10); // è°ƒç”¨çš„æ˜¯valueOf
 
-    // valueOfÉ¾³ıÒÔºó£¬toString ÓÖ»á×Ô¶¯µ÷ÓÃ
+    // valueOfåˆ é™¤ä»¥åï¼ŒtoString åˆä¼šè‡ªåŠ¨è°ƒç”¨
     delete a.valueOf;
-    alert(a + 10); // µ÷ÓÃ toString
-    // TODO ¢Ù ÔÚÊıÖµÔËËãÖĞÓĞÏŞµ÷ÓÃ valueOf() £¬×Ö·û´®ÔËËãÖĞÓÅÏÈµ÷ÓÃ toString()
+    alert(a + 10); // è°ƒç”¨ toString
+    // TODO â‘  åœ¨æ•°å€¼è¿ç®—ä¸­æœ‰é™è°ƒç”¨ valueOf() ï¼Œå­—ç¬¦ä¸²è¿ç®—ä¸­ä¼˜å…ˆè°ƒç”¨ toString()
 
 }());
 
@@ -113,22 +113,22 @@ if (typeof  b === 'object') {
     var a = 1,
         b = 2;
 
-    // ÒşÊ½
+    // éšå¼
     var c = a + b, // 3 number
         d = a + b + '5'; // 35 string
 
-    // ÏÔÊ½
+    // æ˜¾å¼
     var e = '10', // 10 string
-        f = +e, // 10 number ÓĞµã²»½â TODO ¢Ú £¿£¿£¿
+        f = +e, // 10 number æœ‰ç‚¹ä¸è§£ TODO â‘¡ ï¼Ÿï¼Ÿï¼Ÿ
         g = parseInt(e,10); // 10 number
 }());
 
 (function(){
     /**
-     * {ReadOnly}¡ª¡ªºöÂÔÏòÊôĞÔ¸³ÖµµÄĞ´²Ù×÷³¢£¬µ«Ö»¶ÁÊôĞÔ¿ÉÒÔÓÉËŞÖ÷»·¾³ĞĞÎª¸Ä±ä¡ª¡ªÒ²¾ÍÊÇËµ²»ÊÇ¡°ºã¶¨Öµ¡± ;
-     * {DontEnum}¡ª¡ªÊôĞÔ²»ÄÜ±»for..inÑ­»·Ã¶¾Ù
-     * {DontDelete}¡ª¡ªºıÁËdelete²Ù×÷·ûµÄĞĞÎª±»ºöÂÔ£¨¼´É¾²»µô£©;
-     * {Internal}¡ª¡ªÄÚ²¿ÊôĞÔ£¬Ã»ÓĞÃû×Ö£¨½öÔÚÊµÏÖ²ãÃæÊ¹ÓÃ£©£¬ECMAScriptÀïÎŞ·¨·ÃÎÊÕâÑùµÄÊôĞÔ¡£
+     * {ReadOnly}â€”â€”å¿½ç•¥å‘å±æ€§èµ‹å€¼çš„å†™æ“ä½œå°ï¼Œä½†åªè¯»å±æ€§å¯ä»¥ç”±å®¿ä¸»ç¯å¢ƒè¡Œä¸ºæ”¹å˜â€”â€”ä¹Ÿå°±æ˜¯è¯´ä¸æ˜¯â€œæ’å®šå€¼â€ ;
+     * {DontEnum}â€”â€”å±æ€§ä¸èƒ½è¢«for..inå¾ªç¯æšä¸¾
+     * {DontDelete}â€”â€”ç³Šäº†deleteæ“ä½œç¬¦çš„è¡Œä¸ºè¢«å¿½ç•¥ï¼ˆå³åˆ ä¸æ‰ï¼‰;
+     * {Internal}â€”â€”å†…éƒ¨å±æ€§ï¼Œæ²¡æœ‰åå­—ï¼ˆä»…åœ¨å®ç°å±‚é¢ä½¿ç”¨ï¼‰ï¼ŒECMAScripté‡Œæ— æ³•è®¿é—®è¿™æ ·çš„å±æ€§ã€‚
      */
 
     var foo = {};
@@ -142,21 +142,21 @@ if (typeof  b === 'object') {
 
     console.log(foo.x); // 10
 
-    // Í¨¹ı descriptor »ñÈ¡ÌØĞÔ¼¯ attributes
+    // é€šè¿‡ descriptor è·å–ç‰¹æ€§é›† attributes
     var desc = Object.getOwnPropertyDescriptor(foo,'x'); // Object {value: 10, writable: true, enumerable: false, configurable: true}
 }());
 
-// ÄÚ²¿ÊôĞÔºÍ·½·¨
+// å†…éƒ¨å±æ€§å’Œæ–¹æ³•
 (function(){
     /*
-     * [[Prototype]] ¶ÔÏóµÄÔ­ĞÍ
-     * [[Class]] ×Ö·û´®¶ÔÏóµÄ±íÊ¾Array, Function µÈ      Object.prototype.toString()
-     * [[Get]] »ñÈ¡ÊôĞÔÖµµÄ·½·¨
-     * [[Put]] ÉèÖÃÊôĞÔÖµµÄ·½·¨
-     * [[CanPut]] ¼ì²éÊôĞÔÊÇ·ñ¿ÉĞ´
-     * [[HasProperty]] ¼ì²é¶ÔÏóÊÇ·ñÓµÓĞ¸ÃÊôĞÔ
-     * [[Delete]] ´Ó¶ÔÏóÉ¾³ı¸ÃÊôĞÔ
-     * [[DefaultValue]] ·µ»Ø¶ÔÏó¶ÔÓ¦µÄÔ­Ê¼Öµ£¨»áµ÷ÓÃvalueOf·½·¨£©
+     * [[Prototype]] å¯¹è±¡çš„åŸå‹
+     * [[Class]] å­—ç¬¦ä¸²å¯¹è±¡çš„è¡¨ç¤ºArray, Function ç­‰      Object.prototype.toString()
+     * [[Get]] è·å–å±æ€§å€¼çš„æ–¹æ³•
+     * [[Put]] è®¾ç½®å±æ€§å€¼çš„æ–¹æ³•
+     * [[CanPut]] æ£€æŸ¥å±æ€§æ˜¯å¦å¯å†™
+     * [[HasProperty]] æ£€æŸ¥å¯¹è±¡æ˜¯å¦æ‹¥æœ‰è¯¥å±æ€§
+     * [[Delete]] ä»å¯¹è±¡åˆ é™¤è¯¥å±æ€§
+     * [[DefaultValue]] è¿”å›å¯¹è±¡å¯¹åº”çš„åŸå§‹å€¼ï¼ˆä¼šè°ƒç”¨valueOfæ–¹æ³•ï¼‰
      */
 
     var getClass = Object.prototype.toString;
@@ -166,15 +166,15 @@ if (typeof  b === 'object') {
     getClass.call(1); // [object Number]
 }());
 
-// ¹¹Ôìº¯Êı
-// ¶ÔÏó´´½¨£¨ÄÚ´æ·ÖÅä£©ÊÇÓÉ¹¹Ôìº¯ÊıµÄÄÚ²¿·½·¨[[Construct]]¸ºÔğµÄ¡£¸ÃÄÚ²¿·½·¨µÄĞĞÎªÊÇ¶¨ÒåºÃµÄ£¬ËùÓĞµÄ¹¹Ôìº¯Êı¶¼ÊÇÊ¹ÓÃ¸Ã·½·¨À´ÎªĞÂ¶ÔÏó·ÖÅäÄÚ´æµÄ¡£
+// æ„é€ å‡½æ•°
+// å¯¹è±¡åˆ›å»ºï¼ˆå†…å­˜åˆ†é…ï¼‰æ˜¯ç”±æ„é€ å‡½æ•°çš„å†…éƒ¨æ–¹æ³•[[Construct]]è´Ÿè´£çš„ã€‚è¯¥å†…éƒ¨æ–¹æ³•çš„è¡Œä¸ºæ˜¯å®šä¹‰å¥½çš„ï¼Œæ‰€æœ‰çš„æ„é€ å‡½æ•°éƒ½æ˜¯ä½¿ç”¨è¯¥æ–¹æ³•æ¥ä¸ºæ–°å¯¹è±¡åˆ†é…å†…å­˜çš„ã€‚
 (function(){
     function A(){
 
-        // ¸üĞÂ´´½¨µÄ¶ÔÏó
+        // æ›´æ–°åˆ›å»ºçš„å¯¹è±¡
         this.x = 10;
 
-        // ·µ»ØµÄÊÇ²»Í¬µÄ¶ÔÏó
+        // è¿”å›çš„æ˜¯ä¸åŒçš„å¯¹è±¡
         return [1,2,3];
     }
 
@@ -183,7 +183,7 @@ if (typeof  b === 'object') {
     console.log(a.x, a); // undefined [1,2,3]
 }());
 
-// ÊôĞÔ¹¹Ôìº¯Êı
+// å±æ€§æ„é€ å‡½æ•°
 (function (){
     function A() {}
     var a = new A();
@@ -241,18 +241,18 @@ if (typeof  b === 'object') {
         y : 30
     };
 
-    // ÖØÖÃA.prototypeÖ®ºó£¬Ç°ÃæËùÓĞµÄ¹ØÁª¶¼ÇĞ¶ÏÁË
+    // é‡ç½®A.prototypeä¹‹åï¼Œå‰é¢æ‰€æœ‰çš„å…³è”éƒ½åˆ‡æ–­äº†
     alert(a.x); // 10
     alert(a.y); // undefined
 
     var b = new A();
 
-    // ĞÂ¶ÔÏóÊÇ´ÓĞÂÔ­ĞÍ»ñÈ¡
+    // æ–°å¯¹è±¡æ˜¯ä»æ–°åŸå‹è·å–
     alert(b.x); // 20
     alert(b.y); // 30
 }());
 
-// ·Ç±ê×¼µÄ__proto__ÊôĞÔ
+// éæ ‡å‡†çš„__proto__å±æ€§
 (function (){
     function A(){}
     A.prototype.x = 10;
@@ -272,17 +272,17 @@ if (typeof  b === 'object') {
     alert(b.x); // 20;
     alert(b.y); // 30;
 
-    // a ÒÀ¾ÉÊÇ°ó¶¨¾ÉµÄÔ­ĞÍ
+    // a ä¾æ—§æ˜¯ç»‘å®šæ—§çš„åŸå‹
     alert(a.x); // 10
     alert(a.y); // undefined
 
-    // ÏÔÊ¾°ó¶¨µ½ĞÂµÄÔ­ĞÍ
-    a.__proto__ = __newPrototype; // ÓÃ a.prototype = __newPrototype ²»ÉúĞ§
+    // æ˜¾ç¤ºç»‘å®šåˆ°æ–°çš„åŸå‹
+    a.__proto__ = __newPrototype; // ç”¨ a.prototype = __newPrototype ä¸ç”Ÿæ•ˆ
     alert(a.x); // 20;
     alert(a.y); // 30;
 })();
 
-// ¶ÔÏó¶ÀÁ¢ÓÚ¹¹Ôìº¯Êı
+// å¯¹è±¡ç‹¬ç«‹äºæ„é€ å‡½æ•°
 (function(){
     function A(){}
     A.prototype.x = 10;
@@ -290,14 +290,14 @@ if (typeof  b === 'object') {
     var a = new A();
     alert(a.x); // 10
 
-    // ÉèÖÃAÎªnull - ÏÔÊ¾ÒıÓÃ¹¹Ôìº¯Êı
+    // è®¾ç½®Aä¸ºnull - æ˜¾ç¤ºå¼•ç”¨æ„é€ å‡½æ•°
     A = null;
 
-    // µ«ÊÇÒÀ¾É¿ÉÒÔÓÃ .constructor ÊôĞÔÀ´´´½¨¶ÔÏó
+    // ä½†æ˜¯ä¾æ—§å¯ä»¥ç”¨ .constructor å±æ€§æ¥åˆ›å»ºå¯¹è±¡
     var b = new a.constructor();
     alert(b.x); // 10;
 
-    // ÒşÊ½µÄÒıÓÃÒ²É¾³ıµô
+    // éšå¼çš„å¼•ç”¨ä¹Ÿåˆ é™¤æ‰
     delete a.constructor.prototype.constructor;
     delete b.constructor.prototype.constructor;
 
@@ -315,16 +315,16 @@ if (typeof  b === 'object') {
 
     alert(a instanceof A); // true
 
-    // Èç¹ûÉèÖÃÔ­ĞÍÎªnull
+    // å¦‚æœè®¾ç½®åŸå‹ä¸ºnull
     A.prototype = null;
 
-    // 'a'ÒÀÈ»¿ÉÒÔÍ¨¹ıa.[[Prototype]] ·ÃÎÊÔ­ĞÍ
+    // 'a'ä¾ç„¶å¯ä»¥é€šè¿‡a.[[Prototype]] è®¿é—®åŸå‹
     alert(a.x);
 
-    alert(a instanceof A); // ±¨´í A.prototype ÊÇnull instanceof ÊÇ´Ó AµÄÔ­ĞÍ¿ªÊ¼²éÕÒ
+    alert(a instanceof A); // æŠ¥é”™ A.prototype æ˜¯null instanceof æ˜¯ä» Açš„åŸå‹å¼€å§‹æŸ¥æ‰¾
 }());
 
-// instanceof Èç¹û¶ÔÏóµÄ[[Prototype]]ÊôĞÔºÍ¹¹Ôìº¯ÊıµÄprototypeÊôĞÔµÄÖµÉèÖÃµÄÊÇÒ»ÑùµÄ»°£¬instanceof¼ì²éµÄÊ±ºò»á·µ»Øtrue
+// instanceof å¦‚æœå¯¹è±¡çš„[[Prototype]]å±æ€§å’Œæ„é€ å‡½æ•°çš„prototypeå±æ€§çš„å€¼è®¾ç½®çš„æ˜¯ä¸€æ ·çš„è¯ï¼Œinstanceofæ£€æŸ¥çš„æ—¶å€™ä¼šè¿”å›true
 (function(){
     function B(){}
     var b = new B();
@@ -344,14 +344,14 @@ if (typeof  b === 'object') {
     alert(b instanceof B); // false
 }());
 
-// Ô­ĞÍ¿ÉÒÔ´æ·Å·½·¨²¢¹²ÏíÊôĞÔ
+// åŸå‹å¯ä»¥å­˜æ”¾æ–¹æ³•å¹¶å…±äº«å±æ€§
 (function(){
     function A(x) {
         this.x = x || 100;
     }
 
     A.prototype = (function(){
-        // ³õÊ¼»¯ÉÏÏÂÎÄ Ê¹ÓÃ¶îÍâµÄ¶ÔÏó
+        // åˆå§‹åŒ–ä¸Šä¸‹æ–‡ ä½¿ç”¨é¢å¤–çš„å¯¹è±¡
         var _someShareVar = 550;
 
         function _someHelper() {
@@ -366,7 +366,7 @@ if (typeof  b === 'object') {
             alert('method2 ' + this.x);
         }
 
-        // Ô­ĞÍ
+        // åŸå‹
         return {
             constructor : A,
             method1 : method1,
@@ -388,47 +388,47 @@ if (typeof  b === 'object') {
 
 }());
 
-// TODO ¶ÁĞ´ÊôĞÔ [[Get]] [[Put]]
+// TODO è¯»å†™å±æ€§ [[Get]] [[Put]]
 (function(){
     var foo = {};
-    foo.bar = 10; // µ÷ÓÃÁË [[Put]]
+    foo.bar = 10; // è°ƒç”¨äº† [[Put]]
 
-    console.log(foo.bar); // µ÷ÓÃÁË [[Get]]
-    console.log(foo['bar']); // Ò»Ñù
+    console.log(foo.bar); // è°ƒç”¨äº† [[Get]]
+    console.log(foo['bar']); // ä¸€æ ·
 
-    // [[Get]] Î±´úÂë
+    // [[Get]] ä¼ªä»£ç 
     /*
       O.[[Get]](P):
 
-     // Èç¹ûÊÇ×Ô¼ºµÄÊôĞÔ£¬¾Í·µ»Ø
+     // å¦‚æœæ˜¯è‡ªå·±çš„å±æ€§ï¼Œå°±è¿”å›
      if (O.hasOwnProperty(P)) {
         return O.P
      }
 
-     //·ñÔò£¬¼ÌĞø·ÖÎöÔ­ĞÍ
+     //å¦åˆ™ï¼Œç»§ç»­åˆ†æåŸå‹
      var __proto = O.[[Prototype]];
 
-     // Èç¹ûÔ­ĞÍÊÇ null, ·µ»Ø undefined
-     // ×î¶¥²ãObject.prototype.[[Prototype]] ÊÇ null
+     // å¦‚æœåŸå‹æ˜¯ null, è¿”å› undefined
+     // æœ€é¡¶å±‚Object.prototype.[[Prototype]] æ˜¯ null
 
      if (__proto === null ) {
         return undefined
      }
 
-     // ·ñÔò£¬¶ÔÔ­ĞÍÁ´µİ¹éµ÷ÓÃ[[Get]],ÔÚ¸÷²ãµÄÔ­ĞÍÖĞ²éÕÒÊôĞÔ Ö±µ½nullÎªÖ¹
+     // å¦åˆ™ï¼Œå¯¹åŸå‹é“¾é€’å½’è°ƒç”¨[[Get]],åœ¨å„å±‚çš„åŸå‹ä¸­æŸ¥æ‰¾å±æ€§ ç›´åˆ°nullä¸ºæ­¢
      return __proto.[[Get]](P)
     */
 
-    // [[Put]] Î±´úÂë
+    // [[Put]] ä¼ªä»£ç 
     /*
      O.[[Put]](P, V);
 
-     // Èç¹û²»ÄÜ¸øÊôĞÔĞ´Öµ£¬¾ÍÍË³ö
+     // å¦‚æœä¸èƒ½ç»™å±æ€§å†™å€¼ï¼Œå°±é€€å‡º
      if (!O.[[CanPut]](P)){
         return;
      }
 
-     // Èç¹û¶ÔÏóÃ»ÓĞ×ÔÉíµÄÊôĞÔ£¬¾Í´´½¨Ëû
+     // å¦‚æœå¯¹è±¡æ²¡æœ‰è‡ªèº«çš„å±æ€§ï¼Œå°±åˆ›å»ºä»–
      if (!O.hasOwnProperty(P)) {
         createNewProperty(O, P, attributes: {
            ReadOnly : false,
@@ -438,7 +438,7 @@ if (typeof  b === 'object') {
         });
      }
 
-     // Èç¹ûÊôĞÔ´æÔÚ¾ÍÉèÖÃÖµ£¬µ«²»¸Ä±äattributesÌØÕ÷
+     // å¦‚æœå±æ€§å­˜åœ¨å°±è®¾ç½®å€¼ï¼Œä½†ä¸æ”¹å˜attributesç‰¹å¾
      O.P = V;
      */
 
@@ -447,14 +447,14 @@ if (typeof  b === 'object') {
     console.log(foo.x); // 100;
 
     foo.x = 10; // [[Put]]
-    console.log(foo.x); // 10, Ğ´ÔÚ×ÔÉí
+    console.log(foo.x); // 10, å†™åœ¨è‡ªèº«
 
     delete foo.x;
-    console.log(foo.x); // 100 ¼Ì³ĞÊôĞÔ
+    console.log(foo.x); // 100 ç»§æ‰¿å±æ€§
 
-    // ²»ÄÜ¸²¸ÇÔ­ĞÍÀïµÄÖ»¶ÁÊôĞÔ£¬¸´ÖÆ½á¹û»á±»ºöÂÔ£¬ÕâÊÇÄÚ²¿µÄ[[CanPut]]¿ØÖÆµÄ
+    // ä¸èƒ½è¦†ç›–åŸå‹é‡Œçš„åªè¯»å±æ€§ï¼Œå¤åˆ¶ç»“æœä¼šè¢«å¿½ç•¥ï¼Œè¿™æ˜¯å†…éƒ¨çš„[[CanPut]]æ§åˆ¶çš„
 
-    // ÀıÈç ÊôĞÔ length ÊÇÖ»¶ÁµÄ ÎÒÃÇÀ´ÑÚ¸ÇÒ»ÏÂlength ÊÔÊÔ
+    // ä¾‹å¦‚ å±æ€§ length æ˜¯åªè¯»çš„ æˆ‘ä»¬æ¥æ©ç›–ä¸€ä¸‹length è¯•è¯•
     function SuperString(){}
 
     SuperString.prototype = new String('abc');
@@ -463,14 +463,14 @@ if (typeof  b === 'object') {
 
     console.log(foo.length); // 3
 
-    foo.length = 5; // µ÷ÓÃ [[Put]] ·¢ÏÖËµ²»¿ÉĞ´ÈëÊôĞÔ£¬return³öÀ´£¬¾ßÌå¿´ Put Î±´úÂë
+    foo.length = 5; // è°ƒç”¨ [[Put]] å‘ç°è¯´ä¸å¯å†™å…¥å±æ€§ï¼Œreturnå‡ºæ¥ï¼Œå…·ä½“çœ‹ Put ä¼ªä»£ç 
 
-    console.log(foo.length); // ÒÀ¾ÉÊÇ 3
+    console.log(foo.length); // ä¾æ—§æ˜¯ 3
 
 }());
 
-// ÊôĞÔ·ÃÎÊÆ÷
-// ÄÚ²¿µÄ[[Get]] ºÍ [[Put]] Í¨¹ıµã·ûºÅ»òË÷Òı·¨À´¼¤»îµÄ¡£
+// å±æ€§è®¿é—®å™¨
+// å†…éƒ¨çš„[[Get]] å’Œ [[Put]] é€šè¿‡ç‚¹ç¬¦å·æˆ–ç´¢å¼•æ³•æ¥æ¿€æ´»çš„ã€‚
 
 (function(){
     var a = {
@@ -491,30 +491,30 @@ if (typeof  b === 'object') {
     alert(a.toString()); // 10;
 
     a.test = 100;
-    // ÔÚÊ¹ÓÃÊôĞÔ·ÃÎÊÆ÷Ê±£¬Ëû±ä³É new Number() ¡£Ê¹ÓÃºó¾Í»á×Ô¶¯±ä³É 10
+    // åœ¨ä½¿ç”¨å±æ€§è®¿é—®å™¨æ—¶ï¼Œä»–å˜æˆ new Number() ã€‚ä½¿ç”¨åå°±ä¼šè‡ªåŠ¨å˜æˆ 10
 
     alert(a.test); // undefined
 
-    // Ö´ĞĞ a.toString()µÄÊ±ºò
+    // æ‰§è¡Œ a.toString()çš„æ—¶å€™
     // 1. new Number(a);
     // 2. newNumber(a).toString();
     // 3. delete new Number(a)
 
-    // Ö´ĞĞ a.test = 100;
+    // æ‰§è¡Œ a.test = 100;
     // 1. new Number(a);
     // 2. new Number(a).test = 100;
     // 3. delete new Number(a);
 
-    // ºÚ¿Æ¼¼ 1..toString()
+    // é»‘ç§‘æŠ€ 1..toString()
 
-    // Ëû1. ½âÎö³É 1.0 1..toString() == 1.['String']
-    // 1.toString() Óï·¨±¨´í
+    // ä»–1. è§£ææˆ 1.0 1..toString() == 1.['String']
+    // 1.toString() è¯­æ³•æŠ¥é”™
     // (1).toString() OK
     // 1..toString() OK
     // 1['toString']() OK
 }());
 
-// Ô­ĞÍÁ´
+// åŸå‹é“¾
 (function(){
     function A() {
         alert('a.[[Call]] activated');
@@ -527,14 +527,14 @@ if (typeof  b === 'object') {
 
     function B() {}
 
-    // ×î½üµÄÔ­ĞÍÁ´·½·¨¾ÍÊÇÉèÖÃ¶ÔÏóµÄÔ­ĞÍÎªÁíÍâÒ»¸öĞÂ¶ÔÏó
+    // æœ€è¿‘çš„åŸå‹é“¾æ–¹æ³•å°±æ˜¯è®¾ç½®å¯¹è±¡çš„åŸå‹ä¸ºå¦å¤–ä¸€ä¸ªæ–°å¯¹è±¡
     B.prototype = new A();
 
-    // ĞŞ¸´Ô­ĞÍµÄ constructor ÊôĞÔ£¬·ñÔòµÄ»°¾ÍÊÇAÁË
+    // ä¿®å¤åŸå‹çš„ constructor å±æ€§ï¼Œå¦åˆ™çš„è¯å°±æ˜¯Aäº†
     B.prototype.constructor = B;
 
     var b = new B();
-    alert([b.x, b.y]); // 10 20 Á½¸ö¶¼ÊÇ¼Ì³Ğ
+    alert([b.x, b.y]); // 10 20 ä¸¤ä¸ªéƒ½æ˜¯ç»§æ‰¿
 
     // [[Get]] b.y
     // b.y (no) -->
@@ -560,8 +560,8 @@ if (typeof  b === 'object') {
     alert([a.x, a.param]); // 10,20
 
     function B() {}
-    B.prototype = new A(); // Error ÔÚ¸¸Àà×öÁË´íÎóÅĞ¶Ï£¬×ÖÀà¼Ì³ĞÒ²»á±¨´í
-    // TODO ¸Ğ¾õÃ»Ê²Ã´¸É»õ
+    B.prototype = new A(); // Error åœ¨çˆ¶ç±»åšäº†é”™è¯¯åˆ¤æ–­ï¼Œå­—ç±»ç»§æ‰¿ä¹Ÿä¼šæŠ¥é”™
+    // TODO æ„Ÿè§‰æ²¡ä»€ä¹ˆå¹²è´§
 }());
 
 (function(){
@@ -575,26 +575,26 @@ if (typeof  b === 'object') {
     alert([a.x, a.y]); // 10 20
 
     function B() {
-        // »òÕßÊ¹ÓÃ A.apply(this, arguments)
+        // æˆ–è€…ä½¿ç”¨ A.apply(this, arguments)
         B.superclass.constructor.apply(this, arguments);
-        // µ÷ÓÃ¸¸¹¹Ôìº¯ÊıÀ´ÒıÓÃĞÂ´´½¨¶ÔÏóµÄÉÏÏÂÎÄ
+        // è°ƒç”¨çˆ¶æ„é€ å‡½æ•°æ¥å¼•ç”¨æ–°åˆ›å»ºå¯¹è±¡çš„ä¸Šä¸‹æ–‡
     }
 
-    // ¼Ì³Ğ£º Í¨¹ı¿ÕµÄÖĞ¼ä¹¹Ôìº¯Êı½«Ô­ĞÍÁ¬ÔÚÒ»Æğ
+    // ç»§æ‰¿ï¼š é€šè¿‡ç©ºçš„ä¸­é—´æ„é€ å‡½æ•°å°†åŸå‹è¿åœ¨ä¸€èµ·
     var F = function(){};
-    F.prototype = A.prototype; // ÒıÓÃ
+    F.prototype = A.prototype; // å¼•ç”¨
     B.prototype = new F();
-    // superproto ÊÇ×Ô¶¨ÒåÊôĞÔ ·½±ã±êÊ¶¶øÒÑ
-    B.superproto = A.prototype; // ÏÔÊ½ÒıÓÃµ½ÁíÍâÒ»¸öÔ­ĞÍÉÏ£¬ 'sugar'
+    // superproto æ˜¯è‡ªå®šä¹‰å±æ€§ æ–¹ä¾¿æ ‡è¯†è€Œå·²
+    B.superproto = A.prototype; // æ˜¾å¼å¼•ç”¨åˆ°å¦å¤–ä¸€ä¸ªåŸå‹ä¸Šï¼Œ 'sugar'
 
-    // ĞŞ¸´Ô­ĞÍµÄ constructor ÊôĞÔ£¬·ñÔò¾ÍÊÇAÁË
+    // ä¿®å¤åŸå‹çš„ constructor å±æ€§ï¼Œå¦åˆ™å°±æ˜¯Aäº†
     B.prototype.constructor = B;
 
     var b = new B();
     alert([b.x, b.y]); // 10 20
 }());
 
-// TODO ¿ÉÒÔĞ´Ò»¸öº¯ÊıÀ´¼Ì³Ğ
+// TODO å¯ä»¥å†™ä¸€ä¸ªå‡½æ•°æ¥ç»§æ‰¿
 function inherit(child, parent) {
     var F = function() {};
     F.prototype = parent.prototype;
@@ -615,7 +615,7 @@ function inherit(child, parent) {
     alert(b.x); // 10
 }());
 
-// ºÃÄÑ Óï·¨ÌÇÃ»Àí½â ¢Û
+// å¥½éš¾ è¯­æ³•ç³–æ²¡ç†è§£ â‘¢
 var inherit2 = (function(){
     function F(){}
 
@@ -646,7 +646,7 @@ var inherit2 = (function(){
     function C() {}
     inherit2(C, B);
 
-    // Ê¹ÓÃ superproto Óï·¨ÌÇ
+    // ä½¿ç”¨ superproto è¯­æ³•ç³–
     C.prototype.foo = function(){
         C.superproto.foo.call(this);
         alert('C#Foo');
@@ -658,7 +658,7 @@ var inherit2 = (function(){
     c.foo();
 })();
 
-// TODO ¢Ü ES5ÎªÔ­ĞÍÁ´±ê×¼»¯ÁËÕâ¸ö¹¤¾ßº¯Êı Object.create
+// TODO â‘£ ES5ä¸ºåŸå‹é“¾æ ‡å‡†åŒ–äº†è¿™ä¸ªå·¥å…·å‡½æ•° Object.create
 (function(){
     if (!Object.create) {
         Object.create = function(parent, properties){
@@ -672,7 +672,7 @@ var inherit2 = (function(){
         }
     }
 
-    // ÓÃ·¨
+    // ç”¨æ³•
     var foo = {x : 10};
     var bar = Object.create(foo, {y : {value : 20}});
     console.log(bar.x, bar.y);

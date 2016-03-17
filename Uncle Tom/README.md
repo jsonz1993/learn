@@ -97,6 +97,10 @@
 		* ④ Object.create ES 标准化的继承 
 		* 用的时候先判断，如果存在就用那个，不存在就封装一个类似的函数 
 	* **刷完好累**  
+* [深入理解JavaScript系列（19）：求值策略(Evaluation strategy)](http://www.cnblogs.com/TomXu/archive/2012/02/08/2341439.html)
+	* 没什么干货
+* [你真懂JavaScript吗？(20)](http://www.cnblogs.com/TomXu/archive/2012/02/10/2342098.html)
+	* 
 
 
 

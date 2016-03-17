@@ -2,7 +2,7 @@
  * Created by Jsonz on 2016/3/15.
  */
 
-// ×÷ÓÃÓòÊÇ¾²Ì¬µÄ£¬Ô­ĞÍÊÇ¶¯Ì¬µÄ
+// ä½œç”¨åŸŸæ˜¯é™æ€çš„ï¼ŒåŸå‹æ˜¯åŠ¨æ€çš„
 
 Object = {
     a : 10,
@@ -14,11 +14,11 @@ Object.method = function(){
     return this.a;
 };
 
-Object.d = 40; // Ìí¼Ó
-delete Object.c; // É¾³ı
-Object.a = 100; // ĞŞ¸Ä
+Object.d = 40; // æ·»åŠ 
+delete Object.c; // åˆ é™¤
+Object.a = 100; // ä¿®æ”¹
 
-// »ùÓÚÎ¯ÍĞ¡£ (Î±´úÂë
+// åŸºäºå§”æ‰˜ã€‚ (ä¼ªä»£ç 
 
 x = {
     a : 10,
@@ -30,13 +30,13 @@ y = {
     c : 50
 };
 
-y.__proto__ = x; // x ÊÇ y µÄÔ­ĞÍ
+y.__proto__ = x; // x æ˜¯ y çš„åŸå‹
 
 y.a; // 40
 y.c; // 50
 y.b; // 20
 
-delete y.a; // É¾³ı×ÔÉíµÄ a
+delete y.a; // åˆ é™¤è‡ªèº«çš„ a
 y.a; // 10
 
 z = {
@@ -51,13 +51,13 @@ y.e; // 50
 z.q = 290;
 y.q; // 290
 
-//Ô­ĞÍÀí½âso easy
+//åŸå‹ç†è§£so easy
 
 
 /**
- * OOP ÌØĞÔ
+ * OOP ç‰¹æ€§
  */
-// ¶àÌ¬
+// å¤šæ€
 (function(){
     function test() {
         alert([this.a,this.b]);
@@ -70,8 +70,8 @@ y.q; // 290
     test(); // 1, 2
 }());
 
-// ·â×°
-// OOPÓï·¨ÌÇ--ĞŞÊÎ·û £¿
+// å°è£…
+// OOPè¯­æ³•ç³–--ä¿®é¥°ç¬¦ ï¼Ÿ
 (function(){
     function A(){
         var _a;
@@ -102,14 +102,14 @@ y.q; // 290
     })();
 
     foo(); // 10;
-    // foo.__parent__.x = 20; ³éÏóµÄ¸ÅÄî __parent__
+    // foo.__parent__.x = 20; æŠ½è±¡çš„æ¦‚å¿µ __parent__
     // foo() 20
 }());
 
 // Mixins
 (function(){
 
-    // Ç³¸´ÖÆ
+    // æµ…å¤åˆ¶
     Object.extend = function(destination, source){
         for (property in source) {
             if (source.hasOwnProperty(property)) {
@@ -127,7 +127,7 @@ y.q; // 290
 
 }());
 
-// ¶ÔÏó×éºÏ
+// å¯¹è±¡ç»„åˆ
 var _delegate = {
     foo : function(){
         alert('_delegate');
@@ -152,8 +152,8 @@ agregate.delegate = {
 
 agregate.foo(); // foo from new delegate;
 
-// AOP ÌØĞÔ
-// ¢ÚËµÊÇ×°ÊÎ×ÅÄ£Ê½£¬²»¶®Ê²Ã´Ä£Ê½¡£ºóÃæÓĞÄ£Ê½½²½â
+// AOP ç‰¹æ€§
+// â‘¡è¯´æ˜¯è£…é¥°ç€æ¨¡å¼ï¼Œä¸æ‡‚ä»€ä¹ˆæ¨¡å¼ã€‚åé¢æœ‰æ¨¡å¼è®²è§£
 function checkDecorator(originalFunction) {
     return function() {
         if (fooBar != 'test') {
