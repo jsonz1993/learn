@@ -1,5 +1,5 @@
 (function(){
-    //Ô­º¯Êý
+    //åŽŸå‡½æ•°
     function getHugeList() {
         var arr = [];
         for (var i = 0;i < 10000000; i++) {
@@ -18,13 +18,13 @@
         }
     };
 
-    //±Õ°üÓëµÝ¹é.js:13 Uncaught RangeError: Maximum call stack size exceeded
+    //é—­åŒ…ä¸Žé€’å½’.js:13 Uncaught RangeError: Maximum call stack size exceeded
     //nextListItem();
 }());
 
 
-//µÚÒ»ÖÖ·½·¨
-// setTimeout Òì²½»úÖÆ
+//ç¬¬ä¸€ç§æ–¹æ³•
+// setTimeout å¼‚æ­¥æœºåˆ¶
 function getHugeList() {
     var arr = [];
     for (var i = 0;i < 10000; i++) {
@@ -47,8 +47,8 @@ var nextListItem = function(){
    },1);
 };
 
-// µÚ¶þÖÖ·½·¨
-//±Õ°ü
+// ç¬¬äºŒç§æ–¹æ³•
+//é—­åŒ…
 //console.time('test');
 var nextListItem2 = function(){
     var foo = function closer() {
@@ -65,7 +65,7 @@ var nextListItem2 = function(){
 //console.timeEnd('test');
 
 
-//µÚÈýÖÖ·½·¨
+//ç¬¬ä¸‰ç§æ–¹æ³•
 function isEvent(num) {
     if (num === 0) {
         return true;
@@ -80,7 +80,7 @@ function isEvent(num) {
 
 isEvent(100);
 
-// ÑÓÉì Îå¸çºÃÄåº¦
+// å»¶ä¼¸ äº”å“¥å¥½è…»å®³
 function trampoline(func,arg) {
     var value = func(arg);
 
