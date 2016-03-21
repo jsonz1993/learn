@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+
+<!--双向数据绑定-->
+<div id="demo">
+    <p>{{message}}</p>
+    <input type="text" v-model="message"/>
+</div>
+
+<!--渲染列表-->
+<div id="app">
+    <ul>
+        <li v-for="todo in todos">
+            {{ todo.text }}
+        </li>
+    </ul>
+</div>
+
+<!--处理用户输入-->
+<div id="app1">
+    <p>{{ message }}</p>
+    <button v-on:click="reverseMessage">Reverse Message</button>
+</div>
+
+<!--综合-->
+<div id="app2">
+    <input type="text" v-model="newTodo" v-on:keyup.enter="addTodo"/>
+    <ul>
+        <li v-for="todo in todos">
+            <span>{{ todo. text }}</span>
+            <button v-on:click="removeTodo($index)">x</button>
+        </li>
+    </ul>
+</div>
+
+<script>
+    var demo = new Vue({
+        el : '#demo',
+        data : {
+            message : 'Hello vue.js'
+        }
+    });
+
+    new Vue({
+        el : '#app',
+        data : {
+            todos : [
+                { text : 'jsonz'},
+                { text : 'zhangxinxin'},
+                { text : 'zhanggengxin'}
+            ]
+        }
+    });
+
+    new Vue({
+        el : '#app1',
+        data : {
+            message : 'Hello Vue.js'
+        },
+        methods : {
+            reverseMessage : function(){
+                this.message = this.message.split('').reverse().join('')
+            }
+        }
+    });
+
+    new Vue({
+        el : '#app2',
+        data : {
+            newTodo : '',
+            todos : [
+                { text : 'add some todos '}
+            ]
+        },
+        methods : {
+            addTodo : function(){
+                var text = this.newTodo.trim();
+
+                if (text) {
+                    this.todos.push({ text : text});
+                    this.newTodo = '';
+                }
+            },
+            removeTodo  : function(index) {
+                this.todos.splice(index, 1);
+            }
+        }
+    })
+
+
+
+</script>
+</body>
+</html>
