@@ -161,4 +161,8 @@
 
 	`再次跳过`
 * [深入理解JavaScript系列（23）：JavaScript与DOM（上）——也适用于新手](http://www.cnblogs.com/TomXu/archive/2012/02/16/2351331.html)
-* 
+	* 太基础了 没啥好记
+* [深入理解JavaScript系列（24）：JavaScript与DOM（下）](http://www.cnblogs.com/TomXu/archive/2012/02/17/2351938.html)
+	* Event 对象
+	* Event 事件 
+	* 兼容IE
