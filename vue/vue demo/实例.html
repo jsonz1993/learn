@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+
+
+<script>
+    // vm 挂载的其实和 vm.data 是一样的
+    (function(){
+        var data = { a : 1 };
+        var vm = new Vue({
+            data : data
+        });
+
+        console.log(vm.a === data.a); // true
+        vm.a = 2; // 2
+        data.a = 3;
+        console.log(vm.a); // 3
+    })();
+
+    // 曝露出来的一些属性和方法
+    (function(){
+        var data = { a : 1 };
+
+        var vm = new Vue({
+            el : '#example',
+            data : data
+        });
+
+        console.log(vm.$data === data); // true
+        console.log(vm.$el === document.getElementById('#example')); // true
+
+        vm.$watch('a', function(newVal, oldVal){
+            // 这个回调会在 vm.a 改变后调用
+        })
+    })();
+
+    
+
+
+</script>
+</body>
+</html>
