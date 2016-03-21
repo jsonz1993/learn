@@ -1,5 +1,9 @@
 [REACT](http://www.imooc.com/video/10427)
 
+#一个还没开始就夭折的学习点。
+听群里的人说react用的人没有vue那么多，而且基本上都是想用react来做app 才会去看的。vue的话可以配合其他的框架，用起来很灵活。
+转战vue.js
+
 ### 知识基础
 
 1. JS CSS 基础
