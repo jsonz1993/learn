@@ -154,3 +154,11 @@
 		        return temp;
 		    }
 	太美妙了，6道题我只会3道。
+* [深入理解JavaScript系列（21）：S.O.L.I.D五大原则之接口隔离原则ISP](http://www.cnblogs.com/TomXu/archive/2012/02/14/2330137.html)
+ 
+	`又是跳过` 
+* [深入理解JavaScript系列（22）：S.O.L.I.D五大原则之依赖倒置原则DIP](http://www.cnblogs.com/TomXu/archive/2012/02/15/2330143.html)
+
+	`再次跳过`
+* [深入理解JavaScript系列（23）：JavaScript与DOM（上）——也适用于新手](http://www.cnblogs.com/TomXu/archive/2012/02/16/2351331.html)
+* 

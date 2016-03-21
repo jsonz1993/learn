@@ -232,8 +232,27 @@
         return temp;
     }
 
+    add(1)(2)(3)(44); // 50
 })();
 
+(function(){
+    function add(x){
+        var sum = x;
+
+        var temp = function(y){
+
+            sum += y;
+
+            return temp;
+        };
+
+        temp.toString = function(){
+            return sum;
+        };
+
+        return temp;
+    }
+})();
 
 
 
