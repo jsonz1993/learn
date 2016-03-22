@@ -34,6 +34,9 @@
 			1. 用 $set() 解决。 vm.items.$set(0, {});
 			2. vm.item = [];
 	* 对象循环可以用 v-for="value in object" ($key,$index)
+* [方法与事件处理器](http://cn.vuejs.org/guide/events.html)
+	* 内联传参数 @click="fn('hi', $event)
+	* __事件修饰符__  
 
 
 

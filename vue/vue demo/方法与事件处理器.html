@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../vue.min.js"></script>
+</head>
+<body>
+
+<div id="example">
+    <button @click="greet">Greet</button>
+    <button @click="say($event, 'hi')">Say</button>
+</div>
+
+<!--阻止单击事件冒泡-->
+<a @click.stop="doThis">baidu</a>
+
+<!--提交事件不再重载页面-->
+<form @submit.prevent="onSubmit">baidu</form>
+
+<!--修饰符可以串联-->
+<a @click.stop.prevent="doThis">baidu</a>
+
+<!--只有修饰符-->
+<form @submit.prevent></form>
+
+<script>
+
+    var vm = new Vue({
+        el : '#example',
+        data : {
+            name : 'Vue.js'
+        },
+        methods : {
+            greet : function(event){
+                console.log('Hello ' + this.name + '!');
+
+                console.log(event.target.tagName);
+            },
+            say : function (event, name) {
+                console.log('我的名字叫 ' + name);
+                event.preventDefault();
+                console.log(event.target.tagName);
+            }
+
+        }
+    })
+
+</script>
+</body>
+</html>
