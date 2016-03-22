@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../vue.min.js"></script>
+    <style>
+        .class-a {
+            color: red;
+        }
+
+        .class-b {
+            color : blue;
+        }
+    </style>
+</head>
+<body>
+
+<!-- class style 对象-->
+<div class="static" :class="{ 'class-a': isA, 'class-b': isB }">This is my name</div>
+<!-- class 对象变量-->
+<div class="static1" :class="classObject">This is you name</div>
+<!-- 数组语法-->
+<div class="static2" :class="[classA, classB]">This is Jsonz Name</div>
+<!-- 数组加判断 加classA 在 isB 为 true 时才加 classB-->
+<div :class="[classA, isB ? classB : '']"></div>
+
+<!--绑定内联样式-->
+<div class="static3" :style="{ color : activeColor, fontSize : fontSize + 'px'}">绑定内联样式</div>
+<div class="static3" :style="styleObject"></div>
+
+<!-- 数组语法-->
+<div class="static4" :style="[styleObjectA, styleObjectB]">yoyo</div>
+
+<script>
+
+    new Vue({
+        el : '.static',
+        data : {
+            isA : true,
+            isB : false
+        }
+    });
+
+    new Vue({
+        el : '.static1',
+        data : {
+            classObject : {
+                'class-a' : false,
+                'class-b' : true
+            }
+        }
+    });
+
+    new Vue({
+        el : '.static2',
+        data : {
+            classA : 'class-a',
+            classB : 'class-b'
+        }
+    });
+
+    new Vue({
+        el : '.static3',
+        data : {
+            activeColor : 'yellow',
+            fontSize : '30',
+            styleObject : {
+                color : 'green',
+                fontSize : '40px'
+            }
+        }
+    });
+
+    new Vue({
+        el : '.static4',
+        data : {
+            styleObjectA : {
+                'color' : '#090909'
+            },
+            styleObjectB : {
+                'border' : '1px solid red'
+            }
+        }
+    })
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

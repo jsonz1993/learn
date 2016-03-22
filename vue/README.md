@@ -10,5 +10,6 @@
 * [实例](http://cn.vuejs.org/guide/instance.html)
 * [数据绑定语法](http://cn.vuejs.org/guide/syntax.html)
 * [计算属性](http://cn.vuejs.org/guide/computed.html)
-	* computed 一个计算属性的getter 
+	* computed 一个计算属性的getter
+* [Class 与 Style 绑定](http://cn.vuejs.org/guide/class-and-style.html) 
 
