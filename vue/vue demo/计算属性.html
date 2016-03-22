@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../vue.min.js"></script>
+</head>
+<body>
+
+<!--基础例子-->
+<div id="example">
+    a = {{a}}, b = {{b}}
+</div>
+
+<!--计算属性 vs.$watch-->
+<div id="demo">{{fullName}}</div>
+
+<div id="input">
+    {{fullName}}
+    <input type="text" v-model="firstName"/>
+    <input type="text" v-model="lastName"/>
+</div>
+
+<script>
+    // TODO computed getter 属性 比 $watch好用
+    var vm = new Vue({
+        el : '#example',
+        data : {
+            a : 1
+        },
+        computed : {
+            b : function(){
+                return this.a + 1;
+            }
+        }
+    });
+
+    var vm1 = new Vue({
+        el : '#demo',
+        data : {
+            firstName : 'foo',
+            lastName : 'bar',
+            fullName : 'foo bar'
+        }
+    });
+
+    vm1.$watch('firstName', function(val){
+        this.fullName = val + ' ' + this.lastName;
+    });
+
+    vm1.$watch('lastName', function(val){
+        this.fullName = this.firstName + ' ' + val;
+    });
+
+    // TODO 上述代码可以转换为 下面代码 更简洁方便
+    /*
+    var vm1 = new Vue({
+        data : {
+             firstName : 'foo',
+             lastName : 'bar',
+             fullName : 'foo bar'
+         },
+         computed : {
+            fullName : function(){
+                return this.firstName + ' ' + this.lastName;
+            }
+         }
+    });
+     */
+
+    // 计算属性 computed 默认为 getter属性，如果要setter属性可以这样
+
+    var vm2 = new Vue({
+        el : '#input',
+        data : {
+            text : '1'
+        },
+        computed : {
+            fullName : {
+                get : function() {
+                    return this.firstName + ' ' + this.lastName;
+                },
+                set : function(newValue) {
+                    var names = newValue.split(' ');
+                    this.firstName = names[0];
+                    this.lastName = names[names.length - 1];
+                }
+            }
+        }
+    })
+
+</script>
+</body>
+</html>
