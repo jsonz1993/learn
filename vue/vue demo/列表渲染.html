@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+
+<ul class="example-1">
+    <li v-for="item in items">
+        {{ item.message }} - {{$index}} - {{parentMessage}}
+    </li>
+</ul>
+
+<div class="example-2">
+    <div v-for="(index, item) in items">
+        {{ index }} {{ item.message }}
+    </div>
+</div>
+
+<div class="example-3">
+    <div v-for="item of items">
+        {{item.message}}
+    </div>
+</div>
+
+<ul class="example-4">
+    <template v-for="item in items">
+        <li>{{ item.message }}</li>
+        <li class="divider">{{$index}}</li>
+    </template>
+</ul>
+
+<ul id="repeat-object" class="demo">
+    <li v-for="value in object">
+        {{ $key }} : {{ value }}
+    </li>
+</ul>
+
+<div class="try1">
+    <span v-for="n in 5">{{n}}</span>
+</div>
+
+
+
+<script>
+
+    new Vue({
+        el : '.try1'
+    });
+
+    var example1 = new Vue({
+        el: '.example-1',
+        data: {
+            parentMessage : 'parent',
+            items: [
+                { message: 'Foo' },
+                { message: 'Bar' }
+            ]
+        }
+    });
+
+    var example2 = new Vue({
+        el: '.example-2',
+        data: {
+            parentMessage : 'parent',
+            items: [
+                { message: 'Foo' },
+                { message: 'Bar' }
+            ]
+        }
+    });
+
+    var example3 = new Vue({
+        el: '.example-3',
+        data: {
+            parentMessage : 'parent',
+            items: [
+                { message: 'Foo' },
+                { message: 'Bar' }
+            ]
+        }
+    });
+
+    new Vue({
+        el : '.example-4',
+        data: {
+            parentMessage : 'parent',
+            items: [
+                { message: 'Foo' },
+                { message: 'Bar' }
+            ]
+        }
+    });
+
+
+    new Vue({
+        el: '#repeat-object',
+        data: {
+            object: {
+                FirstName: 'John',
+                LastName: 'Doe',
+                Age: 30
+            }
+        }
+    });
+
+</script>
+</body>
+</html>
