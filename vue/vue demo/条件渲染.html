@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+
+
+<div id="example">
+    <template v-if="isOk"><h1>12</h1><p>2</p></template>
+    <h1 v-else>No</h1>
+</div>
+
+<div id="yo">
+    <h1 v-show="nok">yes</h1>
+    <h2 v-else>no</h2>
+</div>
+
+
+<script>
+    var vm = new Vue({
+        el: '#example',
+        data: {
+            isOk: false
+        }
+    });
+
+    var vm1 = new Vue({
+        el : '#yo',
+        data : {
+            nok : false
+        }
+    });
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
