@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .item-yo {
+            color: red;
+        }
+        body {
+            height: 2000px;
+        }
+    </style>
+    <script src="../vue.js"></script>
+</head>
+<body>
+
+<h1>插值</h1>
+
+<!--文本 自动更新-->
+<span class="span">Message : {{msg}}</span><br/>
+
+<!--文本 单次更新-->
+<span class="danci">This will never change : {{*msg}}</span>
+
+<!--原始的HTML-->
+<p class="raw_html">{{{raw_html}}}</p>
+
+<!--HTML特性-->
+<div class="item-{{ id }}">red</div>
+
+
+<h1>绑定表达式</h1>
+
+<!--JavaScript表达式-->
+{{number + 1}} <br/>
+{{ok ? 'yes' : 'no'}} <br/>
+{{message.split('').reverse().join('')}} <br/>
+
+<!--过滤器 可以串联 接受参数-->
+{{message | capitalize | capitalize 'a'}}
+
+<h1>指令</h1>
+<p v-if="greeting">Hello!</p>
+
+<h1>参数</h1>
+<!--v-bind:href="url" 等同于 href={{url}}(内部会转换为第一种)-->
+<a v-bind:href="url">www.baidu.com</a>
+<a v-on:click="goBaidu">百度</a>
+
+<!--修饰符 不知道有什么用 后期看-->
+<a v-bind:href.literal="a/b/c">修饰符</a>
+
+<h1>缩写</h1>
+<h2>v-bind 缩写</h2>
+<a v-bind:href="url">完整语法</a>
+<a :href="url">缩写</a>
+<button v-bind:disabled="something">Button 完整</button>
+<button :disabled="something">缩写</button>
+
+<h2>v-on缩写</h2>
+<a v-on:click="something">完整</a>
+<a @click="something">缩写</a>
+
+
+
+<script>
+
+    new Vue({
+        el : 'body',
+        data : {
+            number : 10,
+            ok : true,
+            message : 'vueJs',
+            greeting : true,
+            url : 'https://www.baidu.com'
+        },
+        methods : {
+            goBaidu : function(){
+                window.location.href = 'http://www.baidu.com'
+            }
+        }
+    });
+
+    new Vue({
+        el : 'span',
+        data : {
+            msg : 'Jsonz'
+        }
+    });
+
+    new Vue({
+        el : '.danci',
+        data : {
+            msg : '一次性'
+        }
+    });
+
+    new Vue({
+        el : '.raw_html',
+        data : {
+            raw_html : '<b>这是html</b>'
+        }
+    });
+
+    new Vue({
+        el : 'div',
+        data : {
+            id : 'yo'
+        }
+    })
+</script>
+</body>
+</html>
