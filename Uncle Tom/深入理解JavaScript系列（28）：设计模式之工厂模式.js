@@ -80,7 +80,15 @@
     var o = page.dom.factory('Link');
     o.url = 'http://www.baidu.com';
     o.insert(document.body);
-    
+
+    var img = page.dom.factory('img');
+    img.url = 'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png';
+    img.insert(document.body);
+
+    var img2 = page.dom.factory('img');
+    img2.url = 'https://ss3.bdstatic.com/iPoZeXSm1A5BphGlnYG/icon/weather/aladdin/jpg/a7.jpg';
+    img2.insert(document.body);
+
 })();
 
 
