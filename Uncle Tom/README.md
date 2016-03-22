@@ -188,3 +188,11 @@
 	* 实现方法五
 
 			没什么新意。在外面设置一个变量，再用自执行完成前面所做的事情。
+
+	* 其实平时的字面量也算是单例的一种
+* [深入理解JavaScript系列（26）：设计模式之构造函数模式](http://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html)
+	* 小贴士 强制使用new
+	
+			if (!(this instanceof Car)) {
+	            return new Car(model, year, miles);
+	        }
