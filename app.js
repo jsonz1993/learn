@@ -5,7 +5,6 @@
 // TODO 单例
 (function(){
     var mySingleton = (function(){
-        debugger;
         var instance;
 
         function Singleton(args) {
@@ -70,7 +69,7 @@
 var todoList = new Vue({
     el : '#todoList',
     data : {
-        user : [],
+        users : [],
         newUser : {
             name : '',
             email : ''
@@ -78,12 +77,12 @@ var todoList = new Vue({
     },
     methods : {
         addUser : function() {
-            this.user.push(this.newUser);
+            this.users.push({name : this.newUser.name , email : this.newUser.email});
             this.newUser.name = '';
             this.newUser.email = '';
         },
         remove : function(index) {
-            this.user.slice(index, 1);
+            this.users.splice(index, 1);
         }
     }
 });

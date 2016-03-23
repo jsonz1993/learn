@@ -9,15 +9,15 @@
 
 <div id="todoList">
     <ul>
-        <li v-for="list in lists">
+        <li v-for="list in users">
             <span>{{list.name}}</span> - <span>{{list.email}}</span> <span @click="remove($index)">X</span>
         </li>
     </ul>
     <form @submit.prevent="addUser">
         <label for="userName">userName</label>
-        <input type="text" id="userName" v-model="newUser.name"/>
+        <input type="text" id="userName" v-model="newUser.name" @keyup.enter="addUser"/>
         <label for="email">email</label>
-        <input type="text" id="email" v-model="newUser.email"/>
+        <input type="text" id="email" v-model="newUser.email" @keyup.enter="addUser"/>
 
     </form>
 </div>
