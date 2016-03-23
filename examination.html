@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="vue/vue.js"></script>
+</head>
+<body>
+
+<div id="todoList">
+    <ul>
+        <li v-for="list in lists">
+            <span>{{list.name}}</span> - <span>{{list.email}}</span> <span @click="remove($index)">X</span>
+        </li>
+    </ul>
+    <form @submit.prevent="addUser">
+        <label for="userName">userName</label>
+        <input type="text" id="userName" v-model="newUser.name"/>
+        <label for="email">email</label>
+        <input type="text" id="email" v-model="newUser.email"/>
+
+    </form>
+</div>
+
+
+
+<script src="app.js"></script>
+</body>
+</html>
