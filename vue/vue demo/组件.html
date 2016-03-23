@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+
+<div id="example">
+    <my-component></my-component>
+</div>
+
+<!--如 table 限制只有tr 可以放在里面，这时候就用is 特性-->
+<table>
+    <tr is="my-component"></tr>
+</table>
+
+<!-- 用Props传递数据 可以使用 props 把数据传给子组件。-->
+<child msg="hello~"></child>
+
+<!--动态Props-->
+<div id="demo1">
+    <input v-model="parentMsg"/>
+    <br/>
+    <d :my-message="parentMsg"></d>
+</div>
+
+<!-- 传递了一个字符串 "1" -->
+<comp some-prop="1"></comp>
+
+<!-- 传递实际的数字  -->
+<comp :some-prop="1"></comp>
+
+<!-- 默认为单向绑定 -->
+<child :msg="parentMsg"></child>
+
+<!-- 双向绑定 -->
+<child :msg.sync="parentMsg"></child>
+
+<!-- 单次绑定 -->
+<child :msg.once="parentMsg"></child>
+<!--注意如果 prop 是一个对象或数组，是按引用传递。在子组件内修改它会影响父组件的状态，不管是使用哪种绑定类型。-->
+
+<h3>子组件可以使用 this.$parent 访问父组件,this.$root 访问根组件， this.$children 访问子数组组件</h3>
+<p>每个Vue实例都是一个事件触发器</p>
+<p>$on() 监听事件</p>
+<p>$emit() 在他上面触发事件</p>
+<p>$dispatch() 派发事件（冒泡）</p>
+<p>$broadcast() 广播事件，传导给后代</p>
+
+<h1>父组件与子组件通信</h1>
+
+<!--子组件模版-->
+<template id="demo2">
+    <input v-model="msg" @keyup.enter="notify"/>
+    <button @click="notify">Dispatch Event</button>
+</template>
+
+<!--父组件模版-->
+<div class="events-example">
+    <p>Message : {{messages | json}}</p>
+    <child-temp></child-temp>
+</div>
+
+<script>
+    Vue.component('childTemp', {
+        template : '#demo2',
+        data : function(){
+            return { msg : 'hello'}
+        },
+        methods : {
+            notify : function(){
+                if (this.msg.trim()) {
+                    this.$dispatch('child-msg', this.msg);
+                    this.msg = '';
+                }
+            }
+        }
+    });
+
+    var parent = new Vue({
+        el : '.events-example',
+        data : {
+            messages : []
+        },
+        events : {
+            'child-msg' : function(msg) {
+                this.messages.push(msg);
+            }
+        }
+    })
+</script>
+
+<div id="template2">
+    <h1>This is my component!</h1>
+    <slot>
+        This will only be displayed if there is no content
+        to be distributed.
+    </slot>
+</div>
+<my-component2>
+    <p>This is some original content</p>
+    <p>This is some more original content</p>
+</my-component2>
+<script>
+    Vue.component('my-component2', {
+        template : '#template2'
+    })
+</script>
+
+
+<script>
+    // 定义
+    var MyComponent = Vue.extend({
+        template: '<div>A custom component!</div>'
+    });
+
+    // 全局注册
+    Vue.component('my-component', MyComponent);
+
+    // 创建根实例
+    new Vue({
+        el : '#example'
+    });
+
+    // 局部注册
+    var Child = Vue.extend({});
+
+    var Parent = Vue.extend({
+        template : '',
+        components : {
+            // my-component 只能在父组件模板内使用
+            'my-component' : Child
+        }
+    });
+
+    // 简便的注册
+    Vue.component('my-component',{
+        template : '<div>A</div>'
+    });
+
+    // 简便局部注册
+    var Parent2 = Vue.extend({
+        components : {
+            'my-component' : {
+                template : '<div> Acuston</div>'
+            }
+        }
+    });
+
+
+    // props
+    Vue.component('child', {
+        props : ['msg'],
+        template : '<span>{{msg}} world</span>'
+    });
+
+
+    Vue.component('d', {
+        props : ['myMessage'],
+        template: '<span>{{myMessage}}</span>'
+    });
+
+    new Vue({
+        el : '#demo1',
+        data : {
+            parentMsg : ''
+        }
+    });
+
+//    prop 验证
+    Vue.component('example', {
+        props : {
+            // 基础类型检测 null 为任何类型都可以
+            propA : Number,
+            // 必须且是字符串
+            propB : {
+                type : String,
+                required : true
+            },
+            // 数字，有默认值
+            propC : {
+                type : Number,
+                default : 100
+            },
+            // 如果是对象或数组的话，由函数返回
+            propD : {
+                type : Object,
+                default : function(){
+                    return { msg : 'hello'}
+                }
+            },
+            // 指定这个prop是双向数据绑定
+            // 如果绑定类型不对将抛出一条警告
+            propE : {
+                towWay : true
+            },
+            // 自定义验证函数
+            propF : {
+                validator : function(value){
+                    return value > 10;
+                }
+            },
+            // 转换函数，在所设置值之前转换值
+            propG : {
+                coerce : function(val) {
+                    return val + ''; // 将数值转换为字符串
+                }
+            },
+            propH : {
+                coerce : function(val) {
+                    return JSON.parse(val); // 将字符串转为对象
+                }
+            }
+        }
+    });
+
+    // type 可以是 String,Number,Boolean,Function,Object,Array
+</script>
+
+<h1>命名Slot</h1>
+<div id="template3">
+    <slot name="one"></slot>
+    <slot></slot>
+    <slot name="two"></slot>
+</div>
+<div id="parent2">
+    <multi-insertion>
+        <p slot="one">One</p>
+        <p slot="two">Two</p>
+        <p>Default A</p>
+    </multi-insertion>
+</div>
+<script>
+    Vue.component('multiInsertion', {
+        template : '#template3'
+    });
+    new Vue({
+        el : '#parent2'
+    })
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
