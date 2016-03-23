@@ -56,7 +56,43 @@
 * [表单控件绑定](http://cn.vuejs.org/guide/forms.html)
 	* `lazy` 特性 同步等触发事件改为 change 而不是 input
 	* `number` 输入值默认保存为number类型（非过滤）
-	* `debounce` 延迟同步。（如ajax请求），但是不会延迟 input 事件 
+	* `debounce` 延迟同步。（如ajax请求），但是不会延迟 input 事件
+* [过渡](http://cn.vuejs.org/guide/transitions.html)
+	* 过渡要加transition 特性，一般和v-if v-show v-for 一起使用
+	* JS钩子不大会用
+	* `过渡的类名`
+			.fade-transition 始终保留在元素上。
+			
+			.fade-enter 定义进入过渡的开始状态。只应用一帧然后立即删除。
+			
+			.fade-leave 定义离开过渡的结束状态。在离开过渡开始时生效，在它结束后删除。
+			
+			如果 transition 特性没有值，类名默认是 .v-transition, .v-enter 和 .v-leave。 
+	* 过渡类名
+	
+				<div v-show="ok" class="animated" transition="bounce">Watch me bounce</div>
+
+				Vue.transition('bounce', {
+			        enterClass: 'bounceInLeft',
+			        leaveClass: 'bounceOutRight'
+			    })
+	* 过渡流程详解
+		* 如果 show 变为 false，Vue.js 将：
+			* 1.调用 beforeLeave 钩子；
+			* 2.添加 v-leave 类名到元素上以触发过渡；
+			* 3.调用 leave 钩子；
+			* 4.等待过渡结束（监听 transitionend 事件）；
+			* 5.从 DOM 中删除元素并删除 v-leave 类名；
+			* 6.调用 afterLeave 钩子。
+		* 如果 show 变为 true，Vue.js 将：
+			* 1.调用 beforeEnter 钩子；
+			* 2.添加 v-enter 类名到元素上；
+			* 3.把它插入 DOM；
+			* 4.调用 enter 钩子；
+			* 5.强制一次 CSS 布局，让 v-enter 确实生效。然后删除 v-enter 类名，以触发过渡，回到元素的原始状态；
+			* 6.等待过渡结束；
+			* 7.调用 afterEnter 钩子。   
+ 
 
 
 
