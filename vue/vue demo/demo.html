@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="style.css"/>
+    <script src="../vue.js"></script>
+</head>
+<body>
+
+<h1>Markdown</h1>
+<div id="editor">
+    <textarea v-model="text" debounce="300" title=""></textarea>
+    <div class="markdown" v-html="text | marked"></div>
+</div>
+
+<h1>Firebase + 验证</h1>
+<div id="validation">
+    <ul>
+        <li class="user" v-for="user in users" transition>
+            <span> {{user.name}} - {{user.email}}</span>
+            <button @click="removeUser($index)">x</button>
+        </li>
+    </ul>
+    <form id="form" @submit.prevent="addUser">
+        <input v-model="newUser.name"/>
+        <input v-model="newUser.email"/>
+        <input type="submit" value="Add User"/>
+    </form>
+    <ul class="errors">
+        <li v-show="!validation.name">Name cannot be empty.</li>
+        <li v-show="!validation.email">Please provide a valid email address.</li>
+    </ul>
+</div>
+
+<h2>表格组件</h2>
+<!-- component template -->
+<script type="text/x-template" id="grid-template">
+    <table>
+        <thead>
+        <tr>
+            <th v-for="key in columns"
+                @click="sortBy(key)"
+                :class="{active: sortKey == key}">
+                {{key | capitalize}}
+                <span class="arrow"
+                      :class="sortOrders[key] > 0 ? 'asc' : 'dsc'">
+                </span>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="
+        entry in data
+        | filterBy filterKey
+        | orderBy sortKey sortOrders[sortKey]">
+            <td v-for="key in columns">
+                {{entry[key]}}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</script>
+
+<!-- demo root element -->
+<div id="demo" style="margin-bottom: 20px;">
+    <form id="search">
+        Search <input name="query" v-model="searchQuery">
+    </form>
+    <demo-grid
+            :data="gridData"
+            :columns="gridColumns"
+            :filter-key="searchQuery">
+    </demo-grid>
+</div>
+
+<script type="text/x-template" id="jsonzGridTemplate">
+    <table>
+        <thead>
+        <tr>
+            <th v-for="key in columns"
+                :class="{active: sortKey == key}"
+                @click="sortBy(key)">
+                {{ key | capitalize }}
+            <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'">
+
+            </span>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="
+            entry in data
+            | filterBy filterKey
+            | orderBy sortKey sortOrders[sortKey]">
+            <td v-for="key in columns">
+                {{ entry[key] }}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</script>
+
+<div id="jsonzDemo">
+    <form style="margin-bottom: 10px;">
+        Search <input v-model="searchQuery"/>
+    </form>
+    <jsonz-table  :data="gridData"
+                  :columns="gridColumns"
+                  :filter-key="searchQuery">
+    </jsonz-table>
+</div>
+
+
+
+
+<script src="marked.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
