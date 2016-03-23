@@ -34,15 +34,14 @@
 </div>
 
 <h2>表格组件</h2>
-<!-- component template -->
-<script type="text/x-template" id="grid-template">
+<script type="text/x-template" id="jsonzTableTemp">
     <table>
         <thead>
         <tr>
             <th v-for="key in columns"
-                @click="sortBy(key)"
-                :class="{active: sortKey == key}">
-                {{key | capitalize}}
+                :class="{active : item === key}"
+                @click="choose(key)">
+                {{key}}
                 <span class="arrow"
                       :class="sortOrders[key] > 0 ? 'asc' : 'dsc'">
                 </span>
@@ -51,67 +50,27 @@
         </thead>
         <tbody>
         <tr v-for="
-        entry in data
-        | filterBy filterKey
-        | orderBy sortKey sortOrders[sortKey]">
+            enter in data
+            | filterBy filterKey
+            | orderBy item sortOrders[item]">
             <td v-for="key in columns">
-                {{entry[key]}}
+                {{enter[key]}}
             </td>
         </tr>
         </tbody>
     </table>
 </script>
 
-<!-- demo root element -->
-<div id="demo" style="margin-bottom: 20px;">
-    <form id="search">
-        Search <input name="query" v-model="searchQuery">
+<div id="table">
+    <form action="">
+        <input type="text" v-model="searchQuery"/>
     </form>
-    <demo-grid
+    <table-temp
             :data="gridData"
             :columns="gridColumns"
             :filter-key="searchQuery">
-    </demo-grid>
+    </table-temp>
 </div>
-
-<script type="text/x-template" id="jsonzGridTemplate">
-    <table>
-        <thead>
-        <tr>
-            <th v-for="key in columns"
-                :class="{active: sortKey == key}"
-                @click="sortBy(key)">
-                {{ key | capitalize }}
-            <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'">
-
-            </span>
-            </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="
-            entry in data
-            | filterBy filterKey
-            | orderBy sortKey sortOrders[sortKey]">
-            <td v-for="key in columns">
-                {{ entry[key] }}
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</script>
-
-<div id="jsonzDemo">
-    <form style="margin-bottom: 10px;">
-        Search <input v-model="searchQuery"/>
-    </form>
-    <jsonz-table  :data="gridData"
-                  :columns="gridColumns"
-                  :filter-key="searchQuery">
-    </jsonz-table>
-</div>
-
-
 
 
 <script src="marked.min.js"></script>

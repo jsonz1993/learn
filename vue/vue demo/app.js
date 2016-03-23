@@ -58,51 +58,11 @@ var validation = new Vue({
 
 
 //表格
-Vue.component('demo-grid', {
-    template: '#grid-template',
-    props: {
-        data: Array,
-        columns: Array,
-        filterKey: String
-    },
-    data: function () {
-        var sortOrders = {};
-        this.columns.forEach(function (key) {
-            sortOrders[key] = 1
-        });
-        return {
-            sortKey: '',
-            sortOrders: sortOrders
-        }
-    },
-    methods: {
-        sortBy: function (key) {
-            this.sortKey = key;
-            this.sortOrders[key] = this.sortOrders[key] * -1;
-        }
-    }
-});
-
-// bootstrap the demo
-var demo = new Vue({
-    el: '#demo',
-    data: {
-        searchQuery: '',
-        gridColumns: ['name', 'power'],
-        gridData: [
-            { name: 'Chuck Norris', power: Infinity },
-            { name: 'Bruce Lee', power: 9000 },
-            { name: 'Jackie Chan', power: 7000 },
-            { name: 'Jet Li', power: 8000 }
-        ]
-    }
-});
-
-Vue.component('jsonzTable', {
-    template : '#jsonzGridTemplate',
+Vue.component('tableTemp', {
+    template : '#jsonzTableTemp',
     props : {
-        data : Array,
         columns : Array,
+        data : Array,
         filterKey : String
     },
     data : function(){
@@ -111,28 +71,52 @@ Vue.component('jsonzTable', {
             sortOrders[key] = 1;
         });
         return {
-            sortKey : '',
+            item : '',
             sortOrders : sortOrders
         }
     },
     methods : {
-        sortBy : function(key) {
-            this.sortKey = key;
+        choose : function(key) {
+            this.item = key;
             this.sortOrders[key] *= -1;
         }
     }
 });
 
-var jsonzDemo = new Vue({
-    el : '#jsonzDemo',
+var table = new Vue({
+    el : '#table',
     data : {
         searchQuery : '',
         gridColumns : ['name', 'power'],
         gridData : [
-            { name: 'Chuck Norris', power: Infinity },
+            { name: 'Chuck Norris', power: 2000 },
             { name: 'Bruce Lee', power: 9000 },
             { name: 'Jackie Chan', power: 7000 },
             { name: 'Jet Li', power: 8000 }
         ]
     }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
