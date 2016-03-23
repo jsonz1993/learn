@@ -53,6 +53,10 @@
 				left
 				right
 
+* [表单控件绑定](http://cn.vuejs.org/guide/forms.html)
+	* `lazy` 特性 同步等触发事件改为 change 而不是 input
+	* `number` 输入值默认保存为number类型（非过滤）
+	* `debounce` 延迟同步。（如ajax请求），但是不会延迟 input 事件 
 
 
 

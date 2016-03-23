@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+
+<form action="" id="form">
+    <!-- 输入框 -->
+    <span>Message is {{ message }}</span>
+    <input type="text" v-model="message" placeholder="edit me"/>
+    <br/>
+
+    <!-- 多选框 -->
+    <input type="checkbox" id="checkbox" v-model="checked"/>
+    <label for="checkbox">{{ checked }}</label>
+    <br/>
+
+    <!-- 多选框组 -->
+    <input type="checkbox" id="jack" value="Jack" v-model="checkList"/>
+    <label for="jack">jack</label>
+    <input type="checkbox" id="john" value="John" v-model="checkList"/>
+    <label for="john">John</label>
+    <input type="checkbox" id="mike" value="Mike" v-model="checkList"/>
+    <label for="mike">Mike</label>
+    <br/>
+    <span>checkList : {{ checkList | json}} </span>
+    <br/>
+
+    <!-- 单选框组 -->
+    <input type="radio" id="one" value="One" v-model="radio"/>
+    <label for="one"> ONE</label>
+    <input type="radio" id="two" value="Two" v-model="radio"/>
+    <label for="two"> TWO</label>
+    <span>{{ radio }}</span>
+    <br/>
+
+    <!-- 下拉框 -->
+    <select v-model="selected">
+        <option >A</option>
+        <option >B</option>
+        <option >C</option>
+    </select>
+    <span>Selected {{ selected }}</span>
+    <br/>
+
+    <!-- for 循环下拉框 -->
+    <select v-model="selecteds">
+        <option v-for="option in options" :value="option.value">
+            {{ option.text }}
+        </option>
+    </select>
+    <span>Selected : {{selecteds}}</span>
+    <br/>
+
+    <!-- 参数特性 -->
+    <!-- 同步等触发事件改为 change 而不是 input -->
+    <input v-model="msg" lazy/>
+    <br/>
+
+    <!-- 自动将用户的输入保持为数字 -->
+    <input v-model="age" number>
+    {{typeof age}}
+    <br/>
+
+    <!-- 延迟同步 如 ajax-->
+    <input v-model="debounce" debounce="1000"/>
+    <span> {{debounce}} </span>
+    <br/>
+
+
+
+</form>
+
+<script>
+
+    new Vue({
+        el : '#form',
+        data : {
+            message : '',
+            checked : false,
+            checkList : [],
+            radio : '',
+            selected : 'C',
+            selecteds : 'A',
+            options : [
+                {value : 'A', text : 'a'},
+                {value : 'B', text : 'b'},
+                {value : 'C', text : 'c'},
+                {value : 'D', text : 'd'}
+            ],
+            toggle : '',
+            age : '',
+            debounce : ''
+        }
+    })
+
+</script>
+</body>
+</html>
