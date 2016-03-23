@@ -37,6 +37,21 @@
 * [方法与事件处理器](http://cn.vuejs.org/guide/events.html)
 	* 内联传参数 @click="fn('hi', $event)
 	* __事件修饰符__  
+		* @click.stop="doThis"
+		* @submit.prevent.stop="doThis"
+		* @submit.prevent  只有修饰符没有事件
+		* @click.self="doThat" 只有触发本身（非子元素）才调用
+		* @keyup.enter='submit' 按enter时触发submit事件，也可以传key code修饰符,也可以传单字母键别名如`keyup.a=".."`
+		
+				enter
+				tab
+				delete
+				esc
+				space
+				up
+				down
+				left
+				right
 
 
 

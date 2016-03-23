@@ -24,6 +24,20 @@
 <!--只有修饰符-->
 <form @submit.prevent></form>
 
+<!--只有触发本身才调用-->
+<div id="div" @click.self="self">
+    自身
+    <div class="div">子元素</div>
+    <input type="text" @keyup.13="submit"/>
+    <input type="text" @keyup.enter="submit"/>
+</div>
+
+
+<style>
+    #div {position: relative; width: 100px; height: 100px; background: red;}
+    .div {position: absolute; width: 100px; height: 100px; background: blue; top: 100px;}
+</style>
+
 <script>
 
     var vm = new Vue({
@@ -43,6 +57,18 @@
                 console.log(event.target.tagName);
             }
 
+        }
+    });
+
+    new Vue({
+        el : '#div',
+        methods : {
+            self : function(){
+                console.log(1);
+            },
+            submit : function(){
+                console.log(2);
+            }
         }
     })
 
