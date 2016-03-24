@@ -13,6 +13,8 @@
 @white : #ffffff;
 @disable-color : #f9d9c3;
 
+@rem : 1rem;
+
 /*TODO 初始化*/
 .reset() {
   html, body, h1, h2, h3, h4, h5, h6, hr, p, iframe, dl, dt, dd, ul, ol, li, pre, form, button, input, textarea, th, td, a {
@@ -25,8 +27,11 @@
   }
 
   body {
-    font-size: .5rem;
+    font-size: .5* @rem;
     background-color: @background-color;
+  }
+  hr {
+    border-width: 0;
   }
   button {
     cursor: pointer;

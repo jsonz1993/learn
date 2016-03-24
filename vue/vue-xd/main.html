@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="
+          width=device-width,
+          initial-scale=1.0,
+          minimum-scale=1.0,
+          maximum-scale=1.0,
+          user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>甜橙快贷</title>
+    <script src="js/remDefine.js"></script>
+    <link rel="stylesheet" href="style/common.css"/>
+    <link rel="stylesheet" href="style/main.css"/>
+    <script src="js/vue.js"></script>
+</head>
+<body v-show="ready">
+
+<!-- 首页主体 START-->
+<div id="main">
+
+    <!--圆圈面板 START-->
+    <div class="loan_head">
+
+        <!-- 倒数天数 START -->
+        <span class="past_remind" v-show="lastDay">
+            <i class="past_remind_info">倒数{{lastDay}}天</i>
+        </span>
+        <!-- 倒数天数 END -->
+
+        <!-- 贷款圆圈信息 START-->
+        <div class="round_panel">
+            <div class="round_panel_warp">
+                <p class="round_panel_title">
+                    可用额度(元)
+                </p>
+                <p class="round_panel_body">
+                    {{Available | currency ''}}
+                </p>
+                <p class="round_panel_info">
+                    额度最高达到2w
+                </p>
+            </div>
+        </div>
+        <!-- 贷款圆圈信息 END-->
+
+        <!-- 利息信息等 START-->
+        <ul  class="loan_info" id="loanInfo">
+            <li>
+                <p>免息期(天)</p>
+                <p>7</p>
+            </li>
+            <li >
+                <p>月息最低</p>
+                <p class="loan_info_border">0.75%</p>
+            </li>
+            <li>
+                <p>极速到账(分)</p>
+                <p>15</p>
+            </li>
+        </ul>
+        <!-- 利息信息等 END-->
+    </div>
+    <!--圆圈面板 END-->
+
+    <hr style="height: .2rem;"/>
+
+    <!-- 还款相关 START-->
+    <section class="content">
+        <div class="content_input">
+            <span class="label">本期还款额:</span>
+            <span class="fc_orange input">
+                <i>{{repaymentMoney | currency '' | returnYuan}}</i>
+                <button class="code_default_btn hide" id="immediatelyRepayMoney">立刻还款</button>
+                <i class="count_time">
+                    <i class="repaying_info">还款中</i>
+                </i>
+            </span>
+        </div>
+    </section>
+    <!-- 还款相关 END-->
+
+
+
+</div>
+<!-- 首页主体 END-->
+
+
+
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/base.js"></script>
+<script src="js/Util.js"></script>
+
+<script src="js/vueFilter.js"></script>
+
+<script src="js/main.js"></script>
+</body>
+</html>

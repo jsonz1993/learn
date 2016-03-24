@@ -37,8 +37,11 @@ textarea {
   color: #363636;
 }
 body {
-  font-size: .5rem;
+  font-size: 0.5rem;
   background-color: #f2f2f2;
+}
+hr {
+  border-width: 0;
 }
 button {
   cursor: pointer;
@@ -90,6 +93,15 @@ body::-webkit-scrollbar,
 /*TODO 文本*/
 /*TODO 布局*/
 /*TODO 特殊*/
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+.fc_orange {
+  color: #eb8037;
+}
 /*TODO 文字*/
 /*标题文字*/
 .menu_title {
@@ -201,11 +213,13 @@ body::-webkit-scrollbar,
 }
 .content input,
 .content .input {
+  display: inline-block;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
   width: 4.7rem;
   height: 0.498rem;
   line-height: 0.498rem;
-  margin-top: 0.2rem;
-  margin-bottom: 0.2rem;
+  font-size: 0.3rem;
   background-color: #ffffff;
   text-align: right;
 }

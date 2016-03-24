@@ -1,7 +1,16 @@
 @import "base";
 @images : '../images';
 
-
+// 基础类名
+.hide {
+  .hide();
+}
+.show {
+  .show();
+}
+.fc_orange {
+  color: @orange;
+}
 
 /*TODO 文字*/
 /*标题文字*/
@@ -107,10 +116,12 @@
 
   input,
   .input {
+    .d-ib;
+    .m-tb(.2rem);
     width: 4.7rem;
     height: @h - .402rem;
     line-height: @h - .402rem;
-    .m-tb(.2rem);
+    .f-s(.3 * @rem);
     background-color: @white;
     .ta-r;
   }
