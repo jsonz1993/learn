@@ -91,7 +91,8 @@
     .clearFix;
   }
 
-  label,.label {
+  label,
+  .label {
     .fl;
     width: 1.9rem;
     line-height: @h;
@@ -136,6 +137,9 @@
     }
   }
 
+  input[readonly] {
+    color: @gray;
+  }
 
   &_input_code {
     input {
@@ -226,7 +230,7 @@
 .code-btn(@color) {
   min-width: 1.56rem;
   height: .5rem;
-  line-height: .54rem;
+  line-height: .4rem;
   color: @color;
   background-color: @white;
   .b-r(4px);

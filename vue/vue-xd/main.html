@@ -81,6 +81,22 @@
                 </i>
             </span>
         </div>
+        <div class="content_line "></div>
+        <div class="content_input">
+            <label for="repaymentDay">还款日：</label>
+            <input id="repaymentDay"
+                   placeholder="暂无数据"
+                   :value="repaymentDay | mmDd"
+                   readonly/>
+        </div>
+        <div class="content_line "></div>
+        <div class="content_input content_input_select">
+            <label for="deadline">借款期限：</label>
+            <input id="deadline"
+                   value=""
+                   placeholder="请选择"
+                   readonly/>
+        </div>
     </section>
     <!-- 还款相关 END-->
 

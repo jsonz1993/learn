@@ -202,3 +202,14 @@ body::-webkit-scrollbar,
   border-left: 1px solid #9f9f9f;
   border-right: 1px solid #9f9f9f;
 }
+.count_time {
+  background: url("../images/count_time.png") no-repeat;
+  -webkit-background-size: 107%;
+  background-size: 107%;
+  display: inline-block;
+  width: 6rem;
+  height: 4.5rem;
+  color: #FFFFFF;
+  text-align: center;
+  margin-top: -1rem;
+}

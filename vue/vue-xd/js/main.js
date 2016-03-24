@@ -5,9 +5,10 @@
 var BodyVm = new Vue({
     el : 'body',
     data : {
-        ready : true, // ¼ÓÔØºÃ
-        lastDay : 5, // µ¹ÊıÌìÊı
-        Available : 20000, // ¿ÉÓÃ¶î¶È
-        repaymentMoney : 1000 // »¹¿î½ğ¶î
+        ready : true, // åŠ è½½å¥½
+        lastDay : 5, // å€’æ•°å¤©æ•°
+        Available : 20000, // å¯ç”¨é¢åº¦
+        repaymentMoney : 1000, // è¿˜æ¬¾é‡‘é¢
+        repaymentDay : '2015-03-21' // è¿˜æ¬¾æ—¥æœŸ
     }
 });

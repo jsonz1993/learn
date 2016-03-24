@@ -234,6 +234,9 @@ body::-webkit-scrollbar,
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
 }
+.content input[readonly] {
+  color: #9f9f9f;
+}
 .content_input_code input {
   width: 2.8rem;
   margin-right: .2rem;
@@ -456,7 +459,7 @@ body::-webkit-scrollbar,
 .code_default_btn {
   min-width: 1.56rem;
   height: .5rem;
-  line-height: .54rem;
+  line-height: .4rem;
   color: #eb8037;
   background-color: #ffffff;
   -webkit-border-radius: 4px;
@@ -474,7 +477,7 @@ body::-webkit-scrollbar,
 .code_default_btn:active {
   min-width: 1.56rem;
   height: .5rem;
-  line-height: .54rem;
+  line-height: .4rem;
   color: #ec6f26;
   background-color: #ffffff;
   -webkit-border-radius: 4px;
@@ -493,7 +496,7 @@ body::-webkit-scrollbar,
 .code_active_btn {
   min-width: 1.56rem;
   height: .5rem;
-  line-height: .54rem;
+  line-height: .4rem;
   color: #ec6f26;
   background-color: #ffffff;
   -webkit-border-radius: 4px;
@@ -512,7 +515,7 @@ body::-webkit-scrollbar,
 .code_disable_btn {
   min-width: 1.56rem;
   height: .5rem;
-  line-height: .54rem;
+  line-height: .4rem;
   color: #f9d9c3;
   background-color: #ffffff;
   -webkit-border-radius: 4px;
