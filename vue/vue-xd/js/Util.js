@@ -2,6 +2,11 @@
  * Created by Jsonz on 2016/3/24.
  */
 
-var Util = {
+Util = (function(self){
 
-};
+    self.aa = function(){
+        console.log(1);
+    };
+
+    return self;
+})(Util || {});

@@ -1,0 +1,116 @@
+@import "base";
+
+@bg-orange : #fecea3;
+
+.loan_head {
+  // TODO 圆圈面板
+  padding-top: .34 * @rem;
+  padding-bottom: .24 * @rem;
+  background: @white;
+
+  .loan_record {
+    .d-ib;
+    .pos(a);
+    right: .5 * @rem;
+    width: .47 * @rem;
+    height: @rem;
+    background: url("../images/loan_record.png") no-repeat;
+    .bg-size(100%);
+  }
+
+  .round_panel {
+    .pos(r);
+    .bd;
+    margin-bottom: .34 * @rem;
+    height: 4.95 * @rem;
+    width: 4.95 * @rem;
+    background: @bg-orange;
+    .b-r(50%);
+
+    &_warp {
+      @width : 4.53* @rem;
+
+      .pos(a);
+      left: 50%;
+      top: 50%;
+      margin-left: -@width/2;
+      margin-top: -@width/2;
+      width: @width;
+      height: @width;
+      background: @light-orange;
+      color: @white;
+      .ta-c;
+      .b-r(50%);
+    }
+
+    &_title {
+      margin-top: .9 * @rem;
+      .f-s(.4 * @rem);
+      line-height: .32 * @rem;
+    }
+
+    &_info {
+      .f-s(.34 * @rem);
+      line-height: .5 * @rem;
+    }
+
+    &_body {
+      .m-tb(.3 * @rem);
+      .f-s(.76 * @rem);
+      .txt-ver(1.36 * @rem);
+    }
+  }
+
+  // TODO 倒数天数
+  .past_remind {
+    .d-ib;
+    .pos(a);
+    right: .5* @rem;
+    width: 1.35 * @rem;
+    height: @rem;
+    background: url("../images/count_time.png") no-repeat 0 -0.06 * @rem;
+    .bg-size(100%);
+
+    &_info {
+      .d-ib;
+      margin-top: .16 * @rem;
+      margin-left: .16 * @rem;
+      color: #FFFFFF;
+      .f-s(.24 * @rem);
+    }
+  }
+
+  // TODO 利息信息等
+  .loan_info {
+    .clearFix;
+
+    li {
+      width: 32%;
+      .fl;
+      .ta-c;
+
+      p:nth-of-type(1) {
+        margin-bottom: 0.14 * @rem;
+        color: @light-gray;
+        .f-s(.3 * @rem);
+        line-height: .3 * @rem;
+      }
+
+      p:nth-of-type(2) {
+        .f-s(.7 * @rem);
+        color: @gray;
+      }
+    }
+
+    li:nth-of-type(2) {
+      width: 36%;
+    }
+
+    .loan_info_border {
+      border-left: 1px solid @gray;
+      border-right: 1px solid @gray;
+    }
+  }
+}
+
+
