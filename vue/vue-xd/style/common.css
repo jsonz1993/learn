@@ -58,6 +58,7 @@ table {
 a {
   color: #333;
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
 }
 a:hover {
   text-decoration: underline;
@@ -67,12 +68,13 @@ input[type=submit],
 button {
   cursor: pointer;
   overflow: visible;
+  -webkit-tap-highlight-color: transparent;
 }
 input {
   border-width: 0;
   outline: none;
   height: 100%;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
   -webkit-appearance: none ;
 }
 i,
@@ -177,6 +179,25 @@ body::-webkit-scrollbar,
   overflow: hidden;
   color: #9f9f9f;
   font-size: 0.3rem;
+  text-align: justify;
+  text-align-last: justify;
+  /* ie9*/
+  -moz-text-align-last: justify;
+  /*ff*/
+  -webkit-text-align-last: justify;
+  /*chrome 20+*/
+}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .content {
+    /* chrome*/
+  }
+  .content label:after,
+  .content .label:after {
+    content: ".";
+    display: inline-block;
+    overflow: hidden;
+    height: 0;
+  }
 }
 .content input,
 .content .input {
@@ -203,20 +224,19 @@ body::-webkit-scrollbar,
   width: 2.8rem;
   margin-right: .2rem;
 }
-/*TODO 按钮相关*/
 /*正常按钮*/
 .default_btn {
-  width: 33rem;
-  height: 4rem;
-  line-height: 3.9rem;
+  width: 6.6rem;
+  height: .8rem;
+  line-height: .78rem;
   color: #ffffff;
   border: 1px solid #eb8037;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: .3rem;
+  margin-bottom: .3rem;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  font-size: 1.7rem;
+  font-size: 0.34rem;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
@@ -232,17 +252,17 @@ body::-webkit-scrollbar,
 }
 /*点击状态*/
 .default_active_btn {
-  width: 33rem;
-  height: 4rem;
-  line-height: 3.9rem;
+  width: 6.6rem;
+  height: .8rem;
+  line-height: .78rem;
   color: #ffffff;
   border: 1px solid #ec6f26;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: .3rem;
+  margin-bottom: .3rem;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  font-size: 1.7rem;
+  font-size: 0.34rem;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
@@ -255,17 +275,17 @@ body::-webkit-scrollbar,
 }
 /*不可点击按钮*/
 .default_disable_btn {
-  width: 33rem;
-  height: 4rem;
-  line-height: 3.9rem;
+  width: 6.6rem;
+  height: .8rem;
+  line-height: .78rem;
   color: #ffffff;
   border: 1px solid #f9d9c3;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: .3rem;
+  margin-bottom: .3rem;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  font-size: 1.7rem;
+  font-size: 0.34rem;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
@@ -278,17 +298,17 @@ body::-webkit-scrollbar,
 }
 /*灰色按钮*/
 .default_gray_btn {
-  width: 33rem;
-  height: 4rem;
-  line-height: 3.9rem;
+  width: 6.6rem;
+  height: .8rem;
+  line-height: .78rem;
   color: #ffffff;
   border: 1px solid #9e9e9f;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: .3rem;
+  margin-bottom: .3rem;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  font-size: 1.7rem;
+  font-size: 0.34rem;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
@@ -301,17 +321,17 @@ body::-webkit-scrollbar,
 }
 /*蓝色按钮*/
 .default_blue_btn {
-  width: 33rem;
-  height: 4rem;
-  line-height: 3.9rem;
+  width: 6.6rem;
+  height: .8rem;
+  line-height: .78rem;
   color: #ffffff;
   border: 1px solid #5eb1ce;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: .3rem;
+  margin-bottom: .3rem;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  font-size: 1.7rem;
+  font-size: 0.34rem;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
@@ -324,17 +344,17 @@ body::-webkit-scrollbar,
 }
 /*橙边边框*/
 .border_btn {
-  width: 33rem;
-  height: 4rem;
-  line-height: 3.9rem;
+  width: 6.6rem;
+  height: .8rem;
+  line-height: .78rem;
   color: #ffffff;
   border: 1px solid #eb8037;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: .3rem;
+  margin-bottom: .3rem;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  font-size: 1.7rem;
+  font-size: 0.34rem;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
@@ -347,17 +367,17 @@ body::-webkit-scrollbar,
   text-decoration: none;
 }
 .border_btn:active {
-  width: 33rem;
-  height: 4rem;
-  line-height: 3.9rem;
+  width: 6.6rem;
+  height: .8rem;
+  line-height: .78rem;
   color: #ffffff;
   border: 1px solid #d37331;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: .3rem;
+  margin-bottom: .3rem;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  font-size: 1.7rem;
+  font-size: 0.34rem;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
@@ -371,17 +391,17 @@ body::-webkit-scrollbar,
 }
 /*橙边边框点击状态*/
 .border_active_btn {
-  width: 33rem;
-  height: 4rem;
-  line-height: 3.9rem;
+  width: 6.6rem;
+  height: .8rem;
+  line-height: .78rem;
   color: #ffffff;
   border: 1px solid #d37331;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: .3rem;
+  margin-bottom: .3rem;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  font-size: 1.7rem;
+  font-size: 0.34rem;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
@@ -395,17 +415,17 @@ body::-webkit-scrollbar,
 }
 /*不可点击状态*/
 .border_display_btn {
-  width: 33rem;
-  height: 4rem;
-  line-height: 3.9rem;
+  width: 6.6rem;
+  height: .8rem;
+  line-height: .78rem;
   color: #ffffff;
   border: 1px solid #f9d9c3;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: .3rem;
+  margin-bottom: .3rem;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  font-size: 1.7rem;
+  font-size: 0.34rem;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
@@ -420,15 +440,15 @@ body::-webkit-scrollbar,
 /*验证码按钮*/
 /*验证码按钮*/
 .code_default_btn {
-  min-width: 7.8rem;
-  height: 2.5rem;
-  line-height: 2.7rem;
+  min-width: 1.56rem;
+  height: .5rem;
+  line-height: .54rem;
   color: #eb8037;
   background-color: #ffffff;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  font-size: 1.3rem;
+  font-size: 0.26rem;
   border: 1px solid #eb8037;
   display: inline-block;
   text-align: center;
@@ -438,15 +458,15 @@ body::-webkit-scrollbar,
   text-decoration: none;
 }
 .code_default_btn:active {
-  min-width: 7.8rem;
-  height: 2.5rem;
-  line-height: 2.7rem;
+  min-width: 1.56rem;
+  height: .5rem;
+  line-height: .54rem;
   color: #ec6f26;
   background-color: #ffffff;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  font-size: 1.3rem;
+  font-size: 0.26rem;
   border: 1px solid #ec6f26;
   display: inline-block;
   text-align: center;
@@ -457,15 +477,15 @@ body::-webkit-scrollbar,
 }
 /*验证码点击状态*/
 .code_active_btn {
-  min-width: 7.8rem;
-  height: 2.5rem;
-  line-height: 2.7rem;
+  min-width: 1.56rem;
+  height: .5rem;
+  line-height: .54rem;
   color: #ec6f26;
   background-color: #ffffff;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  font-size: 1.3rem;
+  font-size: 0.26rem;
   border: 1px solid #ec6f26;
   display: inline-block;
   text-align: center;
@@ -476,15 +496,15 @@ body::-webkit-scrollbar,
 }
 /*验证码不可点击状态*/
 .code_disable_btn {
-  min-width: 7.8rem;
-  height: 2.5rem;
-  line-height: 2.7rem;
+  min-width: 1.56rem;
+  height: .5rem;
+  line-height: .54rem;
   color: #f9d9c3;
   background-color: #ffffff;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  font-size: 1.3rem;
+  font-size: 0.26rem;
   border: 1px solid #f9d9c3;
   display: inline-block;
   text-align: center;
@@ -492,4 +512,16 @@ body::-webkit-scrollbar,
 }
 .code_disable_btn:hover {
   text-decoration: none;
+}
+/*常见问题*/
+.FQA {
+  color: #5eb1ce;
+  font-size: 0.3rem;
+  font-weight: 600;
+}
+.FQA:hover {
+  text-decoration: none;
+}
+.FQA:focus {
+  outline: none;
 }
