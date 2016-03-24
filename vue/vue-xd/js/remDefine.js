@@ -1,6 +1,7 @@
 /**
  * Created by Jsonz on 2016/3/24.
  */
+var Util,Conf;
 
 (function(){
   var docEl = document.documentElement,
@@ -15,9 +16,12 @@
 
     if (!docEl.addEventListener) return;
 
-    window.addEventListener(resizeEvent, fn, false);
+    Util = (function(self){
+        self.remDeine = fn;
 
-    fn();
+        return self;
+    })(Util || {});
 
-    Util.remDeine = fn;
+    window.addEventListener(resizeEvent, Util.remDeine, false);
+    Util.remDeine()
 })();

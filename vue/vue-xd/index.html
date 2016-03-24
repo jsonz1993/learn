@@ -2,17 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
     <title></title>
+    <link rel="stylesheet" href="style/common.css"/>
     <script src="js/remDefine.js"></script>
     <script src="js/vue.js"></script>
-    <link rel="stylesheet" href="style"/>
 </head>
 <body>
 
+<section class="content">
+    <div class="content_input">
+        <label for="userName">借款金额：</label>
+        <input id="userName"
+               placeholder="请输入姓名"
+               value=""/>
+    </div>
+    <div class="content_line "></div>
+    <div class="content_input content_input_select">
+        <label for="deadline">借款期限：</label>
+        <input id="deadline"
+               value=""
+               placeholder="请选择"
+               readonly/>
+    </div>
+    <div class="content_line "></div>
+    <div class="content_input content_input_code">
+        <label>动 态 码</label>
+        <input id="verCode"
+               placeholder="请输入验证码"/>
+        <a href="javascript:" class="code_default_btn">获取验证码</a>
+    </div>
+</section>
 
 <script src="js/jquery-1.11.2.min.js"></script>
 <script src="js/base.js"></script>
 <script src="js/Util.js"></script>
-
+<script>
+    console.log($('h1').css('fontSize'));
+</script>
 </body>
 </html>
