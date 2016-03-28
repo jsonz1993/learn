@@ -1,0 +1,1 @@
+[╫лЁла╢╫с](http://vuejs.github.io/vue-router/zh-cn/installation.html)

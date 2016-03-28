@@ -116,7 +116,3 @@ var table = new Vue({
 
 
 
-
-
-
-
