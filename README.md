@@ -2,6 +2,9 @@
 ======
 ---------------
 
+**webpack** **vue-rount** **vue重构2014**
+
+
 1.跟着公司大神盛慢慢做一些比较有思想的东西。算法什么的慢慢捡起来.
 
 2.跟着扣大的[github](https://github.com/cody1991/learn)学习.
@@ -47,4 +50,6 @@
 -------
 
 1. [Markdown](/markdown/teach.md)  [教程](http://www.appinn.com/markdown/#autoescape)
+2. [深入理解JavaScript系列](http://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html)
+3. [vue官网](http://cn.vuejs.org/)
 
