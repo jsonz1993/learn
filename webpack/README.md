@@ -1,5 +1,7 @@
 [webpack]()
 
+[vue + webpack Chat](https://github.com/Coffcer/vue-chat)
+
 1. webpack 基本语法。
 2. 学会打包与vue一起用。
 3. 用webpack+vue改造2014。
@@ -19,3 +21,19 @@
 vue 用 script type='text/x-template'来定义模版
 
 dom操作组件绑定在vue实例
+
+[vue0](https://segmentfault.com/a/1190000002551952)
+
+[vue1](http://jiongks.name/blog/just-vue/)
+
+[vue2](http://www.cnblogs.com/vajoy/p/4650467.html)
+
+[vue3](https://segmentfault.com/a/1190000002551952)
+
+[vue4](http://www.infoq.com/cn/articles/react-and-webpack)
+
+[vue5](http://www.w3ctech.com/topic/1557)
+
+[vue6](https://www.gitbook.com/book/wujianyu/webpack/details)
+
+[vue7](https://github.com/lcxfs1991/blog/issues/2)
