@@ -53,3 +53,11 @@
 2. [深入理解JavaScript系列](http://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html)
 3. [vue官网](http://cn.vuejs.org/)
 
+
+http://julabs.com/blog/seajs-jquery-and-plugins/
+
+http://www.imooc.com/article/2913
+
+https://github.com/seajs/seajs/issues/266
+
+https://github.com/seajs/examples
