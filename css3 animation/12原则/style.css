@@ -1,0 +1,109 @@
+.div {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 4em;
+}
+/*TODO 1*/
+.one .shape {
+    animation: one 4s infinite ease-out;
+}
+.one .surface {
+    background: #000;
+    height: 10em;
+    width: 1em;
+    position: absolute;
+    top: calc(50% - 4em);
+    left: calc(50% + 9em);
+}
+
+@keyframes one {
+    0%, 15% {
+        opacity: 0;
+    }
+    15%, 25% {
+        transform: none;
+        animation-timing-function: cubic-bezier(1,-1.92,.95,.89);
+        width: 4em;
+        height: 4em;
+        top: calc(50% - 2em);
+        left: calc(50% - 2em);
+        opacity: 1;
+        background: red;
+    }
+    35%, 45% {
+        background: yellow;
+        transform: translateX(8em);
+        height: 6em;
+        width: 2em;
+        top: calc(50% - 3em);
+        animation-timing-function : linear;
+        opacity:1;
+    }
+    70%, 100% {
+        transform : translateX(8em) translateY(5em);
+        height: 6em;
+        width: 2em;
+        top: calc(50% - 3em);
+        opacity: 0;
+    }
+}
+
+.principle {
+    width: 100%;
+    position: relative;
+}
+
+.shape {
+    background: #2d97db;
+    border: 1em solid #FFFFFF;
+    width: 4em;
+    height: 4em;
+    position: absolute;
+    top: calc(50% - 2em);
+    left: calc(50% - 2em);
+}
+
+.try-article {
+    position: relative;
+}
+.try-shape {
+    background: #2d97db;
+    width: 4em;
+    height: 4em;
+    position: absolute;
+    top: calc(50% - 2em);
+    left: calc(50% - 2em);
+}
+.try-one .try-surface {
+    height: 10em;
+    width: 1em;
+    background: #000;
+    left: calc(50% + 9em);
+    top: calc(50% - 5em);
+    position: absolute;
+}
+.try-one .try-shape {
+    animation: try-one 1s infinite ease-out;
+
+}
+@keyframes try-one {
+    0%,15% {
+        opacity: 0;
+    }
+    15%,25% {
+        opacity: 1;
+        height: 4em;
+        width: 4em;
+        animation-timing-function: cubic-bezier(1,-2,1,1);
+        top: calc(50% - 4em);
+        left: calc(50% - 4em);
+    }
+}
+
+
+
+
+
+
+
+
