@@ -1,3 +1,4 @@
+body {min-heigh: 2000px}
 .principle {
     height: 20rem;
     width: 100%;
@@ -20,6 +21,7 @@
     position: absolute;
 }
 
+/*TODO 1*/
 .one .shape {
     animation: one 4s infinite ease-out;
 }
@@ -61,9 +63,53 @@
 
 }
 
+/*TODO 2*/
+.two .shape {
+    animation: two 4s infinite ease-out;
+}
 
+.two .surface {
+    width: 10rem;
+    height: 1rem;
+    left: calc(50% - 5rem);
+    top: calc(50% + 2rem);
+}
 
-
+@keyframes two {
+    0%, 15% {
+        background-color: red;
+        opacity: 0;
+        transform: none;
+    }
+    15%, 25% {
+        background-color: gray;
+        opacity: 1;
+        transform: none;
+        animation-timing-function: cubic-bezier(.5,.05,.91,.47);
+    }
+    28%, 38% {
+        background-color: green;
+        transform: translateX(-2em);
+    }
+    40%, 45% {
+        background-color: black;
+        transform: translateX(-4em);
+    }
+    50%, 52% {
+        transform: translateX(-4em) rotateZ(-20deg);
+    }
+    70%, 75% {
+        transform: translateX(-4em) rotateZ(-10deg);
+    }
+    78% {
+        transform: translateX(-4em) rotateZ(-24deg);
+        opacity: 1;
+    }
+    86%, 100% {
+        transform: translateX(-6em) translateY(4em) rotateZ(-90deg);
+        opacity: 0;
+    }
+}
 
 
 
