@@ -1,26 +1,41 @@
-.div {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 4em;
+.principle {
+    height: 20rem;
+    width: 100%;
+    margin-bottom: 30px;
+    border: 1px solid #000000;
+    position: relative;
 }
-/*TODO 1*/
+
+.shape {
+    width: 4rem;
+    height: 4rem;
+    background: #abcdef;
+    position: absolute;
+    top: calc(50% - 2rem);
+    left: calc(50% - 2rem);
+}
+
+.surface {
+    background: #000;
+    position: absolute;
+}
+
 .one .shape {
     animation: one 4s infinite ease-out;
 }
+
 .one .surface {
-    background: #000;
-    height: 10em;
-    width: 1em;
-    position: absolute;
-    top: calc(50% - 4em);
-    left: calc(50% + 9em);
+    height: 10rem;
+    width: 1rem;
+    top: calc(50% - 5rem);
+    left: calc(50% + 8rem);
 }
 
 @keyframes one {
-    0%, 15% {
+    0%,15% {
         opacity: 0;
     }
-    15%, 25% {
+    15%,25% {
         transform: none;
         animation-timing-function: cubic-bezier(1,-1.92,.95,.89);
         width: 4em;
@@ -28,40 +43,43 @@
         top: calc(50% - 2em);
         left: calc(50% - 2em);
         opacity: 1;
-        background: red;
     }
-    35%, 45% {
-        background: yellow;
+    35%,40% {
         transform: translateX(8em);
         height: 6em;
         width: 2em;
         top: calc(50% - 3em);
-        animation-timing-function : linear;
         opacity:1;
     }
-    70%, 100% {
+    70%,100% {
         transform : translateX(8em) translateY(5em);
         height: 6em;
         width: 2em;
         top: calc(50% - 3em);
         opacity: 0;
     }
+
 }
 
-.principle {
-    width: 100%;
-    position: relative;
-}
 
-.shape {
-    background: #2d97db;
-    border: 1em solid #FFFFFF;
-    width: 4em;
-    height: 4em;
-    position: absolute;
-    top: calc(50% - 2em);
-    left: calc(50% - 2em);
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
