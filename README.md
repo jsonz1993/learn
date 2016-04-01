@@ -2,16 +2,20 @@
 ======
 ---------------
 
-**webpack** **vue-rount** **vue重构2014**
+不再乱学框架了。除非项目有需求，不然都是学js和插件组件封装
+
+回家撸一遍公司学的东西
+
+* [webpack](http://guowenfh.github.io/2016/03/24/vue-webpack-04-custom/)
+* [webpack-server](http://www.jianshu.com/p/8adf4c2bfa51)
+* 热加载不刷新页面
+
+http://guowenfh.github.io/2016/03/25/vue-webpack-05-vue/
 
 
-1.跟着公司大神盛慢慢做一些比较有思想的东西。算法什么的慢慢捡起来.
 
-2.跟着扣大的[github](https://github.com/cody1991/learn)学习.
 
-3.看汤姆大叔博客 [深入理解JavaScript系列](http://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html)
-
-4.js设计模式
+看汤姆大叔博客 [深入理解JavaScript系列](http://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html)
 
 ------
 

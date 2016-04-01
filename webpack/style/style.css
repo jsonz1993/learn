@@ -1,0 +1,14 @@
+body {
+    background: #abcdef;
+}
+
+.datu {
+    width: 100px;
+    height: 100px;
+    background-image: url('../images/大图.png');
+}
+.xiaotu {
+    width: 100px;
+    height: 100px;
+    background-image: url('../images/小图.png');
+}
