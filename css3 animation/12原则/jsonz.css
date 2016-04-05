@@ -76,13 +76,11 @@ body {min-heigh: 2000px}
 }
 
 @keyframes two {
-    0%, 15% {
-        background-color: red;
+    0% {
         opacity: 0;
         transform: none;
     }
     15%, 25% {
-        background-color: gray;
         opacity: 1;
         transform: none;
         animation-timing-function: cubic-bezier(.5,.05,.91,.47);
