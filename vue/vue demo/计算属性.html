@@ -90,5 +90,49 @@
     })
 
 </script>
+
+
+
+
+
+
+
+
+
+
+<ul v-for="list in lists">
+	<li :data="{{list.href | tt}}" @click='bili(list.href)'>aaa</li>
+</ul>
+
+
+<script>
+	Vue.filter('tt', function(value) {
+		if (this.prodId == '1') {
+			return 'www.baidu.com';
+		} else {
+			return 'www.google.com';
+		}
+	})
+
+	function bili (href) {
+		 window.location.href = href;
+	}
+</script>
+
+
+<ul>
+	<li @click='bili(list)'></li>
+</ul>
+
+<script>
+	function  bili (data) {
+		 if (data.proId == 1) {
+		 	window.location.href = 'www.baidu.com';
+		 }
+	}
+</script>
+
+
+
 </body>
 </html>

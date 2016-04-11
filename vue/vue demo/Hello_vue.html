@@ -39,7 +39,40 @@
     </ul>
 </div>
 
+<div id="app3">
+    <template v-for="list in lists">
+        <p>{{list.key}}</p>
+        <span>{{list.value}}</span>
+    </template>
+    <b>
+        {{num.toFixed(2)}}
+    </b>
+</div>
+
 <script>
+var a = new Vue({
+    el : 'body',
+    methods : {
+        t : function (argument) {
+             console.log(111);
+        }
+    }
+})
+
+    var app3 = new Vue({
+        el : '#app3',
+        data : {
+            lists : [
+                {key : 1, value : 'a'},
+                {key : 2, value : 'b'}
+            ],
+            num : 10000
+        }
+    });
+
+    console.log(app3.lists[0]);
+
+
     var demo = new Vue({
         el : '#demo',
         data : {

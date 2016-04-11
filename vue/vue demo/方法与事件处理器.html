@@ -10,6 +10,7 @@
 <div id="example">
     <button @click="greet">Greet</button>
     <button @click="say($event, 'hi')">Say</button>
+    <button @click='try1'>try</button>
 </div>
 
 <!--阻止单击事件冒泡-->
@@ -55,6 +56,12 @@
                 console.log('我的名字叫 ' + name);
                 event.preventDefault();
                 console.log(event.target.tagName);
+            },
+            try1 : function (argument) {
+                 this.try2();
+            },
+            try2 : function (argument) {
+                 console.log(2);
             }
 
         }
