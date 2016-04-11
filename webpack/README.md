@@ -55,4 +55,87 @@ ____
 
 * **加载图片**
 	* url-loader
-	*  
+	
+### package.json
+	{
+	  "name": "webpack+vue",
+	  "version": "1.0.0",
+	  "description": "vue+webapck",
+	  "main": "index.js",
+	  "scripts": {
+	    "test": "echo \"Error: no test specified\" && exit 1",
+	    "start": "webpack-dev-server --inline"
+	  },
+	  "dependencies": {
+	    "vue": "^1.0.21"
+	  },
+	  "devDependencies": {
+	    "babel": "^6.5.2",
+	    "babel-core": "^6.7.6",
+	    "babel-loader": "^6.2.4",
+	    "babel-plugin-transform-runtime": "^6.7.5",
+	    "babel-runtime": "^6.6.1",
+	    "css-loader": "^0.23.1",
+	    "file-loader": "^0.8.5",
+	    "html-loader": "^0.4.3",
+	    "node-less": "^1.0.0",
+	    "postcss-loader": "^0.8.2",
+	    "style-loader": "^0.13.1",
+	    "url-loader": "^0.5.7",
+	    "vue-html-loader": "^1.2.2",
+	    "vue-loader": "^8.2.2",
+	    "webpack": "^1.12.15",
+	    "webpack-dev-server": "^1.14.1"
+	  },
+	  "author": "zhangxinxin",
+	  "license": "MIT",
+	  "keywords": [
+	    "vue",
+	    "webpack"
+	  ]
+	}
+
+### webpack.config.js
+
+	var path = require('path');
+	
+	module.exports = {
+	    entry: './src/main.js',
+	
+	    output: {
+	        path: path.join(__dirname, './dist'),
+	        filename: 'index.js',
+	        publicPath: '/dist/'
+	    },
+	
+	    devServer: {
+	        historyApiFallback: true,
+	        hot: false,
+	        inline: true,
+	        grogress: true,
+	    },
+	
+	    module: {
+	        loaders: [
+	            { test: /\.css$/, loader: 'style!css' },
+	            { test: /\.vue$/, loader: 'vue' },
+	            { test: /\.less$/, loader: 'style!css!less' },
+	            { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' },
+	            { test: /\.html$/, loader: 'html' }
+	        ]
+	    },
+	
+	    vue: {
+	        loaders: {
+	            css: 'style!css!postcss'
+	        }
+	    },
+	
+	    resolve: {
+	        extensions: ['', '.js', '.vue'],
+	        alias: {
+	            filter: path.join(__dirname, './src/filters'),
+	            components: path.join(__dirname, './src/components')
+	        }
+	    }
+	};
