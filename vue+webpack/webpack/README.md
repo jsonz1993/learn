@@ -9,7 +9,7 @@ ____
 * 新建另一个first.js文件，在第一个js文件里引入`require('first')`;再次运行打包。此时两个js文件会被合并成一个
 
 ##
-
+192.168.93.55
 ##loader
 各种loader
  
@@ -74,16 +74,21 @@ ____
 	    "babel-core": "^6.7.6",
 	    "babel-loader": "^6.2.4",
 	    "babel-plugin-transform-runtime": "^6.7.5",
+	    "babel-preset-es2015": "^6.6.0",
 	    "babel-runtime": "^6.6.1",
 	    "css-loader": "^0.23.1",
+	    "es2015": "^0.0.1",
 	    "file-loader": "^0.8.5",
 	    "html-loader": "^0.4.3",
 	    "node-less": "^1.0.0",
 	    "postcss-loader": "^0.8.2",
 	    "style-loader": "^0.13.1",
 	    "url-loader": "^0.5.7",
+	    "vue-hot-reload-api": "^1.3.2",
 	    "vue-html-loader": "^1.2.2",
 	    "vue-loader": "^8.2.2",
+	    "vue-router": "^0.7.13",
+	    "vue-style-loader": "^1.0.0",
 	    "webpack": "^1.12.15",
 	    "webpack-dev-server": "^1.14.1"
 	  },
@@ -97,6 +102,8 @@ ____
 
 ### webpack.config.js
 
+	
+	
 	var path = require('path');
 	
 	module.exports = {
@@ -117,6 +124,7 @@ ____
 	
 	    module: {
 	        loaders: [
+	            { test: /\.js$/, loader: 'babel', exclude: /node_modules/ },
 	            { test: /\.css$/, loader: 'style!css' },
 	            { test: /\.vue$/, loader: 'vue' },
 	            { test: /\.less$/, loader: 'style!css!less' },
@@ -131,6 +139,12 @@ ____
 	        }
 	    },
 	
+	
+	    babel: {
+	        presets: ['es2015'],
+	        plugins: ['transform-runtime']
+	    },
+	    
 	    resolve: {
 	        extensions: ['', '.js', '.vue'],
 	        alias: {
