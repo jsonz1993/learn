@@ -46,7 +46,11 @@
 
 	'use strict';
 
+	// var app = require('./components/app');
+
 	var app = __webpack_require__(1);
+
+	Vue.config.debug = true;
 
 	new Vue(app);
 
@@ -88,9 +92,9 @@
 	var list = __webpack_require__(3);
 
 	module.exports = {
-		el: '#demo',
+		el: '#example',
 		data: {
-			name: '张欣欣'
+			msg: 'hello'
 		},
 		components: {
 			list: list
@@ -99,10 +103,7 @@
 	// </script>
 	//
 	// <template>
-	// 	<p>
-	// 		{{name}}
-	// 		<list></list>
-	// 	</p>
+	// 	<list msg="hello"></list>
 	// </template>
 
 /***/ },
@@ -141,29 +142,32 @@
 
 	// <script>
 	module.exports = {
-		data: {
-			userName: '张欣欣'
+
+		props: ['msg'],
+
+		data: function data() {
+			return {
+				name: '2222'
+			};
 		}
 	};
 	// </script>
 	//
 	// <template>
-	// 	<p>
-	// 		{{userName}}张
-	// 	</p>
+	// 	<div>A custom component! {{name}} , {{ msg }}</div>
 	// </template>
 
 /***/ },
 /* 5 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<p>\n\t{{userName}}张\n</p>\n";
+	module.exports = "\n<div>A custom component! {{name}} , {{ msg }}</div>\n";
 
 /***/ },
 /* 6 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<p>\n\t{{name}}\n\t<list></list>\n</p>\n";
+	module.exports = "\n<list msg=\"hello\"></list>\n";
 
 /***/ }
 /******/ ]);
