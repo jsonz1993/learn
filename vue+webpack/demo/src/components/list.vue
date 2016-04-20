@@ -1,7 +1,10 @@
 <script>
-	module.exports = {
+	export default  {
 
-		props : ['msg'],
+		props : {
+			'msg' : ['String','Object'],
+			'try' : 'String'
+		},
 
 		data : function(){
 			return {
@@ -28,4 +31,5 @@
 	<div>A custom component! {{name}} , {{ msg }}</div>
 	<input type="text" v-model="msg" @keyup="inputing" >
 	<slot name="A"></slot>
+	<b>{{try}}</b>
 </template>

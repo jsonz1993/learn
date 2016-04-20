@@ -1,11 +1,17 @@
 
 // var app = require('./components/app');
 
-var app = require('./components/app.vue');
+import app from './components/app.vue';
+import filter from './js/filter.js';
 
 Vue.config.debug = true;
 
-new Vue(app);
+var appVue = new Vue(app);
+
+
+
+
+
 
 
 
