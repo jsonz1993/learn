@@ -2,6 +2,7 @@
 	import list from './list.vue';
 	import home from './home.vue';
 	import filter from './filter.vue';
+	import test from '../test.vue';
 
 	export default {
 		el : '#example',
@@ -15,7 +16,8 @@
 		components : {
 			list,
 			home,
-			filter
+			filter,
+			test
 		},
 		methods : {
 			t : function() {
@@ -25,8 +27,11 @@
 				this.text = msg;
 			},
 			toggle : function() {
-				console.log(this.text);
-				this.tog = this.text === 'list' ? 'lists' : 'home';
+				// 更新dom调用
+				Vue.nextTick(function () {
+				  console.log('dom更新了')
+				})
+				this.tog = this.text === 'list' ? 'list' : 'home';
 			}
 		},
 
@@ -48,17 +53,22 @@
 	});
 
 
+
 	
 
 </script>
 
 	
 <template>
-
+	<test></test>
+	<br>
+	{{tog}}
 	<component :is="tog">
 	  <!-- 组件在 vm.currentview 变化时改变 -->
 	</component>
-
+	<div id="ddd">
+		ddd
+	</div>
 	<input type="text" v-model="text" @keyup="toggle">
 
 <!-- 	<list :msg="text" @b="a" try="yoyo">

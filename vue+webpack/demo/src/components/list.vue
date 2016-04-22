@@ -14,8 +14,6 @@
 
 		methods : {
 			inputing : function(e){
-				
-
 				if (e.keyCode === 13 && this.msg.length) {
 					this.$parent.t();
 					this.$dispatch('b', this.msg)

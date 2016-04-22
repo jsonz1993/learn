@@ -1,17 +1,20 @@
 <script>
 	var test = require('./test.vue');
-	module.exports = {
-		el : '#example',
+	var _try = require('./js/try.js');
+
+	var profile = new _try.Profile({
 		data : {
-			t : 'test1'
-		},
-		components : {
-			test
+			firstName : '张',
+			lastName : '耿欣'
 		}
+	})
+	profile.$mount('#mount-point');
+
+	module.exports = {
+		data : '#example'
 	}
 </script>
 
 <template>
-	<b>{{t}}</b>
-	<test></test>
+	<div id="mount-point">dd</div>
 </template>

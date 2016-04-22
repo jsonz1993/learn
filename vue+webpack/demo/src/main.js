@@ -2,7 +2,7 @@
 // var app = require('./components/app');
 
 import app from './components/app.vue';
-import filter from './js/filter.js';
+import tryJs from './js/try.js';
 
 Vue.config.debug = true;
 

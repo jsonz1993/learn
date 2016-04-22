@@ -50,9 +50,9 @@
 
 	var _app2 = _interopRequireDefault(_app);
 
-	var _filter = __webpack_require__(17);
+	var _try = __webpack_require__(24);
 
-	var _filter2 = _interopRequireDefault(_filter);
+	var _try2 = _interopRequireDefault(_try);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -461,8 +461,13 @@
 
 	var _filter2 = _interopRequireDefault(_filter);
 
+	var _test = __webpack_require__(20);
+
+	var _test2 = _interopRequireDefault(_test);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	// <script>
 	exports.default = {
 		el: '#example',
 		data: {
@@ -475,7 +480,8 @@
 		components: {
 			list: _list2.default,
 			home: _home2.default,
-			filter: _filter2.default
+			filter: _filter2.default,
+			test: _test2.default
 		},
 		methods: {
 			t: function t() {
@@ -485,13 +491,17 @@
 				this.text = msg;
 			},
 			toggle: function toggle() {
-				console.log(this.text);
-				this.tog = this.text === 'list' ? 'lists' : 'home';
+				// 更新dom调用
+				Vue.nextTick(function () {
+					console.log('dom更新了');
+				});
+				this.tog = this.text === 'list' ? 'list' : 'home';
 			}
 		},
 
 		events: {}
-	}; // <script>
+	};
+
 
 	Vue.component('aa', {
 		// prop 可以用在模板内
@@ -509,11 +519,15 @@
 	//
 	//
 	// <template>
-	//
+	// 	<test></test>
+	// 	<br>
+	// 	{{tog}}
 	// 	<component :is="tog">
 	// 	  <!-- 组件在 vm.currentview 变化时改变 -->
 	// 	</component>
-	//
+	// 	<div id="ddd">
+	// 		ddd
+	// 	</div>
 	// 	<input type="text" v-model="text" @keyup="toggle">
 	//
 	// <!-- 	<list :msg="text" @b="a" try="yoyo">
@@ -601,7 +615,6 @@
 
 		methods: {
 			inputing: function inputing(e) {
-
 				if (e.keyCode === 13 && this.msg.length) {
 					this.$parent.t();
 					this.$dispatch('b', this.msg);
@@ -819,17 +832,92 @@
 /* 16 */
 /***/ function(module, exports) {
 
-	module.exports = "\n\n\t<component :is=\"tog\">\n\t  <!-- 组件在 vm.currentview 变化时改变 -->\n\t</component>\n\n\t<input type=\"text\" v-model=\"text\" @keyup=\"toggle\">\n\n<!-- \t<list :msg=\"text\" @b=\"a\" try=\"yoyo\">\n\t\t<p slot=\"A\">This is slot A</p>\n\t\t<p slot=\"B\">This is slot B</p>\n\t</list> -->\n\n\n\t<!-- 先淡出再淡入 -->\n\t<label for=\"aa\"><input type=\"radio\" v-model=\"view\" value=\"aa\" id=\"aa\">AA</label>\n\t\n\t<label for=\"bb\"><input type=\"radio\" v-model=\"view\" value=\"bb\" id=\"bb\">BB</label>\n\t\n\t{{view}}\n\t<component\n\t  :is=\"view\"\n\t  transition=\"fade\"\n\t  transition-mode=\"out-in\">\n\t</component>\n\n\t<filter :msg=\"msg\" :text=\"text\"></filter>\n\n";
+	module.exports = "\n\t<test></test>\n\t<br>\n\t{{tog}}\n\t<component :is=\"tog\">\n\t  <!-- 组件在 vm.currentview 变化时改变 -->\n\t</component>\n\t<div id=\"ddd\">\n\t\tddd\n\t</div>\n\t<input type=\"text\" v-model=\"text\" @keyup=\"toggle\">\n\n<!-- \t<list :msg=\"text\" @b=\"a\" try=\"yoyo\">\n\t\t<p slot=\"A\">This is slot A</p>\n\t\t<p slot=\"B\">This is slot B</p>\n\t</list> -->\n\n\n\t<!-- 先淡出再淡入 -->\n\t<label for=\"aa\"><input type=\"radio\" v-model=\"view\" value=\"aa\" id=\"aa\">AA</label>\n\t\n\t<label for=\"bb\"><input type=\"radio\" v-model=\"view\" value=\"bb\" id=\"bb\">BB</label>\n\t\n\t{{view}}\n\t<component\n\t  :is=\"view\"\n\t  transition=\"fade\"\n\t  transition-mode=\"out-in\">\n\t</component>\n\n\t<filter :msg=\"msg\" :text=\"text\"></filter>\n\n";
 
 /***/ },
-/* 17 */
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__vue_script__ = __webpack_require__(21)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\test.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(22)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "F:\\GitHub\\learn\\vue+webpack\\demo\\src\\test.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 21 */
 /***/ function(module, exports) {
 
 	'use strict';
 
-	Vue.filter('reverse', function (value) {
-	    return value.split('').reverse('').join('');
+	// <script>
+	Vue.directive('my-directive', {
+		bind: function bind() {
+			console.log('bind');
+		},
+		update: function update(newValue, oldValue) {
+			if (oldValue && oldValue.length > 5) console.log(newValue, oldValue);
+		},
+		unbind: function unbind() {
+			console.log('unbind');
+		}
 	});
+
+	module.exports = {
+		data: function data() {
+			return {
+				text: 'text',
+				a: true
+			};
+		},
+		methods: {
+			t: function t() {
+				if (this.text === 'delete') {
+					this.a = false;
+				}
+			}
+		}
+	};
+	// </script>
+	//
+	// <template>
+	// 	<b>111</b>
+	// 	<input type="text" v-model="text" v-my-directive="text" @keyup="t" v-if="a">
+	// </template>
+
+/***/ },
+/* 22 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<b>111</b>\n<input type=\"text\" v-model=\"text\" v-my-directive=\"text\" @keyup=\"t\" v-if=\"a\">\n";
+
+/***/ },
+/* 23 */,
+/* 24 */
+/***/ function(module, exports) {
+
+	"use strict";
 
 /***/ }
 /******/ ]);
