@@ -3,6 +3,12 @@
 	import home from './home.vue';
 	import filter from './filter.vue';
 	import test from '../test.vue';
+	import life from './life.vue';
+	import resource from './resource.vue';
+	import dataMethod from './dataMethod.vue';
+	import event from './event.vue';
+	import dom from './dom.vue';
+	import directive from './directive.vue';
 
 	export default {
 		el : '#example',
@@ -11,13 +17,22 @@
 			text : '',
 			tog : 'home',
 			view : 'aa',
-			message : 'test'
+			message : 'test',
+			obj : {
+				name : 'jsonz',
+				age : 20
+			}
 		},
 		components : {
 			list,
 			home,
 			filter,
-			test
+			test,
+			life,
+			resource,
+			dataMethod,
+			dom,
+			directive
 		},
 		methods : {
 			t : function() {
@@ -51,21 +66,17 @@
 	  // 可以用 `this.msg` 设置
 	  template: '<p>components B</p>'
 	});
-
-
-
-	
-
 </script>
 
 	
 <template>
-	<test></test>
-	<br>
-	{{tog}}
+	<directive></directive>
+
+	<br><br><br><br>
 	<component :is="tog">
 	  <!-- 组件在 vm.currentview 变化时改变 -->
 	</component>
+	{{tog}}
 	<div id="ddd">
 		ddd
 	</div>

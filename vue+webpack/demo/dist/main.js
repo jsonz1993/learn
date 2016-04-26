@@ -46,13 +46,13 @@
 
 	'use strict';
 
+	var _try = __webpack_require__(30);
+
+	var _try2 = _interopRequireDefault(_try);
+
 	var _app = __webpack_require__(1);
 
 	var _app2 = _interopRequireDefault(_app);
-
-	var _try = __webpack_require__(24);
-
-	var _try2 = _interopRequireDefault(_try);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -61,6 +61,10 @@
 	Vue.config.debug = true;
 
 	var appVue = new Vue(_app2.default);
+
+	appVue.$watch('text', function (newV, oldV) {
+		console.log(newV, oldV);
+	});
 
 /***/ },
 /* 1 */
@@ -73,7 +77,7 @@
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\components\\app.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(16)
+	__vue_template__ = __webpack_require__(29)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -461,9 +465,33 @@
 
 	var _filter2 = _interopRequireDefault(_filter);
 
-	var _test = __webpack_require__(20);
+	var _test = __webpack_require__(16);
 
 	var _test2 = _interopRequireDefault(_test);
+
+	var _life = __webpack_require__(19);
+
+	var _life2 = _interopRequireDefault(_life);
+
+	var _resource = __webpack_require__(24);
+
+	var _resource2 = _interopRequireDefault(_resource);
+
+	var _dataMethod = __webpack_require__(31);
+
+	var _dataMethod2 = _interopRequireDefault(_dataMethod);
+
+	var _event = __webpack_require__(36);
+
+	var _event2 = _interopRequireDefault(_event);
+
+	var _dom = __webpack_require__(41);
+
+	var _dom2 = _interopRequireDefault(_dom);
+
+	var _directive = __webpack_require__(46);
+
+	var _directive2 = _interopRequireDefault(_directive);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -475,13 +503,22 @@
 			text: '',
 			tog: 'home',
 			view: 'aa',
-			message: 'test'
+			message: 'test',
+			obj: {
+				name: 'jsonz',
+				age: 20
+			}
 		},
 		components: {
 			list: _list2.default,
 			home: _home2.default,
 			filter: _filter2.default,
-			test: _test2.default
+			test: _test2.default,
+			life: _life2.default,
+			resource: _resource2.default,
+			dataMethod: _dataMethod2.default,
+			dom: _dom2.default,
+			directive: _directive2.default
 		},
 		methods: {
 			t: function t() {
@@ -514,17 +551,17 @@
 		// 可以用 `this.msg` 设置
 		template: '<p>components B</p>'
 	});
-
 	// </script>
 	//
 	//
 	// <template>
-	// 	<test></test>
-	// 	<br>
-	// 	{{tog}}
+	// 	<directive></directive>
+	//
+	// 	<br><br><br><br>
 	// 	<component :is="tog">
 	// 	  <!-- 组件在 vm.currentview 变化时改变 -->
 	// 	</component>
+	// 	{{tog}}
 	// 	<div id="ddd">
 	// 		ddd
 	// 	</div>
@@ -830,24 +867,15 @@
 
 /***/ },
 /* 16 */
-/***/ function(module, exports) {
-
-	module.exports = "\n\t<test></test>\n\t<br>\n\t{{tog}}\n\t<component :is=\"tog\">\n\t  <!-- 组件在 vm.currentview 变化时改变 -->\n\t</component>\n\t<div id=\"ddd\">\n\t\tddd\n\t</div>\n\t<input type=\"text\" v-model=\"text\" @keyup=\"toggle\">\n\n<!-- \t<list :msg=\"text\" @b=\"a\" try=\"yoyo\">\n\t\t<p slot=\"A\">This is slot A</p>\n\t\t<p slot=\"B\">This is slot B</p>\n\t</list> -->\n\n\n\t<!-- 先淡出再淡入 -->\n\t<label for=\"aa\"><input type=\"radio\" v-model=\"view\" value=\"aa\" id=\"aa\">AA</label>\n\t\n\t<label for=\"bb\"><input type=\"radio\" v-model=\"view\" value=\"bb\" id=\"bb\">BB</label>\n\t\n\t{{view}}\n\t<component\n\t  :is=\"view\"\n\t  transition=\"fade\"\n\t  transition-mode=\"out-in\">\n\t</component>\n\n\t<filter :msg=\"msg\" :text=\"text\"></filter>\n\n";
-
-/***/ },
-/* 17 */,
-/* 18 */,
-/* 19 */,
-/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(21)
+	__vue_script__ = __webpack_require__(17)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\test.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(22)
+	__vue_template__ = __webpack_require__(18)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -866,7 +894,7 @@
 	})()}
 
 /***/ },
-/* 21 */
+/* 17 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -907,17 +935,750 @@
 	// </template>
 
 /***/ },
-/* 22 */
+/* 18 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<b>111</b>\n<input type=\"text\" v-model=\"text\" v-my-directive=\"text\" @keyup=\"t\" v-if=\"a\">\n";
 
 /***/ },
-/* 23 */,
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(20)
+	__vue_script__ = __webpack_require__(22)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\components\\life.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(23)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "F:\\GitHub\\learn\\vue+webpack\\demo\\src\\components\\life.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(21);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(5)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/8.2.3/vue-loader/lib/style-rewriter.js!./../../node_modules/.npminstall/postcss-loader/0.8.2/postcss-loader/index.js!./../../node_modules/.npminstall/vue-loader/8.2.3/vue-loader/lib/selector.js?type=style&index=0!./life.vue", function() {
+				var newContent = require("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/8.2.3/vue-loader/lib/style-rewriter.js!./../../node_modules/.npminstall/postcss-loader/0.8.2/postcss-loader/index.js!./../../node_modules/.npminstall/vue-loader/8.2.3/vue-loader/lib/selector.js?type=style&index=0!./life.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(4)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 22 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	// <script>
+	exports.default = {
+		init: function init() {
+			console.log('vue init 在实例开始初始化时同步调用。此时数据观测、事件和 watcher 都尚未初始化。');
+		},
+
+		created: function created() {
+			console.log('created 在实例创建之后同步调用。此时实例已经结束解析选项，这意味着已建立：数据绑定，计算属性，方法，watcher/事件回调。但是还没有开始 DOM 编译，$el 还不存在。');
+		},
+
+		beforeCompile: function beforeCompile() {
+			console.log('beforeCompile 在编译开始前调用。');
+		},
+
+		compiled: function compiled() {
+			console.log('compiled 在编译结束后调用。此时所有的指令已生效，因而数据的变化将触发 DOM 更新。但是不担保 $el 已插入文档');
+		},
+
+		ready: function ready() {
+			console.log('ready 在编译结束和 $el 第一次插入文档之后调用，如在第一次 attached 钩子之后调用。注意必须是由 Vue 插入（如 vm.$appendTo() 等方法或指令更新）才触发 ready 钩子。 ');
+		},
+
+		attached: function attached() {
+			console.log('attached 在 vm.$el 插入 DOM 时调用。必须是由指令或实例方法（如 $appendTo()）插入，直接操作 vm.$el 不会触发这个钩子。');
+		},
+
+		detached: function detached() {
+			console.log('detached 在 vm.$el 从 DOM 中删除时调用。必须是由指令或实例方法删除，直接操作 vm.$el 不会 触发这个钩子。');
+		},
+
+		beforeDestroy: function beforeDestroy() {
+			console.log('beforeDestroy 在开始销毁实例时调用。此时实例仍然有功能');
+		},
+
+		destroyed: function destroyed() {
+			console.log('destroyed 在实例被销毁之后调用。此时所有的绑定和实例的指令已经解绑，所有的子实例也已经被销毁。如果有离开过渡，destroyed 钩子在过渡完成之后调用。');
+		}
+	};
+	// </script>
+	//
+	// <template>
+	// 	<div></div>
+	// </template>
+	//
+	// <style>
+	//
+	// </style>
+
+/***/ },
+/* 23 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div></div>\n";
+
+/***/ },
 /* 24 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(25)
+	__vue_script__ = __webpack_require__(27)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\components\\resource.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(28)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "F:\\GitHub\\learn\\vue+webpack\\demo\\src\\components\\resource.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(26);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(5)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/8.2.3/vue-loader/lib/style-rewriter.js!./../../node_modules/.npminstall/postcss-loader/0.8.2/postcss-loader/index.js!./../../node_modules/.npminstall/vue-loader/8.2.3/vue-loader/lib/selector.js?type=style&index=0!./resource.vue", function() {
+				var newContent = require("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/8.2.3/vue-loader/lib/style-rewriter.js!./../../node_modules/.npminstall/postcss-loader/0.8.2/postcss-loader/index.js!./../../node_modules/.npminstall/vue-loader/8.2.3/vue-loader/lib/selector.js?type=style&index=0!./resource.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 26 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(4)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 27 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	// <script>
+	var mixin = {
+		data: function data() {
+			return {
+				name: 'mixin'
+			};
+		},
+		methods: {
+			foo: function foo() {
+				console.log('foo');
+			}
+		}
+	};
+	exports.default = {
+		mixins: [mixin]
+	};
+	// </script>
+	//
+	// <template>
+	// 	<hr><hr><hr>
+	// 	<h1>{{name}}</h1>
+	// 	<hr><hr><hr>
+	// </template>
+	//
+	// <style>
+	//
+	// </style>
+
+/***/ },
+/* 28 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<hr><hr><hr>\n<h1>{{name}}</h1>\n<hr><hr><hr>\n";
+
+/***/ },
+/* 29 */
+/***/ function(module, exports) {
+
+	module.exports = "\n\t<directive></directive>\n\n\t<br><br><br><br>\n\t<component :is=\"tog\">\n\t  <!-- 组件在 vm.currentview 变化时改变 -->\n\t</component>\n\t{{tog}}\n\t<div id=\"ddd\">\n\t\tddd\n\t</div>\n\t<input type=\"text\" v-model=\"text\" @keyup=\"toggle\">\n\n<!-- \t<list :msg=\"text\" @b=\"a\" try=\"yoyo\">\n\t\t<p slot=\"A\">This is slot A</p>\n\t\t<p slot=\"B\">This is slot B</p>\n\t</list> -->\n\n\n\t<!-- 先淡出再淡入 -->\n\t<label for=\"aa\"><input type=\"radio\" v-model=\"view\" value=\"aa\" id=\"aa\">AA</label>\n\t\n\t<label for=\"bb\"><input type=\"radio\" v-model=\"view\" value=\"bb\" id=\"bb\">BB</label>\n\t\n\t{{view}}\n\t<component\n\t  :is=\"view\"\n\t  transition=\"fade\"\n\t  transition-mode=\"out-in\">\n\t</component>\n\n\t<filter :msg=\"msg\" :text=\"text\"></filter>\n\n";
+
+/***/ },
+/* 30 */
 /***/ function(module, exports) {
 
 	"use strict";
+
+/***/ },
+/* 31 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(34)
+	__vue_script__ = __webpack_require__(32)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\components\\dataMethod.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(33)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "F:\\GitHub\\learn\\vue+webpack\\demo\\src\\components\\dataMethod.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 32 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	// <script>
+	exports.default = {
+		props: ['msg'],
+		data: function data() {
+			return {
+				a: 209
+			};
+		},
+		methods: {
+			getName: function getName() {
+				this.$get('msg.name');
+				// vm 实例获取表达式的值 vm.$get(obj.name);
+			},
+			setName: function setName() {
+				// 多数情况直接vm.obj.name = 'zhang'
+				// 不存在的值或者用keypath才用vm.$set('obj.name')来设置
+			}
+		}
+	};
+
+	// </script>
+	//
+	// <template>
+	// 	<p>{{a}}</p>
+	// 	<input type="text" v-model="a">
+	// 	<br>
+	// 	<input type="text" v-model="obj.name">
+	// 	<button @click="getName">获取</button>
+	//
+	// </template>
+	//
+	// <style>
+	//
+	// </style>
+
+/***/ },
+/* 33 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<p>{{a}}</p>\n<input type=\"text\" v-model=\"a\">\n<br>\n<input type=\"text\" v-model=\"obj.name\">\n<button @click=\"getName\">获取</button>\n\n";
+
+/***/ },
+/* 34 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(35);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(5)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/8.2.3/vue-loader/lib/style-rewriter.js!./../../node_modules/.npminstall/postcss-loader/0.8.2/postcss-loader/index.js!./../../node_modules/.npminstall/vue-loader/8.2.3/vue-loader/lib/selector.js?type=style&index=0!./dataMethod.vue", function() {
+				var newContent = require("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/8.2.3/vue-loader/lib/style-rewriter.js!./../../node_modules/.npminstall/postcss-loader/0.8.2/postcss-loader/index.js!./../../node_modules/.npminstall/vue-loader/8.2.3/vue-loader/lib/selector.js?type=style&index=0!./dataMethod.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 35 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(4)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 36 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(39)
+	__vue_script__ = __webpack_require__(37)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\components\\event.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(38)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "F:\\GitHub\\learn\\vue+webpack\\demo\\src\\components\\event.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 37 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	// <script>
+	exports.default = {
+		data: function data() {
+			return {
+				name: 'jsonz'
+			};
+		},
+
+		methods: {
+			event1: function event1() {}
+		}
+	};
+
+	// </script>
+	//
+	// <template>
+	// 	<button @click="event1">按钮1</button>
+	// </template>
+	//
+	// <style>
+	//
+	// </style>
+
+/***/ },
+/* 38 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<button @click=\"event1\">按钮1</button>\n";
+
+/***/ },
+/* 39 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(40);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(5)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/8.2.3/vue-loader/lib/style-rewriter.js!./../../node_modules/.npminstall/postcss-loader/0.8.2/postcss-loader/index.js!./../../node_modules/.npminstall/vue-loader/8.2.3/vue-loader/lib/selector.js?type=style&index=0!./event.vue", function() {
+				var newContent = require("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/8.2.3/vue-loader/lib/style-rewriter.js!./../../node_modules/.npminstall/postcss-loader/0.8.2/postcss-loader/index.js!./../../node_modules/.npminstall/vue-loader/8.2.3/vue-loader/lib/selector.js?type=style&index=0!./event.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 40 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(4)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 41 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(42)
+	__vue_script__ = __webpack_require__(44)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\components\\dom.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(45)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "F:\\GitHub\\learn\\vue+webpack\\demo\\src\\components\\dom.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 42 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(43);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(5)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/8.2.3/vue-loader/lib/style-rewriter.js!./../../node_modules/.npminstall/postcss-loader/0.8.2/postcss-loader/index.js!./../../node_modules/.npminstall/vue-loader/8.2.3/vue-loader/lib/selector.js?type=style&index=0!./dom.vue", function() {
+				var newContent = require("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/8.2.3/vue-loader/lib/style-rewriter.js!./../../node_modules/.npminstall/postcss-loader/0.8.2/postcss-loader/index.js!./../../node_modules/.npminstall/vue-loader/8.2.3/vue-loader/lib/selector.js?type=style&index=0!./dom.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 43 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(4)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 44 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	// <script>
+	exports.default = {
+		data: function data() {
+			return {
+				i: 0
+			};
+		},
+		methods: {
+			fn1: function fn1() {}
+		}
+	};
+	// </script>
+	//
+	//
+	//
+	// <template>
+	// 	<button @click="fn1">按钮1</button>
+	// 	<!-- <p id="template1">children</p> -->
+	// </template>
+	//
+	// <style>
+	//
+	// </style>
+
+/***/ },
+/* 45 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<button @click=\"fn1\">按钮1</button>\n<!-- <p id=\"template1\">children</p> -->\n";
+
+/***/ },
+/* 46 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(47)
+	__vue_script__ = __webpack_require__(49)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\components\\directive.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(50)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "F:\\GitHub\\learn\\vue+webpack\\demo\\src\\components\\directive.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 47 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(48);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(5)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/8.2.3/vue-loader/lib/style-rewriter.js!./../../node_modules/.npminstall/postcss-loader/0.8.2/postcss-loader/index.js!./../../node_modules/.npminstall/vue-loader/8.2.3/vue-loader/lib/selector.js?type=style&index=0!./directive.vue", function() {
+				var newContent = require("!!./../../node_modules/.npminstall/css-loader/0.23.1/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/8.2.3/vue-loader/lib/style-rewriter.js!./../../node_modules/.npminstall/postcss-loader/0.8.2/postcss-loader/index.js!./../../node_modules/.npminstall/vue-loader/8.2.3/vue-loader/lib/selector.js?type=style&index=0!./directive.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 48 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(4)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "\n\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 49 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	// <script>
+	exports.default = {
+		data: function data() {
+			return {
+				text: 1,
+				div: '<b>Hello World</b>',
+				isTrue: true,
+				isFalse: false,
+				list: [{ name: 'jsonz', age: 20 }, { name: 'zhang', age: 40 }, { name: 'xinxin', age: 30 }]
+			};
+		},
+		computed: {
+			obj: function obj() {
+				var _obj = {};
+				for (var i = 0, len = this.list.length; i < len; i++) {
+					_obj['name' + i] = this.list[i].age;
+				}
+				return _obj;
+			}
+		},
+		methods: {
+			fn: function fn() {
+				console.log(this.isTrue);
+			}
+		}
+	};
+	// </script>
+	//
+	// <template>
+	// 	<button @click="isTrue = !isTrue">按钮</button>
+	// 	<br>
+	//
+	// 	<span v-text="text"></span>
+	// 	<span>{{text}}</span>
+	// 	<br>
+	//
+	// 	<div v-html="div"></div>
+	// 	<br>
+	//
+	// 	<span v-if="isTrue">isTrue</span>
+	// 	<span v-if="isFalse">isFalse</span>
+	// 	<span v-else>v-else</span>
+	// 	<br>
+	//
+	// 	<span v-show="isTrue">isTrue</span>
+	// 	<span v-show="isFalse">isFalse</span>
+	// 	<br>
+	//
+	// 	<ul>
+	// 		<li v-for="item in list">{{item.name}} - {{item.age}}</li>
+	// 	</ul>
+	//
+	// 	<ul>
+	// 		<li v-for="(key, val) in obj">{{key}} - {{val}}</li>
+	// 	</ul>
+	//
+	//
+	//
+	// 	<br>
+	//
+	// </template>
+	//
+	// <style>
+	//
+	// </style>
+
+/***/ },
+/* 50 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<button @click=\"isTrue = !isTrue\">按钮</button>\n<br>\n\n<span v-text=\"text\"></span>\n<span>{{text}}</span>\n<br>\n\n<div v-html=\"div\"></div>\n<br>\n\n<span v-if=\"isTrue\">isTrue</span>\n<span v-if=\"isFalse\">isFalse</span>\n<span v-else>v-else</span>\n<br>\n\n<span v-show=\"isTrue\">isTrue</span>\n<span v-show=\"isFalse\">isFalse</span>\n<br>\n\n<ul>\n\t<li v-for=\"item in list\">{{item.name}} - {{item.age}}</li>\n</ul>\n\n<ul>\n\t<li v-for=\"(key, val) in obj\">{{key}} - {{val}}</li>\n</ul>\n\n\n\n<br>\n\n";
 
 /***/ }
 /******/ ]);
