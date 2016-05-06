@@ -2,20 +2,17 @@
 ======
 ---------------
 
-不再乱学框架了。除非项目有需求，不然都是学js和插件组件封装
+技术栈
 
-回家撸一遍公司学的东西
+1.单元测试 webdriverjs/webdriverio/protractor/karma
 
-* [webpack](http://guowenfh.github.io/2016/03/24/vue-webpack-04-custom/)
-* [webpack-server](http://www.jianshu.com/p/8adf4c2bfa51)
-* 热加载不刷新页面
+2.插件
 
-http://guowenfh.github.io/2016/03/25/vue-webpack-05-vue/
+3.动画
 
+4.UI框架
 
-
-
-看汤姆大叔博客 [深入理解JavaScript系列](http://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html)
+5.工作流
 
 ------
 
