@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="
+          width=device-width,
+          initial-scale=1.0,
+          minimum-scale=1.0,
+          maximum-scale=1.0,
+          user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>甜橙快贷</title>
+    <script src="../common/js/remDefine.js"></script>
+    <link rel="stylesheet" href="style/common.css"/>
+    <link rel="stylesheet" href="style/main.css"/>
+    <script src="../common/js/vue.js"></script>
+</head>
+<body v-show="ready">
+
+<!-- 首页主体 START-->
+<div id="main" v-show="!pageDataDetail">
+
+    <!--圆圈面板 START-->
+    <div class="loan_head">
+
+        <!-- 倒数天数 START -->
+        <span class="past_remind" v-show="lastDay">
+            <i class="past_remind_info">倒数{{lastDay}}天</i>
+        </span>
+        <!-- 倒数天数 END -->
+
+        <!-- 贷款圆圈信息 START-->
+        <div class="round_panel">
+            <div class="round_panel_warp">
+                <p class="round_panel_title">
+                    可用额度(元)
+                </p>
+                <p class="round_panel_body">
+                    {{Available | currency ''}}
+                </p>
+                <p class="round_panel_info">
+                    额度最高达到2w
+                </p>
+            </div>
+        </div>
+        <!-- 贷款圆圈信息 END-->
+
+        <!-- 利息信息等 START-->
+        <ul  class="loan_info" id="loanInfo">
+            <li>
+                <p>免息期(天)</p>
+                <p>7</p>
+            </li>
+            <li >
+                <p>月息最低</p>
+                <p class="loan_info_border">0.75%</p>
+            </li>
+            <li>
+                <p>极速到账(分)</p>
+                <p>15</p>
+            </li>
+        </ul>
+        <!-- 利息信息等 END-->
+    </div>
+    <!--圆圈面板 END-->
+
+    <hr class="h_2rem"/>
+
+    <!-- 还款相关 START-->
+    <section class="content">
+        <div class="content_input">
+            <span class="label">本期还款额：</span>
+            <span class="fc_orange input">
+                <i>{{repaymentMoney | currency '' | returnYuan}}</i>
+                <button class="code_default_btn hide" id="immediatelyRepayMoney">立刻还款</button>
+                <i class="count_time">
+                    <i class="repaying_info">还款中</i>
+                </i>
+            </span>
+        </div>
+        <div class="content_line "></div>
+        <div class="content_input">
+            <label for="repaymentDay">还款日：</label>
+            <input id="repaymentDay"
+                   placeholder="暂无数据"
+                   :value="repaymentDay | returnMmDd"
+                   readonly/>
+        </div>
+        <div class="content_line "></div>
+        <div class="content_input content_input_select">
+            <label for="deadline">借款详情：</label>
+            <input id="deadline"
+                   @click="showDetail"
+                   value=""
+                   placeholder=""
+                   readonly/>
+        </div>
+    </section>
+    <!-- 还款相关 END-->
+
+    <!-- 甜小橙 START-->
+    <div class="loan_txc">
+        <p>亲，您已逾期，小橙提醒您早日还贷</p>
+    </div>
+    <!-- 甜小橙 END-->
+
+    <!-- 底部 START-->
+    <div class="loan_bottom loan_bottom_r">
+        <a class="FQA" href="javascript:">常见问题</a>
+        <button class="default_btn">
+            免息清贷 <small>为您节省利息<i>10</i>元</small>
+        </button>
+        <button class="default_btn">我要额度</button>
+        <p>点击提现意味着您同意<a href="javascript:" class="fc_orange agreement_btn">相关协议</a></p>
+    </div>
+    <!-- 底部 END-->
+
+</div>
+<!-- 首页主体 END-->
+
+<!--借款详情 START-->
+<div class="load_detail" v-show="pageDataDetail">
+    <hr class="h_2rem"/>
+    <section>
+        <p class="load_info_title">
+            <span class="">合同编号：</span>
+            <span class="">共期</span>
+        </p>
+        <div class="load_wrap">
+            <table class="load_detail">
+                <thead>
+                <tr>
+                    <td>还款日</td> <td>本期还款金额</td> <td>状态</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td ></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td ></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td ></td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="watch_more">查看更多<i class="to_down"></i></div>
+        </div>
+    </section>
+</div>
+<!--借款详情 END-->
+
+
+<script src="../common/js/jquery-1.11.2.min.js"></script>
+<script src="../common/js/conf.js"></script>
+<script src="../common/js/base.js"></script>
+<script src="../common/js/Util.js"></script>
+<script src="../common/js/vueFilter.js"></script>
+
+<!--页面主函数-->
+<script src="js/main.js"></script>
+</body>
+</html>

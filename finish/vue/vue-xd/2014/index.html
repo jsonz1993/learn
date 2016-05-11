@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title></title>
+    <link rel="stylesheet" href="style/common.css"/>
+    <script src="../common/js/remDefine.js"></script>
+</head>
+<body>
+
+<section class="content">
+    <div class="content_input">
+        <label for="userName">借款金额：</label>
+        <input id="userName"
+               placeholder="请输入姓名"
+               value=""
+               verify="name"/>
+    </div>
+    <div class="content_line "></div>
+    <div class="content_input content_input_select">
+        <label for="deadline">借款期限：</label>
+        <input id="deadline"
+               value=""
+               placeholder="请选择"
+               readonly/>
+    </div>
+    <div class="content_line "></div>
+    <div class="content_input content_input_code">
+        <label>动态码：</label>
+        <input id="verCode"
+               placeholder="请输入验证码"
+                verify="name"/>
+        <a href="javascript:" class="code_default_btn">获取验证码</a>
+    </div>
+</section>
+
+<section>
+    <div class="default_btn">正常按钮</div>
+    <div class="default_disable_btn">不可点击按钮</div>
+    <div class="default_gray_btn">灰色按钮</div>
+    <div class="default_blue_btn">蓝色按钮</div>
+    <div class="border_btn">橙边按钮</div>
+    <div class="border_display_btn">橙边不可点击</div>
+    <div class="code_active_btn">验证码</div>
+    <div class="code_disable_btn">不可点击</div>
+    <a href="javascript:" class="FQA">常见问题</a>
+</section>
+
+<script src="../common/js/sea.js"></script>
+<script src="../common/js/conf.js"></script>
+<script src="../common/js/init.js"></script>
+
+</body>
+</html>

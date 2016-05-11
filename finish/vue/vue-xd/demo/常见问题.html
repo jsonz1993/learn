@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="
+          width=device-width,
+          initial-scale=1.0,
+          minimum-scale=1.0,
+          maximum-scale=1.0,
+          user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title></title>
+    <script src="../common/js/remDefine.js"></script>
+    <link rel="stylesheet" href="../2014/style/common.css"/>
+    <script src="../common/js/vue.js"></script>
+</head>
+<body style="text-align: center">
+
+
+<fqa></fqa>
+
+
+<script type="text/x-template" id="FQATemplate">
+    <a class="FQA" id="FQA" href="javascript:" @click.prevent="goFQA()">常见问题</a>
+</script>
+<script>
+    Vue.component('fqa', {
+        template : '#FQATemplate',
+        methods : {
+            goFQA : function(){
+                console.log('跳转到常见问题');
+            }
+        }
+    });
+
+    new Vue({
+        'el' : 'body'
+    });
+
+
+</script>
+</body>
+</html>

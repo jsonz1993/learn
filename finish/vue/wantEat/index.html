@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Vue.js</title>
+    <style>
+    .v-link-active {
+        color: red;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="demo">
+        <p>{{message}}</p>
+        <input v-model="message">
+    </div>
+</body>
+<script>
+var data = {
+    message: 'Hello Vue.js!'
+}
+
+var demo = new Vue({
+    el: '#demo',
+    data: data
+})
+</script>
+
+</html>

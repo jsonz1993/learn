@@ -1,0 +1,557 @@
+/*TODO 全局变量*/
+/*TODO 初始化*/
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+iframe,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+form,
+button,
+input,
+textarea,
+th,
+td,
+a {
+  margin: 0;
+  padding: 0;
+}
+body,
+button,
+input,
+select,
+textarea {
+  font-family: '微软雅黑', Arial, Helvetica, Tahoma, sans-serif;
+  color: #363636;
+}
+body {
+  font-size: 0.5rem;
+  background-color: #f2f2f2;
+}
+hr {
+  border-width: 0;
+}
+button {
+  cursor: pointer;
+}
+ul,
+ol {
+  list-style: none;
+}
+img {
+  border: 0;
+  vertical-align: middle;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+a {
+  color: #333;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+a:hover {
+  text-decoration: underline;
+}
+input[type=button],
+input[type=submit],
+button {
+  cursor: pointer;
+  overflow: visible;
+  -webkit-tap-highlight-color: transparent;
+}
+input {
+  border-width: 0;
+  outline: none;
+  height: 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none ;
+}
+i,
+em {
+  font-style: normal;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+::-webkit-scrollbar {
+  display: none;
+}
+/*TODO 布局相关*/
+/*TODO 文本*/
+/*TODO 布局*/
+/*TODO 特殊*/
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+.fc_orange {
+  color: #eb8037;
+}
+/*TODO 文字*/
+/*标题文字*/
+.menu_title {
+  color: #ffffff;
+  font-size: 0.5rem;
+}
+/*填写页的步骤文字 已进行和在进行*/
+.default_er_font {
+  color: #ec6f26;
+  font-size: 0.24rem;
+}
+/*填写页的步骤文字 未进行*/
+.default_font {
+  color: #c6c6c6;
+  font-size: 0.24rem;
+}
+/*信息归类文字*/
+.message_font {
+  color: #ec6f26;
+  font-size: 0.3rem;
+}
+/*输入框标题*/
+.input_font {
+  color: #9f9f9f;
+  font-size: 0.3rem;
+}
+/*输入框里提示文字*/
+.input_info {
+  color: #c6c6c6;
+  font-size: 0.3rem;
+}
+::-webkit-input-placeholder,
+:-moz-placeholder ::-moz-placeholder :-ms-input-placeholder {
+  color: #c6c6c6;
+  font-size: 0.3rem;
+}
+/*结果页面主标题*/
+.title_font {
+  color: #363636;
+  font-size: 0.26rem;
+}
+/*结果页面副标题*/
+.small_title {
+  color: #9f9f9f;
+  font-size: 0.3rem;
+}
+.content {
+  background-color: #ffffff;
+  box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  font-size: 0.2rem;
+}
+.content_line {
+  height: 1px;
+  margin-left: .3rem;
+  margin-right: .3rem;
+  background: #eaeaea;
+}
+.content [class^='content_input'] {
+  margin-left: 0.3rem;
+  margin-right: 0.3rem;
+  box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  *zoom: 1;
+}
+.content [class^='content_input']:before,
+.content [class^='content_input']:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.content [class^='content_input']:after {
+  clear: both;
+}
+.content label,
+.content .label {
+  float: left;
+  width: 1.9rem;
+  height: .9rem;
+  line-height: 0.9rem;
+  display: inline-block;
+  overflow: hidden;
+  font-size: 0.3rem;
+  text-align: justify;
+  text-align-last: justify;
+  /* ie9*/
+  -moz-text-align-last: justify;
+  /*ff*/
+  -webkit-text-align-last: justify;
+  /*chrome 20+*/
+}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .content {
+    /* chrome*/
+  }
+  .content label:after,
+  .content .label:after {
+    content: ".";
+    display: inline-block;
+    overflow: hidden;
+    height: 0;
+    width: 100%;
+  }
+}
+.content input,
+.content .input {
+  display: inline-block;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+  width: 4.7rem;
+  height: 0.498rem;
+  line-height: 0.498rem;
+  font-size: 0.3rem;
+  background-color: #ffffff;
+  text-align: right;
+}
+.content_input_select input {
+  background: url("../images/toright.png") #ffffff no-repeat right;
+  -webkit-background-size: 0.2rem;
+  background-size: 0.2rem;
+  padding-right: .4rem;
+  box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+.content input[readonly] {
+  color: #9f9f9f;
+}
+.content_input_code input {
+  width: 2.8rem;
+  margin-right: .2rem;
+}
+/*正常按钮*/
+.default_btn {
+  width: 6.6rem;
+  height: .8rem;
+  line-height: .78rem;
+  color: #ffffff;
+  border: 1px solid #eb8037;
+  margin-top: .3rem;
+  margin-bottom: .3rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.34rem;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  outline: none;
+  text-align: center;
+  background: #eb8037;
+}
+.default_btn:hover {
+  text-decoration: none;
+}
+.default_btn:active {
+  background: #ff9c4a;
+}
+/*点击状态*/
+.default_active_btn {
+  width: 6.6rem;
+  height: .8rem;
+  line-height: .78rem;
+  color: #ffffff;
+  border: 1px solid #ec6f26;
+  margin-top: .3rem;
+  margin-bottom: .3rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.34rem;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  outline: none;
+  text-align: center;
+  background: #ec6f26;
+}
+.default_active_btn:hover {
+  text-decoration: none;
+}
+/*不可点击按钮*/
+.default_disable_btn {
+  width: 6.6rem;
+  height: .8rem;
+  line-height: .78rem;
+  color: #ffffff;
+  border: 1px solid #f9d9c3;
+  margin-top: .3rem;
+  margin-bottom: .3rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.34rem;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  outline: none;
+  text-align: center;
+  background: #f9d9c3;
+}
+.default_disable_btn:hover {
+  text-decoration: none;
+}
+/*灰色按钮*/
+.default_gray_btn {
+  width: 6.6rem;
+  height: .8rem;
+  line-height: .78rem;
+  color: #ffffff;
+  border: 1px solid #9e9e9f;
+  margin-top: .3rem;
+  margin-bottom: .3rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.34rem;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  outline: none;
+  text-align: center;
+  background: #9e9e9f;
+}
+.default_gray_btn:hover {
+  text-decoration: none;
+}
+/*蓝色按钮*/
+.default_blue_btn {
+  width: 6.6rem;
+  height: .8rem;
+  line-height: .78rem;
+  color: #ffffff;
+  border: 1px solid #5eb1ce;
+  margin-top: .3rem;
+  margin-bottom: .3rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.34rem;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  outline: none;
+  text-align: center;
+  background: #5eb1ce;
+}
+.default_blue_btn:hover {
+  text-decoration: none;
+}
+/*橙边边框*/
+.border_btn {
+  width: 6.6rem;
+  height: .8rem;
+  line-height: .78rem;
+  color: #ffffff;
+  border: 1px solid #eb8037;
+  margin-top: .3rem;
+  margin-bottom: .3rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.34rem;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  outline: none;
+  text-align: center;
+  color: #eb8037;
+  background: #ffffff;
+}
+.border_btn:hover {
+  text-decoration: none;
+}
+.border_btn:active {
+  width: 6.6rem;
+  height: .8rem;
+  line-height: .78rem;
+  color: #ffffff;
+  border: 1px solid #d37331;
+  margin-top: .3rem;
+  margin-bottom: .3rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.34rem;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  outline: none;
+  text-align: center;
+  color: #d37331;
+  background: #ffffff;
+}
+.border_btn:active:hover {
+  text-decoration: none;
+}
+/*橙边边框点击状态*/
+.border_active_btn {
+  width: 6.6rem;
+  height: .8rem;
+  line-height: .78rem;
+  color: #ffffff;
+  border: 1px solid #d37331;
+  margin-top: .3rem;
+  margin-bottom: .3rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.34rem;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  outline: none;
+  text-align: center;
+  color: #d37331;
+  background: #ffffff;
+}
+.border_active_btn:hover {
+  text-decoration: none;
+}
+/*不可点击状态*/
+.border_display_btn {
+  width: 6.6rem;
+  height: .8rem;
+  line-height: .78rem;
+  color: #ffffff;
+  border: 1px solid #f9d9c3;
+  margin-top: .3rem;
+  margin-bottom: .3rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.34rem;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  outline: none;
+  text-align: center;
+  color: #f9d9c3;
+  background: #ffffff;
+}
+.border_display_btn:hover {
+  text-decoration: none;
+}
+/*验证码按钮*/
+/*验证码按钮*/
+.code_default_btn {
+  min-width: 1.56rem;
+  height: .5rem;
+  line-height: .5rem;
+  color: #eb8037;
+  background-color: #ffffff;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  font-size: 0.26rem;
+  border: 1px solid #eb8037;
+  display: inline-block;
+  text-align: center;
+  outline: none;
+}
+.code_default_btn:hover {
+  text-decoration: none;
+}
+.code_default_btn:active {
+  min-width: 1.56rem;
+  height: .5rem;
+  line-height: .5rem;
+  color: #ec6f26;
+  background-color: #ffffff;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  font-size: 0.26rem;
+  border: 1px solid #ec6f26;
+  display: inline-block;
+  text-align: center;
+  outline: none;
+}
+.code_default_btn:active:hover {
+  text-decoration: none;
+}
+/*验证码点击状态*/
+.code_active_btn {
+  min-width: 1.56rem;
+  height: .5rem;
+  line-height: .5rem;
+  color: #ec6f26;
+  background-color: #ffffff;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  font-size: 0.26rem;
+  border: 1px solid #ec6f26;
+  display: inline-block;
+  text-align: center;
+  outline: none;
+}
+.code_active_btn:hover {
+  text-decoration: none;
+}
+/*验证码不可点击状态*/
+.code_disable_btn {
+  min-width: 1.56rem;
+  height: .5rem;
+  line-height: .5rem;
+  color: #f9d9c3;
+  background-color: #ffffff;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  font-size: 0.26rem;
+  border: 1px solid #f9d9c3;
+  display: inline-block;
+  text-align: center;
+  outline: none;
+}
+.code_disable_btn:hover {
+  text-decoration: none;
+}
+/*常见问题*/
+.FQA {
+  color: #5eb1ce;
+  font-size: 0.3rem;
+  font-weight: 600;
+}
+.FQA:hover {
+  text-decoration: none;
+}
+.FQA:focus {
+  outline: none;
+}
+.error_info {
+  text-align: right;
+  margin-left: .2rem;
+  margin-bottom: .2rem;
+  font-size: 0.25rem;
+  transition: all 1s ease;
+  overflow: hidden;
+}
+.error_info_hide {
+  height: 0;
+  opacity: 0;
+}

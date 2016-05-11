@@ -2,20 +2,14 @@
 ======
 ---------------
 
-不再乱学框架了。除非项目有需求，不然都是学js和插件组件封装
 
-回家撸一遍公司学的东西
+忞盛大爷要跳槽了，weicheng也走了= =得抓紧时间
 
-* [webpack](http://guowenfh.github.io/2016/03/24/vue-webpack-04-custom/)
-* [webpack-server](http://www.jianshu.com/p/8adf4c2bfa51)
-* 热加载不刷新页面
+* 看汤姆大叔博客 [深入理解JavaScript系列](http://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html)
+* css3 动画
+* 小demo插件
+	* 伟城滑动组件
 
-http://guowenfh.github.io/2016/03/25/vue-webpack-05-vue/
-
-
-
-
-看汤姆大叔博客 [深入理解JavaScript系列](http://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html)
 
 ------
 
