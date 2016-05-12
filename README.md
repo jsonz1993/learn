@@ -1,15 +1,34 @@
 学习计划
 ======
+
 ---------------
+强行刷一波慕课网！
+
+__快速刷!__
+
+[全屏切换](http://www.imooc.com/view/374)
+
+[CSS动画实用技巧](http://www.imooc.com/view/357)
+
+[HTML5和CSS3扁平化风格博客](http://www.imooc.com/learn/445)
+
+[Sass入门](http://www.imooc.com/learn/311)
+
+[sass进阶篇](http://www.imooc.com/view/436)
+
+[用字体在网页中画ICON图标](http://www.imooc.com/view/243)
+
+[手风琴效果](http://www.imooc.com/view/72)
+
+[回到顶部](http://www.imooc.com/view/65)
+
+[数学知识在CSS动画中的应用](http://www.imooc.com/view/362)
 
 
 
-忞盛大爷要跳槽了，weicheng也走了= =得抓紧时间
+[HTML+CSS高级](http://www.imooc.com/course/list?c=html&is_easy=3)
 
-* 看汤姆大叔博客 [深入理解JavaScript系列](http://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html)
-* css3 动画
-* 小demo插件
-	* 伟城滑动组件
+
 
 
 
@@ -23,11 +42,6 @@
 
 ####learning
 #####存放正在学习的东西，但近期又不打算学习的。
-
-------
-
-####bookmarks
-######定期存放自己的chrome标签
 
 ------
 ####更目录的其他文件夹
@@ -45,19 +59,3 @@
 ###### Bootstrap
 ###### [背景图](http://www.alquimiawrg.com/#/home)
 ###### [火焰](http://www.html5tricks.com/demo/html5-fire-ball-shooter/index.html)
-
-
--------
-
-1. [Markdown](/markdown/teach.md)  [教程](http://www.appinn.com/markdown/#autoescape)
-2. [深入理解JavaScript系列](http://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html)
-3. [vue官网](http://cn.vuejs.org/)
-
-
-http://julabs.com/blog/seajs-jquery-and-plugins/
-
-http://www.imooc.com/article/2913
-
-https://github.com/seajs/seajs/issues/266
-
-https://github.com/seajs/examples
