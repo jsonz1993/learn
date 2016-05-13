@@ -44,9 +44,19 @@
  */
 
 (function($){
-	var privateFn = function(){
-		// 私有方法
-	}
+	var _prefix = (function(temp){
+
+		var aPrefix = ['webkit', 'Moz', 'o', 'ms'],
+			props = '';
+
+		for (var i = 0;i < aPrefix.length; i++) {
+			props = aPrefix[i] + 'Transition';
+			if (temp.style[props] !== undefined) {
+				return '-' + aPrefix[i].toLowerCase() + '-';
+			}
+		}
+		return false;
+	})(document.createElement('div'));
 
 	var PageSwitch = (function(){
 		function PageSwitch(elem, options){
@@ -61,20 +71,22 @@
 			init : function(){
 				var self = this; // this指的是PageSwitch对象
 				self.selectors = self.settings.selectors;
-				self.sections = self.selectors.sections;
-				self.section = self.selectors.section;
+				self.sections = self.element.find(self.selectors.sections);
+				self.section = self.element.find(self.selectors.section);
 
 				self.direction = self.settings.direction === 'vertical' ? true : false;
 				self.pagesCount = self.pagesCount();
 				self.index = (self.settings.index >= 0 && self.settings.index < self.pagesCount) ? self.settings.index : 0;
 
+				self.canScroll = true;
+
 				// 如果是横屏，调用_initLayout
 				if (!self.direction) self._initLayout();
 
 				// 判断是否进行分页处理
-				if (!self.settings.pagination) self._initPaging();
+				if (self.settings.pagination) self._initPaging();
 
-				// 绑定时间
+				// 绑定事件
 				self._initEvent();
 			},
 
@@ -102,9 +114,9 @@
 			_initPaging : function(){
 				var self = this,
 					pagesClass = self.selectors.page.substring(1), // 获取分页ul class
-					activeClass = self.selectors.active.substring(1), // 获取分页当前li calss
 					directionClass = '',
 					pageHtml = '<ul class='+ pagesClass +'>';
+				self.activeClass = self.selectors.active.substring(1) // 获取分页当前li calss
 					
 				for (var i = 0,len = self.pagesCount; i < len; i++) {
 					pageHtml += '<li></li>'
@@ -114,7 +126,8 @@
 				self.element.append(pageHtml);
 				var pages = self.element.find(self.selectors.page);
 				self.pageItem = pages.find('li'); // 后面滑动动画的时候需要对pageItem进行操作，所以配置到self下
-				self.pageItem.eq(self.index).addClass(activeClass);
+
+				self.pageItem.eq(self.index).addClass(self.activeClass);
 
 				// 判断方向给分页加相应的class
 				directionClass = self.direction ? 'vertical' : 'horizontal';
@@ -133,8 +146,8 @@
 
 				// 鼠标滚轮事件兼容 mouseWheel DOMMouseScroll(FF)
 				// 滚轮方向 向下滚动时 wheeldalta -120 detail 3(FF)
-				self.element.on('mouseWheel DOMMouseScroll', function(e){
-					var delta = e.originalEvent.wheelDeta || -e.originalEvent.detail; // jquery 把原生属性封装到e.originalEvent里面
+				self.element.on('mousewheel DOMMouseScroll', function(e){
+					var delta = e.originalEvent.wheelDelta || -e.originalEvent.detail; // jquery 把原生属性封装到e.originalEvent里面
 					// '-' 做了处理，大于0代表向上滑动，小于0则向下滑动
 
 					//鼠标滚轮事件，判断方向与是否可以循环播放
@@ -150,22 +163,26 @@
 				if (self.settings.keyboard) {
 					$(window).on('keydown', function(e){
 						var keyCode = e.keyCode;
-						if (keyCode === 37 || keyCode === 38) self.prev();
-						else if (keyCode === 39 || keyCode === 40) self.next();
+						if (keyCode === 37 || keyCode === 38) {
+							self.prev();
+						} else if (keyCode === 39 || keyCode === 40) {
+							self.next();
+						}
 					})
 				}
 
 				// 窗口resize事件
-				$(window).on('resize', function(){
-					var currentLength = self.switchLength(),
-						offset = self.settings.direction ? self.section.eq(self.index).offset().top() : self.section.eq(self.index).offset().left;
+				// $(window).on('resize', function(){
+				// 	var currentLength = self.switchLength(),
+				// 		offset = self.settings.direction ? self.section.eq(self.index).offset().top : self.section.eq(self.index).offset().left;
 
-						if (Math.abs(offset) > currentLength/2 && (self.index < pagesCount - 1)) self.index ++;
-						if (self.index) self._scrollPage();
-				});
+				// 		if (Math.abs(offset) > currentLength/2 && (self.index < self.pagesCount - 1)) self.index ++;
+				// 		if (self.index) self._scrollPage();
+				// });
 
 				// 过渡效果后的回调 兼容各种支持的浏览器
 				self.sections.on('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function(){
+					self.canScroll = true;
 					if (self.settings.callback && $.type(self.settings.callback) === 'function') self.settings.callback();
 				})
 				
@@ -173,15 +190,54 @@
 
 			/*说明：实现滚动效果*/
 			_scrollPage : function(){
+				/*
+				 * Transform 变形
+				 * 旋转 rotate transform: rotate(45deg);
+				 * 缩放 scale transform: scale(2, .5)];
+				 * 移动 translate transform: translate(100px, -50px);
+				 * 扭曲 skew transform: skew(45deg, 45deg);
+				 * Transition 过渡
+				 * transition-property 过渡效果属性 background
+				 * transition-duration 过渡时间 s/ms
+				 * transition-timing-function 时间曲线 linear
+				 * transition-delay 延时事件 s/ms
+				 * transition: <transition-property> <transition-duration> <transition-timing-function> <transition-delay>
+				*/
+
+				var self = this,
+					dest = self.section.eq(self.index).position();
+
+				if (!self.canScroll) return;
+				if (!dest) return;
+
+				self.canScroll = false;
+				// 支持css3的用 transform实现，不支持用jq实现
+				if (_prefix) {
+					self.sections.css(_prefix + 'transition', 'all ' + self.settings.duration + 'ms ' + self.settings.easing)
+
+					var translate = self.direction ? 'translateY(-'+dest.top+'px)' : 'translateX(-'+dest.left+')';
+					self.sections.css(_prefix + 'transform', translate);
+				} else {
+					var animateCss = self.direction ? {top : -dest.top} : {left : -dest.left};
+					self.sections.animate(animateCss, self.settings.duration, function(){
+						if (self.settings.callback && $.type(self.settings.callback) === 'function') {
+							self.canScroll = true;
+							self.settings.callback();
+						}
+					})
+				}
+
+				if (self.settings.pagination) {
+					self.pageItem.eq(self.index).addClass(self.activeClass).siblings('li').removeClass(self.activeClass);
+				}
 
 			},
 
 			/*说明：向前滑动既上一页*/
 			prev : function(){
 				var self = this;
-
 				if (self.index > 0) self.index--;
-				else if (self.settins.loop) self.index = self.pagesCount -1;
+				else if (self.settings.loop) self.index = self.pagesCount -1;
 
 				self._scrollPage();
 			},
@@ -190,7 +246,7 @@
 			next : function(){
 				var self = this;
 				if (self.index < self.pagesCount) self.index ++;
-				self if (self.settings.loop) self.index = 0;
+				else if (self.settings.loop) self.index = 0;
 
 				self._scrollPage();
 			}
@@ -210,11 +266,9 @@
 				self.data('PageSwitch', instance); // 实例存放在$.data('PageSwitch')
 			}
 
-			// 判断传入参数是什么类型，如果是string，则调用实例上的对应方法 \
+			// 判断传入参数是什么类型，如果是string，则调用实例上的对应方法
 			// Ex $('div').PageSwitch('init');
 			if ($.type(options) === 'string') return instance[options]();
-
-			
 		})
 	}
 
@@ -242,3 +296,5 @@
 	})
 
 })(jQuery);
+
+ 

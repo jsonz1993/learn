@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>呆毛</title>
+    <style>
+        #div {
+            width:100px;
+            height: 100px;
+            background-color: red;
+            margin:50px;
+            -webkit-transition: all 500ms linear;
+            -moz-transition: all 500ms linear;
+            -ms-transition: all 500ms linear;
+            -o-transition: all 500ms linear;
+            transition: all 500ms linear;
+        }
+    </style>
+</head>
+<body>
+    <div id="div"></div>
+    <script>
+        var div = document.getElementById('div');
+        div.addEventListener('click', function(){
+            div.style.transform = 'translate(100px, 100px)';
+            div.style.backgroundColor = '#000';
+        },false);
+        // 判断浏览器是否支持某个css属性
+        (function(temp){
+            return (temp.style['transition'] != undefined)
+        })(document.createElement('div'));
+
+    </script>
+</body>
+</html>

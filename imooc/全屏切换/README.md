@@ -1,5 +1,8 @@
 [全屏切换](http://www.imooc.com/video/9951)
+
+### 单独知识点
 	
+##### 插件闭包
 	(function($){
 	
 	})(jQuery);
@@ -12,6 +15,8 @@
 	 * $.ajax()
 	 */
 
+##### jq插件开发模式
+
 	/**
 	 * 组件开发方式
 	 * 类级别组件开发
@@ -23,6 +28,8 @@
 	 *  addClass()
 	 */
 
+##### 链式调用
+
 	/**
 	 * 链式调用
 	 * $.fn.myPlugin = function(){
@@ -31,8 +38,11 @@
 	 * }
 	 */
 
+
+##### 单例模式
+
 	/**
-	 * 单例模式
+	 * 单例模式 确保只有一个实例
 	 * $.fn.myPlugin = function(){
 	 *  var me = $(this),
 	 *      instance = me.data('myPlugin');
@@ -45,5 +55,24 @@
 	 * 利用 data来存放插件对象的实例
 	 */
 
-思路好6
-http://www.imooc.com/video/9956
+##### 判断浏览器前缀
+
+	var _prefix = (function(temp){
+
+		var aPrefix = ['webkit', 'Moz', 'o', 'ms'],
+			props = '';
+
+		for (var i = 0;i < aPrefix.length; i++) {
+			props = aPrefix[i] + 'Transition';
+			if (temp.style[props] !== undefined) {
+				return '-' + aPrefix[i].toLowerCase() + '-';
+			}
+		}
+		return false;
+	})(document.createElement('div'));
+
+##### css3 transition 过渡动画执行完后回调
+
+	self.sections.on('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function(){
+					
+	}) 
