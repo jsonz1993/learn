@@ -121,7 +121,7 @@
 	2. 判断是否有实例(instance)，没有则创建实例并缓存起来
 	3. 传入参数[self,options]
 	4. 如果传入的是字符串，则调用实例上方法
-4. 定义默认配置
+4. 定义默认配置 `defaults`
 	1. `selectors` 选择器
 		1. `sections` 对应的分页wrap _.sections_
 		2. `section` 分页div _.section_
