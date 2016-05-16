@@ -7,9 +7,9 @@
 __快速刷!__
 
 [全屏切换](http://www.imooc.com/view/374)
-[demo](https://github.com/zhangxinxinWTB/learn/tree/master/imooc/%E5%85%A8%E5%B1%8F%E5%88%87%E6%8D%A2)
+[demo](https://github.com/zhangxinxinWTB/learn/tree/master/imooc/%E5%85%A8%E5%B1%8F%E5%88%87%E6%8D%A2) √
 
-[手风琴效果](http://www.imooc.com/view/72) __太简单了__
+[手风琴效果](http://www.imooc.com/view/72) __太简单了 不看__
 
 [CSS动画实用技巧](http://www.imooc.com/view/357)
 
@@ -21,13 +21,11 @@ __快速刷!__
 
 [回到顶部](http://www.imooc.com/view/65)
 
-[数学知识在CSS动画中的应用](http://www.imooc.com/view/362)
-
-
+[数学知识在CSS动画中的应用](http://www.imooc.com/view/362) √
 
 [HTML+CSS高级](http://www.imooc.com/course/list?c=html&is_easy=3)
 
-
+###有点想把之前的博客再重新做出来，用来展示demo
 
 
 
