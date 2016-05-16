@@ -7,18 +7,17 @@
 __快速刷!__
 
 [全屏切换](http://www.imooc.com/view/374)
+[demo](https://github.com/zhangxinxinWTB/learn/tree/master/imooc/%E5%85%A8%E5%B1%8F%E5%88%87%E6%8D%A2)
+
+[手风琴效果](http://www.imooc.com/view/72) __太简单了__
 
 [CSS动画实用技巧](http://www.imooc.com/view/357)
-
-[HTML5和CSS3扁平化风格博客](http://www.imooc.com/learn/445)
 
 [Sass入门](http://www.imooc.com/learn/311)
 
 [sass进阶篇](http://www.imooc.com/view/436)
 
 [用字体在网页中画ICON图标](http://www.imooc.com/view/243)
-
-[手风琴效果](http://www.imooc.com/view/72)
 
 [回到顶部](http://www.imooc.com/view/65)
 
