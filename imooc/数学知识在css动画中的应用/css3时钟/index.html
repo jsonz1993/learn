@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>css3动态时钟</title>
+    <link rel="stylesheet" type="text/css" href="../../cssreset-min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="clock">
+        <ul class="line-min"></ul>
+        <ul class="line-hour">
+        </ul>
+        <ol class="number"></ol>
+        <ul class="pointer">
+            <li class="hour"></li>
+            <li class="min"></li>
+            <li class="sec"></li>
+            <li class="circle"></li>
+        </ul>
+    </div>
+    <script type="text/javascript" src="../../jquery.min.js"></script>
+    <script type="text/javascript">
+    /**
+     * @param wrap 刻度线的父容器
+     * @param total 刻度线总数量
+     * @param translateX 刻度线在x轴的偏移量
+     */
+    function drawLine(wrap, total, translateX) {
+        var gap = 360 / total;
+        var strHtml = '';
+
+        for (var i = 0; i < total; i++) {
+            strHtml += '<li style="transform: rotate(' + (i * gap) + 'deg) translate(' + translateX + 'px,-50%)"></li>'
+        };
+
+        wrap.html(strHtml);
+    }
+
+    function drawNumber(wrap) {
+        var radius = wrap.width() / 2,
+            strHtml = '';
+
+        for (var i = 1; i <= 12; i++) {
+            var myAngle = ((i - 3) * (360 / 12)) * Math.PI / 180,
+                x = radius + radius * Math.cos(myAngle),
+                y = radius + radius * Math.sin(myAngle);
+
+            strHtml += '<li style="left:' + x + 'px;top:' + y + 'px">' + i + '</li>';
+        }
+        wrap.append(strHtml);
+    }
+
+    function move() {
+        var domHour = $('.hour'),
+            domMin = $('.min'),
+            domSec = $('.sec');
+
+        getTime();
+        setInterval(getTime, 1000)
+
+        function getTime() {
+            var time = new Date(),
+                hour = time.getHours(),
+                min = time.getMinutes(),
+                sec = time.getSeconds();
+
+            var secAngle = sec * 6 - 90,
+                minAngle = min * 6 + sec / 60 * 6 - 90,
+                hourAngle = hour * 30 + min / 60 * 30 - 90;
+
+            domSec.css('transform', 'rotate(' + secAngle + 'deg)');
+            domMin.css('transform', 'rotate(' + minAngle + 'deg)');
+            domHour.css('transform', 'rotate(' + hourAngle + 'deg)');
+
+            document.title = hour + ':' + min + ':' + sec;
+        }
+    }
+
+    drawLine($('.line-hour'), 12, 80);
+    drawLine($('.line-min'), 60, 85);
+    drawNumber($('.number'));
+    move()
+    $('.clock').show();
+    </script>
+</body>
+
+</html>

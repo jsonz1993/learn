@@ -1,0 +1,81 @@
+/*表盘*/
+.clock {
+	position: relative;
+	width: 200px;
+	height: 200px;
+	border-radius: 100%;
+	background-color: #292a38;
+	margin: 50px auto;
+	display: none;
+}
+
+.pointer li.circle {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	background-color: #fff;
+	width: 10px;
+	height: 10px;
+	border-radius: 100%;
+	transform : translate(-50%, -50%);
+}
+.line-hour li,
+.line-min li {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform-origin: left center;
+	background-color: #fff;
+}
+
+.line-hour li {
+	width: 10px;
+	height: 2px;
+}
+
+.line-min li {
+	width: 5px;
+	height: 2px;
+}
+
+.number{
+	position: absolute;
+	height: 150px;
+	width: 150px;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 15px;
+	color: #fff;
+}
+
+.number li {
+	position: absolute;
+	transform: translate(-50%, -50%);
+}
+
+.pointer li {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform-origin: left center;
+	background-color: #fff;
+}
+
+.pointer li.hour {
+	width: 45px;
+	height: 3px;
+	margin-top: -1px;
+}
+
+.pointer li.min {
+	width: 60px;
+	height: 2px;
+	margin-top: 1px;
+}
+
+.pointer li.sec {
+	width: 80px;
+	height: 1px;
+	margin-top: -1px;
+}
