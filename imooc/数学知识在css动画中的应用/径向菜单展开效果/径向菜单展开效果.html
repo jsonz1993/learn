@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../cssreset-min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="nav-wrap ">
+        <nav>
+            <a href="javascript:;" class="nav-item1">1</a>
+            <a href="javascript:;" class="nav-item2">2</a>
+            <a href="javascript:;" class="nav-item3">3</a>
+            <a href="javascript:;" class="nav-item4">4</a>
+            <a href="javascript:;" class="nav-item5">5</a>
+            <a href="javascript:;" class="nav-item6">6</a>
+            <a href="javascript:;" class="nav-item7">7</a>
+            <a href="javascript:;" class="nav-item8">8</a>
+        </nav>
+        <a href="javascript:;" class="main-nav">点我</a>
+    </div>
+    <script src="../../jquery.min.js"></script>
+    <script>
+    (function($) {
+        var $mainNav = $('.main-nav'),
+            $navWrap = $('.nav-wrap'),
+            isPos = false,
+            navA = $('nav').find('a'),
+            r = $navWrap.width() / 2;
+
+
+        $mainNav.on('click', function() {
+            var startAngle = 0,
+                endAngle = 360,
+                gap = (endAngle - startAngle) / navA.length,
+                angle = 0;
+
+            if (!isPos) {
+                navA.each(function(index, item) {
+                	angle = (startAngle + index * gap) * (Math.PI / 180); // 转为弧度
+                	$(item).css({
+                		left : r + r * Math.sin(angle) + 'px',
+                		top : r + r * Math.cos(angle) + 'px'
+                	})
+                })
+            }
+
+            isPos = true;
+            $(this).parent().toggleClass('active');
+        })
+    })(jQuery)
+    </script>
+</body>
+
+</html>
