@@ -87,7 +87,6 @@
 
                 //点击li切换视图
                 self.element.on('click', self.selectors.pages + ' li', function() {
-                    if (self.index === $(this).index()) return;
                     self.index = $(this).index();
                     self._scrollType();
                 });
