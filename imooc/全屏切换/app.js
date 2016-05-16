@@ -151,7 +151,7 @@
 					// '-' 做了处理，大于0代表向上滑动，小于0则向下滑动
 
 					//鼠标滚轮事件，判断方向与是否可以循环播放
-					if (delta > 0 && (self.index && !self.settings.loop || self.settings.loop)) {self.prev()
+					if (delta > 0 && (self.index && !self.settings.loop ) || self.settings.loop) {self.prev()
 					} else if(delta < 0 && (self.index < (self.pagesCount - 1) && !self.settings.loop || self.settings.loop)) {
 						self.next();
 					}

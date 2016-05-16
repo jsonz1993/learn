@@ -9,58 +9,92 @@
         margin: 0;
         padding: 0;
     }
-    html, body {
-    	height: 100%;
-    	overflow: hidden;
+    
+    ul {
+        list-style: none;
     }
-    #container, .sections, .section {
-    	height: 100%
+    
+    html,
+    body {
+        height: 100%;
+        overflow: hidden;
     }
-    #section1, #section2, #section3, #section4 {
-    	background-color: #000;
-    	background-size: cover;
-    	background-position: 50% 50%;
-    	text-align: center;
-    	color: #fff;
+    
+    #container,
+    .sections,
+    .section {
+        height: 100%;
+        position: relative;
     }
+    
+    div[id^="section"] {
+        background-color: #000;
+        background-size: cover;
+        background-position: 50% 50%;
+        text-align: center;
+        color: #fff;
+    }
+    
     #section0 {
-    	background-image: url(images/1.jpg);
+        background-image: url(images/1.jpg);
     }
+    
     #section1 {
-    	background-image: url(images/2.jpg);
+        background-image: url(images/2.jpg);
     }
+    
     #section2 {
-    	background-image: url(images/3.jpg);
+        background-image: url(images/3.jpg);
     }
+    
     #section3 {
-    	background-image: url(images/4.jpg);
+        background-image: url(images/4.jpg);
     }
-
+    
+    .pages {
+        position: absolute;
+        right: 10px;
+        top: 10%
+    }
+    
+    .pages li {
+        width: 20px;
+        height: 20px;
+        background: red;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+    
+    .pages li.active {
+        background: yellow;
+    }
     </style>
 </head>
-
-	<div id="container" data-PageSwitch>
-		<div class="sections">
-			<div class="section" id="section1">
-				<h3>this is the page1</h3>
-			</div>
-			<div class="section" id="section2">
-				<h3>this is the page2</h3>
-			</div>
-			<div class="section" id="section3">
-				<h3>this is the page3</h3>
-			</div>
-			<div class="section" id="section4">
-				<h3>this is the page4</h3>
-			</div>
-		</div>
-	</div>
+<div id="container" data-PageSwitch>
+    <div class="sections">
+        <div class="section" id="section1">
+            <h3>this is the page1</h3>
+        </div>
+        <div class="section" id="section2">
+            <h3>this is the page2</h3>
+        </div>
+        <div class="section" id="section3">
+            <h3>this is the page3</h3>
+        </div>
+        <div class="section" id="section4">
+            <h3>this is the page4</h3>
+        </div>
+    </div>
+</div>
 
 <body>
     <script src="jquery.min.js"></script>
     <script src="app.js"></script>
     <script>
-    	// $('#container').PageSwitch({index : 2})
+    $('#container').PageSwitch({
+        direction : 'h'
+    })
     </script>
 </body>
 

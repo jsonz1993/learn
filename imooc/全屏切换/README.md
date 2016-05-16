@@ -71,11 +71,21 @@
 		return false;
 	})(document.createElement('div'));
 
-##### css3 transition 过渡动画执行完后回调
-
-	self.sections.on('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function(){
-					
-	}) 
+##### css3 变形 过渡
+	/*
+	 * transform 变形
+	 * 旋转 rotate transform: rotate(45deg);
+	 * 缩放 scale transform: scale(2, .5)];
+	 * 移动 translate transform: translate(100px, -50px);
+	 * 扭曲 skew transform: skew(45deg, 45deg);
+	 * 
+	 * transition 过渡
+	 * transition-property 过渡效果属性 background
+	 * transition-duration 过渡时间 s/ms
+	 * transition-timing-function 时间曲线 linear
+	 * transition-delay 延时事件 s/ms
+	 * transition: <transition-property> <transition-duration> <transition-timing-function> <transition-delay>
+	*/
 
 
 ### 思路和方法
@@ -88,15 +98,15 @@
 		2. 定义`element` 方便后面调用
 		3. 调用初始化函数
 	2. 原型挂载方法
-		1. init __初始化__
+		1. init __初始化__ √√√
 			1. 初始化后期需要的dom，横竖标识，页面数量，index,canScroll
 			2. 根据横竖屏调用方法
 			3. 根据是否分页调用方法
 			4. 绑定事件
-		2. pagesCount __获取滑动页面数量__
-		3. switchLength __根据页面的类型获取滑动的宽度或高度__
-		4. _initLayout __对横屏做布局css处理__
-		5. _initPaging __分页处理__
+		2. pagesCount __获取滑动页面数量__ √√√
+		3. switchLength __根据页面的类型获取滑动的宽度或高度__ 
+		4. _initLayout __对横屏做布局css处理__ √√√
+		5. _initPaging __分页处理__ √√√
 			1. 对分页进行dom处理和css样式处理
 			2. 暴漏出分页li方便外部调用修改class
 		6. _initEvent __事件绑定__
