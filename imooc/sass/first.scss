@@ -109,3 +109,65 @@ $flag: 'status';
     margin: 9in * 2;
     padding: (10px/2);
 }
+
+//高级sass
+@mixin blockOrHidden($boolean:true) {
+    @if $boolean {
+        @debug "$boolean is #{$boolean}";
+        display: block;
+    }
+    @else {
+        @debug "$boolean is #{$boolean}";
+        display: none;
+    }
+}
+
+.block {
+    @include blockOrHidden;
+}
+
+.hidden {
+    @include blockOrHidden(false);
+}
+
+@for $i from 1 through 3 {
+    .item-#{$i} {
+        width: 2em * $i;
+    }
+}
+
+@for $i from 1 to 3 {
+    .item-#{$i} {
+        height: 2em * $i;
+    }
+}
+
+$grid-prefix: span !default;
+$grid-width: 60px !default;
+$grid-gutter: 20px !default;
+%grid {
+    float: left;
+    margin-left: $grid-gutter / 2;
+    margin-right: $grid-gutter / 2;
+}
+
+@for $i from 1 through 12 {
+    .#{$grid-prefix}#{$i} {
+        width: $grid-width * $i + $grid-gutter * ($i - 1);
+        @extend %grid;
+    }
+}
+
+$list : adam john wynn mason kuroir;
+
+@mixin author-images {
+  @each $author in $list {
+    .photo-#{$author} {
+      background: url("/images/avatars/#{$author}.png no-repeat")
+    }
+  }
+}
+
+.author-bio {
+  @include author-images;
+}

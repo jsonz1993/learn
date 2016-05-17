@@ -1,5 +1,6 @@
 [Sass](http://www.imooc.com/learn/311)
 
+[mark](http://www.imooc.com/code/9440)
 ##入门
 ------
 
@@ -546,13 +547,172 @@ SCSS 继承的运用 __不需要传参数，有一个比较好的基类文件__
 需要注意的是 除法要加（）括号
 
 
+## 进阶
+____
+
+#### 控制命令
+
+###### @debug
+
+可以在命令行打印出日志
+@debug "$boolean is #{$boolean}"
+
+###### if
+
+假设要控制一个元素隐藏或显示，我们就可以定义一个混合宏，通过 @if...@else... 来判断传进参数的值来控制 display 的值。如下所示：
+	
+	@mixin blockOrHidden($boolean:true) {
+	  @if $boolean {
+	    @debug "$boolean is #{$boolean}";
+	    display: block;
+	  }
+	  @else {
+	    @debug "$boolean is #{$boolean}";
+	    display: none;
+	  }
+	}
+	
+	.block {
+	  @include blockOrHidden;
+	}
+	
+	.hidden {
+	  @include blockOrHidden(false);
+	}
+
+###### @for循环
+
+	@for $i from <start> through <end>
+	@for $i from <start> to <end>
+	
++ $i 表示变量
++ start 表示起始值
++ end 表示结束值
++ 关键字through 表示包括end这个数
++ 关键字end表示不包括end
+
+		@for $i from 1 through 3 {
+		  .item-#{$i} {width: 2em * $i; }
+		}
+		
+		@for $i from 1 to 3 {
+		  .item-#{$i} {height: 2em * $i;}
+		}
+
+		.item-1 {
+		  width: 2em;
+		}
+		
+		.item-2 {
+		  width: 4em;
+		}
+		
+		.item-3 {
+		  width: 6em;
+		}
+		
+		.item-1 {
+		  height: 2em;
+		}
+		
+		.item-2 {
+		  height: 4em;
+		}
+	
+		$grid-prefix: span !default;
+		$grid-width: 60px !default;
+		$grid-gutter: 20px !default;
+		%grid {
+		    float: left;
+		    margin-left: $grid-gutter / 2;
+		    margin-right: $grid-gutter / 2;
+		}
+		
+		@for $i from 1 through 2 {
+		    .#{$grid-prefix}#{$i} {
+		        width: $grid-width * $i + $grid-gutter * ($i - 1);
+		        @extend %grid;
+		    }
+		}
+
+		.span1, .span2 {
+		  float: left;
+		  margin-left: 10px;
+		  margin-right: 10px;
+		}
+		
+		.span1 {
+		  width: 60px;
+		}
+		
+		.span2 {
+		  width: 140px;
+		}
 
 
+###### @while循环
+@while 指令也需要 SassScript 表达式（像其他指令一样），并且会生成不同的样式块，直到表达式值为 false 时停止循环。这个和 @for 指令很相似，只要 @while 后面的条件为 true 就会执行。
+
+	$types: 4;
+	$type-width: 20px;
+	
+	@while $types > 0 {
+	    .while-#{$types} {
+	        width: $type-width + $types;
+	    }
+	    $types: $types - 1;
+	}
+
+	.while-4 {
+	  width: 24px;
+	}
+	
+	.while-3 {
+	  width: 23px;
+	}
+	
+	.while-2 {
+	  width: 22px;
+	}
+	
+	.while-1 {
+	  width: 21px;
+	}
 
 
+###### @each循环
 
+	@each $var in <list>
 
+	$list : adam john wynn mason kuroir;
+	
+	@mixin author-images {
+	  @each $author in $list {
+	    .photo-#{$author} {
+	      background: url("/images/avatars/#{$author}.png no-repeat")
+	    }
+	  }
+	}
+	
+	.author-bio {
+	  @include author-images;
+	}
 
+	.author-bio .photo-adam {
+	  background: url("/images/avatars/adam.png no-repeat");
+	}
+	.author-bio .photo-john {
+	  background: url("/images/avatars/john.png no-repeat");
+	}
+	.author-bio .photo-wynn {
+	  background: url("/images/avatars/wynn.png no-repeat");
+	}
+	.author-bio .photo-mason {
+	  background: url("/images/avatars/mason.png no-repeat");
+	}
+	.author-bio .photo-kuroir {
+	  background: url("/images/avatars/kuroir.png no-repeat");
+	}
 
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br>

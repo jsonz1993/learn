@@ -78,4 +78,102 @@
   padding: 5px;
 }
 
+.block {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.item-1 {
+  width: 2em;
+}
+
+.item-2 {
+  width: 4em;
+}
+
+.item-3 {
+  width: 6em;
+}
+
+.item-1 {
+  height: 2em;
+}
+
+.item-2 {
+  height: 4em;
+}
+
+.span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span9, .span10, .span11, .span12 {
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.span1 {
+  width: 60px;
+}
+
+.span2 {
+  width: 140px;
+}
+
+.span3 {
+  width: 220px;
+}
+
+.span4 {
+  width: 300px;
+}
+
+.span5 {
+  width: 380px;
+}
+
+.span6 {
+  width: 460px;
+}
+
+.span7 {
+  width: 540px;
+}
+
+.span8 {
+  width: 620px;
+}
+
+.span9 {
+  width: 700px;
+}
+
+.span10 {
+  width: 780px;
+}
+
+.span11 {
+  width: 860px;
+}
+
+.span12 {
+  width: 940px;
+}
+
+.author-bio .photo-adam {
+  background: url("/images/avatars/adam.png no-repeat");
+}
+.author-bio .photo-john {
+  background: url("/images/avatars/john.png no-repeat");
+}
+.author-bio .photo-wynn {
+  background: url("/images/avatars/wynn.png no-repeat");
+}
+.author-bio .photo-mason {
+  background: url("/images/avatars/mason.png no-repeat");
+}
+.author-bio .photo-kuroir {
+  background: url("/images/avatars/kuroir.png no-repeat");
+}
+
 /*# sourceMappingURL=first.css.map */
