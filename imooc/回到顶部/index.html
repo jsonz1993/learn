@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>回到顶部</title>
+    <link rel="stylesheet" href="../cssreset-min.css">
+    <style>
+    #btn {
+        width: 40px;
+        height: 40px;
+        background-image: url(images/top_bg.png);
+        background-repeat: no-repeat;
+        background-position: top center;
+        transition: all .3s ease-out;
+        position: fixed;
+        display: none;
+        left: 96.5%;
+        bottom: 20%;
+    }
+    
+    #btn:hover {
+        background-position: bottom center;
+    }
+    
+    #wrap {
+        width: 1190px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <img src="images/tb_bg.jpg" alt="">
+    </div>
+    <a href="javascript:;" id="btn" title="回到顶部"></a>
+    <script>
+    var btn = document.querySelector('#btn'),
+        timer = null,
+        clientHeight = document.documentElement.clientHeight,
+        stopScroll = false;
+
+    btn.addEventListener('click', function() {
+        var osTop = document.body.scrollTop || document.documentElement.scrollTop,
+            time = 30,
+            speed = 7;
+
+        timer = setInterval(function() {
+            osTop -= osTop / speed;
+            document.body.scrollTop = document.documentElement.scrollTop = osTop;
+
+            stopScroll = false;
+            if (osTop <= speed) {
+                document.body.scrollTop = document.documentElement.scrollTop = 0;
+                clearInterval(timer);
+            }
+        }, time)
+    }, false);
+
+    window.addEventListener('scroll', function() {
+    	if (stopScroll) clearInterval(timer);
+    	stopScroll = true;
+
+    	var osTop = document.body.scrollTop || document.documentElement.scrollTop;
+    	if (osTop > clientHeight) {
+    		btn.style.display = 'block';
+    	} else {
+    		btn.style.display = 'none';
+    	}
+    })
+    </script>
+</body>
+
+</html>
