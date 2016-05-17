@@ -15,7 +15,7 @@ __快速刷!__
 [demo](https://github.com/zhangxinxinWTB/learn/tree/master/imooc/%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E5%9C%A8css%E5%8A%A8%E7%94%BB%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8)
 
 [回到顶部](http://www.imooc.com/view/65)
-
+[demo](https://github.com/zhangxinxinWTB/learn/tree/master/imooc/%E5%9B%9E%E5%88%B0%E9%A1%B6%E9%83%A8)
 
 [Sass入门](http://www.imooc.com/learn/311)
 
