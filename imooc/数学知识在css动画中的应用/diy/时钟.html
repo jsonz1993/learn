@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../cssreset-min.css">
+    <style>
+    #wrap {
+        width: 200px;
+        height: 200px;
+        border-radius: 100%;
+        background-color: #292a38;
+        margin: 50px auto;
+        position: relative;
+    }
+    
+    .circle {
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        border-radius: 100%;
+        transform: translate(-50%, -50%);
+    }
+    li {
+        position: absolute;
+    }
+
+    .line-hour li,
+    .line-min li {
+        left: 50%;
+        top: 50%;
+        transform-origin: left center;
+        background-color: #fff;
+        transform-origin: left center;
+    }
+
+    .line-hour li {
+    	width: 10px;
+    	height: 2px;
+    }
+
+    .line-min li {
+    	width: 5px;
+    	height: 2px;
+    }
+
+    .number {
+        position: absolute;
+        height: 140px;
+        width: 140px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 15px;
+        color: #fff;
+    }
+
+    .number li {
+        transform: translate(-50%, -50%);
+    }
+
+    .pointer li {
+        background-color: #fff;
+        left: 50%;
+        top: 50%;
+        transform-origin: left center;
+    }
+
+    .hour {
+        width: 40px;
+        height: 3px;
+        margin-top: -1px;
+    }
+    .min {
+        width: 55px;
+        height: 2px;
+        margin-top: -1px;
+    }
+    .pointer .sec {
+        width: 80px;
+        height: 1px;
+        margin-top: -1px;
+        background-color: red;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <ul class="line-hour"></ul>
+        <ul class="line-min"></ul>
+        <ol class="number">
+            <li>1</li>
+        </ol>
+        <ul class="pointer">
+            <li class="hour"></li>
+            <li class="min"></li>
+            <li class="sec"></li>
+            <li class="circle"></li>
+        </ul>
+    </div>
+    <script src="../../jquery.min.js"></script>
+    <script>
+    	function drawLine(wrap, total, translateX) {
+    		var angle = 360 / total,
+    			strHtml = '';
+
+    		for (var i = 0; i < total; i ++) {
+    			strHtml += '<li style="transform: rotate('+ (i * angle) +'deg) translate('+translateX+'px, -50%);"></li>'
+    		}
+
+    		$(wrap).append(strHtml);
+    	}
+
+        function drawNum() {
+            var strHtml = '',
+                angle = 360 / 12 * Math.PI / 180,
+                $number = $('.number'),
+                r = $number.width() / 2;
+            for (var i = 1; i <= 12; i++) {
+                var x = r + r * Math.cos(angle * (i - 3)),
+                    y = r + r * Math.sin(angle * (i - 3));
+                strHtml += '<li style="left:'+x+'px;top:'+y+'px">'+i+'</li>'
+            }
+            $number.html(strHtml);
+        }
+
+        function drawTime() {
+            var $hour = $('.hour'),
+                $min = $('.min'),
+                $sec = $('.sec');
+
+            setMinSec();
+            setInterval(setMinSec, 1000);
+
+            setInterval(setHour, 1000 * 60)
+
+            function setMinSec() {
+                var time = new Date(),
+                    min = time.getMinutes(),
+                    sec = time.getSeconds(),
+                    hour = time.getHours(),
+                    secAngle = sec * 6,
+                    minAngle = min * 6 + (sec / 60) * 6;
+
+                $min.css('transform', 'rotate(' + minAngle + 'deg)');
+                $sec.css('transform', 'rotate(' + secAngle + 'deg)');
+
+                document.title = hour + ':' + min + ':' + sec;
+            }
+
+            function setHour(){
+                var time = new Date(),
+                    hour = time.getHours(),
+                    min = time.getMinutes(),
+                    hourAngle = hour * 30 + (min / 60) * 30;
+
+                $hour.css('transform', 'rotate(' + hourAngle + 'deg)');
+            }
+        }
+
+    	drawLine('.line-hour', 12, 80);
+    	drawLine('.line-min', 60, 85);
+        drawNum();
+        drawTime();
+    </script>
+</body>
+
+</html>

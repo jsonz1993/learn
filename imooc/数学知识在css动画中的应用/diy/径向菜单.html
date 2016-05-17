@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../cssreset-min.css">
+    <style>
+    html,
+    body {
+        background: #292a38;
+    }
+    
+    #wrap {
+        width: 200px;
+        height: 200px;
+        margin: 120px auto 20px;
+        border: 2px dotted #4e5061;
+        border-radius: 100%;
+        position: relative;
+    }
+
+    .a {
+    	background-color: #15a5f3;
+    	color: #fff;
+    	width: 40px;
+    	height: 40px;
+    	position: absolute;
+    	border-radius: 3px;
+    	text-shadow: 1px 1px 0 #000;
+    	font-size: 12px;
+    	line-height: 40px;
+    	text-align: center;
+    	text-decoration: none;
+    }
+    
+    #btn {
+    	top: 50%;
+    	left: 50%;
+    	transform: translate(-50%, -50%);
+    }
+    
+    ul {
+        width: 100%;
+        height: 100%;
+        transform: scale(0);
+        transition: all .5s ease-out;
+        opacity: 0;
+    }
+    
+    #wrap.active ul {
+        transform: scale(1);
+        opacity: 1;
+    }
+    
+    ul li {
+        width: 30px;
+        height: 30px;
+        background-color: #f44283;
+        border-radius: 3px;
+        text-align: center;
+        color: #fff;
+        position: absolute;
+        transform: translate(-50%, -50%);
+    }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>10</li>
+        </ul>
+        <a href="javascript:;" id="btn" class="a">按钮</a>
+        <a href="javascript:;" id="btn1" class="a">关闭</a>
+    </div>
+    <script src="../../jquery.min.js"></script>
+    <script>
+    var $wrap = $('#wrap'),
+        $li = $('li'),
+        $btn = $('#btn'),
+        notPos = true,
+        r = $wrap.width() / 2,
+        startAngle = 0,
+        endAngle = 360,
+        len = $li.length;
+
+    $btn.on('click', function() {
+
+        if (notPos) {
+            setPos()
+        }
+
+        $(this).parent().toggleClass('active');
+    })
+
+    function setPos() {
+        $li.each(function(index, item) {
+            var myAngle = index * (endAngle - startAngle) / len * Math.PI / 180;
+            $(item).css({
+                left: r + r * Math.sin(myAngle),
+                top: r + r * Math.cos(myAngle)
+            })
+        })
+
+        notPos = false;
+    }
+
+	setPos();
+    var timer = setInterval(function() {
+        $wrap.toggleClass('active');
+    }, 300)
+
+    $('#btn1').on('click', function(){
+    	clearInterval(timer);
+    })
+
+    </script>
+</body>
+
+</html>
