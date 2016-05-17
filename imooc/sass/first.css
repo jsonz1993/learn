@@ -1,0 +1,81 @@
+.block {
+  margin-top: 5px;
+}
+.block span {
+  display: block;
+  margin-top: 5px;
+}
+
+.header {
+  color: orange;
+  margin-top: 5px;
+}
+.header span {
+  display: block;
+  margin-top: 5px;
+}
+
+.mt, .block, .block span, .header, .header span {
+  margin-top: 5px;
+}
+
+.block span {
+  display: block;
+}
+
+.header {
+  color: orange;
+}
+.header span {
+  display: block;
+}
+
+.block, .block span, .header, .header span {
+  margin-top: 5px;
+}
+
+.block span {
+  display: block;
+}
+
+.header {
+  color: orange;
+}
+.header span {
+  display: block;
+}
+
+.login-box {
+  margin-top: 14px;
+  padding-top: 14px;
+}
+
+.header-text-small {
+  font-size: 12px;
+}
+
+.header-text-medium {
+  font-size: 20px;
+}
+
+.header-text-big {
+  font-size: 40px;
+}
+
+.navigation {
+  margin-top: 20px;
+  background: #F00;
+}
+
+.selected-status, .navigation {
+  font-weight: bold;
+}
+
+.box {
+  width: 884px;
+  height: 8.79167in;
+  margin: 18in;
+  padding: 5px;
+}
+
+/*# sourceMappingURL=first.css.map */
