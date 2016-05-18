@@ -176,4 +176,19 @@
   background: url("/images/avatars/kuroir.png no-repeat");
 }
 
+.test1 {
+  content: hello sass!;
+}
+
+.test2 {
+  text: aaaa;
+  text: AA-AA;
+}
+
+.text3 {
+  height: 0.28581px;
+  margin: 10px;
+  padding: 10px;
+}
+
 /*# sourceMappingURL=first.css.map */

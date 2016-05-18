@@ -1,6 +1,4 @@
 [Sass](http://www.imooc.com/learn/311)
-
-[mark](http://www.imooc.com/code/9440)
 ##入门
 ------
 
@@ -713,6 +711,61 @@ ____
 	.author-bio .photo-kuroir {
 	  background: url("/images/avatars/kuroir.png no-repeat");
 	}
+
+
+#### 字符串数字函数
+
+###### 字符串函数-unquote()函数 去掉字符串
+
+	.test1 {
+	  content: unquote('hello sass!')
+	}
+
+	.test1 {
+	  content: hello sass!;
+	}
+
+###### 字符串函数-quote()函数 加字符串
+
+###### 字符串函数-To-upper-case()、To-lower-case()
+
+	.test2 {
+	  text : to-lower-case(AAAa);
+	  text : to-upper-case(aA-aa)
+	}
+
+#### 数字函数简介
+
++ pcrcntagc($value) 将一个不带单位的转百分比
++ round($value) 四舍五入
++ ceil($value) 向上取整
++ floor($value) 向下取整
++ abs($value) 返回一个绝对值
++ min($numbers1, $number2) 找出几个数值的最小值
++ max($numbers1, $number2) 找出最大值
++ random() 获取[0,1)随机数
+
+#### 列表函数
+
++ length($list) 返回一个列表的长度值 
+
+		length(1 2 3) => 3
++ nth($list, $n) 返回一个列表中指定的某个标签值 
+		nth(0 1 2,2) => 1
++ join($list1, $list2, [$scparator]) 将两个列链接到一起，变成一个列表
++ append($list1,$val,[$separator])将某个值放在列表最后
++ zip($lists..)将几个列表结合成一个多维列表
++ index($list, $value) 返回一个值在列表中的位置
+
+**...**
+
+剩下函数基本不用跳过
+
+#### @ 语法
+
+######@import 同less 引入文件 
+
+###### @media 同css 媒介查询
 
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br>

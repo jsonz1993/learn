@@ -171,3 +171,28 @@ $list : adam john wynn mason kuroir;
 .author-bio {
   @include author-images;
 }
+
+
+.test1 {
+  content: unquote('hello sass!')
+}
+
+.test2 {
+  text : to-lower-case(AAAa);
+  text : to-upper-case(aA-aa)
+}
+
+@mixin mt($val) {
+  @if length($val) > 1 {
+    margin: 10px;
+    padding: 10px;
+  } @else {
+    margin: 10px;
+  }
+}
+
+.text3 {
+  height: random() + px;
+  @include mt(1 2);
+}
+
