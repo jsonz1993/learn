@@ -400,3 +400,96 @@ body {
 	border-right-width: 400px;
 	border-bottom-width: 200px;
 }
+
+
+#animated {
+	height: 100px;
+	width: 100px;
+	border-radius: 100%;
+	background: blue;
+	opacity: .4;
+	margin: 50px auto;
+}
+
+.rocketship {
+	width: 50px;
+	height: 50px;
+	background-color: green;
+	border-radius: 100%;
+	opacity: .8;
+	transform-origin: 200% center;
+	animation: circle 1s infinite linear;
+}
+
+@keyframes circle {
+	to {
+		transform: rotate(1turn);
+	}
+}
+
+#animated2 {
+	width: 50px;
+	height: 50px;
+	background-color: #000;
+	border-radius: 30%;
+	animation: ellipse 2s infinite linear;
+	transform-origin: center 200%;
+}
+
+figure {
+	width: 10px;
+	height: 10px;
+	background: red;
+	display: block;
+	margin: 50px auto;
+	animation: updown 1s infinite linear alternate;
+}
+
+@keyframes ellipse {
+	to {
+		transform: rotate(-1turn);
+	}
+}
+
+@keyframes updown {
+	to {
+		transform: translateY(200px);
+	}
+}
+
+.stage {
+	margin: 500px auto 0;
+	width:120px;
+	height:auto;
+	position:relative;
+	transform-origin: center top;
+	transform: rotate(30deg);;
+	animation: watch 2.2s infinite alternate ease-in-out;
+}
+
+.stage .watch{
+	width:100%;
+	height:auto;
+}
+
+.stage .seconds {
+	position:absolute;
+	width:8%;
+	height:auto;
+	bottom:11.5%;
+	left:45.5%;
+	transform-origin: center 72%;
+	animation: second 60s infinite linear;
+}
+
+@keyframes watch {
+	to {
+		transform: rotate(-30deg);
+	}
+}
+
+@keyframes second {
+	to {
+		transform: rotate(1turn);
+	}
+}

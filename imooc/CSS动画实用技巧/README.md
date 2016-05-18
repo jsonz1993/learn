@@ -226,3 +226,57 @@ matrix 矩阵(可以实现其他所有效果)
 		border-right-width: 400px;
 		border-bottom-width: 200px;
 	}
+
+
+###### 正圆运动
+
+![](https://github.com/zhangxinxinWTB/learn/blob/master/imooc/CSS%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/images/circle.png)
+
+	<div id="animated">
+		<div class="rocketship"></div>
+	</div>
+
+
+	#animated {
+		height: 100px;
+		width: 100px;
+		border-radius: 100%;
+		background: blue;
+		opacity: .4;
+		margin: 50px auto;
+	}
+	
+	.rocketship {
+		width: 50px;
+		height: 50px;
+		background-color: green;
+		border-radius: 100%;
+		opacity: .8;
+		transform-origin: 200% center;
+		animation: circle 1s infinite linear;
+	}
+	
+	@keyframes circle {
+		to {
+			transform: rotate(1turn);
+		}
+	}
+
+
+###### 椭圆运动
+
+alternate 动画结束后反向运动
+
+	div#wrap
+		div#children
+
+	子类继续旋转一周，同时父类上下偏移移动
+	
+	#wrap {
+		animation: updown 1s infinite linear alternate;
+	}
+	
+
+###### 弧度运动
+
+![](https://github.com/zhangxinxinWTB/learn/blob/master/imooc/CSS%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/images/click.gif)
