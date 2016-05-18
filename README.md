@@ -33,8 +33,6 @@ ______
 
 [CSS深入理解系列](http://www.imooc.com/index/search?words=CSS%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3)
 
-[移动时代css对用户体验的影响](http://www.imooc.com/learn/318)
-
 [W3Ctech “走进名企”小米专场](http://www.imooc.com/view/276)
 
 [电商网站前端架构](http://www.imooc.com/learn/186)
@@ -54,8 +52,6 @@ ______
 [十天精通CSS3](http://www.imooc.com/learn/33)
 
 [HTML5+CSS3实现“共嗨世界杯”](http://www.imooc.com/view/134)
-
-[CSS3 3D 特效](http://www.imooc.com/learn/77)
 
 [java1](http://www.imooc.com/learn/587)
 
