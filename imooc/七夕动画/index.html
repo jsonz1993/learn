@@ -10,34 +10,24 @@
 	
 	<div id="content">
 		<ul class="content-wrap">
-			<li>页面1</li>
+			<li>
+				<div class="a_background">
+					<div class="a_background_top"></div>
+					<div class="a_background_middle"></div>
+					<div class="a_background_botton"></div>
+				</div>
+			</li>
 			<li>页面2</li>
 			<li>页面3</li>
 		</ul>
+		<div id="boy" class="charector"></div>
 	</div>
 
+	<button id="btn">切换页面</button>
+
 	<script type="text/javascript" src="../jquery.min.js"></script>
-	<script type="text/javascript">
-		var $container = $('#content'),
-			$element = $container.find(':first'),
-			$slides = $element.find('li'),
-			width = $container.width()
-			height = $container.height();
-
-		$element.css({
-			width : ($slides.length * width) + 'px',
-			height : height + 'px'
-		});
-
-		$slides.each(function(index, item) {
-			$(item).css({
-				width : width + 'px',
-				height : height + 'px'
-			})
-
-		})
-
-	</script>
+	<script type="text/javascript" src="Swipe.js"></script>
+	<script type="text/javascript" src="app.js"></script>
 
 </body>
 </html>
