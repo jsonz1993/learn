@@ -1,0 +1,34 @@
+#content {
+	width: 60%;
+	height: 60%;
+	top: 20px;
+	left: 20px;
+	overflow: hidden;
+	position: absolute;
+	border: 1px solid #ccc;
+}
+
+.content-wrap {
+	position: relative;
+}
+
+.content-wrap > li {
+	width: 100%;
+	height: 100%;
+	color: red;
+	float: left;
+	overflow: hidden;
+	position: relative;
+}
+
+li:nth-child(1) {
+	background: #CAE1FF;
+}
+
+li:nth-child(2) {
+	background-color: #9bcd9b;
+}
+
+li:nth-child(3) {
+	background-color: yellow;
+}

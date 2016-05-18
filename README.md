@@ -33,8 +33,6 @@ ______
 
 [CSS深入理解系列](http://www.imooc.com/index/search?words=CSS%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3)
 
-[W3Ctech “走进名企”小米专场](http://www.imooc.com/view/276)
-
 [电商网站前端架构](http://www.imooc.com/learn/186)
 
 [H5+JS+CSS3实现七夕言情](http://www.imooc.com/learn/453)

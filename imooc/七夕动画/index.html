@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="../cssreset-min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	
+	<div id="content">
+		<ul class="content-wrap">
+			<li>页面1</li>
+			<li>页面2</li>
+			<li>页面3</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript" src="../jquery.min.js"></script>
+	<script type="text/javascript">
+		var $container = $('#content'),
+			$element = $container.find(':first'),
+			$slides = $element.find('li'),
+			width = $container.width()
+			height = $container.height();
+
+		$element.css({
+			width : ($slides.length * width) + 'px',
+			height : height + 'px'
+		});
+
+		$slides.each(function(index, item) {
+			$(item).css({
+				width : width + 'px',
+				height : height + 'px'
+			})
+
+		})
+
+	</script>
+
+</body>
+</html>
