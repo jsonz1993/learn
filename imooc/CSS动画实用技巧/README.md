@@ -25,7 +25,7 @@ transition: property duration timing-function delay;
 
 简单的loading
 
-![]()
+![](https://raw.githubusercontent.com/zhangxinxinWTB/learn/master/imooc/CSS%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/images/load.gif)
 	.spinner {
 		width: 40px;
 		height: 40px;
@@ -54,7 +54,7 @@ skew 倾斜
 
 matrix 矩阵(可以实现其他所有效果)
 
-![原点transform-origin]()
+![原点transform-origin](https://raw.githubusercontent.com/zhangxinxinWTB/learn/master/imooc/CSS%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/images/transform-origin.png)
 
 
 
@@ -108,8 +108,8 @@ matrix 矩阵(可以实现其他所有效果)
 	    }
 	}
 
-![]()
-![]()
+![](https://raw.githubusercontent.com/zhangxinxinWTB/learn/master/imooc/CSS%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/images/load1.gif)
+![](https://raw.githubusercontent.com/zhangxinxinWTB/learn/master/imooc/CSS%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/images/load2.gif)
 
 	#load3 {
 	    position: relative;
@@ -174,6 +174,8 @@ matrix 矩阵(可以实现其他所有效果)
 简直是奇淫技巧
 
 利用遮挡两边边框达到翻页效果
+
+![](https://github.com/zhangxinxinWTB/learn/blob/master/imooc/CSS%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/images/border.png?raw=true)
 
 	<div id="poper-flip">
 		<div id="image-layer">
