@@ -29,6 +29,7 @@ transition: property duration timing-function delay;
 简单的loading
 
 ![](https://raw.githubusercontent.com/zhangxinxinWTB/learn/master/imooc/CSS%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/images/load.gif)
+
 	.spinner {
 		width: 40px;
 		height: 40px;
