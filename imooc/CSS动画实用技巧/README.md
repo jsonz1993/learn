@@ -1,4 +1,7 @@
 [CSS动画技巧](http://www.imooc.com/video/6864)
+##很喜欢奇舞团的视频 
+[http://www.75team.com/](http://www.75team.com/)
+
 
 ###### transition
 
@@ -280,3 +283,4 @@ alternate 动画结束后反向运动
 ###### 弧度运动
 
 ![](https://github.com/zhangxinxinWTB/learn/blob/master/imooc/CSS%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/images/click.gif)
+

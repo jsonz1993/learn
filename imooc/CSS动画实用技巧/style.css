@@ -493,3 +493,57 @@ figure {
 		transform: rotate(1turn);
 	}
 }
+
+
+
+/*hours*/
+
+#demo, .mask, .img, .border {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+}
+
+#demo {
+    position: relative;
+    display: block;
+    margin: 50px auto;
+}
+
+.img {
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.mask,.border {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.mask {
+    text-align: center;
+    color: rgba(255, 255, 255, 0);
+    transition: all .5s ease-in;
+}
+.info {
+    margin-top: 50%;
+    transform: translateY(-50%);
+}
+
+.border {
+    border: 10px solid #072256;
+    border-left-color: #E07514;
+    border-top-color: #E07514;
+    box-sizing: border-box;
+    transition: all .5s ease-in;
+}
+
+#demo:hover .mask {
+    background-color: rgba(0, 0, 0, .5);
+    color: rgba(255, 255, 255, 1);
+}
+
+#demo:hover .border {
+    transform: rotate(.5turn);
+}
