@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="../cssreset-min.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<h1>transition</h1>
+	<a href="javascript:;" class="change " target="_blank">
+  		<img src="http://p4.qhimg.com/t0160e6a92121691e22.png" alt="" />
+	</a>
+
+	<h1>animation</h1>
+	<div class="spinner"></div>
+	<div class="csshake_demo">csshake</div>
+
+	<h1>transform</h1>
+	<div id="rotateWrap">
+		<div class="rotate1"></div>
+		<div class="rotate2"></div>
+		<div class="rotate3"></div>
+	</div>
+
+	<h1>animation-delay</h1>
+	<div id="load2">
+		<div class="line1"></div><div class="line2"></div><div class="line3"></div><div class="line4"></div><div class="line5"></div>
+	</div>
+	<div id="load3">
+		<div class="double-bounce1"></div>
+		<div class="double-bounce2"></div>
+	</div>
+
+	<h1>border-color</h1>
+	<div id="load4">
+		<div></div>
+	</div>
+
+	<h1>border-width</h1>
+	<div id="poper-flip">
+		<div id="image-layer">
+			<span></span>
+		</div>
+	</div>
+
+	<script>
+		document.getElementById('image-layer').children[0].addEventListener('click', function(){
+			this.classList.toggle('click');
+		})
+	</script>
+</body>
+</html>
