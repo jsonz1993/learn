@@ -26,13 +26,40 @@ __快速刷!__
 
 
 [用字体在网页中画ICON图标](http://www.imooc.com/view/243)
+[demo](https://github.com/zhangxinxinWTB/learn/tree/master/imooc/icon)√ __比较简单的复习了一下__
 
+__中级的刷一波了 下一阶段刷高级HTML+CSS__
+______
 
-[HTML+CSS高级](http://www.imooc.com/course/list?c=html&is_easy=3)
+[CSS深入理解系列](http://www.imooc.com/index/search?words=CSS%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3)
 
-###有点想把之前的博客再重新做出来，用来展示demo
+[移动时代css对用户体验的影响](http://www.imooc.com/learn/318)
 
+[W3Ctech “走进名企”小米专场](http://www.imooc.com/view/276)
 
+[电商网站前端架构](http://www.imooc.com/learn/186)
+
+[H5+JS+CSS3实现七夕言情](http://www.imooc.com/learn/453)
+
+[Canvas玩转图像处理](http://www.imooc.com/view/476)
+
+[H5+JS+CSS3 实现圣诞情缘](http://www.imooc.com/view/545)
+
+[Rract入门](http://www.imooc.com/learn/504)
+
+[React实战--打造画廊应用（上）](http://www.imooc.com/view/507)
+
+[React实战--打造画廊应用（下）](http://www.imooc.com/learn/652)
+
+[十天精通CSS3](http://www.imooc.com/learn/33)
+
+[HTML5+CSS3实现“共嗨世界杯”](http://www.imooc.com/view/134)
+
+[CSS3 3D 特效](http://www.imooc.com/learn/77)
+
+[java1](http://www.imooc.com/learn/587)
+
+[java2](http://www.imooc.com/learn/631)
 
 ------
 
