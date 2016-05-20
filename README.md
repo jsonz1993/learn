@@ -35,12 +35,6 @@ ______
 
 [电商网站前端架构](http://www.imooc.com/learn/186)
 
-[H5+JS+CSS3实现七夕言情](http://www.imooc.com/learn/453)
-
-[Canvas玩转图像处理](http://www.imooc.com/view/476)
-
-[H5+JS+CSS3 实现圣诞情缘](http://www.imooc.com/view/545)
-
 [Rract入门](http://www.imooc.com/learn/504)
 
 [React实战--打造画廊应用（上）](http://www.imooc.com/view/507)
@@ -48,8 +42,6 @@ ______
 [React实战--打造画廊应用（下）](http://www.imooc.com/learn/652)
 
 [十天精通CSS3](http://www.imooc.com/learn/33)
-
-[HTML5+CSS3实现“共嗨世界杯”](http://www.imooc.com/view/134)
 
 [java1](http://www.imooc.com/learn/587)
 
