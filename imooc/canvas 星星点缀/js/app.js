@@ -1,5 +1,7 @@
 var can, ctx, canvasW, canvasH, girlPic = new Image(), starPic = new Image(), stars = [];
 
+var lastTime, deltaTime, num = 100;
+
 function init() {
     can = document.getElementById('canvas');
     ctx = can.getContext('2d');
@@ -8,15 +10,14 @@ function init() {
     girlPic.src = './src/girl.jpg';
     starPic.src = './src/star.png';
 
-    for (var i = 0; i < 60; i++) {
+    for (var i = 0; i < num; i++) {
         var obj = new starObj();
         stars.push(obj);
         stars[i].init();
     }
 
+    lastTime = Date.now();
     gameloop();
-
-
 
 }
 
@@ -29,6 +30,11 @@ function drawBackground() {
 
 function gameloop(){
     window.requestAnimFrame(gameloop);
+
+    var now = Date.now();
+    deltaTime = now - lastTime;
+    lastTime = now;
+
     drawBackground();
     drawGirl();
     drawStars();
