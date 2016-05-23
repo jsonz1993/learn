@@ -8,6 +8,12 @@ function init() {
     girlPic.src = './src/girl.jpg';
     starPic.src = './src/star.png';
 
+    for (var i = 0; i < 60; i++) {
+        var obj = new starObj();
+        stars.push(obj);
+        stars[i].init();
+    }
+
     gameloop();
 
 
