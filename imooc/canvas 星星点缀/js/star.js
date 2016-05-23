@@ -31,7 +31,7 @@ starObj.prototype = {
 		this.x += this.xSpd * deltaTime * 0.01;
 		this.y += this.ySpd * deltaTime * 0.005;
 
-		if (this.x > 700 || this.x < 100 || this.y > 450 || this.y < 100) {
+		if (this.x > 700 || this.x < 100 || this.y > 430 || this.y < 80) {
 			this.init();
 			return;
 		}
