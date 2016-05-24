@@ -3,10 +3,9 @@
     window.addEventListener('load', init, false);
 
     var starList = [],
-        starNum = 100,
+        starNum = 120,
         lastTime,
         deltaTime;
-
 
     function init() {
     	lastTime = Date.now();
@@ -29,8 +28,10 @@
             _this.girlPic = new Image();
             _this.girlPic.src = './src/girl.jpg';
 
-
             _this.createCanvas();
+            _this.canvasEvent();
+
+            _this.mouseInThis = false;
         },
 
         options: {
@@ -62,6 +63,18 @@
             var _this = this;
 
             _this.ctx.drawImage(_this.girlPic, 100, 80, 600, 350);
+        },
+
+        canvasEvent : function(){
+        	var _this = this;
+
+        	_this.canvas.addEventListener('mousemove', function(e){
+        		if (e.offsetX >= 100 && e.offsetX <= 700 && e.offsetY >= 80 && e.offsetY <= 430) {
+        			_this.mouseInThis = true;
+        		} else {
+        			_this.mouseInThis = false;
+        		}
+        	})
         }
     }
 
@@ -102,18 +115,25 @@
             _this.ySpd = (Util.getRandom(0, 3) - 1.5) * 0.01; // 每次y轴偏移量
 
             _this.posId = Util.getRandom(1, 8);
+            _this.opacity = 0;
         },
 
         draw: function() {
-            var _this = this;
+            var _this = this,
+            	_canvas = canvas;
 
+            _canvas.ctx.save();
+            _canvas.ctx.globalAlpha = _this.opacity;
             Util.preImage('./src/star.png', function(img) {
                 canvas.ctx.drawImage(img, _this.posId * 7, 0, 7, 7, _this.x, _this.y, 7, 7);
             })
+            _canvas.ctx.restore();
+
         },
 
         upDate : function(){
-        	var _this = this;
+        	var _this = this,
+        		_canvas = canvas;
 
         	_this.timer += deltaTime;
         	_this.x += _this.xSpd * deltaTime;
@@ -128,6 +148,19 @@
         		_this.posId ++;
         		_this.posId %= _this.showSpeed;
         		_this.timer = 0;
+        	}
+
+        	var speed = 0.002 * deltaTime;
+        	if (_canvas.mouseInThis) {
+        		_this.opacity += speed;
+        		if (_this.opacity > 1) {
+        			_this.opacity = 1;
+        		}
+        	} else {
+        		_this.opacity -= speed;
+        		if (_this.opacity < 0) {
+        			_this.opacity = 0;
+        		}
         	}
 
         }
