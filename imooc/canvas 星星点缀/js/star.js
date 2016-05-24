@@ -42,7 +42,6 @@ starObj.prototype = {
 			this.init();
 			return;
 		}
-		if (this.y > 450) this.y = Math.random() * 350 + 100;
 
 		if (this.timer > 100) {
 			this.posId ++;
