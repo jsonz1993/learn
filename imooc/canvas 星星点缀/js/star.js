@@ -21,8 +21,15 @@ starObj.prototype = {
 	},
 
 	draw : function(){
+
+		ctx.save();
+
+		ctx.globalAlpha = live;
+
 		// img, sx, sy, swidth, sheight, x , y, width, height
 		ctx.drawImage(starPic, this.posId * 7 , 0, 7, 7, this.x, this.y, 7, 7);
+
+		ctx.restore();
 	},
 
 	upDate : function(){
@@ -50,4 +57,24 @@ function drawStars() {
 		stars[i].upDate();
 		stars[i].draw();
 	}
+}
+
+function aliveUpdate() {
+
+	var speed = 0.002 * deltaTime;
+	if (switchY) {
+		live += speed;
+
+		if (live > 1) {
+			live = 1;
+		}
+	} else {
+		live -= speed;
+
+		if (live < 0) {
+			live = 0;
+		}
+	}
+
+
 }

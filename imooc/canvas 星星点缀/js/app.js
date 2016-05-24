@@ -1,6 +1,6 @@
 var can, ctx, canvasW, canvasH, girlPic = new Image(), starPic = new Image(), stars = [];
 
-var lastTime, deltaTime, num = 100,switchY = false;
+var lastTime, deltaTime, num = 100, switchY = false, live = 0;
 
 function init() {
     can = document.getElementById('canvas');
@@ -40,6 +40,7 @@ function gameloop(){
     drawBackground();
     drawGirl();
     drawStars();
+    aliveUpdate();
 }
 
 function drawGirl(){
@@ -53,7 +54,8 @@ function mousemove(e){
 
         if (pX > 100 && pX < 700 && pY > 80 && pY < 430) {
             switchY = true;
-            console.log(switchY);
+        } else {
+            switchY = false;
         }
     }
 }
