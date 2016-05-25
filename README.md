@@ -28,7 +28,7 @@ __快速刷!__
 [用字体在网页中画ICON图标](http://www.imooc.com/view/243)
 [demo](https://github.com/zhangxinxinWTB/learn/tree/master/imooc/icon)√ __比较简单的复习了一下__
 
-[canvas 星星点缀](http://www.imooc.com/learn/338)
+[canvas 星星点缀](http://www.imooc.com/learn/338) √
 [demo](https://github.com/zhangxinxinWTB/learn/tree/master/imooc/canvas%20%E6%98%9F%E6%98%9F%E7%82%B9%E7%BC%80)
 ______
 
