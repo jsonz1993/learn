@@ -19,7 +19,7 @@
                 this.d = f > 40 ? 8 : this.d; // 大于40级难度系数改为 8
                 this.d = f > 50 ? 5 : this.d; // 大于50级难度系数改为 5
 
-                var h = Math.floor(Math.random() * e * e), // 生成一个随机数，用于设置目标box
+                var h = Math.floor(Math.random() * e * e), // 生成一个随机数，用于设置目标色块
                     i = this.getColor(255 - this.d), // 干扰色
                     j = this.getLvColor(i[0]); // 目标颜色
 
@@ -49,6 +49,7 @@
                 return [c, d]
             },
 
+            /*说明：获取游戏结束说明*/
             getGameOverText: function(lv) {
                 var b = 20 > lv ? 0 : Math.ceil((lv - 20) / 10); // 小于20分都为瞎子，大于20分的除十向上取整去匹配等级
                 var c = this.lvT[b] || _.last(this.lvT);  // 利用b去匹配等级，如果没有则用最高级
