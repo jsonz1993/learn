@@ -182,7 +182,7 @@ var _lang = {
 
                     //给box绑定class和html
                     box.attr("class", d).html(c);
-                    // 后面的 暂时不解 ？？？
+                    // 调用相应的api 对色块配置颜色 type 等
                     this.api.render(this.lvMap, this.lv);
                 }
             },
