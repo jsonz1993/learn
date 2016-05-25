@@ -28,7 +28,8 @@ __快速刷!__
 [用字体在网页中画ICON图标](http://www.imooc.com/view/243)
 [demo](https://github.com/zhangxinxinWTB/learn/tree/master/imooc/icon)√ __比较简单的复习了一下__
 
-__中级的刷一波了 下一阶段刷高级HTML+CSS__
+[canvas 星星点缀](http://www.imooc.com/learn/338) √
+[demo](https://github.com/zhangxinxinWTB/learn/tree/master/imooc/canvas%20%E6%98%9F%E6%98%9F%E7%82%B9%E7%BC%80)
 ______
 
 [CSS深入理解系列](http://www.imooc.com/index/search?words=CSS%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3)
@@ -42,10 +43,6 @@ ______
 [React实战--打造画廊应用（下）](http://www.imooc.com/learn/652)
 
 [十天精通CSS3](http://www.imooc.com/learn/33)
-
-[java1](http://www.imooc.com/learn/587)
-
-[java2](http://www.imooc.com/learn/631)
 
 ------
 
@@ -63,8 +60,10 @@ ______
 #####存放正在学习的东西放在目录下方便查看，也是最高的学习优先级
 
 ------
-##跳槽作品
+[http://htmlpreview.github.io/](http://htmlpreview.github.io/) 可以复制html链接看预览
 
+------
+##跳槽作品
 
 ###### 爬虫做图表
 ###### [造轮子](http://strml.net/)

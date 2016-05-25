@@ -54,3 +54,36 @@ __window 循环__
 
 `img.complete`  返回浏览器是否已经加载完成
 
+
+
+#### 总结
+_____
+
+1. 如何轮播序列帧
+	1. setTimeout
+	2. setInterval
+	3. requestAnimationFrame(需要做兼容处理) 
+
+2. canvas API
+	1. drawImage(img, sX, sY, sWidth, sHeight, x, y, width, height)
+	2. globalAlpha
+	3. Save
+	4. Restore
+3. 为canvas内部添加鼠标事件
+ 
+
+### 思路
+____
+
+1. 搭建网页结构
+2. 绘制背景
+3. 绘制女孩图片
+4. 画星星
+	1. 在画布上绘制一个星星
+	2. 绘制n个星星
+	3. 序列帧动起来
+		1. 星星随机展示 
+		2. 星星随机位置
+		3. 星星闪烁
+		4. 星星移动
+	4. 鼠标与星星互动

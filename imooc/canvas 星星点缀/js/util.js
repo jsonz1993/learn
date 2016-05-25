@@ -1,20 +1,3 @@
-var Util = {
-    
-
-    preImage: function(url, callback) {
-        var img = new Image();
-        img.src = url;
-
-        if (img.complate) {
-            callback(img)
-        } else {
-            img.addEventListener('load', function() {
-                callback(img);
-            }, false);
-        }
-    }
-}
-
 window.requestAnimFrame = (function(){
   return  window.requestAnimationFrame       ||
           window.webkitRequestAnimationFrame ||
@@ -23,3 +6,15 @@ window.requestAnimFrame = (function(){
             window.setTimeout(callback, 1000 / 60);
           };
 })();
+
+window.preImg = function(url, callback){
+	var img = new Image();
+	img.url = url;
+	if (img.complate) {
+		callback(img);
+	} else {
+		img.onload = function(){
+			callback(img);
+		}
+	}
+}
