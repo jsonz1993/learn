@@ -84,7 +84,7 @@ var _lang = {
             renderUI: function() {
                 var isLandscape = 90 == window.orientation || -90 == window.orientation; // 判断横竖屏 移动端才有
                 var width = isLandscape ? window.innerHeight : window.innerWidth; // 根据横竖屏去获取页面高度 or 宽度
-                width -= 20; // 不解？？？
+                width -= 20; // 可删除 ？？？
                 width = Math.min(width, 500); // 最小宽度取 500
                 box.width(width).height(width); // 设置为一个正方形
                 this.el.show(); // 显示dom 盒子
@@ -134,8 +134,8 @@ var _lang = {
                 this._pause = false; // 暂停标识改为false
                 this.lv = "undefined" != typeof this.lv ? this.lv + 1 : 0; // 初始化等级lv
                 this.lvMap = this.config.lvMap[this.lv] || _.last(this.config.lvMap); // 初始化色块个数，超出设定等级则用最后一个
-                this.renderMap(); // 不解？？？
-                this.renderInfo(); // 不解 ？？？
+                this.renderMap(); // 生成dom,填充到box盒子
+                this.renderInfo(); // 更新分数显示
                 // 判断调用时间倒数
                 this.timer ||
                     (this.timer = setInterval(_.bind(this.tick, this), 1000));
@@ -186,7 +186,7 @@ var _lang = {
                     this.api.render(this.lvMap, this.lv);
                 }
             },
-            /*说明：显示更新分数显示*/ 
+            /*说明：更新分数显示*/ 
             renderInfo: function() {
                 this.score += "color2" == this.type ? this.lvMap / 2 : 1;
                 b.lv.text(this.score) // 显示得分
@@ -225,7 +225,7 @@ var _lang = {
             /*说明：进入下一等级事件*/
             nextLv: function() {
                 this.time += this.config.addTime;// 为强者续1秒!!!
-                b.time.text(parseInt(this.time));  // 更新时间
+                b.time.text(parseInt(this.time));  // 更新时间 可删除？？？
                 // 如果不是暂停，重新调用start
                 if(!this._pause)
                     this.start();
