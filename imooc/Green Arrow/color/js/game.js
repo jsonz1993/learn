@@ -68,7 +68,7 @@ var _lang = {
                 this.type = type; // 初始化类型
                 this.target = 'color2' == type ? 2 : 1; // 初始化游戏类型
                 this.api = API[type]; // 拿到游戏类型的api
-                this.config = _cconfig[type]; // 拿到游戏类型的配置
+                this.config = _config[type]; // 拿到游戏类型的配置
                 this.lang = _lang[_config.lang]; // 拿到游戏类型的语言文字配置
                 b.mode.data("type", "color" == type ? "color2" : "color").html("color" == type ? this.lang.btn_double : this.lang.btn_normal); // 根据data 去显示按钮的文字
                 this.reset(); // 调用初始化等级和时间
@@ -83,8 +83,8 @@ var _lang = {
             /*说明： 初始化UI 包括判断横竖屏*/
             renderUI: function() {
                 var isLandscape = 90 == window.orientation || -90 == window.orientation; // 判断横竖屏 移动端才有
-                var width = isLandscape ? window.innerHeight : window.innerWidth; // 根据横竖屏去获取页面高度 or 宽度
-                width -= 20; // 可删除 ？？？
+                var wid取页面高度 or 宽度
+                width -= 20; // 可删除 ？？？th = isLandscape ? window.innerHeight : window.innerWidth; // 根据横竖屏去获
                 width = Math.min(width, 500); // 最小宽度取 500
                 box.width(width).height(width); // 设置为一个正方形
                 this.el.show(); // 显示dom 盒子
