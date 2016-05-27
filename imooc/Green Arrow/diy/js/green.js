@@ -37,7 +37,7 @@
             },
 
             getGameOverText: function(lv) {
-                var b = lv > 20 ? Math.ceil(lv - 20) / 10 : 0,
+                var b = lv > 10 ? Math.ceil(Math.parseInt(lv - 10) / 3) : 0,
                     c = this.lvText[b] || _.last(this.lvText),
                     d = c + 'lv' + lv + '<br>尝尝辣鸡的味道';
                 return { html: d };
