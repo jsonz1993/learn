@@ -4,13 +4,13 @@ var _conf = {
         allTime : 60,
         color : {
         	allTime : 60,
-        	addTime : .5,
+        	addTime : 1,
         	lvMap: [2, 3, 4, 5, 5, 6, 6, 7, 7, 7, 8, 8, 8, 8, 8, 8, 9],
         	
         },
         green : {
         	allTime : 60,
-        	addTime : .5,
+        	addTime : 1,
         	lvMap: [2, 3, 4, 5, 5, 6, 6, 7, 7, 7, 8, 8, 8, 8, 8, 8, 9],
         	
         }

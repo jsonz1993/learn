@@ -128,7 +128,7 @@
                 this.time --;
                 dom.time.html(this.time);
                 this.time <= 5 && dom.time.addClass('danger');
-                if (!this.time) {
+                if (this.time <= 0) {
                     this.gameOver();
                 }
             },
