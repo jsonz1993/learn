@@ -71,8 +71,11 @@
             			_this.nextLv();
             		} else {
                         _this.time -= _this.config.lessTime;
+                        if (_this.time == 0) {
+                            _this.time = 0;
+                        }
                         if (_this.time <= 0) {
-                            this.gameOver();
+                            _this.gameOver();
                         }
                     }
                     
@@ -149,19 +152,21 @@
             tick : function(){
                 if (this.isPause) return;
                 this.time --;
+                this.time < 0 ? 0 : this.time;
                 dom.time.html(this.time);
                 if (this.time >= 5) {
                     dom.time.removeClass('danger');
                 } else {
                     dom.time.addClass('danger');
                 }
-                if (Math.floor(this.time) <= 0) {
+                if (parseInt(this.time) == 0) {
                     this.gameOver();
                 }
             },
 
             /*说明：gameOver事件*/
             gameOver : function(){
+                this.time = 0;
             	var gameOverText = this.api.getGameOverText ? this.api.getGameOverText(this.scored) : '游戏结束';
             	dom.content.hide();
             	dom.gameover.find('h3').html(gameOverText.html).end().show();
