@@ -37,6 +37,10 @@
             	var isLandscape = window.innerHeight === 90 || window.innerHeight === -90,
             		length = isLandscape ? window.innerHeight : window.innerWidth;
 
+                if (length > 500) {
+                    length = 500;
+                }
+
                 length -= 40;
             	dom.box.width(length).height(length);
             	this.el.show();
@@ -80,7 +84,7 @@
             start : function(){
                 var _this = this;
 
-            	_this.time < 5 && dom.time.addClass('danger');
+            	_this.time > 5 && dom.time.remove('danger');
             	dom.dialog.hide();
             	_this.isPause = false;
             	_this.lv = typeof _this.lv === 'undefined' ? 0 : _this.lv + 1; // 做判断是nextLv调用，还是初始化调用
