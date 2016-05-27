@@ -68,7 +68,10 @@
             			_this.scored ++;
 
             			_this.nextLv();
-            		}
+            		} else {
+                        _this.time -= _this.config.lessTime;
+                        dom.time.text(_this.time);
+                    }
             	});
 
             	dom.pauseBtn.on(event, _.bind(_this.pause, _this));
