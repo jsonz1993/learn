@@ -14,7 +14,8 @@ var _conf = {
         	addTime : 0,
             lessTime : 1,
         	lvMap: [2, 3, 4, 5, 5, 6, 6, 7, 7, 7, 8, 8, 8, 8, 8, 8, 9],
-        	
+        	bg : './img/black1.png',
+            lvBg : './img/black2.png'
         }
     },
     _lang = {
@@ -27,7 +28,7 @@ var _conf = {
         },
         green: {
             title: '寻找绿箭侠',
-            btntext: '绿箭模式',
+            btnText: '绿箭模式',
             lv_txt: ["色不起来", "有色心没色胆", "好色之徒", "色胆包天", "色不知耻", "英雄本色", "色射具全", "裸色舔香", "衣冠禽色"],
         },
     }
