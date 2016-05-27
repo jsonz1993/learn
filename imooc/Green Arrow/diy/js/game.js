@@ -84,7 +84,6 @@
             start : function(){
                 var _this = this;
 
-            	_this.time > 5 && dom.time.remove('danger');
             	dom.dialog.hide();
             	_this.isPause = false;
             	_this.lv = typeof _this.lv === 'undefined' ? 0 : _this.lv + 1; // 做判断是nextLv调用，还是初始化调用
@@ -134,7 +133,11 @@
                 if (this.isPause) return;
                 this.time --;
                 dom.time.html(this.time);
-                this.time <= 5 && dom.time.addClass('danger');
+                if (this.time >= 5) {
+                    dom.time.removeClass('danger');
+                } else {
+                    dom.time.addClass('danger');
+                }
                 if (this.time <= 0) {
                     this.gameOver();
                 }
