@@ -67,7 +67,6 @@
 		}
 	}
 
-
 	$('body').show();
 	app.init();
 

@@ -3,7 +3,7 @@ var _conf = {
         pic: ['img/black1.png', 'img/black2.png'],
         allTime : 60,
         color : {
-        	allTime : 60,
+        	allTime : 1,
         	addTime : 1,
         	lvMap: [2, 3, 4, 5, 5, 6, 6, 7, 7, 7, 8, 8, 8, 8, 8, 8, 9],
         	

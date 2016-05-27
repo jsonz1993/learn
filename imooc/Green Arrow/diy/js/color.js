@@ -49,7 +49,7 @@
 
             getGameOverText: function(lv) {
                 var b = lv > 20 ? Math.ceil(lv - 20) / 10 : 0,
-                    c = this.lvT[b] || _.last(this.lvT),
+                    c = this.lvText[b] || _.last(this.lvText),
                     d = c + 'lv' + lv;
                 return { html: d };
             }

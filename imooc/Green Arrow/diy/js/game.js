@@ -3,7 +3,8 @@
     var dom = {
     		btnMode : $('#mode'),
     		box : $('#box'),
-    		pause : $('.btn-pause'),
+    		pauseBtn : $('.btn-pause'),
+            pause : $('.pause'),
     		room : $('#room'),
     		dialog : $('#dialog'),
     		resume : $('.btn-resume'),
@@ -43,6 +44,8 @@
 
             reset : function(){
             	this.time = this.config.allTime;
+                this.scored = 0;
+                dom.time.text(this.time);
             	this.lv = -1;
             },
 
@@ -64,12 +67,11 @@
             		}
             	});
 
-            	dom.pause.on(event, _.bind(_this.pause, _this));
+            	dom.pauseBtn.on(event, _.bind(_this.pause, _this));
             	dom.resume.on(event, _.bind(_this.resume, _this));
             	dom.restart.on(event, function(){
-            		_this.scored = 0;
-            		dom.time.html(0);  // 重置时间显示
-            		_this.reset();
+                    _this.reset();
+                    _this.resume();
             		_this.start();
             	})
 
@@ -97,7 +99,7 @@
             		c += '<span></span>'
             	});
 
-            	dom.box.addClass(d).html(c);
+            	dom.box.attr('class' ,d).html(c);
 
             	this.api.init(this.lvMap, this.lv);
             },
@@ -107,6 +109,7 @@
             },
 
             pause : function(){
+                dom.pause.show();
             	dom.room.fadeOut();
             	dom.dialog.fadeIn();
             	this.isPause = true;
@@ -136,7 +139,7 @@
             gameOver : function(){
             	var gameOverText = this.api.getGameOverText(this.scored);
             	dom.content.hide();
-            	dom.gameover.find('h3').html(gameOverText.html).show();
+            	dom.gameover.find('h3').html(gameOverText.html).end().show();
 
             	dom.box.find('span').fadeOut(1000, function(){
             		dom.dialog.show();
