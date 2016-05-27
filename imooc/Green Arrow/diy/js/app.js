@@ -17,6 +17,7 @@
 	app = {
 		/*说明：调用事件绑定，调用loading*/
 		init : function(){
+			$('body').show();
 			this.loading();
 			this.initEvent();
 		},
