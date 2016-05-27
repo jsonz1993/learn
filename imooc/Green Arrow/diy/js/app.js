@@ -52,7 +52,7 @@
 			setTimeout(function(){
 				dom.loading.fadeOut();
 				dom.index.fadeIn();
-			}, 1000)
+			}, 1)
 		},
 		
 

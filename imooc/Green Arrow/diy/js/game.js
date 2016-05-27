@@ -29,13 +29,14 @@
             	this.renderUI();
             	this.hasEvent || this.initEvent();
             	this.hasEvent = true;
-
+                this.start();
             },
 
             renderUI : function(){
             	var isLandscape = window.innerHeight === 90 || window.innerHeight === -90,
             		length = isLandscape ? window.innerHeight : window.innerWidth;
 
+                length -= 40;
             	dom.box.width(length).height(length);
             	this.el.show();
             },
@@ -49,13 +50,13 @@
             	var event = 'ontouchstart' in document.documentElement ? 'touchstart' : 'click',
             		_this = this;
 
-            	$(window).resize(_this.renderUI);
+            	$(window).resize(_.bind(_this.renderUI, _this));
 
             	dom.box.on(event, 'span', function(){
             		var $this = $(this),
             			_type = $this.data('type');
 
-            		if (type === '1') {
+            		if (_type === '1') {
             			$this.css('backgroundColor', '#f00').removeAttr('dataType').html('<em></em>');
             			_this.scored ++;
 
@@ -75,15 +76,16 @@
             },
 
             start : function(){
-            	this.time < 5 && dom.time.addClass('danger');
-            	this.scored = 0;
+                var _this = this;
+
+            	_this.time < 5 && dom.time.addClass('danger');
             	dom.dialog.hide();
-            	this.isPause = false;
-            	this.lv = typeof this.lv === 'undefined' ? 0 : this.lv + 1; // 做判断是nextLv调用，还是初始化调用
-            	this.lvMap = this.config.lvMap[this.lv] || _.last(this.config.lvMap);
-            	this.renderMap();
-            	this.renderInfo();
-            	this.timer || (this.timer = setInterval(_.bind(this.tick, this), 1000))
+            	_this.isPause = false;
+            	_this.lv = typeof _this.lv === 'undefined' ? 0 : _this.lv + 1; // 做判断是nextLv调用，还是初始化调用
+            	_this.lvMap = _this.config.lvMap[_this.lv] || _.last(_this.config.lvMap);
+            	_this.renderMap();
+            	_this.renderInfo();
+            	_this.timer || (this.timer = setInterval(_.bind(this.tick, this), 1000));
             },
 
             renderMap : function(){
@@ -95,7 +97,7 @@
             		c += '<span></span>'
             	});
 
-            	box.addClass(d).html(c);
+            	dom.box.addClass(d).html(c);
 
             	this.api.init(this.lvMap, this.lv);
             },
@@ -119,6 +121,16 @@
             nextLv : function(){
             	this.time += this.config.addTime;
             	this.start();
+            },
+
+            tick : function(){
+                if (this.isPause) return;
+                this.time --;
+                dom.time.html(this.time);
+                this.time <= 5 && dom.time.addClass('danger');
+                if (!this.time) {
+                    this.gameOver();
+                }
             },
 
             gameOver : function(){
