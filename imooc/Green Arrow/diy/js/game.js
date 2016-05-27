@@ -68,15 +68,15 @@
             		if (_type == '1') {
             			$this.css('backgroundColor', '#f00').removeAttr('dataType').html('<em></em>');
             			_this.scored ++;
-
             			_this.nextLv();
             		} else {
                         _this.time -= _this.config.lessTime;
-                        dom.time.text(_this.time);
                         if (_this.time <= 0) {
                             this.gameOver();
                         }
                     }
+                    
+                    dom.time.text(_this.time);
             	});
 
             	dom.pauseBtn.on(event, _.bind(_this.pause, _this));
