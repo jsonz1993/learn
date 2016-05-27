@@ -73,6 +73,9 @@
             		} else {
                         _this.time -= _this.config.lessTime;
                         dom.time.text(_this.time);
+                        if (_this.time <= 0) {
+                            this.gameOver();
+                        }
                     }
             	});
 
