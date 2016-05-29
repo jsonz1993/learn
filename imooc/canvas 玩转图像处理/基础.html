@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body {
+			background: #000;
+		}
+		canvas {
+			display: block;
+			margin: 0 auto;
+			border: 1px solid #aaa;
+		}
+
+		input {
+			display: block;
+			margin: 20px auto;
+			width: 600px;
+		}
+	</style>
+</head>
+<body>
+
+	<canvas id="canvas"></canvas>
+	<input type="range" id="scale" min="0.5" max="3.0" step="0.01" value="1">
+	
+	<script>
+		var canvas = document.getElementById('canvas'),
+			ctx = canvas.getContext('2d'),
+			scale = document.getElementById('scale'),
+			w = 1152,
+			h = 768;
+
+		window.onload = init;
+
+		function init() {
+			canvas.width = w ;
+			canvas.height = h ;
+
+			var val = scale.value;
+
+			loadImage('./image/img-lg.jpg', function(img){
+				drawImageByScale(val, img);
+
+				scale.addEventListener('mousemove', function(){
+					val = scale.value;					
+					drawImageByScale(val, img);
+				})
+			})
+		}
+
+		function drawImageByScale(val, img) {
+			var imgW = canvas.width * val,
+				imgH = canvas.height  * val,
+				sx = canvas.width / 2 - imgW / 2,
+				sy = canvas.height / 2 - imgH / 2;
+
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			ctx.drawImage(img, sx, sy, imgW, imgH);
+		}
+
+		var loadImage = function(src, callback){
+			var img = new Image();
+			img.src = src;
+			if (img.complete) callback(img)
+			else {
+				img.addEventListener('load', function(){
+					callback(this);
+				}, false)
+			}
+		}
+	</script>
+</body>
+</html>
