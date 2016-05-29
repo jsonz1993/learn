@@ -1,7 +1,7 @@
-[全名寻找绿箭侠](http://www.imooc.com/video/3274)
+[全民寻找绿箭侠](http://www.imooc.com/video/3274)
 
 ##### 新知识点 Underscore 框架库
-工具哭，提供jq没有的一些工具方法
+工具库，提供jq没有的一些工具方法
 
 [Underscore api](http://www.css88.com/doc/underscore/)
 
@@ -60,7 +60,7 @@ __app.js__
 主要负责初始化整个页面，包括切换页面调用游戏事件等
 
 1. 声明常用的dom变量
-2. 判断手机类型
+2. 判断手机类型 window.navigator.userAgent
 3. 声明app作为控制主流程的对象
 	1. init 
 	   1. 初始化 调用事件绑定和loading事件
