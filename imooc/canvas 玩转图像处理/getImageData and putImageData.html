@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas1"></canvas>
+    <canvas id="canvas2"></canvas>
+    <button id="btn">绿色</button>
+    <button id="btn2">红色</button>
+    <button id="btn3">黄色</button>
+    <button id="btn4">灰度</button>
+    <button id="btn5">黑白</button>
+    <button id="btn6">反色</button>
+    <button id="btn7">模糊</button>
+    <script>
+    var canvasA = document.getElementById('canvas1'),
+        ctxA = canvasA.getContext('2d'),
+        canvasB = document.getElementById('canvas2'),
+        ctxB = canvasB.getContext('2d'),
+        btn = document.getElementsByTagName('button');
+
+    var img = new Image();
+
+    window.onload = function() {
+        img.src = 'image/img.jpg';
+        img.onload = function() {
+            ctxA.drawImage(img, 0, 0, canvasA.width, canvasA.height);
+        }
+    }
+
+
+    for (var i = 0; i < btn.length; i++) {
+        btn[i].addEventListener('click', chooseColor)
+    }
+
+    function chooseColor(e) {
+        var imgData = ctxA.getImageData(0, 0, canvasA.width, canvasA.height),
+            pixelData = imgData.data;
+
+        switch (e.target.id) {
+            case 'btn':
+                for (var i = 0; i < canvasB.width * canvasB.height; i++) {
+                    pixelData[4 * i + 0] = 0;
+                }
+                break;
+
+            case 'btn2':
+                for (var i = 0; i < canvasB.width * canvasB.height; i++) {
+                    pixelData[4 * i + 1] = 0;
+                }
+                break;
+
+            case 'btn3':
+                for (var i = 0; i < canvasB.width * canvasB.height; i++) {
+                    pixelData[4 * i + 2] = 0;
+                }
+                break;
+
+            case 'btn4':
+            case 'btn5':
+                for (var i = 0; i < canvasB.width * canvasB.height; i++) {
+                    var r = pixelData[i * 4 + 0],
+                        g = pixelData[i * 4 + 1],
+                        b = pixelData[i * 4 + 2],
+                        v,
+                        // 灰度
+                        grey = r * .3 + g * .59 + b * .11; // 固定的灰度值
+
+                        if (e.target.id === 'btn4') {
+                        		v = grey;
+                        } else {
+                        	// 黑白
+                        	if (grey > 255 /2) {
+                        		v = 255;
+                        	} else {
+                        		v = 0;
+                        	}
+                        }
+
+                        pixelData[i * 4 + 0] = v;
+                        pixelData[i * 4 + 1] = v;
+                        pixelData[i * 4 + 2] = v;
+                }
+                break;
+            case 'btn6' :
+            	for (var i = 0; i < canvasB.width * canvasB.height; i++) {
+            		pixelData[i * 4 + 0] = 255 - pixelData[i * 4 + 0];
+            		pixelData[i * 4 + 1] = 255 - pixelData[i * 4 + 1];
+            		pixelData[i * 4 + 2] = 255 - pixelData[i * 4 + 2];
+            	}
+            	break;
+
+            case 'btn7' :
+            	ctx.putImageData(imgData, 0, 0, 0, 0, canvasB.width, canvasB.height)
+            	var tempImageData = ctx.getImageData(0, 0, canvasA.width, canvasA.height);
+
+        }
+
+
+        ctxB.putImageData(imgData, 0, 0, 0, 0, canvasB.width, canvasB.height);
+    }
+
+    </script>
+</body>
+
+</html>
+
+
