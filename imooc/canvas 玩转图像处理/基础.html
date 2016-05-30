@@ -18,58 +18,159 @@
 			margin: 20px auto;
 			width: 600px;
 		}
+		#mark {
+			display: none;
+			margin: 0 auto;
+			border: 1px solid #aaa;
+		}
+		#offCanvas {
+			display: none;
+		}
 	</style>
 </head>
 <body>
 
 	<canvas id="canvas"></canvas>
+	<canvas id="mark"></canvas>
+	<canvas id="offCanvas"></canvas>
 	<input type="range" id="scale" min="0.5" max="3.0" step="0.01" value="1">
 	
 	<script>
 		var canvas = document.getElementById('canvas'),
+			mark = document.getElementById('mark'),
+			offCanvas = document.getElementById('offCanvas'),
 			ctx = canvas.getContext('2d'),
-			scale = document.getElementById('scale'),
+			markCtx = mark.getContext('2d'),
+			offCtx = offCanvas.getContext('2d'),
+			range = document.getElementById('scale'),
+			val = range.value;
 			w = 1152,
-			h = 768;
+			h = 768,
+			isMouseDown = false,
+			scale = 3;
 
-		window.onload = init;
+
+		window.addEventListener('load', init, false)
 
 		function init() {
-			canvas.width = w ;
-			canvas.height = h ;
 
-			var val = scale.value;
+			canvas.width = w;
+			canvas.height = h;
 
-			loadImage('./image/img-lg.jpg', function(img){
-				drawImageByScale(val, img);
+			drawImage(val);
 
-				scale.addEventListener('mousemove', function(){
-					val = scale.value;					
-					drawImageByScale(val, img);
-				})
+			range.addEventListener('mousemove', function(){
+				val = range.value;
+				drawImage(val);
+			}, false);
+
+			// setup waterMake canvas
+			waterMakrCanvas();
+		}
+
+		function waterMakrCanvas() {
+			mark.width = 600;
+			mark.height = 100;
+
+			markCtx.font = 'bold 50px Arial';
+			markCtx.lineWidth = '1';
+			markCtx.fillStyle = 'rgba(255, 255, 255, .5)';
+			markCtx.textBaseline = 'middle';
+			markCtx.fillText('骚年郎', 20, 50);
+		}
+
+		function drawImage(val) {
+			var imgW = val * canvas.width,
+				imgH = val * canvas.height,
+				w = (canvas.width - imgW) / 2,
+				h = (canvas.height - imgH) / 2;
+
+
+			loadImg('./image/img-lg.jpg', function(img){
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				ctx.drawImage(img, w, h, imgW, imgH);
+				ctx.drawImage(mark, canvas.width - mark.width, canvas.height - mark.height);
+				offCanvas.width = img.width;
+				offCanvas.height = img.height;
+				offCtx.drawImage(img, 0, 0);
 			})
 		}
 
-		function drawImageByScale(val, img) {
-			var imgW = canvas.width * val,
-				imgH = canvas.height  * val,
-				sx = canvas.width / 2 - imgW / 2,
-				sy = canvas.height / 2 - imgH / 2;
-
-			ctx.clearRect(0, 0, canvas.width, canvas.height);
-			ctx.drawImage(img, sx, sy, imgW, imgH);
-		}
-
-		var loadImage = function(src, callback){
+		function loadImg(src, callback) {
 			var img = new Image();
-			img.src = src;
-			if (img.complete) callback(img)
-			else {
+				img.src = src;
+			if (img.complete) {
+				callback && callback(img)
+			} else {
 				img.addEventListener('load', function(){
-					callback(this);
+					callback && callback(this);
 				}, false)
 			}
 		}
+
+		function windowToCanvas(x, y) {
+			var bbox = canvas.getBoundingClientRect();
+			return {
+				x : x- bbox.left,
+				y : y - bbox.top
+			}
+		}
+
+		canvas.addEventListener('mousedown', function(e){
+			e.preventDefault();
+			var point = windowToCanvas(e.clientX, e.clientY);
+			isMouseDown = true;
+
+			drawCanvasWithMagnifier(true, point);
+		})
+
+		canvas.addEventListener('mousemove', function(e){
+			e.preventDefault();
+			if (!isMouseDown) return;
+			var point = windowToCanvas(e.clientX, e.clientY);
+			drawCanvasWithMagnifier(true, point);
+		})
+
+		canvas.addEventListener('mouseup', function(e){
+			e.preventDefault();
+			isMouseDown = false;
+			drawCanvasWithMagnifier(false);
+		})
+
+		canvas.addEventListener('mouseout', function(e){
+			e.preventDefault();
+			isMouseDown = false;
+			drawCanvasWithMagnifier(false);
+		})
+
+		function drawCanvasWithMagnifier(isShowMagnifier, point){
+			ctx.clearRect(0, 0, w, h);
+			ctx.drawImage(offCanvas, 0, 0, w, h);
+			if (!isShowMagnifier) return;
+
+			drawMagnifier(point);
+		}
+
+		function drawMagnifier(point) {
+			var imgLg_cx = point.x * scale,
+				imgLg_cy = point.y * scale,
+				mr = 100,
+				sx = imgLg_cx - mr,
+				sy = imgLg_cy - mr,
+				dx = point.x - mr,
+				dy = point.y - mr;
+
+			ctx.save();
+			ctx.lineWidth = 10;
+			ctx.strokeStyle = '#069';
+			ctx.beginPath();
+			ctx.arc(point.x, point.y, mr, 0, Math.PI * 2);
+			ctx.stroke();
+			ctx.clip();
+			ctx.drawImage(offCanvas, sx, sy, 2*mr, 2*mr, dx, dy, 2*mr, 2*mr);
+			ctx.restore();
+		}
+
 	</script>
 </body>
 </html>

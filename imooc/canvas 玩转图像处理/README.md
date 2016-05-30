@@ -10,3 +10,5 @@
 	drawImage(img,
 			  sx, sy, sw, sh,
 			  dx, dy, dw, dh)
+
+跟慕课敲了一边，有挺多待优化的地方，等看完canvas绘图详解后全过。自定义放大镜颜色，大小，形状，放大倍数
