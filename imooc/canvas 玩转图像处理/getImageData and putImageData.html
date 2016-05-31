@@ -16,6 +16,7 @@
     <button id="btn5">黑白</button>
     <button id="btn6">反色</button>
     <button id="btn7">模糊</button>
+    <button id="btn8">马赛克</button>
     <script>
     var canvasA = document.getElementById('canvas1'),
         ctxA = canvasA.getContext('2d'),
@@ -70,43 +71,68 @@
                         // 灰度
                         grey = r * .3 + g * .59 + b * .11; // 固定的灰度值
 
-                        if (e.target.id === 'btn4') {
-                        		v = grey;
+                    if (e.target.id === 'btn4') {
+                        v = grey;
+                    } else {
+                        // 黑白
+                        if (grey > 255 / 2) {
+                            v = 255;
                         } else {
-                        	// 黑白
-                        	if (grey > 255 /2) {
-                        		v = 255;
-                        	} else {
-                        		v = 0;
-                        	}
+                            v = 0;
                         }
+                    }
 
-                        pixelData[i * 4 + 0] = v;
-                        pixelData[i * 4 + 1] = v;
-                        pixelData[i * 4 + 2] = v;
+                    pixelData[i * 4 + 0] = v;
+                    pixelData[i * 4 + 1] = v;
+                    pixelData[i * 4 + 2] = v;
                 }
                 break;
-            case 'btn6' :
-            	for (var i = 0; i < canvasB.width * canvasB.height; i++) {
-            		pixelData[i * 4 + 0] = 255 - pixelData[i * 4 + 0];
-            		pixelData[i * 4 + 1] = 255 - pixelData[i * 4 + 1];
-            		pixelData[i * 4 + 2] = 255 - pixelData[i * 4 + 2];
-            	}
-            	break;
+            case 'btn6':
+                for (var i = 0; i < canvasB.width * canvasB.height; i++) {
+                    pixelData[i * 4 + 0] = 255 - pixelData[i * 4 + 0];
+                    pixelData[i * 4 + 1] = 255 - pixelData[i * 4 + 1];
+                    pixelData[i * 4 + 2] = 255 - pixelData[i * 4 + 2];
+                }
+                break;
 
-            case 'btn7' :
-            	ctx.putImageData(imgData, 0, 0, 0, 0, canvasB.width, canvasB.height)
-            	var tempImageData = ctx.getImageData(0, 0, canvasA.width, canvasA.height);
+            case 'btn7':
+                ctxA.putImageData(imgData, 0, 0, 0, 0, canvasB.width, canvasB.height)
+                var tempImageData = ctxA.getImageData(0, 0, canvasA.width, canvasA.height);
+                var tempPixelData = tempImageData.data;
+
+                var blurR = 1;
+                for (var i = blurR; i < canvasB.height - blurR; i++) {
+                    for (var j = blurR; j < canvasB.width - blurR; j++) {
+
+                        var totalr = 0,
+                            totalg = 0,
+                            totalb = 0;
+                        for (var dx = -blurR; dx <= blurR; dx++) {
+                            for (var dy = -blurR; dy <= blurR; dy++) {
+                                var x = i + dx;
+                                var y = j + dy;
+
+                                var p = x * canvasB.width + y;
+                                totalr += tempPixelData[p * 4 + 0];
+                                totalg += tempPixelData[p * 4 + 1];
+                                totalb += tempPixelData[p * 4 + 2];
+                            }
+                        }
+                        var p = i * canvasB.width + j,
+                            ttotalNum = (2 * blurR + 1);
+                        pixelData[p * 4 + 0] = totalr / ttotalNum;
+                        pixelData[p * 4 + 1] = totalg / ttotalNum;
+                        pixelData[p * 4 + 2] = totalb / ttotalNum;
+
+                    }
+                }
 
         }
 
 
         ctxB.putImageData(imgData, 0, 0, 0, 0, canvasB.width, canvasB.height);
     }
-
     </script>
 </body>
 
 </html>
-
-

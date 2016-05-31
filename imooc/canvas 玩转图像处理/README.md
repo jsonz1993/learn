@@ -26,3 +26,5 @@ context.putImageData(imgData, dx, dy, dirtyX, dirtyY, dirtyW, dirtyH)
 	g - pixelData[4 * i + 1]
 	b - pixelData[4 * i + 2]
 	a - pixelData[4 * i + 3]
+
+###### 回家看代码，全部撸一遍收工走人
