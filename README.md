@@ -3,8 +3,7 @@
 
 ---------------
 强行刷一波慕课网！
-
-[canvas 玩转图像处理](http://www.imooc.com/learn/476) 2天
+06-01开始
 
 [炫丽的倒计时效果Canvas绘图与动画基础](http://www.imooc.com/learn/133) 4天
 
@@ -14,8 +13,6 @@
 
 [CSS深入理解系列](http://www.imooc.com/index/search?words=CSS%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3) 1天
 
-[电商网站前端架构](http://www.imooc.com/learn/186) 2天
-
 [Rract入门](http://www.imooc.com/learn/504) 1天
 
 [React实战--打造画廊应用（上）](http://www.imooc.com/view/507) 1天
@@ -24,7 +21,7 @@
 
 [十天精通CSS3](http://www.imooc.com/learn/33) 1天
 
-__怒刷高程__ 7天
+__高程__ 7天
 
 ------
 
