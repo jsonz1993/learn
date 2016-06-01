@@ -19,4 +19,10 @@
 	用closePath() 会自动首尾相连
 
 ###### 画时钟圆
-CenterX : x + j * 2 ( R + 1) + (R + 1) 
+
+###### 全局变量
+	WINDOW_WIDTH
+	WINDOW_HEIGHT
+	RADIUS
+	MARGIN_TOP
+	MARGIN_LEFT
