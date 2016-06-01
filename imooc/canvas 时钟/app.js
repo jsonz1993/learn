@@ -19,10 +19,26 @@ window.onload = function (){
 
     curShowTimeSeconds = getCurShowTimeSeconds();
 
-    render(ctx);
+    setInterval(function(){
+        render(ctx);
+        upDate();
+    }, 50);
 };
 
+function upDate() {
+    var nextShowTimeSeconds = getCurShowTimeSeconds(),
+        nextHours = parseInt( nextShowTimeSeconds / 3600),
+        nextMinutes = parseInt(( nextShowTimeSeconds - nextHours * 3600) / 60),
+        nextSeconds = nextShowTimeSeconds % 60;
 
+    var hours = parseInt(curShowTimeSeconds / 3600),
+        minutes = parseInt(curShowTimeSeconds - hours * 3600) / 60,
+        seconds = curShowTimeSeconds % 60;
+
+    if (nextSeconds != seconds) {
+        curShowTimeSeconds = nextShowTimeSeconds;
+    }
+}
 
 function getCurShowTimeSeconds(){
     var curTime = new Date(),
@@ -33,6 +49,8 @@ function getCurShowTimeSeconds(){
 }
 
 function render(context){
+
+    context.clearRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
     var hours = parseInt(curShowTimeSeconds / 3600),
         minutes = parseInt(curShowTimeSeconds - hours * 3600) / 60,
         seconds = curShowTimeSeconds % 60;
