@@ -1,64 +1,68 @@
 /**
- * Created by Administrator on 2016/5/31.
+ * Created by Administrator on 2016/6/1.
  */
 
+var WINDOW_WIDTH = 1024,
+    WINDOW_HEIGHT = 768,
+    MARGIN_TOP = 60,
+    MARGIN_LEFT = 30,
+    R = 8,
+    endTime = new Date(2016, 5, 1, 18, 47, 52),
+    curShowTimeSeconds = 0;
 
-var arr = [
-    {
-        p: [{x: 0, y: 0}, {x: 250, y: 250},{x:500,y:0}],
-        color:'#caff67' // 绿色
-    },
-    {
-        p: [{x:0,y:0},{x:250,y:250},{x:0,y:500}],
-        color: '#67becf' // 蓝色
-    },
-    {
-        p:[{x:800,y:0},{x:800,y:400},{x:600,y:600},{x:600,y:200}],
-        color:'#ef3d61'
-    },
-    {
-        p:[{x:600,y:200},{x:600,y:600},{x:400,y:400}],
-        color:'#f9f51a'
-    },
-    {
-        p:[{x:400,y:400},{x:600,y:600},{x:400,y:800},{x:200,y:600}],
-        color:'#a594c0'
-    },
-    {
-        p:[{x:200,y:600},{x:400,y:800},{x:0,y:800}],
-        color:'#fa8ecc'
-    },
-    {
-        p:[{x:800,y:400},{x:800,y:800},{x:400,y:800}],
-        color:'#f6ca29'
-    }
-];
-
-window.onload = function(){
-
+window.onload = function (){
     var canvas = document.getElementById('canvas'),
         ctx = canvas.getContext('2d');
 
-    canvas.width = 500;
-    canvas.height = 500;
+    canvas.width = WINDOW_WIDTH;
+    canvas.height = WINDOW_HEIGHT;
 
-    for (var i = 0; i < arr.length; i++) {
-        draw(arr[i], ctx);
-    }
+    curShowTimeSeconds = getCurShowTimeSeconds();
+
+    render(ctx);
 };
 
-function draw(data, ctx){
-    ctx.beginPath();
 
-    ctx.moveTo(data.p[0].x, data.p[0].y);
-    for (var i = 1; i < data.p.length; i++) {
-        ctx.lineTo(data.p[i].x, data.p[i].y);
+
+function getCurShowTimeSeconds(){
+    var curTime = new Date(),
+        ret = endTime.getTime() - curTime.getTime();
+    ret = Math.round(ret / 1000);
+
+    return ret >= 0 ? ret : 0;
+}
+
+function render(context){
+    var hours = parseInt(curShowTimeSeconds / 3600),
+        minutes = parseInt(curShowTimeSeconds - hours * 3600) / 60,
+        seconds = curShowTimeSeconds % 60;
+
+    renderDigit(MARGIN_LEFT, MARGIN_TOP, parseInt(hours / 10), context);
+    renderDigit(MARGIN_LEFT + 15 * (R + 1), MARGIN_TOP, parseInt(hours % 10), context);
+
+    renderDigit(MARGIN_LEFT + 30 * (R + 1), MARGIN_TOP, 10, context);
+
+    renderDigit(MARGIN_LEFT + 39 * (R + 1), MARGIN_TOP, parseInt(hours % 10), context);
+    renderDigit(MARGIN_LEFT + 54 * (R + 1), MARGIN_TOP, parseInt(minutes / 10), context);
+
+    renderDigit(MARGIN_LEFT + 69 * (R + 1), MARGIN_TOP, 10, context);
+
+    renderDigit(MARGIN_LEFT + 78 * (R + 1), MARGIN_TOP, parseInt(seconds / 10), context);
+    renderDigit(MARGIN_LEFT + 93 * (R + 1), MARGIN_TOP, parseInt(seconds % 10), context);
+
+}
+
+function renderDigit(x, y, num, ctx){
+    ctx.fillStyle = 'rgb(0, 102, 153)';
+
+    for (var i = 0; i < digit[num].length; i++) {
+        for (var j = 0; j < digit[num][i].length; j++) {
+            if (digit[num][i][j] == 1) {
+                ctx.beginPath();
+                ctx.arc(x + j * 2 * ( R + 1 ) + ( R + 1), y + i * 2 * (R + 1) + (R + 1), R, 0, 2 * Math.PI);
+                ctx.closePath();
+                ctx.fill();
+            }
+        }
     }
-
-    ctx.fillStyle = 'black';
-    ctx.closePath();
-    ctx.fillStyle = data.color;
-    ctx.fill();
-
-    ctx.stroke();
 }
