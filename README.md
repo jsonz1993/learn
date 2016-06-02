@@ -5,13 +5,8 @@
 强行刷一波慕课网！
 06-01开始
 
-[炫丽的倒计时效果Canvas绘图与动画基础](http://www.imooc.com/learn/133) 4天
 
-[HTML5存储](http://www.imooc.com/learn/104) 2天
-
-[HTML5离线应用实战演练](http://www.imooc.com/learn/46) 3天
-
-[CSS深入理解系列](http://www.imooc.com/index/search?words=CSS%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3) 1天
+[HTML5存储](http://www.imooc.com/learn/104) 1天
 
 [Rract入门](http://www.imooc.com/learn/504) 1天
 
@@ -19,7 +14,7 @@
 
 [React实战--打造画廊应用（下）](http://www.imooc.com/learn/652) 1天
 
-[十天精通CSS3](http://www.imooc.com/learn/33) 1天
+[Vue-cnodejs-master] 7天
 
 __高程__ 7天
 

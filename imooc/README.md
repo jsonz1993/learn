@@ -45,4 +45,6 @@
 
 + [全名寻找绿箭侠](http://www.imooc.com/video/3274) __视频说得很乱，就自己看着代码整理思路撸了一遍__
 
++ [canvas 时钟](http://htmlpreview.github.io/?https://github.com/zhangxinxinWTB/learn/blob/master/imooc/canvas%20%E6%97%B6%E9%92%9F/self/index.html)
+
 	
