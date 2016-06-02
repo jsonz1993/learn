@@ -20,9 +20,8 @@
 
 ###### 画时钟圆
 
-###### 全局变量
-	WINDOW_WIDTH
-	WINDOW_HEIGHT
-	RADIUS
-	MARGIN_TOP
-	MARGIN_LEFT
+1. 绘制静态时间
+2. 刷新50ms 更新时间
+3. 判断时间改变，哪个位置改变时间
+4. 添加小球函数
+5. 小球运动函数
