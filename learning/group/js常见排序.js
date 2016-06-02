@@ -5,6 +5,7 @@
  * 希尔排序：非chrome下长度小于1000，比快速排序快
  * 系统方法: 在Firefox 下非常快
  http://www.cnblogs.com/idche/archive/2011/02/16/1956397.html
+ 不懂。 发烂渣
  */
 
 var array = [0, 1, 2, 44, 4, 324, 5, 65, 6, 6, 34, 4, 5, 6, 2, 43, 5, 6, 62, 43, 5, 1, 4, 51, 56, 76, 7, 7, 2, 1, 45, 4, 6, 7];
@@ -31,53 +32,45 @@ function bubbleSort(array) {
 }
 
 // 快速排序
-function quickSort(array) {
-	debugger;
-    var i = 0;
-    var j = array.length - 1;
-    var Sort = function(i, j) {
+function quickSort(arr) {
+    var i = 0,
+        j = arr.length - 1,
+        sort = function(i, j) {
 
-        // 结束条件
-        if (i == j) {
-            return
-        };
+            if (j === i) return;
 
-        var key = array[i];
-        var stepi = i; // 记录开始位置
-        var stepj = j; // 记录结束位置
-        while (j > i) {
-            // j <<-------------- 向前查找
-            if (array[j] >= key) {
-                j--;
-            } else {
-                array[i] = array[j]
-                //i++ ------------>>向后查找
-                while (j > ++i) {
-                    if (array[i] > key) {
-                        array[j] = array[i];
-                        break;
+            var key = arr[i],
+                stopi = i,
+                stopj = j;
+
+            while (j > i) {
+                if (arr[j] >= key) {
+                    j--;
+                } else {
+                    arr[i] = arr[j];
+
+                    while (j > ++i) {
+                        if (arr[i] > key) {
+                            arr[j] = arr[i];
+                            break;
+                        }
                     }
                 }
             }
+
+            if (stopi === i) {
+                sort(++i, stopj);
+                return;
+            }
+
+            arr[i] = key;
+
+            sort(stopi, i);
+            sort(j, stopj);
+
+
         }
 
-        // 如果第一个取出的 key 是最小的数
-        if (stepi == i) {
-            Sort(++i, stepj);
-            return;
-        }
-
-        // 最后一个空位留给 key
-        array[i] = key;
-
-        // 递归
-        Sort(stepi, i);
-        Sort(j, stepj);
-    }
-
-    Sort(i, j);
-
-    return array;
+    sort(i, j);
+    return arr;
 }
-
-quickSort([1,3,421,12312,2,2,123,421,42,21]);

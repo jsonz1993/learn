@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+    <style>
+        body {
+            height:2000px;;
+        }
+    </style>
+</head>
+<body>
+	<canvas id="canvas" style="border: 1px solid #ccc;margin: 0 auto;display: block;"></canvas>
+    <canvas id="canvas2">
+
+    </canvas>
+
+	<script>
+        // qiqiaoban
+        (function(){
+            var canvas = document.getElementById('canvas'),
+                    ctx = canvas.getContext('2d'),
+                    WIDTH = 800,
+                    HEIGHT = 800;
+
+            canvas.width = WIDTH;
+            canvas.height = HEIGHT;
+
+            var list = [
+                {
+                    name : 'A',
+                    coordinate : [
+                        {x : 0,y : 0},
+                        {x : 400, y : 400},
+                        {x : 0, y : 800}
+                    ],
+                    color : 'RED'
+                },
+                {
+                    name : 'B',
+                    coordinate : [
+                        {x : 0, y:0},
+                        {x : 400, y: 400},
+                        {x : 800, y : 0}
+                    ],
+                    color : 'GREEN'
+                },
+                {
+                    name : 'B',
+                    coordinate : [
+                        {x : 800, y:0},
+                        {x : 580, y: 220},
+                        {x : 800, y : 400}
+                    ],
+                    color : 'BLUE'
+                },
+                {
+                    name : 'D',
+                    coordinate : [
+                        {x : 580, y: 220},
+                        {x : 400, y : 400},
+                        {x : 610,y : 600},
+                        {x : 800, y : 400}
+                    ],
+                    color : 'YELLOW'
+                },
+                {
+                    name : 'E',
+                    coordinate : [
+                        {x : 800, y : 400},
+                        {x : 400, y : 800},
+                        {x : 800, y : 800}
+                    ],
+                    color : 'pink'
+                },
+                {
+                    name : 'F',
+                    coordinate : [
+                        {x:400,y:400},
+                        {x : 0, y : 800},
+                        {x : 400, y : 800},
+                        {x : 608,y : 590}
+                    ],
+                    color : 'purple'
+                },
+            ];
+
+
+            for (var i = 0,len = list.length; i < len; i++) {
+                ctx.beginPath();
+                ctx.moveTo(list[i].coordinate[0].x,list[i].coordinate[0].y);
+
+                for (var j = 1, length = list[i].coordinate.length; j < length; j++) {
+                    var listNow = list[i].coordinate[j];
+                    ctx.lineTo(listNow.x, listNow.y);
+                    console.log(listNow.x,listNow.y)
+                }
+
+                ctx.fillStyle = list[i].color;
+                ctx.fill();
+            }
+            ctx.stroke()
+        })();
+
+        // jingtaishizhong
+        (function(){
+            var canvas = document.getElementById('canvas2'),
+                    ctx = canvas.getContext('2d');
+
+
+        })()
+
+	</script>
+</body>
+</html>

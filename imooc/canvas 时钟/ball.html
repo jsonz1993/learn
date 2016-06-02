@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ball</title>
+</head>
+<body>
+<canvas id="canvas" style="border: 1px solid #aaa;"></canvas>
+
+<script>
+    var ball = {
+                x: 300,
+                y: 0,
+                r: 20,
+                g: 2,
+                vx: -4,
+                vy: 0,
+                color: '#005588'
+            },
+            WIDTH = 400,
+            HEIGHT = 300;
+
+    window.onload = function (){
+        var canvas = document.getElementById('canvas'),
+                ctx = canvas.getContext('2d');
+
+        setInterval(function (){
+            render(ctx);
+            upDate();
+        }, 40);
+
+        canvas.width = 400;
+        canvas.height = 300;
+    };
+
+    function upDate(){
+        ball.x += ball.vx;
+        ball.y += ball.vy;
+        ball.vy += ball.g;
+
+        if (ball.y >= HEIGHT - ball.r) {
+            ball.y = HEIGHT - ball.r;
+            ball.vy = -ball.vy * .5;
+        }
+    }
+
+    function render(ctx){
+        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+        ctx.fillStyle = ball.color;
+        ctx.beginPath();
+        ctx.arc(ball.x, ball.y, ball.r, 0, 2 * Math.PI);
+        ctx.closePath();
+        ctx.fill();
+    }
+</script>
+</body>
+</html>
