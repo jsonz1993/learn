@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+	姓名: <input type="text" > 电话：<input type="text">  地址：<input type="text"> <button id="add">添加</button> <button>删除数据库</button>
+	<br>
+	姓名 <input type="text"> <button>查询</button>
+
+	<table>
+		<thead>
+			<tr>
+				<th>姓名</th>
+				<th>电话</th>
+				<th>地址</th>
+				<th>删除</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+
+<body>
+    <script type="text/javascript">
+    /*过期控制*/
+    (function() {
+        function setTimeOut(key, val) {
+            var curTime = new Date().getTime();
+            localstorage.setItem(key, JSON.stringify({
+                data: v,
+                time: curTime
+            }));
+        }
+
+        function getTimeOut(key, exp) {
+            var data = localstorage.getItem(key),
+                dataObj = JSON.parse(data);
+
+            if (new Date().getTime - dataObj.time > exp) {
+                console.log('expires');
+            } else {
+                return dataObj;
+            }
+        }
+    })()
+
+    </script>
+</body>
+
+</html>
