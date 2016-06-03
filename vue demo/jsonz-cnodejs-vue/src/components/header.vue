@@ -42,10 +42,17 @@
 	export default {
 		vuex: {
 			actions : {
-
+				checkToken,
+				changeToken,
+				fetchUser,
+				fetchCollection,
+				fetchMsgCount,
+				delToken,
+				changeLoginUser
 			},
 			getters: {
-
+				token: getToken,
+				msgCount: getMsgCount
 			}
 		},
 
