@@ -1,5 +1,5 @@
 <template>
-	Jsonz
+<p></p>
 </template>
 
 <script>
