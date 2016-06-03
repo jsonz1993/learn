@@ -145,3 +145,10 @@ export const delToken = ({dispatch}) => dispatch('DEL_TOKEN');
  * @param  {Object} user             包含登入用户信息的object
  */
 export const changeLoginUser = ({ dispatch }, user) => dispatch('CHANGE_LOGIN_USER', user);
+
+/**
+ * 改变token的值
+ * @param {Function} options.dispatch store 对象解构出来的函数，无需手动提供
+ * @param {String} accesstoken accesstoken 的值
+ */
+export const changeToken = ({dispatch}, accesstoken) => dispatch('CHANGE_TOKEN', accesstoken);
