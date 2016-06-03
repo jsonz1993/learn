@@ -2,9 +2,6 @@
 	<div id="app">
 		<c-header></c-header>
 		<router-view></router-view>
-		<ul>
-			<li>1</li>
-		</ul>
 	</div>
 </template>
 
@@ -32,6 +29,26 @@ export default {
 	ul {
 		margin: 0;
 		padding: 0;
+	}
+
+	li {
+		list-style: none;
+	}
+
+	a {
+		color: #ccc;
+		text-decoration: none;
+	}
+
+	img {
+		vertical-align: middle;
+		max-width: 100%;
+	}
+
+	.main {
+		overflow: hidden;
+		padding: 0 5%;
+		min-height: 100%;
 	}
 
 </style>
