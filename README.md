@@ -5,8 +5,9 @@
 强行刷一波慕课网！
 06-01开始
 
+超级想撸vue,中毒了
 
-[HTML5存储](http://www.imooc.com/learn/104) 1天
+[Vue-cnodejs-master] 7天
 
 [Rract入门](http://www.imooc.com/learn/504) 1天
 
@@ -14,7 +15,6 @@
 
 [React实战--打造画廊应用（下）](http://www.imooc.com/learn/652) 1天
 
-[Vue-cnodejs-master] 7天
 
 __高程__ 7天
 
