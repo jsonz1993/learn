@@ -1,15 +1,23 @@
 <template>
 	<div id="app">
 		<c-header></c-header>
-		<router-view></router-view>
+		<div class="main">
+			<router-view></router-view>
+		</div>
+		<c-footer></c-footer>
+		<c-back></c-back>
 	</div>
 </template>
 
 <script>
 import cHeader from './components/header';
+import cFooter from './components/footer';
+import cBack from './components/backTop';
 export default {
 	components : {
-		cHeader
+		cHeader,
+		cFooter,
+		cBack
 	}
 }
 </script>
