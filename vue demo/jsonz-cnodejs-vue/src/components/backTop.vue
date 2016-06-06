@@ -1,5 +1,5 @@
 <template>
-	<div class="back-top" v-show="shwo">
+	<div class="back-top" v-show="show">
 		<a href="#" @click.prevent.stop="toTop">回到顶部</a>
 	</div>
 </template>
@@ -20,8 +20,7 @@
 
 		ready() {
 			window.onscroll = () => {
-				//TODO 有bug
-				if (document.body.scrollTop > 100) {
+				if (document.body.scrollTop > 400) {
 					this.show = true;
 				} else {
 					this.show = false;

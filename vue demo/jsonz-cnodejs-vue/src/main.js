@@ -1,10 +1,34 @@
-import Vue from 'vue'; // 加载vue模块
-import App from './App'; // 加载app 主模块
-import VueRouter from 'vue-router'; // 加载vue-router 模块
-import configRouter from './routers'; // 加载路由器加载控制配置
+import Vue from 'vue';
+import App from './App';
+import VueRouter from 'vue-router';
+import configRouter from './routers';
+import { timeToNow, transTab } from './filters';
+import { fetchMsgCount } from './vuex/actions';
+import { getToken } from './vuex/getters';
+import store from './vuex/store';
 
-Vue.use(VueRouter); // 注入vue-router
-const router = new VueRouter(); // new 一个实例
-configRouter(router); // 配置路由器
+Vue.filter('timeToNow', timeToNow);
+Vue.filter('transTab', transTab);
 
-router.start(Vue.extend(App), '#app'); // 使用路由器，加载到#app dom上
+Vue.use(VueRouter);
+const router = new VueRouter();
+configRouter(router);
+router.beforeEach((transition) => {
+  document.body.scrollTop = 0;
+  const token = getToken(store.state);
+  if (token) {
+    fetchMsgCount(store, token);
+  }
+  if (transition.to.auth) {
+    if (token) {
+      transition.next();
+    } else {
+      const redirect = encodeURIComponent(transition.to.path);
+      transition.redirect({ name: 'login', query: { redirect } });
+    }
+  } else {
+    transition.next();
+  }
+});
+router.start(Vue.extend(App), '#app');
+
