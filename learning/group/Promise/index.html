@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    'use strict';
+
+    var _ = {};
+
+    _.ajax = function(url) {
+        // A small example of object
+        var core = function(type, url, args) {
+            var promise = new Promise(function(resolve, reject) {
+                var xmlHttp = new XMLHttpRequest();
+
+                var uri = url;
+
+                if (args && (type === 'POST' || type === 'PUT')) {
+                    uri += '?';
+                    var argcount = 0;
+                    for (var key in args) {
+                        if (args.hasOwnProperty(key)) {
+                            if (argcount++) {
+                                uri += '&'
+                            }
+                            uri += encodeURIComponent(key) + '=' + encodeURIComponent(args[key]);
+                        }
+                    }
+                }
+
+                xmlHttp.open(type, uri);
+                xmlHttp.send();
+
+                xmlHttp.onload = function() {
+                    if (this.status >= 200 && this.status < 300) {
+                        resolve(this.response);
+                    } else {
+                        reject(this.statusText);
+                    }
+                };
+                xmlHttp.onerror = function() {
+                    reject(this.statusText);
+                }
+            })
+
+            return promise;
+        }
+
+        return {
+            'get': function(args) {
+                return core('GET', url, args);
+            },
+            'post': function(args) {
+                return core('POST', url, args);
+            }
+        }
+    }
+
+    var aAPI = 'https://cnodejs.org/api/v1/topics',
+        bAPI = 'https://cnodejs.org/api/v1/topic_collect/collect',
+        count = 0,
+        sendData = {
+            id : '111'
+        };
+
+    var callback = {
+        success: function(data) {
+            console.log(++count, 'success', JSON.parse(data));
+        },
+        error: function(data) {
+            console.log(++count, 'error', JSON.stringify(data));
+        }
+    }
+
+    _.ajax(aAPI)
+        .get()
+        .then(callback.success)
+        .catch(callback.error);
+
+    _.ajax(bAPI)
+        .post(sendData)
+        .then(callback.success, callback.error);
+
+    _.ajax(aAPI)
+        .get(sendData)
+        .then(callback.success)
+        .then(undefined, callback.error);
+    </script>
+</body>
+
+</html>
