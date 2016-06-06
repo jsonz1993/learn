@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script src="jquery-1.11.2.min.js"></script>
+	<script>
+	// jq 不保险的调用
+		(function(){
+			function runAsync() {
+				var def = $.Deferred();
+
+				setTimeout(function(){
+					console.log('执行完成');
+					def.resolve('随便什么数据');
+				}, 2000);
+				return def;
+			}
+
+			var d = runAsync();
+			d.then(function(data){
+				console.log(data);
+			})
+			d.resolve('在外面被篡改数据');
+		})();
+
+		// 保险
+		(function(){
+			function runAsync() {
+				var def = $.Deferred();
+				console.log('执行中');
+
+				setTimeout(function(){
+					console.log('执行完成');
+					def.resolve('随便什么数据');
+				}, 2000);
+
+				return def.promise(); //在这调用
+			}
+
+			// then 调用；
+			var d = runAsync();
+			d.then(function(data){
+				console.log(data);
+			})
+			.then(function(data){
+				console.log(data);
+			})
+		})();
+
+
+
+	</script>
+</body>
+</html>

@@ -149,3 +149,131 @@
         .get(payload)
         .then(callback.success)
         .then(undefined, callback.error);
+
+[http://bluereader.org/article/57381475](http://bluereader.org/article/57381475)
+#### 网上Promise
+	var _ = {
+        get: function(uri) {
+            return http(uri, 'GET', null);
+        },
+
+        post: function(uri, data) {
+            if (typeof data === 'object' && !(data instanceof String || (FormData && data instanceof FormData))) {
+                var params = [];
+                for (var p in data) {
+                    if (data[p] instanceof Array) {
+                        for (var i = 0; i < data[p].length; i++) {
+                            params.push(encodeURIComponent(p) + '[]=' + encodeURIComponent(data[p][i]));
+                        }
+                    } else {
+                        params.push(encodeURIComponent(p) + '=' + encodeURIComponent(data[p]));
+                    }
+                }
+                data = params.join('&');
+            }
+
+            return http(uri, 'POST', data || null, {
+                "Content-type": "application/x-www-form-urlencoded"
+            });
+        },
+
+        http: function(uri, type, data, headers) {
+        	return new Promise(function(resolve, reject) {
+        		var xhr = new XMLHttpRequest();
+        		xhr.open(type, uri);
+        		if (headers) {
+        			for (var p in headers) {
+        				xhr.setRequestHeader(p, headers[p]);
+        			}
+        		}
+        		xhr.addEventListener('readystatechange', function(e){
+        			if (xhr.readyState === 4) {
+        				if (String(xhr.status).match(/^2\d\d$/)) {
+        					resolve(xhr.responseText);
+        				} else {
+        					reject(xhr);
+        				}
+        			}
+        		})
+        	})
+        },
+
+        wait: function(duration) {
+        	return new Promise(function(resolve, reject) {
+        		setTimeout(resolve, duration);
+        	}
+        },
+
+        waitFor: function(element, event, useCapture) {
+        	retrun new Promise(function(resolve, reject) {
+        		element.addEventListener(event, function listener(event){
+        			resolve(event);
+        			this.removeEventListener(event, listener, userCapture);
+        		}, useCapture)
+        	})
+        },
+
+        loadImage: function(src){
+        	return new Promise(function(resolve, reject)) {
+        		var image = new Image;
+        		image.addEventListener('load', function listener(){
+        			resolve(image);
+        			this.removeEventListener('load', listener, false)
+        		});
+        		image.src = src;
+        		image.addEventListener('error', reject);
+        	}
+        },
+
+        runScript: function(src) {
+        	return new Promise(function(resolve, reject){
+        		var script = document.createElement('script');
+        		script.src = src;
+        		script.addEventListener('load', resolve);
+        		script.addEventListener('error', reject);
+        		(document.getElementsByTagName('head')[0] || document.body || document.documentElement).addendChild(script);
+        	})
+        },
+
+        domReady: function(){
+        	return new Promise(function(resolve, reject){
+        		if (document.readyState === 'comlete') {
+        			resolve();
+        		} else {
+        			document.addEventListener('DOMContentLoaded', resolve);
+        		}
+        	})
+        }
+    };
+   
+
+
+###### 黑魔法
+
+	function currying() {
+        var f = arguments[0],
+            args = Array.prototype.slice.call(arguments, 1);
+
+        return function() {
+            args.push.apply(args, arguments);
+            return f.apply(this, args);
+        }
+    }
+
+
+###### all
+
+全部执行完执行then
+
+	Promise.all([runAsync1(),runAsync2(),runAsync3()])
+	.then(function(results){console.log(results)}
+
+
+###### rece
+
+一个执行完就执行then
+
+场景：可以用来判断timeout事件,执行一个请求一个timeout
+
+	Promise.rece([runAsync1(),runAsync2(),runAsync3()])
+	.then(function(results){console.log(results)}
