@@ -25,7 +25,7 @@
       </div>
 
     </div>
-    <c-pagination v-if="items[0].author_id"></c-pagination>
+    <c-pagination v-if="items && items[0] && items[0].author_id"></c-pagination>
   </div>
 </template>
 
