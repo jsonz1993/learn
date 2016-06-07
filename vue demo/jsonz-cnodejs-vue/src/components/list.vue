@@ -1,7 +1,6 @@
 <template>
   <div class="inner">
     <div class="topic-list">
-
       <div class="cell" v-for="topicItem in items">
         <span class="hello" v-if="!topicItem.author_id"></span>
         <a v-link="{name: 'user', params: {name: topicItem.author.loginname}}" class="avatar"><img :src="topicItem.author.avatar_url" alt="avator"></a>
@@ -11,7 +10,7 @@
           <span class="visited-count">{{ topicItem.visit_count }}</span>
         </span>
         <a href="#" class="last-time">
-          <span>{{ topicItem.last_reply_at}}</span>
+          <span>{{ topicItem.last_reply_at | timeToNow}}</span>
         </a>
         <div class="topic-wrapper">
           <a v-link="{name: 'post', params: {id: topicItem.id}}" title=" {{ topicItem.title }}">

@@ -1,5 +1,6 @@
 <template>
   <div class="siderbar">
+    <!-- 个人信息 积分等 -->
     <div class="panel" v-if="$route.name === 'post' || $route.name === 'user' || token">
       <div class="panel-header">
         个人信息
@@ -12,14 +13,18 @@
         </div>
       </div>
     </div>
+    <!-- 个人信息 积分等 -->
 
+    <!-- 发布话题 -->
     <div class="panel" v-if="token">
       <div class="inner padding">
         <a v-link="{name: 'create'}" class="btn btn-success">发布话题</a>
       </div>
     </div>
+    <!-- 发布话题 -->
 
-    <div class="panel" v-if=" $route.name !== 'post' && $route.name !== 'user'  && !token">
+    <!-- 未登录的显示 -->
+    <div class="panel" v-if="$route.name !== 'post' && $route.name !== 'user'  && !token">
       <div class="panel-header">CNode：Node.js专业中文社区</div>
       <div class="inner padding">
         <div class="sign-about">您可以通过accessToken登入</div>
@@ -27,6 +32,7 @@
       </div>
     </div>
   </div>
+  <!-- 未登录的显示 -->
 </template>
 
 <script>

@@ -44,6 +44,7 @@
     ready() {
       // 从cookie中获取accesstoken
       if (document.cookie.length > 0) {
+        // 如果有cookie,提取出token的值 t
         const arr = document.cookie.split(';');
         let t;
         for (let v of arr) {
@@ -55,8 +56,8 @@
         }
         // 改变token的状态，检验token的正确性，从而进行一系列初始化工作
         if (t) {
-          this.changeToken(t);
-          this.checkToken(t)
+          this.changeToken(t); // 改变token
+          this.checkToken(t) // 检查token有效性
               .then(this.fetchUser)
               .then((info) => {
                 this.changeLoginUser(info);
@@ -70,8 +71,8 @@
     methods: {
       // 退出
       exit() {
-        this.delToken();
-        this.$route.router.go({ name: 'index' });
+        this.delToken(); // 删除token 
+        this.$route.router.go({ name: 'index' }); // 跳转到首页
       },
     },
   };

@@ -8,28 +8,31 @@
 	export default {
 		data() {
 			return {
-				show : false
+				show : false // 初始化是隐藏的
 			};
 		},
 
 		methods: {
 			toTop() {
-				document.body.scrollTop = 0;
+				document.body.scrollTop = 0; // 点击后返回到顶部
 			}
 		},
 
 		ready() {
-			window.onscroll = () => {
+			// ready后 给window绑定onscroll事件。判断400显示隐藏按钮
+			const scroll = () => {
 				if (document.body.scrollTop > 400) {
 					this.show = true;
 				} else {
 					this.show = false;
 				}
-			};
+			}
+			window.addEventListener('scroll', scroll, false);
 		},
 
+		// 摧毁后接触绑定事件
 		beforeDestroy() {
-			window.onscroll = null;
+			window.removeEventListener('scroll', scroll, false);
 		}
 	}
 </script>

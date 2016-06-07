@@ -365,7 +365,7 @@ export const star = ({ dispatch }, reply_id, accesstoken) => {
     })
     .catch((error) => {
       console.log(error);
-      return Promise.reject();
+      return Promise.reject(error);
     });
 };
 
@@ -430,18 +430,3 @@ export const showHint = ({ dispatch }) => dispatch('SHOW_HINT');
  * @param  {Object} info             自定义信息
  */
 export const customHint = ({ dispatch }, info) => dispatch('CUSTOM_HINT', info);
-
-
-(function(){
-  var xhr = new XMLHttpRequest();
-
-  xhr.open('GET', url);
-
-  xhr.onload = function(){
-
-  }
-
-  xhr.onerror = function(){
-    
-  }
-})();

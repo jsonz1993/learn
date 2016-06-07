@@ -1,16 +1,24 @@
 <template>
   <div class="content">
     <div class="panel">
+      <!-- 分类 -->
       <div class="panel-header">
         <a v-link="{name: 'tab', params: {tab: tab.ename, page: 1}}"  v-for="tab in topicTabs" :class="tab.ename === currentTab ? 'active' : ''">{{ tab.name }}</a>
-      </div>
+      </div> 
+      <!-- 分类 -->
+      <!-- 加载中 -->
       <c-hint v-if="hint.show"></c-hint>
+      <!-- 加载中 -->
+      <!-- 文章列表 -->
       <c-list :items='topicLists' v-else></c-list>
+      <!-- 文章列表 -->
     </div>
   </div>
+  <!-- 侧边栏 -->
   <div class="sider">
     <c-siderbar></c-siderbar>
   </div>
+  <!-- 侧边栏 -->
 </template>
 
 <script>
@@ -51,7 +59,9 @@
         this.changeUser(this.loginUser);
       }
     },
+    // 具体看vue-route
     route: {
+      
       data({ to: { params: { tab = 'all', page = 1 } } }) {
         // 初始化hint
         this.initHint();
