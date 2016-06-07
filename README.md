@@ -2,19 +2,12 @@
 ======
 
 ---------------
-强行刷一波慕课网！
-06-01开始
-
-
-[HTML5存储](http://www.imooc.com/learn/104) 1天
 
 [Rract入门](http://www.imooc.com/learn/504) 1天
 
 [React实战--打造画廊应用（上）](http://www.imooc.com/view/507) 1天
 
 [React实战--打造画廊应用（下）](http://www.imooc.com/learn/652) 1天
-
-[Vue-cnodejs-master] 7天
 
 __高程__ 7天
 
@@ -32,6 +25,8 @@ __高程__ 7天
 + [vue](https://github.com/zhangxinxinWTB/learn/tree/imooc/finish/vue)
 	+ [vue chat预览](http://htmlpreview.github.io/?https://github.com/zhangxinxinWTB/learn/blob/imooc/finish/vue/vue-eat/index.html)
 	+ [vue eat 预览](http://htmlpreview.github.io/?https://github.com/zhangxinxinWTB/learn/imooc/finish/vue/vue-eat/index.html)
+	+ [jsonz-cnode-vue](https://github.com/zhangxinxinWTB/learn/tree/master/finish/vue/jsonz-cnodejs-vue)
+		+ 参照 [https://github.com/beilunyang/cnodejs-vue](https://github.com/beilunyang/cnodejs-vue) 撸的，不理解vuex，不熟悉vue-route  
 
 ------
 
