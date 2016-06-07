@@ -423,4 +423,6 @@ hint.vue __hint 对象获取不到__
 
 http://localhost:8080/#!/post/56b70c15c3f170d2629955b5
 
-926bae24-1d42-4f79-ada6-87d695abb0d6
+token 926bae24-1d42-4f79-ada6-87d695abb0d6
+
+感觉vuex难到爆炸。完全愣比
