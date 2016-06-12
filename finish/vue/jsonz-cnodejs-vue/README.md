@@ -1,6 +1,6 @@
 # jsonz-cnodejs-vue
 
-> a cndejs vue frome Jsonz
+[作者github](https://github.com/beilunyang/cnodejs-vue)
 
 > vue vue-cli vuex vue-router
 
