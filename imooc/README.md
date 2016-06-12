@@ -4,7 +4,7 @@
 
 	[自己撸的demo代码](https://github.com/zhangxinxinWTB/learn/tree/master/imooc/%E5%85%A8%E5%B1%8F%E5%88%87%E6%8D%A2)
 	
-	[呆毛展示](http://htmlpreview.github.io/?https://github.com/zhangxinxinWTB/learn/blob/master/imooc/%E5%85%A8%E5%B1%8F%E5%88%87%E6%8D%A2/index.html)
+	[呆毛展示](http://htmlpreview.github.io/?https://github.com/zhangxinxinWTB/learn/blob/master/imooc/%E5%85%A8%E5%B1%8F%E5%88%87%E6%8D%A2/mySelfPlugin/index.html)
 + [CSS动画实用技巧](http://www.imooc.com/view/357)
 
 	[自己撸的demo代码](https://github.com/zhangxinxinWTB/learn/tree/master/imooc/CSS%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7)

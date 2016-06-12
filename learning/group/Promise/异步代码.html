@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>异步</title>
+</head>
+
+<body>
+    <script>
+    var c = 10;
+
+    function geta() {
+        return 1;
+    }
+
+    function getb() {
+        return 2;
+    }
+
+    function print() {
+        var num = 0;
+        for (var i = 0, len = arguments.length; i < len; i++) {
+            num += arguments[i];
+        }
+        console.log(num);
+    }
+
+    Promise.all([geta(), getb(), 10])
+        .then(print);
+
+
+    function currying() {
+        var f = arguments[0],
+            args = Array.prototype.slice.call(arguments, 1);
+
+        return function() {
+            args.push.apply(args, arguments);
+            return f.apply(this, args);
+        }
+    }
+
+    var print2 = currying(print, 11);
+    print2(2, 3); //得到 11 + 2 + 3 的结果，16
+
+    function wait(time) {
+        return new Promise(function(resolve, reject) {
+            setTimeout(resolve, time);
+        })
+    }
+
+    var wait1s = currying(wait, 1000);
+    wait1s().then(function() {
+        console.log('after 1s!');
+    })
+
+    Promise.race([
+            domReady().then(currying(wait, 5000)),
+            waitFor(btn, click)
+        ])
+        .then(function() {
+            console.log('loaded');
+            return Promise.resolve();
+        })
+    </script>
+</body>
+
+</html>
