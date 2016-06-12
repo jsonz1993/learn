@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		function returnOdd(str) {
+			var len = str.length;
+
+			if (len % 2 === 1) {
+				return str;
+			}
+
+			var newStr = '#';
+			for (var i = 0; i < len; i++) {
+				newStr += str[i] + '#';
+			}
+			return newStr;
+		}
+
+		function judge(str) {
+			(str.length % 2 === 0) && (str = returnOdd(str));
+
+			var start = 0,
+				len = str.length,
+				half = Math.floor(len / 2);
+
+			while(start <= half) {
+				if (str[half - start] !== str[half + start]) {
+					return false;
+				}
+				start ++;
+			}
+			return true;
+		}
+
+		function getAllSubs(str) {
+			(typeof str !== 'string') && (str = str + '' || '')
+			var len = str.length,
+				subList = [];
+
+			for (var i = 0;i < len; i++) {
+				for (var j = i; j < len; j++) {
+					var sub = str.substring(i, j+ 1);
+					if (sub && judge(sub)) {
+						subList.push(sub);
+					}
+				}
+			}
+
+			return subList;
+		}
+
+		function getSub(arr) {
+			return arr.sort(function(a, b) {
+				return b.length - a.length;
+			})[0]
+		}
+
+		function all(str) {
+			return getSub(getAllSubs(str));
+		}
+
+		console.log(all('abcddcba'))
+	</script>
+</body>
+</html>
