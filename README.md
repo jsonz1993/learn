@@ -1,16 +1,6 @@
 学习计划
 ======
 
----------------
-
-[Rract入门](http://www.imooc.com/learn/504) 1天
-
-[React实战--打造画廊应用（上）](http://www.imooc.com/view/507) 1天
-
-[React实战--打造画廊应用（下）](http://www.imooc.com/learn/652) 1天
-
-__高程__ 7天
-
 ------
 
 # 文件目录
@@ -44,15 +34,15 @@ __imooc__
 [http://htmlpreview.github.io/](http://htmlpreview.github.io/) 可以复制html链接看预览
 
 ------
-##跳槽作品
+网上看到的好东西
+------
 
-###### 爬虫做图表
-###### [造轮子](http://strml.net/)
-###### ui过渡动画
+###### 图表
+###### [轮子](http://strml.net/)
 ###### 表单验证
 ###### 弹幕
 ###### Bootstrap
 ###### [背景图](http://www.alquimiawrg.com/#/home)
 ###### [火焰](http://www.html5tricks.com/demo/html5-fire-ball-shooter/index.html)
 ###### [小米寻找max力](http://s1.mi.com/m/ghd/2016/maxpre/index.html)
-###### [轮子造起来](https://github.com/jun-lu/SortAnimate)
+###### [轮子](https://github.com/jun-lu/SortAnimate)

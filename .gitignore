@@ -18,6 +18,8 @@ node_modules
 /node_modules
 node_modules/*
 
+/Javascript Test
+
 # Windows shortcuts
 *.lnk
 

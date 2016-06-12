@@ -1,15 +1,15 @@
 <template>
 	<header>
 		<a v-link="{name: 'index'}" class="brand">
-      <img src="https://o4j806krb.qnssl.com/public/images/cnodejs_light.svg" alt="cnodejs-logo">
-    </a>
+          <img src="https://o4j806krb.qnssl.com/public/images/cnodejs_light.svg" alt="cnodejs-logo">
+        </a>
 		<ul class="navbar">
 			<li><a v-link="{name: 'index'}">首页</a></li>
 			<li v-if="!token"><a v-link="{name: 'login'}">登入</a></li>
-      <template v-else>
-        <li><a v-link="{name: 'messages'}">未读消息<span class="h"  v-if="msgCount">{{ msgCount }}</span></a></li>
-        <li><a href="#" @click.prevent.stop="exit">退出</a></li>
-      </template>
+            <template v-else>
+              <li><a v-link="{name: 'messages'}">未读消息<span class="h"  v-if="msgCount">{{ msgCount }}</span></a></li>
+              <li><a href="#" @click.prevent.stop="exit">退出</a></li>
+            </template>
 		</ul>
 	</header>
 </template>

@@ -61,7 +61,8 @@
     },
     // 具体看vue-route
     route: {
-      
+
+      // data 每次路由变动都会调用，activate只有创建才会被调用
       data({ to: { params: { tab = 'all', page = 1 } } }) {
         // 初始化hint
         this.initHint();
