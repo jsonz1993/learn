@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusBar-->
+    <meta name="theme-color" content="#2197f3">
+    <!-- app title-->
+    <title>demo</title>
+    <!--path to Framework7 Library Css, Material theme-->
+    <link rel="stylesheet" href="src/style/framework7.material.min.css">
+    <!--path to Framework7 color related styles, Material Theme-->
+    <link rel="stylesheet" href="src/style/framework7.material.colors.min.css">
+    <!--path to self style-->
+    <link rel="stylesheet" href="src/style/app.css">
+</head>
+<body>
+    <!-- Status bar overlay for full screen mode (PhoneGap) -->
+    <div class="statusbar-overlay"></div>
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="panel panel-left panel-reveal">
+        <div class="content-block">
+            <p>Left panel content goes here</p>
+        </div>
+    </div>
+
+    <!--主界面视图-->
+    <div class="views">
+        <!-- main view ,should have view-main class-->
+        <div class="view view-main">
+            <!--Top Navbar-->
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+                    <div class="center sliding">Awesome App</div>
+                    <div class="right">
+                        <!--
+                          Right link contains only icon - additional "icon-only" class
+                          Additional "open-panel" class tells app to open panel when we click on this link
+                        -->
+                        <a href="#" class="link icon-only open-panel"><i class="icon icon-bars-blue"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!--Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+            <div class="pages navbar-through toolbar-through">
+                <!-- Page, "data-page" contains page name -->
+                <div data-page="index" class="page">
+                    <!-- Scrollable page content -->
+                    <div class="page-content">
+                        <p>Page content goes here</p>
+                        <!-- Link to another page -->
+                        <a href="src/html/about.html">About app</a>
+                    </div>
+                </div>
+            </div>
+            <!-- bottom toolbar-->
+            <div class="toolbar">
+                <div class="toolbar-inner">
+                    <!--Toolbar link-->
+                    <a href="#" class="link">Link 1</a>
+                    <a href="#" class="link">Link 2</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Path to Framework7 Library Js-->
+    <script src="src/js/framework7.min.js"></script>
+    <!--Path to self js -->
+    <script src="src/js/app.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
