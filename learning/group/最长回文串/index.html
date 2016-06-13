@@ -1,70 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
+    <meta charset="UTF-8">
+    <title>Document</title>
 </head>
+
 <body>
-	
-	<script>
-		function returnOdd(str) {
-			var len = str.length;
+    <script>
+    function makeOdd(str) {
+        var len = str.length;
 
-			if (len % 2 === 1) {
-				return str;
-			}
+        if (len % 2 === 1) {
+            return str;
+        }
 
-			var newStr = '#';
-			for (var i = 0; i < len; i++) {
-				newStr += str[i] + '#';
-			}
-			return newStr;
-		}
+        var newStr = '#';
+        for (var i = 0; i < len; i++) {
+            newStr += str[i] + '#';
+        }
 
-		function judge(str) {
-			(str.length % 2 === 0) && (str = returnOdd(str));
+        return newStr;
+    }
 
-			var start = 0,
-				len = str.length,
-				half = Math.floor(len / 2);
+    function judge(str) {
+        (str.length % 2 === 0) && (str = makeOdd(str));
 
-			while(start <= half) {
-				if (str[half - start] !== str[half + start]) {
-					return false;
-				}
-				start ++;
-			}
-			return true;
-		}
+        var len = str.length,
+            start = 0,
+            half = Math.floor(len / 2);
 
-		function getAllSubs(str) {
-			(typeof str !== 'string') && (str = str + '' || '')
-			var len = str.length,
-				subList = [];
+        while (start <= half) {
+            if (str[half - start] !== str[half + start]) {
+                return false;
+            }
+            start++;
+        }
+        return true;
+    }
 
-			for (var i = 0;i < len; i++) {
-				for (var j = i; j < len; j++) {
-					var sub = str.substring(i, j+ 1);
-					if (sub && judge(sub)) {
-						subList.push(sub);
-					}
-				}
-			}
-
-			return subList;
-		}
-
-		function getSub(arr) {
-			return arr.sort(function(a, b) {
-				return b.length - a.length;
-			})[0]
-		}
-
-		function all(str) {
-			return getSub(getAllSubs(str));
-		}
-
-		console.log(all('abcddcba'))
-	</script>
+    function getAllSubs(str) {
+        var len = str.length,
+            list = '';
+        for (var i = 0; i < len; i++) {
+            for (var j = i; j < len; j++) {
+                var sub = str.substring(i, j + 1);
+                if (sub && (sub.length > 1) && judge(sub)) {
+                    if (sub.length > list.length)
+                        list = sub;
+                }
+            }
+        }
+        console.log(list);
+        return list;
+    }
+    </script>
 </body>
+
 </html>
