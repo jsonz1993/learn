@@ -18,53 +18,84 @@
             <tbody></tbody>
         </table>
         <script type="text/javascript">
-        var Gist = Backbone.Model.extend({
+        // model
+        var Gist = Backbone.Model.extend(),
+            Gists = Backbone.Collection.extend({
+                model: Gist,
                 url: 'https://api.github.com/gists/public',
                 parse: function(response) {
-                    return (response);
-                },
-                defaults: {
-                	website: 'dmyz'
-                },
-                validate: function(attrs){
-                	if (attrs.website == 'dmyz') {
-                		return 'website error'
-                	}
+                    return response;
                 }
             }),
-            gist = new Gist(); // 实例化model
+            gists = new Gists();
 
+        // view  1
         var GistRow = Backbone.View.extend({
-        	tagName: 'tr',
-        	render: function(object){
-        		var model = new Gist(object);
-        		this.el.innerHTML = '<td>' + model.get('description') + '</td><td>'+ model.get('url') + '</td><td>' + model.get('created_at') + '</td><td></td>';
-        		return this;
-        	}
+            tagName: 'tr',
+            render: function(model) {
+                this.el.id = model.cid;
+                this.el.innerHTML = '<td>' + model.get('description') + '</td><td>' + model.get('url') + '</td><td>' + model.get('created_at') + '</td><td><a href="javascript:void(0)" class="js-remove">X</a> <a href="javascript:void(0)" class="js-edit">E</a>&nbsp;</td>'
+                return this;
+            }
         });
 
+        // view 2
         var GistsView = Backbone.View.extend({
-        	el: 'tbody',
-        	model: gist,
-        	initialize: function(){
-        		this.listenTo(this.model, 'change', this.render);
-        	},
+            el: 'tbody',
+            collection: gists,
+            events: {
+                'click a.js-remove': function(e) {
+                    var cid = e.currentTarget.parentElement.parentElement.id;
+                    gists.get(cid).destroy();
+                    gists.remove(cid);
+                },
+                'click a.js-edit': 'editRow',
+                'blur td[contenteditable]': 'saveRow'
+            },
+            editRow: function(e) {
+                var tr = e.currentTarget.parentElement.parentElement,
+                    i = 0;
 
-        	render: function(){
-        		var html = '';
-        		_.forEach(this.model.attributes, function(object){
-        			var tr = new GistRow();
-        			html += tr.render(object).el.outerHTML;
-        		});
-        		this.el.innerHTML = html;
-        		return this;
-        	}
+                while (i < 3) {
+                    tr.children[i].setAttribute('contenteditable', true);
+                    i++;
+                }
+            },
+            saveRow: function(e) {
+                var tr = e.currentTarget.parentElement,
+                    model = gists.get(tr.id);
 
-        })
+                model.set({
+                    'description': tr.children[0].innerText,
+                    'url': tr.children[1].innerText,
+                    'create_at': tr.children[2].innerText
+                });
+                for (var i = 0; i < 3; i++) {
+                	tr.children[i].setAttribute('contenteditable', false);
+                }
+                model.save();
+            },
+            initialize: function() {
+            	var self = this;
+            	_.forEach(['reset','remove','range'], function(e){
+            		self.listenTo(self.collection, e, self.render);
+            	})
+            },
+            render: function() {
+                var html = '';
+                _.forEach(this.collection.models, function(model) {
+                    var tr = new GistRow();
+                    html += tr.render(model).el.outerHTML;
+                });
+                this.el.innerHTML = html;
+                return this;
+            }
+        });
 
-        var gisterView = new GistsView(); // 实例化view
-
-        gist.fetch();
+        var gistsView = new GistsView(); // 实例化view
+        gists.fetch({
+            reset: true
+        });
         </script>
     </body>
 
