@@ -1,0 +1,71 @@
+<DOCTYPE html>
+    <html>
+
+    <head>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.js"></script>
+        <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
+        <script type="text/javascript" src="http://backbonejs.org/backbone-min.js"></script>
+        <link href="http://cdn.bootcss.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <table id="js-id-gists" class="table">
+            <thead>
+                <th>description</th>
+                <th>URL</th>
+                <th>created_at</th>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <script type="text/javascript">
+        var Gist = Backbone.Model.extend({
+                url: 'https://api.github.com/gists/public',
+                parse: function(response) {
+                    return (response);
+                },
+                defaults: {
+                	website: 'dmyz'
+                },
+                validate: function(attrs){
+                	if (attrs.website == 'dmyz') {
+                		return 'website error'
+                	}
+                }
+            }),
+            gist = new Gist(); // 实例化model
+
+        var GistRow = Backbone.View.extend({
+        	tagName: 'tr',
+        	render: function(object){
+        		var model = new Gist(object);
+        		this.el.innerHTML = '<td>' + model.get('description') + '</td><td>'+ model.get('url') + '</td><td>' + model.get('created_at') + '</td><td></td>';
+        		return this;
+        	}
+        });
+
+        var GistsView = Backbone.View.extend({
+        	el: 'tbody',
+        	model: gist,
+        	initialize: function(){
+        		this.listenTo(this.model, 'change', this.render);
+        	},
+
+        	render: function(){
+        		var html = '';
+        		_.forEach(this.model.attributes, function(object){
+        			var tr = new GistRow();
+        			html += tr.render(object).el.outerHTML;
+        		});
+        		this.el.innerHTML = html;
+        		return this;
+        	}
+
+        })
+
+        var gisterView = new GistsView(); // 实例化view
+
+        gist.fetch();
+        </script>
+    </body>
+
+    </html>
