@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.fs_14 {
+			font-size: 14px;
+		}
+		.fs_12 {
+			font-size: 12px;
+		}
+		.s_12 {
+			vertical-align: text-bottom;
+			margin-bottom: 2px;
+			margin-bottom: -2px\9;
+		}
+
+		.s_12_a {
+			height:13px; vertical-align:text-top; margin-top:0;
+		}
+
+		.s_12_b {
+			height:15px; vertical-align:bottom; margin-bottom:3px; margin-top:-1px;
+		}
+
+		.s_12_c {
+			height:14px; vertical-align:top;
+		}
+
+		.s_12_d {
+			vertical-align:middle; margin-top:-2px; margin-bottom:1px;
+		}
+
+		.s_12_e {
+			vertical-align:2px;
+		}
+	</style>
+</head>
+<body>
+	<p class="fs_14"><input type="checkbox"> 14px多选框</p>
+	<p class="fs_14"><input type="radio"> 14px单选框</p>
+
+	chrome 效果不大
+	<p>vertical-align: text-bottom;margin-bottom: 2px;margin-bottom: -2px\9;</p>
+	<p class="fs_12"><input type="checkbox"> <span class="s_12"> 单选框12px</span></input></p>
+	<p class="fs_12"><input type="radio"> <span class="s_12"> 多选框12px</span></input></p>
+
+	chrome 无效果
+	<p>height:13px; vertical-align:text-top; margin-top:0;</p>
+	<p class="fs_12"><input type="checkbox"> <span class="s_12_a"> 单选框12px_a</span></input></p>
+	<p class="fs_12"><input type="radio"> <span class="s_12_a">多选框12px_a</span></input></p>
+
+	chrome 无效果
+	<p>height:15px; vertical-align:bottom; margin-bottom:3px; margin-top:-1px;</p>
+	<p class="fs_12"><input type="checkbox"> <span class="s_12_b"> 单选框12px_b</span></input></p>
+	<p class="fs_12"><input type="radio"> <span class="s_12_b">多选框12px_b</span></input></p>	
+
+	chrome 偏上
+	<p>height:14px; vertical-align:top;</p>
+	<p class="fs_12"><input type="checkbox"> <span class="s_12_c"> 单选框12px_c</span></input></p>
+	<p class="fs_12"><input type="radio"> <span class="s_12_c">多选框12px_c</span></input></p>	
+
+	chrome 无效果
+	<p>vertical-align:middle; margin-top:-2px; margin-bottom:1px;</p>
+	<p class="fs_12"><input type="checkbox"> <span class="s_12_d"> 单选框12px_d</span></input></p>
+	<p class="fs_12"><input type="radio"> <span class="s_12_d">多选框12px_d</span></input></p>	
+
+	chrome 效果不错
+	<p>vertical-align:2px;</p>
+	<p class="fs_12"><input type="checkbox"> <span class="s_12_d"> 单选框12px_e</span></input></p>
+	<p class="fs_12"><input type="radio"> <span class="s_12_d">多选框12px_e</span></input></p>		
+</body>
+</html>
