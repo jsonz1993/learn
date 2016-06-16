@@ -34,6 +34,7 @@
 
 		var dispatcher = _.clone(Backbone.Events);
 
+		// 加一个model
 		var Sidebar = Backbone.Model.extend({
 			promptColor: function(){
 				var cssColor = prompt('Please enter a css color:');
@@ -41,15 +42,69 @@
 			}
 		});
 
+		// 实例化model
 		window.sidebar = new Sidebar();
 
+		// 给model绑定事件
 		sidebar.on('change:color', function(model, color){
 			$('#sidebar').css({background: color});
+			sidebar.promptColor();
 		});
 
+		// 修改数据以触发事件
 		sidebar.set({color: 'red'});
 
-		sidebar.promptColor();
+
+		var Note = Backbone.Model.extend({
+			initialize: function(){},
+
+			author: function(){},
+
+			coordinates: function(){},
+
+			allowedToEdit: function(account) {
+				return true;
+			}
+		});
+
+		var PrivateNode = Note.extend({
+			allowedToEdit: function(account){
+				return account.owns(this);
+			}
+		});
+
+		new PrivateNode({
+			title: 'one Thousand and one nights',
+			author: 'Scheherazade'
+		})
+
+		var Meal = Backbone.Model.extend({
+		  idAttribute: "_id"
+		});
+
+		var cake = new Meal({ _id: 1, name: "Cake" });
+
+		var Chapter = Backbone.Model.extend({
+			validate: function(attrs, options){
+				if (attrs.end < attrs.start) {
+					return 'can\'t end before it starts';
+				}
+			}
+		});
+
+		var one = new Chapter({
+			title: 'Chapter One: the beginning'
+		});
+
+		one.on('invalid', function(model, error){
+			console.log(model.get('title') + ' ' + error);
+		});
+
+		one.save({
+			start: 15,
+			end: 10
+		});
+
 	</script>
 </body>
 </html>
