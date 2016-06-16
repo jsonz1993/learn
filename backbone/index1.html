@@ -3,14 +3,53 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.js"></script>
-        <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
-        <script type="text/javascript" src="http://backbonejs.org/backbone-min.js"></script>
+		<script src="jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" src="./underscore-min.js"></script>
+        <script type="text/javascript" src="./backbone-min.js"></script>
+        <style>
+        	#sidebar {
+        		width: 100px;
+        		height: 100px;
+        	}
+        </style>
 </head>
 <body>
 
+	<div id="sidebar"></div>
+
 	<script>
-		
+		var obj = {};
+
+		_.extend(obj, Backbone.Events);
+
+		obj.on('alert', function(msg){
+			console.log('triggered' + msg)
+		});
+
+		obj.on('log', function(){
+			console.log('log');
+		})
+
+		obj.trigger('alert log', '莉莉安');
+
+		var dispatcher = _.clone(Backbone.Events);
+
+		var Sidebar = Backbone.Model.extend({
+			promptColor: function(){
+				var cssColor = prompt('Please enter a css color:');
+				this.set({color: cssColor});
+			}
+		});
+
+		window.sidebar = new Sidebar();
+
+		sidebar.on('change:color', function(model, color){
+			$('#sidebar').css({background: color});
+		});
+
+		sidebar.set({color: 'red'});
+
+		sidebar.promptColor();
 	</script>
 </body>
 </html>
