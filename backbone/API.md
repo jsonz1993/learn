@@ -2,6 +2,9 @@
 - [Model](#model)
 - [Collection](#collection)
 - [Router](#router)
+- [History](#history)
+- [Sync](#sync)
+- [View](#view)
 
 
 <h2 id="events">Backbone.Events</h2>
@@ -751,3 +754,56 @@ router.route(route, name, [callback])
 router.navigater(fragment, [options])
 
 每当你达到你的应用的一个点时，你想保存为一个URL，  可以调用navigate以更新的URL。 如果您也想调用路由功能， 设置`trigger`选项设置为`true`。 无需在浏览器的历史记录创建条目来更新URL，  设置 `replace`选项设置为`true`。
+
+###### execute
+router.execute(callback, argus)
+
+<h2 id="history">history</h2>
+History 作为全局路由服务用于处理`hashchange`事件或`pushState`，匹配适合路由，触发 回调函数。
+
+会自动判断浏览器对__push State__的支持。不支持的用锚点URL判断。
+
+###### start
+Backbone.history.start([options])
+
+当所有Routers创建设置完毕，调用`Backbone.history.start()`开始监控`hashchange`事件，并分配路由。 后期调用`Backbone.history.start()`会抛出一个错误，并且 `Backbone.history.started`是一个布尔值，返回是否被调用
+
+如果应用不是基于域名更目录`/`，需要告诉History基于什么路径：
+`Backbone.history.start({pushState: true, foot: "/public/search/"})`
+
+当执行后，如果某个路由成功匹配当前 URL，`Backbone.history.start()` 返回 `true`。 如果没有定义的路由匹配当前 URL，返回 `false`。  
+
+<h2 id="sync">同步</h2>
+
+暂时不看
+
+<h2 id="view">视图</h2>
+
+一般是组织你的接口转换为逻辑视图，通过绑定视图的`render`函数到模型的`"change"`事件，模型数据就会即时显示在UI上。
+
+###### extend
+Backbone.View.extend(properties, [classProperties])
+
+开始创建自定义的视图类。 通常需要重载`render`函数，声明 `events`，以及通过 `tagName`，`className`或`id`为视图指定根元素。
+	
+	var DocumentRow = Backbone.View.extend({
+	
+	  tagName: "li",
+	
+	  className: "document-row",
+	
+	  events: {
+	    "click .icon":          "open",
+	    "click .button.edit":   "openEditDialog",
+	    "click .button.delete": "destroy"
+	  },
+	
+	  initialize: function() {
+	    this.listenTo(this.model, "change", this.render);
+	  },
+	
+	  render: function() {
+	    ...
+	  }
+	
+	});
