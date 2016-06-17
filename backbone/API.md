@@ -807,3 +807,5 @@ Backbone.View.extend(properties, [classProperties])
 	  }
 	
 	});
+
+直到运行时，像`tagName`,`id`,`className`,`events`这样的属性也会被定义为一个函数。
