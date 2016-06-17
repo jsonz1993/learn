@@ -1,4 +1,9 @@
-## Backbone.Events
+- [Events](#events)
+- [Model](#model)
+- [Collection](#collection)
+
+
+<h2 id="events">Backbone.Events</h2>
 
 	var object = {};
 	
@@ -90,7 +95,7 @@ object.stopListeneing([other], [event], [callback])
 - `route` (route, params) 当任何一个 route相匹配时通过路由器触发。
 - `all` 所有事件发生都会触发这个事件，第一个参数是触发事件的名称。
 
-## Backbone.Model 模型
+<h2 id="model">Backbone.Model 模型</h2>
 
 Models（模型）是任何Javascript应用的核心，包括数据交互及与其相关的大量逻辑： 转换、验证、计算属性和访问控制。你可以用特定的方法扩展 Backbone.Model，Model 也提供了一组基本的管理变化的功能。
 
@@ -340,10 +345,330 @@ model.isValid()
 	  alert(one.get("title") + " " + one.validationError);
 	}
 
-###### url 
+###### url 不理解
 
 [http://www.css88.com/doc/backbone/#Model-url](http://www.css88.com/doc/backbone/#Model-url)
 
 model.url()
 
-返回模型资源在服务器上位置的相对URL。
+返回模型资源在服务器上位置的相对 URL 。 如果模型放在其它地方，可通过合理的逻辑重载该方法。 生成 URLs 的默认形式为："/[collection.url]/[id]"， 如果模型不是集合的一部分，你可以通过指定明确的urlRoot覆盖。
+
+
+###### urlRoot 不理解
+
+	var Book = Backbone.Model.extend({urlRoot : '/books'});
+	
+	var solaris = new Book({id: "1083-lem-solaris"});
+	
+	alert(solaris.url());
+
+
+##### parse  不理解
+model.parse(response, options)
+
+parse 会在通过 fetch 从服务器返回模型数据，以及 save 时执行。 传入本函数的为原始 response 对象，并且应当返回可以 set 到模型的属性散列表。 默认实现是自动进行的，仅简单传入 JSON 响应。 如果需要使用已存在的 API，或者更好的命名空间响应，可以重载它。
+
+###### clone
+
+model.clone()
+
+返回该模型的具有相同属性的新实例
+
+###### isNew
+model.isNew()
+
+该模型是否已经保存到服务器。 如果模型没 `id` 则被视为新的。
+
+###### hasChanged
+model.hasChanged([ttribute])
+
+标识模型从上次set事件发生后是否改变过。如果传入 `attribute` 当指定属性改变后，返回 `true`。
+
+
+	book.on('change', function(){
+		if (book.hasChanged('title')){
+			...
+		}
+	});
+
+###### changedAttributes
+model.changedAttributes([attributes])
+
+只从最后一次`set`开始检索已改变的模型属性散列，或者如果没有，返回`false`。 这可以用来找出视图哪些部分应该更新，那些需要和服务器保持同步。
+
+###### previous
+model.previouts(attribute)
+
+在`change`事件发生的过程中，该方法可以获取已改变属性的旧值。
+
+	var bill = new Backbone.Model({
+	  name: "Bill Smith"
+	});
+	
+	bill.on("change:name", function(model, name) {
+	  alert("Changed n ame from " + bill.previous("name") + " to " + name);
+	});
+	
+	bill.set({name : "Bill Jones"});
+
+###### previousAttributes
+model.previousAttributes() 
+
+返回模型的上一个属性的副本。一般用于获取模型的不同版本之间的区别，或者当发生错误时回滚模型状态。
+
+<h2 id="collection">Bacckbone.collection</h2>
+
+集合是模型的有序组合，我们可以在集合上绑定`change`事件，从而当集合中的模型发生变化时 `fetch`获得通知，`collertion` 也可以监听 `add`和 `remove` 事件，从服务器更新，并使用 `underscoreJs`提供的方法。
+
+监听集合中模型的变化 `documents.on(change:selected,..)`
+
+###### extend
+Backbone.Collection.extend(properties, [classProperties])
+
+通过拓展__Backbone.Collection__ 创建一个 __Collecction__类。实例属性参数__properties__以及 类属性参数__classProperties__会被直接注册到集合的构造函数。
+
+###### model
+collection.model
+
+覆盖次属性来指定集合中包含的模型类。可以传入原始属性对象和数组来 `add`、`create`、`reset`传入的属性会被自动转换为适合的模型类型。
+
+	var Library = Backbone.Collection.extend({
+	  model: Book
+	});
+
+集合也可以包含多态模型，通过用构造函数重写这个属性，返回一个模型。
+
+	var Library = Backbone.Collection.extend({
+	
+	  model: function(attrs, options) {
+	    if (condition) {
+	      return new PublicDocument(attrs, options);
+	    } else {
+	      return new PrivateDocument(attrs, options);
+	    }
+	  }
+	
+	});
+
+###### constructor/ initialize 不理解
+new Backbone.Collection([models], [options])
+
+当创建集合时，你可以选择传入初始的 models 数组。 集合的 comparator 函数也可以作为选项传入。 传递false作为comparator选项将阻止排序。 如果定义了 initialize 函数，会在集合创建时被调用。 有几个选项， 如果提供的话，将直接附加到集合上：model 和 comparator。
+通过传递null给models选项来创建一个空的集合。
+
+	var tabs = new TabSet([tab1, tab2, tab3]);
+	var spaces = new Backbone.Collection([], {
+	  model: Space
+	});
+
+###### models
+collection.models
+
+访问集合中模型的内置的JavaScript 数组。通常我们使用 get， at，或 Underscore方法 访问模型对象，但偶尔也需要直接访问。
+
+###### toJSON
+colletion.toJSON([options])
+
+返回集合中包含的每个模型的属性哈希的数组。可用于集合的序列化和持久化。
+
+	var collection = new Backbone.Collection([
+	  {name: "Tim", age: 5},
+	  {name: "Ida", age: 26},
+	  {name: "Rob", age: 55}
+	]);
+	
+	alert(JSON.stringify(collection));
+
+###### sync 不理解
+collection.sync(method, collection, [options])
+ 
+使用 Backbone.sync来将一个集合的状态持久化到服务器。 可以自定义行为覆盖。
+
+###### add
+collection.add(models, [options])
+
+向集合中添加一个模型，触发`add`事件。
+
+
+		var ships = new Backbone.Collection;
+
+		ships.on('add', function(ship){
+			console.log('ahoy' + ship.get('name') + '!');
+		});
+
+		ships.add([
+			{name: '111'},
+			{name: '2222'}
+		])
+		
+		// 输出 111 2222
+
+###### remove
+collection.remove(models, [options])
+
+从集合删除一个模型（或组），并返回他们。触发 `remove`。
+
+###### reset
+collection.reset([models], [options])
+
+将一个新模型列表替换集合。最后触发一个单独的`reset`事件。
+在一个`reset`事件中，任何以前的模型列表可作为 `options.previousModels`。通过传递`null`和 `models` 选项来清空你的集合。
+
+	var accounts = new Backbone.Collection;
+	accounts.reset(<%= @accounts.to_json %>);
+
+调用`collection.reset()`，不传递任何模型作为参数 将清空整个集合。
+
+###### set
+collection.set(models, [options])
+
+__set__ 不存在==>添加，存在 ==> 合并。
+
+会触发 `add`,`remove`,`change`，返回集合中的模型。
+
+可以通过设置`{add:false}`,`{remove:false}`,`{merge:false}`
+
+###### get
+collection.get(id)
+
+通过一个`id`，一个`cid`活在这传递一个`model`来获得集合中的模型
+
+	var book = library.get(110);
+
+###### at
+collection.at(index)
+
+获取集合中指定索引的模型。
+
+###### push
+collection.push(model, [options])
+
+在集合尾部添加一个模型。 选项和`add`相同。
+
+###### pop
+collection.pop([options])
+
+删除并返回集合中最后一个模型。选项和`remove`相同
+
+###### unshift
+collection.unshift(model, [options])
+
+在集合开始的地方添加一个模型，选项和`add`相同
+
+###### shift
+collection.shift([options])
+
+删除并返回集合中第一个模型。选项和`remove`相同
+
+###### slice
+collection.slice(begin, end)
+
+返回一个集合的模型的浅拷贝（为什么不是深拷贝）副本
+
+###### length
+collection.length
+
+与数组类似，集合拥有`length`属性，返回模型数量
+
+###### comparator
+排序算法。不传按默认
+
+###### sort
+collection.sort
+
+强制对集合重排序，一般情况下不需要调用该函数。模型被添加时会调用comparator实时排序，要禁用可以传递`{sort: false}` 给 `add`。调用sort会触发集合`sort`事件。
+
+###### pluck
+collection.pluck(attribute)
+
+从集合中的每个模型中拉取 attribute。 等价于调用`map`， 并从迭代器中返回单个属性。
+	
+	var stooges = new Backbone.Collection([
+	  {name: "Curly"},
+	  {name: "Larry"},
+	  {name: "Moe"}
+	]);
+	
+	var names = stooges.pluck("name");
+	
+	alert(JSON.stringify(names));
+
+###### where
+collection.where(attributes)
+
+返回所有匹配所传递 __attributes__的模型数组，对于简单的`filter`比较有用
+
+	var friends = new Backbone.Collection([
+		{name: 'athos', job: 'musk'},
+		{name: 'jsonz', job: 'musk'},
+		{name: 'jhon', job: 'musk'},
+		{name: 'js', job: 'codes'},
+	])
+	
+	
+	var musketeers = friends.where({job: "Musketeer"});
+	
+	alert(musketeers.length);
+
+###### findWhere
+
+就像where， 不同的是findWhere直接返回匹配所传递 attributes（属性）的__第一个__模型。
+
+###### url 不理解
+collection.url or collection.url()
+
+设置 url 属性（或函数）以指定集合对应的服务器位置。集合内的模型使用 url 构造自身的 URLs。
+
+	var Notes = Backbone.Collection.extend({
+	  url: '/notes'
+	});
+	
+	// Or, something more sophisticated:
+	
+	var Notes = Backbone.Collection.extend({
+	  url: function() {
+	    return this.document.url() + '/notes';
+	  }
+	}); 
+
+###### parse
+collection.parse(response, options)
+
+每一次调用`fetch`从服务器拉取集合的模型数据，__parse__会被调用。默认只需要简单传入服务端返回的JSON对象。
+
+###### clone
+collection.clone()
+
+返回一个模型列表完全相同的集合新实例
+
+###### fetch 不理解
+collection.fetch([options])
+
+从服务器拉取集合的默认模型设置 ，成功接收数据后会setting（设置）集合。 options 支持 success 和 error 回调函数，两个回调函数接收 (collection, response, options)作为参数。当模型数据从服务器返回时， 它使用 set来（智能的）合并所获取到的模型， 除非你传递了 {reset: true}， 在这种情况下，集合将（有效地）重置。 可以委托Backbone.sync 在幕后自定义持久性策略 并返回一个jqXHR。 fetch请求的服务器处理器应该返回模型JSON数组。
+
+	Backbone.sync = function(method, model) {
+	  alert(method + ": " + model.url);
+	};
+	
+	var accounts = new Backbone.Collection;
+	accounts.url = '/accounts';
+	
+	accounts.fetch();
+
+###### create 不理解
+collection.create(attributes, [options])
+
+方便的在集合中创建一个模型的新实例。 相当于使用属性哈希（键值对象）实例化一个模型， 然后将该模型保存到服务器， 创建成功后将模型添加到集合中。 返回这个新模型。 如果客户端验证失败，该模型将不会被保存， 与验证错误。 为了能正常运行，需要在集合中设置 model 属性。 create 方法接收键值对象或者已经存在尚未保存的模型对象作为参数。
+
+创建一个模型将立即触发集合上的"add"事件， 一个"request"的事件作为新的模型被发送到服务器， 还有一个 "sync" ”事件，一旦服务器响应成功创建模型。 如果你想在集合中添加这个模型前等待服务器相应，请传递{wait: true}。
+
+	var Library = Backbone.Collection.extend({
+	  model: Book
+	});
+	
+	var nypl = new Library;
+	
+	var othello = nypl.create({
+	  title: "Othello",
+	  author: "William Shakespeare"
+	});

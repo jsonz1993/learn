@@ -105,6 +105,18 @@
 			end: 10
 		});
 
+		var ships = new Backbone.Collection;
+
+		ships.on('add', function(ship){
+			console.log('ahoy' + ship.get('name') + '!');
+		});
+
+		ships.add([
+			{name: '111'},
+			{name: '2222'}
+		])
+
+
 	</script>
 </body>
 </html>
