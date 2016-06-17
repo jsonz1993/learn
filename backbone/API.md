@@ -1,6 +1,7 @@
 - [Events](#events)
 - [Model](#model)
 - [Collection](#collection)
+- [Router](#router)
 
 
 <h2 id="events">Backbone.Events</h2>
@@ -672,3 +673,81 @@ collection.create(attributes, [options])
 	  title: "Othello",
 	  author: "William Shakespeare"
 	});
+
+<h2 id="router">Router</h2>
+
+当应用已经创建了所有的路由，需要调用 Backbone.history.start()，或 Backbone.history.start({pushState: true}) 来确保驱动初始化 URL 的路由。
+
+###### extend
+Backbone.Router.extend(properties, [classProperties])
+
+开始创建一个自定义的路由类。当匹配了 URL 片段便执行定义的动作，并可以通过 routes 定义路由动作键值对。 请注意，你要避免在路由定义时使用前导斜杠：
+
+	var Workspace = Backbone.Router.extend({
+	
+	  routes: {
+	    "help":                 "help",    // #help
+	    "search/:query":        "search",  // #search/kiwis
+	    "search/:query/p:page": "search"   // #search/kiwis/p7
+	  },
+	
+	  help: function() {
+	    ...
+	  },
+	
+	  search: function(query, page) {
+	    ...
+	  }
+	
+	});
+
+###### routes
+router.routes
+
+讲带参数的URLs映射到路由实例的方法上。
+
+路由 `"search/:query/p:page"` 能匹配到 `#search/obama/p2`
+
+路由 `"file/*path"` 可以匹配 `#file/nested/folder/file.txt` 这时传入的动作参数是 `"nested/folder/file.txt"` 
+
+路由 `"docs/:section(/:subsection)"` 可以匹配到 `#docs/faq` 和 `#docs/faq/installing`。
+第一种情况 传入 `"faq"`到路由器。第二种传入`"faq"`和`"installing"`到路由对应的动作。
+
+当访问者点击浏览器后退按钮，或者输入 URL ，如果匹配一个路由，此时会触发一个基于动作名称的 event， 其它对象可以监听这个路由并接收到通知。 下面的示例中，用户访问 `#help/uploading` 将从路由中触发 `route:help` 事件。
+	
+	routes: {
+	  "help/:page":         "help",
+	  "download/*path":     "download",
+	  "folder/:name":       "openFolder",
+	  "folder/:name-:mode": "openFolder"
+	}
+	router.on("route:help", function(page) {
+	  ...
+	});
+
+###### constructor / initialize
+new Router([options])
+
+当创建一个新路由是，你可以直接传入 `routes` 键值对象作为参数。 如果定义该参数， 它们将被传入 `initialize` 构造函数中初始化。
+
+###### route
+router.route(route, name, [callback])
+
+为路由对象手动创建路由 `route` 参数可以是 路由字符串或正则表达式。一旦路由匹配，`name`参数会触发`"route:name"`事件。如果`callback`参数省略`router[name]`讲被用来替代。
+
+	initialize: function(options) {
+	
+	  // Matches #page/10, passing "10"
+	  this.route("page/:number", "page", function(number){ ... });
+	
+	  // Matches /117-a/b/c/open, passing "117-a/b/c" to this.open
+	  this.route(/^(.*?)\/open$/, "open");
+	
+	},
+	
+	open: function(id) { ... }
+
+###### navigate 不理解
+router.navigater(fragment, [options])
+
+每当你达到你的应用的一个点时，你想保存为一个URL，  可以调用navigate以更新的URL。 如果您也想调用路由功能， 设置`trigger`选项设置为`true`。 无需在浏览器的历史记录创建条目来更新URL，  设置 `replace`选项设置为`true`。
