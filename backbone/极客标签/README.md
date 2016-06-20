@@ -1,2 +1,1 @@
-[http://www.gbtags.com/gb/share/1920.htm](http://www.gbtags.com/gb/share/1920.htm)
-
+[极客标签系列](http://www.gbtags.com/gb/tag/usertag/16875.htm)
