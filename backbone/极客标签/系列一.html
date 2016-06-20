@@ -96,6 +96,30 @@
     } catch(e) {
     	console.log('view 报错')
     }
+
+
+    var Router = Backbone.Router.extend({
+    	routes: {
+    		// 这个会匹配任何url 是符合 foo/<param>的，并且提供:bar座位参数，传输到paramtest方法中。
+    		// 所以#foo/1 会调用paramtest(1)
+    		
+    		"foo/:bar": "paramtest",
+
+    		"*action": "func"
+    	},
+
+    	func: function(action) {
+    		console.log(action);
+    	},
+
+    	paramtest: function(p){
+    		console.log('foo/' + p);
+    	}
+    })
+
+    new Router();
+
+    Backbone.history.start();
     </script>
 </body>
 
