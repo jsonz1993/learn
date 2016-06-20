@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+		<script src="jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" src="./underscore-min.js"></script>
+        <script type="text/javascript" src="./backbone-min.js"></script>
+        <style>
+        	#sidebar {
+        		width: 100px;
+        		height: 100px;
+        	}
+        </style>
+</head>
+<body>
+
+	<div id="sidebar"></div>
+
+	<script>
+		var obj = {};
+
+		_.extend(obj, Backbone.Events);
+
+		obj.on('alert', function(msg){
+			console.log('triggered' + msg)
+		});
+
+		obj.on('log', function(){
+			console.log('log');
+		})
+
+		obj.trigger('alert log', '莉莉安');
+
+		var dispatcher = _.clone(Backbone.Events);
+
+		// 加一个model
+		var Sidebar = Backbone.Model.extend({
+			promptColor: function(){
+				var cssColor = prompt('Please enter a css color:');
+				this.set({color: cssColor});
+			}
+		});
+
+		// 实例化model
+		window.sidebar = new Sidebar();
+
+		// 给model绑定事件
+		sidebar.on('change:color', function(model, color){
+			$('#sidebar').css({background: color});
+			sidebar.promptColor();
+		});
+
+		// 修改数据以触发事件
+		sidebar.set({color: 'red'});
+
+
+		var Note = Backbone.Model.extend({
+			initialize: function(){},
+
+			author: function(){},
+
+			coordinates: function(){},
+
+			allowedToEdit: function(account) {
+				return true;
+			}
+		});
+
+		var PrivateNode = Note.extend({
+			allowedToEdit: function(account){
+				return account.owns(this);
+			}
+		});
+
+		new PrivateNode({
+			title: 'one Thousand and one nights',
+			author: 'Scheherazade'
+		})
+
+		var Meal = Backbone.Model.extend({
+		  idAttribute: "_id"
+		});
+
+		var cake = new Meal({ _id: 1, name: "Cake" });
+
+		var Chapter = Backbone.Model.extend({
+			validate: function(attrs, options){
+				if (attrs.end < attrs.start) {
+					return 'can\'t end before it starts';
+				}
+			}
+		});
+
+		var one = new Chapter({
+			title: 'Chapter One: the beginning'
+		});
+
+		one.on('invalid', function(model, error){
+			console.log(model.get('title') + ' ' + error);
+		});
+
+		one.save({
+			start: 15,
+			end: 10
+		});
+
+		var ships = new Backbone.Collection;
+
+		ships.on('add', function(ship){
+			console.log('ahoy' + ship.get('name') + '!');
+		});
+
+		ships.add([
+			{name: '111'},
+			{name: '2222'}
+		])
+
+
+	</script>
+</body>
+</html>

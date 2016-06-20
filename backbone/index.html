@@ -1,0 +1,140 @@
+<DOCTYPE html>
+    <html>
+
+    <head>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.js"></script>
+        <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
+        <script type="text/javascript" src="http://backbonejs.org/backbone-min.js"></script>
+        <link href="http://cdn.bootcss.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <table id="js-id-gists" class="table">
+            <thead>
+                <th>description</th>
+                <th>URL</th>
+                <th>created_at</th>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <script type="text/javascript">
+        // model
+        var Gist = Backbone.Model.extend(),
+            Gists = Backbone.Collection.extend({
+                model: Gist,
+                url: 'https://api.github.com/gists/public',
+                parse: function(response) {
+                    return response;
+                }
+            }),
+            gists = new Gists();
+
+        // view  1
+        var GistRow = Backbone.View.extend({
+            tagName: 'tr',
+            render: function(model) {
+                this.el.id = model.cid;
+                this.el.innerHTML = '<td>' + model.get('description') + '</td><td>' + model.get('url') + '</td><td>' + model.get('created_at') + '</td><td><a href="javascript:void(0)" class="js-remove">X</a> <a href="javascript:void(0)" class="js-edit">E</a>&nbsp;</td>'
+                return this;
+            }
+        });
+
+        // view 2
+        var GistsView = Backbone.View.extend({
+            el: 'tbody',
+            collection: gists,
+            events: {
+                'click a.js-remove': function(e) {
+                    var cid = e.currentTarget.parentElement.parentElement.id;
+                    gists.get(cid).destroy();
+                    gists.remove(cid);
+                },
+                'click a.js-edit': 'editRow',
+                'blur td[contenteditable]': 'saveRow'
+            },
+            editRow: function(e) {
+                var tr = e.currentTarget.parentElement.parentElement,
+                    i = 0;
+
+                while (i < 3) {
+                    tr.children[i].setAttribute('contenteditable', true);
+                    i++;
+                }
+            },
+            saveRow: function(e) {
+                var tr = e.currentTarget.parentElement,
+                    model = gists.get(tr.id);
+
+                model.set({
+                    'description': tr.children[0].innerText,
+                    'url': tr.children[1].innerText,
+                    'create_at': tr.children[2].innerText
+                });
+                for (var i = 0; i < 3; i++) {
+                	tr.children[i].setAttribute('contenteditable', false);
+                }
+                model.save();
+            },
+            initialize: function() {
+            	var self = this;
+            	_.forEach(['reset','remove','range'], function(e){
+            		self.listenTo(self.collection, e, self.render);
+            	})
+            },
+            render: function() {
+                var html = '';
+                _.forEach(this.collection.models, function(model) {
+                    var tr = new GistRow();
+                    html += tr.render(model).el.outerHTML;
+                });
+                this.el.innerHTML = html;
+                return this;
+            }
+        });
+
+        var gistsView = new GistsView(); // 实例化view
+        gists.fetch({
+            reset: true
+        });
+
+        var ItemView = Backbone.View.extend({
+            tagName: 'li'
+        });
+
+        var BodyView = Backbone.View.extend({
+            el: 'body'
+        });
+
+        var item = new ItemView();
+        var body = new BodyView();
+
+        console.log(item.el + ' ' + body.el);
+
+        var Documents = Backbone.View.extend({
+            events: {
+                'dbclick': 'open',
+                'click .icon.doc': 'select',
+                'contextmenu .icon.doc': 'showMenu',
+                'click .show_notes': 'toggleNotes',
+                'click .title .lock': 'editAccessLevel',
+                'mouseover .title .date': 'showTooltip'
+            },
+
+            render: function(){
+                this.$el.html(this.template(this.model.attributes));
+                return this;
+            },
+
+            open: function(){
+                window.open(this.model.get('viewer_url'));
+            },
+
+            select: function(){
+                this.model.set({selected: true});
+            }
+        })
+
+        </script>
+    </body>
+
+    </html>
