@@ -93,33 +93,71 @@
         var view = new View({
             model: new Links()
         })
-    } catch(e) {
-    	console.log('view 报错')
+    } catch (e) {
+        console.log('view 报错')
     }
 
 
     var Router = Backbone.Router.extend({
-    	routes: {
-    		// 这个会匹配任何url 是符合 foo/<param>的，并且提供:bar座位参数，传输到paramtest方法中。
-    		// 所以#foo/1 会调用paramtest(1)
-    		
-    		"foo/:bar": "paramtest",
+        routes: {
+            // 这个会匹配任何url 是符合 foo/<param>的，并且提供:bar座位参数，传输到paramtest方法中。
+            // 所以#foo/1 会调用paramtest(1)
 
-    		"*action": "func"
-    	},
+            "foo/:bar": "paramtest",
 
-    	func: function(action) {
-    		console.log(action);
-    	},
+            "*action": "func"
+        },
 
-    	paramtest: function(p){
-    		console.log('foo/' + p);
-    	}
+        func: function(action) {
+            console.log(action);
+        },
+
+        paramtest: function(p) {
+            console.log('foo/' + p);
+        }
     })
 
     new Router();
 
     Backbone.history.start();
+
+    // 集合
+    // 集合既是模型的集合体 Array
+
+    //最初的person模型
+    var Person = Backbone.Model.extend({
+        // initialize 在我们创建Person对象时被调用
+        initialize: function() {
+            console.log('person is initialized');
+        },
+
+        defaults: {
+            name: 'jsonz',
+            age: 'unKnow'
+        }
+    });
+
+    // 创建集合
+    var People = Backbone.Collection.extend({
+        // 当集合被创建时调用
+        initialize: function() {
+            console.log('People Collection is initiallzed');
+        },
+
+        // 定义存入集合的数据模型
+        model: Person
+    });
+
+    // 创建一个新的person对象
+    var person = new Person({name: 'Job'})
+
+    //创建一个集合，然后将Person对象加入这个集合中
+    var people = new People(person);
+    people.add([{name:'Bob'},{name:'Jim'}]);
+
+    // 在控制台中， 打出这个数据模型的数据
+    console.log(people.toJSON());
+
     </script>
 </body>
 
