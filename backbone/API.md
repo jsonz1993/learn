@@ -5,6 +5,7 @@
 - [History](#history)
 - [Sync](#sync)
 - [View](#view)
+- [Utility](#utility)
 
 
 <h2 id="events">Backbone.Events</h2>
@@ -810,4 +811,158 @@ Backbone.View.extend(properties, [classProperties])
 
 直到运行时，像`tagName`,`id`,`className`,`events`这样的属性也会被定义为一个函数。
 
-[http://www.css88.com/doc/backbone/#View](http://www.css88.com/doc/backbone/#View)
+
+###### constructor / initialize
+new View([options])
+
+有几个特殊的选项，如果传入，则直接注册到视图中去：`model`,`collection`,`el`,`id`,`class`,`tagName`,`attributes`和`events`。如果视图定义了一个 __initialize__初始化函数，首先创建视图时，它会立刻被调用。如果希望创建一个指向dom已存在的元素的视图，传入该元素座位选项：`new View({el: existingElement})`
+
+###### el
+view.el
+
+所有视图拥有一个dom元素（__el__属性),既该元素仍未插入页面中去。视图可以在任何时候渲染，然后一次性插入dom中去。这样可以减少`reflows`和`repaints`。 `this.el`可以从视图的`tagName`,`classNmae`,`id`和`attributes`创建，如果未指定，会是一个空的`div`
+
+
+    var ItemView = Backbone.View.extend({
+        tagName: 'li'
+    });
+
+    var BodyView = Backbone.View.extend({
+        el: 'body'
+    });
+
+    var item = new ItemView();
+    var body = new BodyView();
+
+    console.log(item.el + ' ' + body.el);
+
+
+###### $el
+view.$el
+
+一个视图元素的缓存jQuery对象。
+
+	view.$el.show()
+	
+	listView.$el.append(itemView, el)
+
+
+###### setElement
+view.setElement(element)
+
+如果你想应用一个Backbone视图到不同的dom元素，使用setElement，这也创造缓存`$el`引用，视图的委托事件从旧元素移动到新元素上。
+
+###### attribute
+view.attribute
+
+属性的键值对，将被设置为视图`el`上的HTML DOM元素的属性，或者返回这样的键值对的一个函数
+
+###### $(jQuery) 
+view.$(selector)
+
+如果引入jQuery，每个视图将拥有__$__函数， 可以在视图元素查询作用域内运行。等价于 `view.$el.find(selector)`
+	
+	ui.Chapter = Backbone.View.extend({
+	  serialize : function() {
+	    return {
+	      title: this.$(".title").text(),
+	      start: this.$(".start-page").text(),
+	      end:   this.$(".end-page").text()
+	    };
+	  }
+	});
+
+###### template
+view.template([data])
+
+虽然模版化的视图不是Backbone直接提供的一个功能，它往往是一个在你视图定义template函数很好的约定。如使用`Underscore`模版
+
+	var LibraryView = Backbone.View.extend({
+		tempate : _.template(..)
+	})
+
+
+###### render
+view.render()
+
+默认实现是没有操作的。重载可以实现从模型数据渲染视图模版，并可用新的html更新`this.el`。推荐做法是__render__函数的末尾`return this`以开启链式调用。
+
+	
+	var Bookmark = Backbone.View.extend({
+	    template: _.template(...),
+	    render: function(){
+	        this.$el.html(this.template(this.model.attributes));
+	        return this;
+	    }
+	})
+
+###### remove
+view.remove()
+
+从dom中移除一个视图。同时调用stopListening来移除通过listenTo绑定在视图上的所有事件。
+
+
+###### delegateEvents([events])
+delegateEvents([events])
+
+采用jQuery的 `on` 函数来为视图内dom事件提供回调函数声明。如果未传入 events对象，使用 `this.events`作为事件源。事件对象的书写格式为 `{"event selector": "callback"}`。省略`selector`则事件被绑定到视图的根元素`this.el`。默认下 `delegateEvents`会在视图的构造函数内被调用，因此如果有`events`对象，所有的dom事件已经被连接，我们不需要手动去调本函数。
+
+`events`属性也可以也可以被固定成返回__events__对象的函数，这样让我们定义事件，以及实现事件的继承变得更加方便。
+
+视图 `render`期间使用 __delegateEvents__相比用Jquery想子元素绑定事件更好。
+
+所有注册的函数在传递给jQuery之前已经绑定到视图上。因此当回调函数执行时，`this`扔将指向视图对象。当__deleteEvents__再次运行，此时或许需要一个不同滴`events`对象，所以所有回调函数会被移除，然后重新委托这对模型不同行为也不同的视图挺有用处。 __不解__
+
+搜索结果页面显示文档的视图看起来类似这样：
+
+	var DocumentView = Backbone.View.extend({
+	
+	  events: {
+	    "dblclick"                : "open",
+	    "click .icon.doc"         : "select",
+	    "contextmenu .icon.doc"   : "showMenu",
+	    "click .show_notes"       : "toggleNotes",
+	    "click .title .lock"      : "editAccessLevel",
+	    "mouseover .title .date"  : "showTooltip"
+	  },
+	
+	  render: function() {
+	    this.$el.html(this.template(this.model.attributes));
+	    return this;
+	  },
+	
+	  open: function() {
+	    window.open(this.model.get("viewer_url"));
+	  },
+	
+	  select: function() {
+	    this.model.set({selected: true});
+	  },
+	
+	  ...
+	})
+
+
+###### undelegateEvents
+undelegateEvents()
+
+删除视图所有委托事件。
+
+
+<h2 id="utility">Utility</h2>
+
+###### Backbone.noConfilict
+var backbone = Backbone.noConfilict()
+
+返回`Backbone`对象的员是指。
+你可以使用`Backbone.noConflict()`的返回值以保持局部引用Backbone。通常用于在第三方网站引入多个Bk文件避免冲突。
+
+	var localBackbone = Backbone.noConflict();
+	var model = localBackbone.Model.extend();
+
+###### Backbone.$
+backbone.$ = $;
+
+	var Backbone.$ = require('jquery')
+
+>>>>>>> origin/backbone
