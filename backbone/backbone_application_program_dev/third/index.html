@@ -672,7 +672,146 @@
     } catch(e){}
 
 
-    
+    // 事件
+    console.log('----------事件--------------');
+
+    var ourObject = {};
+    _.extend(ourObject, Backbone.Events);
+    ourObject.on('dance', function(){
+        console.log('ourObject is dance');
+    });
+    ourObject.on('all', function(){
+        console.log('yoyo');
+    })
+    ourObject.trigger('dance');
+    ourObject.on({
+        'dance:tap': function(){
+            console.log('tap')
+        },
+        'dance:t': function(){
+            console.log('t');
+        }
+    });
+    ourObject.trigger('dance:t');
+
+    // 用命名空间删除改事件
+    ourObject.off('dance:t');
+
+    // 触发多组事件
+    ourObject.trigger('dance dance:tap');
+
+    // 传递参数
+    ourObject.on('tt', function(name, age){
+        console.log(name + " : " + age);
+    });
+
+    ourObject.trigger('tt', 'Jsonz', 20);
+
+
+    var a = _.extend({}, Backbone.Events);
+    var b = _.extend({}, Backbone.Events);
+    var c = _.extend({}, Backbone.Events);
+
+    a.listenTo(b, 'anything', function(event){
+        console.log('anything happended');
+    });
+    a.listenTo(c, 'everything', function(event){
+        console.log('everything');
+    });
+
+    b.trigger('anything');
+
+    a.stopListening();
+
+    b.trigger('anything');
+    c.trigger('everything');
+
+    //路由
+    console.log('---------路由--------------');
+
+    var TodoRouter = Backbone.Router.extend({
+        // define the route and function maps for this router
+        routes: {
+            'about': 'showAbout',// http://****/#about
+            
+            'todo/:id': 'getTodo',
+            // this is an example of using a ":param" variable, which allows us to match any of the components between two URL slashes
+            // http://***/#todo/5
+            
+            'search/:query': 'searchTodos',
+            // we can also define multiple routers that are bound how we're optionally passing in a reference to a page number if one is supplied
+            //http://***/#search/job
+            
+            'search/:query"p:page': 'searchTodos',
+            // as we can see URLs may contain as many ':param' as we wish
+            // http://***/#search/job/p1
+            
+            'todos/:id/download/*documentPath': 'downloadDocument',
+            // this is an example of using a *splat. Splats are able to match  any number of URL components and can be combined with ':param'
+            // http://***/#todos/5/download/todos.doc
+            
+            '*other': 'defaultRoute',
+            // http://***/#<anythiong>*/
+            
+            'optional(/:item)': 'optionalItem',
+
+            'named/optional/(y:z)': 'namedOptionalItem',
+            // ROuter URLs also support optional parts via parentheses without having to use a regex
+        },
+
+        showAbout: function(){},
+
+        getTodo: function(id){
+            console.log('you are trying to reach todo ' + id);
+        },
+
+        searchToods: function(query, page) {
+            var page_number = page || 1;
+            console.log('page number ' + page_number + ' of the results for todos containing the word ' + query)
+        },
+
+        downloadDocument: function(id, path){},
+
+        defaultRoute: function(other) {
+            console.log('other ' + other);
+            this.navigate('todo/2',{trigger: true});
+        }
+    });
+
+    var myTodoRouter = new TodoRouter();
+    Backbone.history.start();
+
+    //  同步
+    console.log('----------同步 sync-----------')
+
+    // Create a new library collection
+    var Library = Backbone.Collection.extend({
+        url : function(){
+            return 'https://api.github.com/gists/public';
+        }
+    });
+
+    // Define attributes for our model
+    var attrs = {
+        title: 'The Tempest',
+        author: 'bill shakespeare',
+        length: '123'
+    };
+
+    // Create a new library instance
+    var library = new Library();
+
+    // Create a new instance of a model within our collection;
+    library.create(attrs, {wait: false});
+
+    // update with just emulateHTTP
+    library.first().save({
+        id: '2-the-tempest',
+        author: 'Tim Shakespears'
+    },{
+        emulateHTTP: true
+    });
+
 
 
 

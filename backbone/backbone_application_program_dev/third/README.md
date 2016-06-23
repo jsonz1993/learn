@@ -523,3 +523,180 @@ Backbone.View 的 render 最后都会返回this。
 
 在 Model.save() 上指定 `{patch: true}`选项，将使用 __HTTP PATCH__请求，仅仅发送已经改变的属性到服务器上，而不是发送整个模型。也就是 `model.save(attrs, { patch: true})`
 
+
+## 事件
+事件是一个基本的控制反转。
+
+掌握事件是让Backbone开发最有效的一种快捷方式。
+
+`Backbone.Events` 混入到其他的`Backbone`类 包括：
+- Backbone
+- Backbone.Model
+- Backbone.Collection
+- Backbone.Router
+- Backbone.History
+- Backbone.View
+
+#### `on`,`off`,`trigger`
+
+`Backbone.Events` 可以让任何对象具有绑定和触发事件的能力。
+
+    var ourObject = {};
+    _.extend(ourObject, Backbone.Events);
+    ourObject.on('dance', function(){
+        console.log('ourObject is dance');
+    });
+    ourObject.trigger('dance'); // is dance
+
+	// 命名空间
+    ourObject.on({
+        'dance:tap': function(){
+            console.log('tap')
+        },
+        'dance:t': function(){
+            console.log('t');
+        }
+    });
+    ourObject.trigger('dance:t'); // t
+	ourObject.trigger('dance'); // is dance
+
+	// all 事件，不管触发什么事件都会触发该事件
+	ourObject.on('all', function(){
+        console.log('yoyo');
+    })
+
+	// 用命名空间删除改事件
+    ourObject.off('dance:t');
+
+    // 触发多组事件
+    ourObject.trigger('dance dance:tap');
+
+    // 传递参数
+    ourObject.on('tt', function(name, age){
+        console.log(name + " : " + age);
+    });
+
+    ourObject.trigger('tt', 'Jsonz', 20);
+
+
+
+#### `listenTo` && `stopListening`
+
+    var a = _.extend({}, Backbone.Events);
+    var b = _.extend({}, Backbone.Events);
+    var c = _.extend({}, Backbone.Events);
+
+    a.listenTo(b, 'anything', function(event){
+        console.log('anything happended');
+    });
+    a.listenTo(c, 'everything', function(event){
+        console.log('everything');
+    });
+
+    b.trigger('anything');
+
+    a.stopListening();
+
+    b.trigger('anything');
+    c.trigger('everything');
+
+一般要移除的视图在模型上注册了事件监听，而我们没有删除模型或者移除该视图的事件处理函数，那么移除视图的时候就会引起错误。
+
+`View.remove()`的默认实现里调用了一次 `stopListening()`，确保在视图销毁之前所有的`listento()`绑定的监听器进行解绑。
+
+
+#### 事件和视图
+
+使用`events`属性绑定的事件，回调里的`this`指向的是视图对象，使用`jQuery`绑定的所有事件，`this`都会被`jQuery`设置为该DOM元素。
+
+
+## 路由
+
+一个应用程序通常至少有一个路由将__URL__路由映射到一个函数上，用于判断用户访问这个路由会发生什么。
+
+	'route': 'mappedFunction'
+	var TodoRouter = Backbone.Router.extend({
+	    // define the route and function maps for this router
+	    routes: {
+	        'about': 'showAbout',// http://****/#about
+	        
+	        'todo/:id': 'getTodo',
+	        // this is an example of using a ":param" variable, which allows us to match any of the components between two URL slashes
+	        // http://***/#todo/5
+	        
+	        'search/:query': 'searchTodos',
+	        // we can also define multiple routers that are bound how we're optionally passing in a reference to a page number if one is supplied
+	        //http://***/#search/job
+	        
+	        'search/:query"p:page': 'searchTodos',
+	        // as we can see URLs may contain as many ':param' as we wish
+	        // http://***/#search/job/p1
+	        
+	        'todos/:id/download/*documentPath': 'downloadDocument',
+	        // this is an example of using a *splat. Splats are able to match  any number of URL components and can be combined with ':param'
+	        // http://***/#todos/5/download/todos.doc
+	        
+	        '*other': 'defaultRoute',
+	        // http://***/#<anythiong>*/
+	        
+	        'optional(/:item)': 'optionalItem',
+	
+	        'named/optional/(y:z)': 'namedOptionalItem',
+	        // ROuter URLs also support optional parts via parentheses without having to use a regex
+	    },
+	
+	    showAbout: function(){},
+	
+	    getTodo: function(id){
+	        console.log('you are trying to reach todo ' + id);
+	    },
+	
+	    searchToods: function(query, page) {
+	        var page_number = page || 1;
+	        console.log('page number ' + page_number + ' of the results for todos containing the word ' + query)
+	    },
+	
+	    downloadDocument: function(id, path){},
+	
+	    defaultRoute: function(other) {
+	        console.log('other ' + other);
+	    }
+	});
+
+    var myTodoRouter = new TodoRouter();
+
+__可以用在路由器回调里使用`.navigate()`方法更新路由。默认情况下不触发 `hashchange`事件。
+
+	this.navigate('todo/'+ id + '/edit')
+
+	也可以用
+	his.navigate('todo/2',{trigger: true}); 来触发 hashchange 事件
+
+
+## Backbone 同步 API
+
+sync
+路由改变也会触发 `route`事件。
+
+Backbone.Backbone.
+路由改变也会触发 `route`事件。
+
+`Backbone.` 类似 `$.ajax()`
+
+	Backbone.emulateHTTP = false
+	// set to true if server cannot handle HTTP PUT or HTTP DELETE
+
+	Backbone.emulateJSON = false;
+	// set to true if server cannot handle application/json requests
+
+ 每次__Backbone__尝试读取，保存，删除模型的时候，__Backbone.sync__都会调用一次。他使用__jQuery__实现来发送这些 __RESTful__请求。
+
+重载实现`Backbone.sync`  见 __p64__
+
+## 依赖文件
+
+__硬依赖Underscore.js__
+
+__依赖json2.js和jQuery来支持RESTful持久化和history__
+
+
