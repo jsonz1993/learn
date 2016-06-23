@@ -1,54 +1,325 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<script src="../underscore-min.js"></script>
-	<script src="../jquery-1.11.2.min.js"></script>
-	<script src="../backbone-min.js"></script>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../underscore-min.js"></script>
+    <script src="../jquery-1.11.2.min.js"></script>
+    <script src="../backbone-min.js"></script>
+    <style>
+        div {
+            border: 1px solid #ccc;
+        }
+    </style>
 </head>
+
 <body>
-	
-	<script>
-		var Todo = Backbone.Model.extend({
-			initialize: function(){
-				this.on('change', function(){
-					console.log('.value for this model have changed');
-				})
-			},
+    <div class="name"></div>
+    <div id="name1"></div>
+    <button id="btn1">按钮</button>
+    <button id="btn2">按钮</button>
+    <script type="text/template" id="item-template">
+        <div>
+            <input type="checkbox" id="todo_complete" <%= completed ? 'checed' : '' %>>
+            <%= title %>
+        </div>
+    </script>
+    <script>
+    var Todo = Backbone.Model.extend({
+        initialize: function() {
+            this.on('change', function() {
+                console.log('.value for this model have changed');
+            })
+        },
 
-			defaults: {
-				title: '',
-				completed: false
-			}
-		});
+        defaults: {
+            title: '',
+            completed: false
+        }
+    });
 
-		var todo1 = new Todo({
-			title: [1]
-		});
+    var todo1 = new Todo({
+        title: [1]
+    });
 
-		var todo2 = new Todo({
-			title: 'Check the attributes of both model instances in the console',
-			ompleted: true
-		});
+    var todo2 = new Todo({
+        title: 'Check the attributes of both model instances in the console',
+        ompleted: true
+    });
 
-		console.log(JSON.stringify(todo2));
+    console.log(JSON.stringify(todo2));
 
-		// 赋值与取值
-		console.log(todo1.get('title'));
+    // 赋值与取值
+    console.log(todo1.get('title'));
 
-		// toJSON() 返回模型数据的副本 object。 引用，对象会同时修改
-		todo1.toJSON().title.push(2);
+    // toJSON() 返回模型数据的副本 object。 引用，对象会同时修改
+    todo1.toJSON().title.push(2);
 
-		// set
-		todo1.set({
-			name : '11'
-		});
-		console.log(todo1.toJSON())
+    // set
+    todo1.set({
+        name: '11'
+    });
 
-		// 如果直接访问  .attributes 上的属性来设置值，会绕过模型上绑定的触发器。
-		todo1.attributes.title.pop();
+    // 设置  silent: true 可以不触发 change事件
+    todo1.set({
+        name: '12'
+    }, {
+        silent: true
+    });
+    console.log(todo1.toJSON())
 
-	</script>
+    // 如果直接访问  .attributes 上的属性来设置值，会绕过模型上绑定的触发器。
+    todo1.attributes.title.pop();
+
+    var Todo = Backbone.Model.extend({
+        defaults: {
+            title: '',
+            name: ''
+        },
+
+        initialize: function() {
+            this.on('change:title', function() {
+                console.log('title value for this model has changed');
+            })
+        },
+
+        setTitle: function(setTitle) {
+            this.set({
+                title: setTitle
+            });
+        }
+    });
+
+    var myTodo = new Todo();
+
+    myTodo.set('title', 'change');
+    myTodo.setTitle('new title');
+    myTodo.set('name', 'Jsonz');
+
+    // 验证
+    var Person = new Backbone.Model({
+        defaults: {
+            name: 'Jeremy'
+        },
+        validate: function(atributes) {
+            if (atributes.name === undefined) {
+                return 'Remember to set a title for you todo.';
+            }
+        },
+
+        initialize: function() {
+            this.on('invalid', function(model, erorr) {
+                console.log(error);
+            })
+        }
+    });
+
+    Person.validate = function(attrs) {
+        if (!attrs.name) {
+            return 'i need you name';
+        }
+    }
+
+    Person.set({
+        'name': 'Jsonz'
+    });
+    console.log(Person.get('name'));
+    console.log(Person.unset('name', {
+        validate: true
+    }))
+    console.log(Person.get('name'));
+
+    var myTodo = new Todo();
+    myTodo.set('name', true, {
+        validate: true
+    });
+    console.log(myTodo.get('name'));
+
+    console.log('------------------');
+
+    var Todo = Backbone.Model.extend({
+        defaults: {
+            completed: false
+        },
+
+        validate: function(attribs) {
+            if (attribs.title === undefined) {
+                return 'Remember to set a title for your todo';
+            }
+        },
+
+        initialize: function() {
+            this.on('invalid', function(model, error) {
+                console.log(error);
+            })
+        }
+    });
+
+    var myTodo = new Todo();
+    myTodo.set('completed', true, {
+        validate: true
+    });
+
+    console.log('completed: ' + myTodo.get('completed'));
+    console.log('-------------------------------------');
+
+    var MyModel = Backbone.Model.extend({
+
+        validate: function(attribs) {
+            if (attribs.hasOwnProperty('myString')) {
+                // Maybe trim it by default?
+                // or replace swear words?
+                attribs.myString = attribs.myString.trim();
+                // do validation here...
+            }
+            if (attribs.hasOwnProperty('myNumber')) {
+                // I don't really see a use for it, but it won't change.
+                attribs.myNumber = 43;
+                //validation
+            }
+            if (attribs.hasOwnProperty('myBoolean')) {
+                // again, no use case, but it won't change
+                attribs.myBoolean = false;
+                //validation
+            }
+            if (attribs.hasOwnProperty('myObject')) {
+                // WILL change, since _.extend is not a deep copy
+                attribs.myObject.foo = "baz";
+                //validation
+            }
+        }
+    });
+
+    //try and set our attribs using `set`
+    var someInstance = new MyModel();
+
+    var attribs = {
+        myString: "  Is an untrimmed String  ",
+        myNumber: 42,
+        myBoolean: true,
+        myObject: {
+            foo: "bar"
+        }
+    };
+
+    someInstance.set(attribs);
+
+    console.log(someInstance.get('myString')); // outputs '  Is an untrimmed string  ', should be trimmed
+    console.log(someInstance.get('myNumber')); // outputs 42, should be 43
+    console.log(someInstance.get('myBoolean')); //outputs true, should be false
+    console.log(someInstance.get('myObject').foo); //outputs "baz" !
+
+    function modifiesObject(obj) {
+        // bah hasOwnProperty checks.
+        obj.myString = obj.myString.trim();
+        obj.myNumber = 43;
+        obj.myBoolean = false;
+        obj.myObject.foo = "baztopia";
+    }
+
+    modifiesObject(attribs); //does what we want: change the object
+    console.log(attribs.myString); //outputs "Is a untrimmed String"
+    console.log(attribs.myNumber); //outputs 43
+    console.log(attribs.myBoolean); //outputs "false"
+    console.log(attribs.myObject.foo); //outputs "baztopia"
+    console.log('-----------------------------');
+
+    // 视图
+    console.log('----------视图---------------');
+
+    var TodoView = Backbone.View.extend({
+        tagName: 'li',
+        // el: '#name1',
+        todoTpl: _.template('An example template'),
+        events: {
+            'ablclick table': 'edit',
+            'keypress .edit': 'updateOnEnter',
+            'blur .edit': 'close'
+        },
+
+        initialize: function(){
+            this.render();
+        },
+
+        render: function(){
+            // this.$el.html( this.todoTpl(this.model.toJSON()));
+            this.$el.html('An example template');
+            this.input = this.$('.edit');
+            return this;
+        },
+
+        edit: function(){
+            //....
+        },
+
+        close: function(){
+            //....
+        },
+
+        updateOnEnter: function(e){
+            //....
+        }
+    });
+
+    var todoView = new TodoView();
+
+    console.log(todoView.el); // <li></li>
+
+    var button1 = $('#btn1'),
+        button2 = $('#btn2');
+
+    // setElement
+    var View = Backbone.View.extend({
+        events: {
+            click: function(e) {
+                console.log(view.el === e.target);
+            }
+        }
+    });
+
+    var view = new View({el: button1});
+    view.setElement(button2);
+
+    button2.trigger('click');
+    console.log('------------------------------');
+    
+    var view = new Backbone.View;
+    view.setElement('<p><a><b>test</b></a></p>');
+    console.log(view.$('a b').html())
+    console.log('------------------------------');
+
+    var ItemView = Backbone.View.extend({
+        events: {},
+        render: function(){
+            var items = this.model.get('items');
+
+            _.each(items, function(item){
+                var itemView = new ItemView({mode: item});
+                this.$el.append(itemView.render().el);
+            }, this)
+            return this;
+        }
+    });
+
+    var ItemView = Backbone.View.extend({
+        events: {
+            'click .toggle': 'toggleCompleted',
+            'dblclick label': 'edit',
+            'click .destory': 'clear',
+            'blur .edit': 'close'
+        },
+        render: function(){
+            this.$el.html(this.model.toJSON());
+            return this;
+        }
+    });
+    console.log('------------------------------');
+
+
+
+
+    </script>
 </body>
+
 </html>
