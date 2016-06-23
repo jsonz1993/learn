@@ -620,6 +620,62 @@
     // invert()
     console.log(todo.invert());
 
+    console.log('------------------------');
+
+    var collection = new Backbone.Collection([
+        {name: 'Tim', age: 5},
+        {name: 'Ida', age: 26},
+        {name: 'Rob', age: 55}
+    ]);
+
+    var filteredNames = collection.chain()
+        .filter(function(item){return item.get('age') > 10})
+        .map(function(item){ return item.get('name')})
+        .value();
+    console.log(filteredNames);
+    console.log('------------------------');
+
+    var Todo = Backbone.Model.extend({
+        defaults: {
+            title: '',
+            completed: false
+        }
+    });
+
+    var TodosCollection = Backbone.Collection.extend({
+        model: Todo,
+        url: 'https://api.github.com/gists/public'
+    });
+
+    var todos = new TodosCollection();
+    todos.fetch(); // sends HTTP GET to /todos
+
+    try {
+        // 保存模型到服务器
+        var todo2 = todos.get(2);
+        todo2.set('title', 'go fishing');
+        todo2.save(); // sends HTPTP PUT to /https://api.github.com/gists/public/2
+
+        todos.create({title: ' try out codee samples'});
+    } catch(e){}
+
+    try {
+        todo2.destroy(); // sends HTTP DELETE to /todos/2 and remove from collection
+    } catch(e) {}
+
+    try{
+        model.clear().set({id: 1, a:1});
+        model.save();
+        model.save({b:2, d:4},  {patch: true});
+        console.log(this.syncArgs.method);
+        // patch
+    } catch(e){}
+
+
+    
+
+
+
     </script>
 </body>
 

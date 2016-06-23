@@ -468,3 +468,58 @@ Backbone.View 的 render 最后都会返回this。
 
 	console.log(todo.invert());
 
+#### 链式API
+
+通过 _.chain()
+
+	var collection = new Backbone.Collection([
+        {name: 'Tim', age: 5},
+        {name: 'Ida', age: 26},
+        {name: 'Rob', age: 55}
+    ]);
+
+    var filteredNames = collection.chain()
+        .filter(function(item){return item.get('age') > 10})
+        .map(function(item){ return item.get('name')})
+        .value();
+    console.log(filteredNames);
+
+## RESTful 持久化 一知半解
+
+#### 从服务器上获取模型
+
+`COllections.fetch()` 通过发送__HTTP GET__ 请求到__URL__上。从服务器取得JSON数组形式的模型数据集。一旦数据接收，Backbone将执行 set() 函数来更新集合。
+
+	var TodosCollection = Backbone.Collection.extend({
+        model: Todo,
+        url: 'https://api.github.com/gists/public'
+    });
+
+    var todos = new TodosCollection();
+    todos.fetch(); // sends HTTP GET to /todos
+
+#### 保存模型到服务器
+
+调用`save()`方法将在集合的URL上附加一个id来构造新的URL然后发送 __HTTP PUT__ 请求到服务器。
+
+会报错，不会调试 ？？？
+
+	// 保存模型到服务器
+    var todo2 = todos.get(2);
+    todo2.set('title', 'go fishing');
+    todo2.save(); // sends HTPTP PUT to /https://api.github.com/gists/public/2
+
+    todos.create({title: ' try out codee samples'});
+
+
+#### 从服务器删除模型
+
+通过 `destroy()`方法从集合和服务器中删除一个存在的模型。
+与 `Collection.remove()` 不同，`remove`只是从集合中删除一个模型，而 `Model.destroy()`还会向集合URL发送一个 __HTTP DELETE__ 请求
+
+
+#### 选项 
+每一个 __RESTful API__ 方法都接受各种各样的可选参数。所有的方法都接受 成功(success) 和 错误(error) 回调。 用于自定义处理服务器响应。
+
+在 Model.save() 上指定 `{patch: true}`选项，将使用 __HTTP PATCH__请求，仅仅发送已经改变的属性到服务器上，而不是发送整个模型。也就是 `model.save(attrs, { patch: true})`
+
