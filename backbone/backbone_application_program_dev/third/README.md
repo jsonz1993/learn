@@ -217,4 +217,254 @@ Backbone.View 的 render 最后都会返回this。
         'dblclick label': 'edit',
         'click .destory': 'clear',
         'blur .edit': 'close'
-    },
+    }
+
+
+## 集合 Collection
+
+集合是模型的组合。可以通过扩展 `Backbone.Collection`来创建
+
+	var Todo = Backbone.Model.extend({
+        defaults: {
+            title: '',
+            completed: false
+        }
+    });
+
+    var TodosCollection = Backbone.Collection.extend({
+        model: Todo
+    });
+
+    var myTodo = new Todo({title: 'read the whold book', id: 2});
+
+    var todos = new TodosCollection([myTodo]);
+
+    console.log(todos.length);
+
+#### 添加和移除模型
+
+	var a = new Todo({title: 'Go to Jamica'}),
+        b = new Todo({title: 'Go to China'}),
+        c = new Todo({title: 'Go to Disneyland'});
+
+    var todos = new TodosCollection([a, b]);
+    console.log(todos.length);
+
+    todos.add(c);
+    console.log(todos.length);
+
+    todos.remove([a, b]);
+    console.log(todos.length);
+
+    todos.remove(c);
+    console.log(todos.length);
+
+#### 检索模型
+最简单的方式就是使用集合的 `.get()`。接受一个`id`作为参数。
+
+    var myTodo = new Todo({title: 'read the whole book', id: 2});
+    var todos =new TodosCollection([myTodo]);
+    var todo2 = todos.get(2);
+    console.log(todo2 === myTodo);
+
+在`Backbone`中可以用 `id`,`cid`,`idAttribute`属性来做唯一标识。
+
+    // 使用 cid get
+    var todoCid = todos.get(todo2.cid);
+    console.log(todoCid === todo2);
+
+#### 事件监听
+
+	var TodosCollection = new Backbone.Collection();
+    TodosCollection.on('add', function(todo){
+        console.log(todo.get('title'));
+    });
+    TodosCollection.add([
+        {title: 'go to Jamaica'},
+        {title: 'go to China'},
+        {title: 'go to Disneyland'}
+    ]);
+
+任何模型上都可以绑定`change`事件。
+无效？？？
+
+	var TodosCollection = new Backbone.Collection();
+    TodosCollection.on('change:title', function(model){
+        console.log(model.get('title'));
+    });
+    TodosCollection.add([{
+        title: 'go to Jamaica',
+        id: 3
+    }]);
+    var myTodo = TodosCollection.get(3);
+    myTodo.set('title', 'go to fishing');
+    console.log(myTodo.get('title'));
+
+#### once
+
+    var TodoCounter = {
+        counterA: 0,
+        counterB: 0
+    };
+
+    _.extend(TodoCounter, Backbone.Events);
+    console.log(TodoCounter);
+    var incrA = function(){
+        TodoCounter.counterA += 1;
+        TodoCounter.trigger('event');
+    };
+    var incrB = function(){
+        TodoCounter.counterB += 1;
+    };
+    TodoCounter.once('event', incrA);
+    TodoCounter.once('event', incrB);
+    TodoCounter.trigger('event');
+    console.log(TodoCounter.counterA === 1); // true
+    console.log(TodoCounter.counterB === 1); // true
+
+#### 重置和刷新集合
+简单的替换整个集合内容
+
+	 TodosCollection.on('reset', function(model, options){
+        console.log('reset ');
+        console.log(options.previousModels);
+        console.log(model);
+        console.log('-------------')
+    })
+    TodosCollection.reset([{
+        title: 'go to Cuba',
+        completed: false
+    }]);
+    console.log(TodosCollection.toJSON());
+
+不传参数可以清空一个集合
+
+	TodosCollection.reset();
+
+## Underscore 实用函数
+
+###### forEach 迭代集合
+	Todos.forEach(function(model){
+        console.log(model.get('title'));
+    })
+
+###### sortBy 通过特定属性对集合排序
+
+	var sortedByAlphabt = Todos.sortBy(function(todo){
+        return todo.get('title').toLowerCase();
+    });
+
+###### map 通过转换函数映射列表里的每个项，重新生成一个新集合。
+	var count = 1;
+    console.log(Todos.map(function(model){
+        return count++ + '. ' + model.get('title');
+    }));
+
+###### min/max 获取特定属性为最小/最大值的model
+
+	console.log(Todos.max(function(model){
+        return model.id;
+    }).id)
+
+    console.log(Todos.min(function(model){
+        return model.id;
+    }).id)
+
+###### pluck 获取特定属性的集合
+
+	console.log(Todos.pluck('title'));
+
+###### filter 过滤集合
+	var Todos = Backbone.Collection.extend({
+        model: Todo,
+        filterById: function(ids) {
+            return this.models.filter(function(c){
+                return _.contains(ids, c.id);
+            })
+        }
+    });
+
+###### indexOf() 返回集合中特定索引位置的模型
+
+	var People = new Backbone.Collection;
+    People.comparator = function(a, b) {
+        return a.get('name') < b.get('name') ? -1: 1;
+    };
+    var tom = new Backbone.Model({name: 'Tom'});
+    var rob = new Backbone.Model({name: 'Rob'});
+    var tim = new Backbone.Model({name: 'Tim'});
+    People.add(tom);
+    People.add(rob);
+    People.add(tim);
+    console.log(People.indexOf(rob) === 0,People.indexOf(tim) === 1, People.indexOf(tom) === 02)
+
+###### some() 通过迭代器测试集合中是否存在特定的模型
+
+    Todos.some(function(model){
+        return model.id === 100;
+    })
+
+###### size 返回集合的大小
+
+	Todos.size();
+	等于
+    Todos.length;
+
+###### isEmpty 判断是否是空的集合
+
+	var isEmpty = Todos.isEmpty();
+
+###### groupBy 通过模型的属性将集合进行分组
+
+	
+	var Todos = new Backbone.Collection();
+
+    Todos.add([{
+        id: 1,
+        title: 'go to Jamaica',
+        completed: false
+    }, {
+        id: 2,
+        title: 'go to China',
+        completed: false
+    }, {
+        id: 3,
+        title: 'go to Disneyland',
+        completed: true
+    }]);
+    var byCompleted = Todos.groupBy('completed');
+	// false: [id1,id2]; true: [id3]
+    var completed = new Backbone.Collection(byCompleted[true]);
+    console.log(completed.pluck('title'));
+
+###### `pick` 过滤出模型特定属性的属性值 与 `omit`相反
+
+	var Todo = Backbone.Model.extend({
+        defaults: {
+            title: '',
+            completed: false
+        }
+    });
+    var todo = new Todo({title: 'go to Austria.'});
+    console.log(todo.pick('title'));
+
+###### `omit` 过滤出除模型特定属性以外的属性值 与`pick`对应
+	var todo = new Todo({title: 'go to Austria'});
+    console.log(todo.omit('title'));
+
+###### `keys` 和 `values`
+返回collection的keys[arrays] 和 values[arrays]
+
+    console.log(todo.keys());
+    console.log(todo.values());
+
+###### pairs
+将对象转为[key,value]
+
+	console.log(todo.pairs());
+
+###### invert
+将对象的第一个对象的keys 和values 呼唤后创建一个新对象。
+
+	console.log(todo.invert());
+
