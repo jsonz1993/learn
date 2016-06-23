@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../underscore-min.js"></script>
+    <script src="../jquery-1.11.2.min.js"></script>
+    <script src="../backbone-min.js"></script>
+</head>
+
+<body>
+    <h4>联系人列表:</h4>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <ul id="contacts" class="list-unstyled"></ul>
+        </div>
+    </div>
+    <h4>添加联系人:</h4>
+    <fieldset class="form-inline" role="form">
+        <div class="form-group">
+            <input type="text" class="form-control" id="firstName" value="John" placeholder="First Name" style="width:120px;" />
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="lastName" value="Doe" placeholder="Last Name" style="width:120px;" />
+        </div>
+        <div class="form-group">
+            <input type="tel" class="form-control" id="phone" value="000-000-0000" placeholder="Phone #" style="width:120px;" />
+        </div>
+        <br>
+        <br>
+        <button class="btn btn-primary btn-sm">Add</button>
+    </fieldset>
+    <script>
+    // 创建Contact类。包含默认值和一个函数
+    var Contact = Backbone.Model.extend({
+        defaults: {
+            firstName: null,
+            lastName: null,
+            phone: null
+        },
+        getFullName: function() {
+            return this.get('firstName') + ' ' + this.get('lastName');
+        }
+    });
+
+    // 实例化contacts集合，传递一个模型结构函数/分类与一个联系人
+    var contacts = new Backbone.Collection({
+        firstName: 'Jane',
+        lastName: 'Doe',
+        phone: '111-111-1111'
+    }, {
+        model: Contact
+    });
+
+    // 继承Backbone.View 创建AddContactsView 实例化一个实例
+    var ContactListView = Backbone.View.extend({
+        el: '#contacts',
+        events: {
+            'click li button': 'removeContact'
+        },
+
+        initialize: function(contacts) {
+        	this.contacts = contacts;
+            this.render();
+            this.listenTo(this.contacts, 'add remove', this.render);
+        },
+
+        removeContact: function(e) {
+            $(e.target).parent('li').remove();
+
+            this.contacts.findWhere({
+                firstName: $(e.target).parent('li').find('span').text().split(' ')[0].trim(),
+                lastName: $(e.target).parent('li').find('span').text().split(' ')[1].trim()
+            }).destroy(); 
+            
+        },
+
+        render: function() {
+            if (this.contacts.length > 0) {
+                this.$el.empty();
+                this.contacts.each(function(contact) {
+                    this.$el.append('<li><span>' + contact.getFullName() + '</span>/' + contact.get('phone') + '<button>x</button></li>');
+                }, this)
+            }
+        }
+    })
+
+    var contactListViewInstance = new ContactListView(contacts);
+
+
+    var AddContactsView = Backbone.View.extend({
+        el: 'fieldset',
+        events: {
+            'click button': 'addContact'
+        },
+
+        addContact: function() {
+            var firstName = this.$('#firstName').val(),
+                lastName = this.$('#lastName').val(),
+                phone = this.$('#phone').val();
+
+            if (firstName && lastName && phone) {
+                contacts.add({
+                    firstName: firstName,
+                    lastName: lastName,
+                    phone: phone
+                });
+
+                this.$('input').val('');
+            }
+        }
+    })
+
+    var addContactsViewInstance = new AddContactsView();
+    </script>
+</body>
+
+</html>

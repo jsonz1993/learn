@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../underscore-min.js"></script>
+    <script src="../jquery-1.11.2.min.js"></script>
+    <script src="../backbone-min.js"></script>
+</head>
+
+<body>
+    <script>
+    var ContactModel = Backbone.Model.extend({
+        getFullName: function() {
+            return this.get('firstName') + ' ' + this.get('lastName');
+        },
+        defaults: {
+            firstName: 'zhang',
+            lastName: 'gengxin'
+        }
+    })
+
+    var contact1Model = new ContactModel({
+        firstName: 'John',
+        lastName: 'Doe',
+        phone: '111-111-1111'
+    });
+
+    var contact2Model = new ContactModel({
+        firstName: 'Jsonz',
+        lastName: 'xinxin',
+        phone: '222-222-2222'
+    });
+
+    console.log(contact1Model.getFullName(), contact2Model.getFullName());
+    console.log('has firstName ' + contact1Model.has('firstName') + ' ' + contact1Model.get('firstName'));
+
+    contact1Model.unset('lastName');
+    console.log(contact1Model.has('lastName'));
+    contact1Model.clear();
+    console.log(contact1Model.attributes);
+
+    console.log('-------------------------');
+
+    // 分别返回key 和values
+    console.log(contact2Model.keys(), contact2Model.values());
+    //复制数据/属性对象,返回包含选中键的对象
+    console.log(contact2Model.pick('phone'));
+    //复制数据/属性对象,返回不包含选中键的对象
+    console.log(contact2Model.omit('firstName', 'lastName'));
+
+    console.log('-------------------------');
+
+    var ContactView = Backbone.View.extend({
+        initialize: function() {
+            this.listenTo(contact2Model, 'change', this.render);
+        },
+        render: function() {
+            console.log('修改了');
+        }
+    });
+
+    new ContactView();
+
+    contact2Model.set({
+        firstName: ' 触发了 change 事件'
+    });
+
+    contact2Model.unset('firstName');
+
+    console.log('-------------------------');
+
+    var ContactView2 = Backbone.View.extend({
+        initialize: function() {
+            this.listenTo(contact2Model, 'change:firstName', this.render);
+        },
+        render: function() {
+            $(this.el).append('修改了firstName');
+        }
+    });
+
+    new ContactView2({
+        el: 'body'
+    });
+    contact2Model.set('firstName', 'yoyo');
+
+    console.log('-------------------------');
+
+    contact2Model.set({
+        phone: 'yoyo'
+    });
+    console.log(contact2Model.hasChanged());
+
+    console.log(contact2Model.changedAttributes());
+    //获取电话号码的上一个值
+    console.log(contact2Model.previous('phone'));
+    //获取最后change事件之前的所有属性状态
+    console.log(contact2Model.previousAttributes());
+
+    console.log('-------------------------');
+
+    contact2Model.validate = function(attributes, options) {
+        var validPhone = /\(?\d{3}\W?\s?\d{3}\W?\d{4}/.test(attributes.phone);
+        if (!validPhone) {
+            return 'Setting or Saving Invalid Phone Number Attempted';
+        }
+    };
+
+    contact2Model.set('phone', '1356-004-2631', {
+        validate: true
+    });
+    contact2Model.set('phone', '1356-0-2631', {
+        validate: true
+    }); //不会set,验证失败
+
+    console.log(contact2Model.get('phone')); //没有无效的电话号码
+    console.log(contact2Model.validationError); //读取最后一个验证错误
+
+    console.log('-------------------------');
+
+    Backbone.listenTo(contact2Model, 'invalid', function(model, error, options) {
+        console.log(model, error, options);
+    });
+
+    contact2Model.set('phone', '111', {
+        validate: true
+    });
+
+    console.log('-------------------------');
+
+    var ContactModel3 = Backbone.Model.extend({
+        validate: function(attributes, options) {
+            var phone = /\(?\d{3}\W?\s?\d{3}\W?\d{4}/.test(attributes.phone);
+            var firstName = /^[A-Z]'?[a-zA-Z]+(-[a-zA-Z]+)?$/.test(attributes.firstName);
+            var lastName = /^[A-Z]'?[a-zA-Z]+(-[a-zA-Z]+)?$/.test(attributes.lastName);
+            if (!phone || !firstName || !lastName) {
+                return 'Setting, Saving, Or Seeding Invalid Data'
+            }
+        },
+        initialize: function(){
+        	// 运行验证，如果无效将输出信息
+        	if (!this.isValid()) {
+        		console.log(this.validationError);
+        	}
+        }
+    });
+
+    var contact3Model = new ContactModel3({
+    	firstName: 'jso21',
+    	lastName: '123-123',
+    	phone: '111-1111-11'
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../underscore-min.js"></script>
+    <script src="../jquery-1.11.2.min.js"></script>
+    <script src="../backbone-min.js"></script>
+</head>
+
+<body>
+    <script>
+    var MyView = Backbone.View.extend({
+        events: {
+            'click button': 'sayHi'
+        },
+        sayHi: function() {
+            console.log('hi');
+        },
+        render: function() {
+            this.$el.html('<button>sayHi</button>');
+            return this;
+        },
+        initialize: function() {
+            this.render();
+        }
+    });
+
+    var myViewInstance = new MyView({
+        el: '#myView'
+    });
+    //change el for myViewInstance, and re-render, note event works
+    myViewInstance.setElement('#anotherMyView').render();
+
+
+    var MyView2 = Backbone.View.extend({
+    	sayName : function(){
+    		console.log('name');
+    	},
+    	render: function(){
+    		this.$el.html('<button>hi</button>');
+    		return this;
+    	},
+    	initialize: function(){
+    		this.render();
+    	}
+    });
+
+    var myView2 = new MyView2({el: 'body'});
+
+    myView2.events = {'click button': 'sayName'};
+    myView2.delegateEvents()
+    </script>
+</body>
+
+</html>

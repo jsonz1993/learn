@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../underscore-min.js"></script>
+	<script src="../jquery-1.11.2.min.js"></script>
+	<script src="../backbone-min.js"></script>
+
+</head>
+<body>
+	
+	<h3>list</h3>
+	<ul id="list"></ul>
+
+	<h3>add list</h3>
+	<div id="input">
+		<input type="text" id="firstName">
+		<input type="text" id="lastName">
+		<button>add</button>
+	</div>
+
+	<script>
+	// 模型
+	var Contact = Backbone.Model.extend({
+		defaults: {
+			firstName: 'null',
+			lastName: 'null'
+		},
+
+		getFullName: function(){
+			return this.get('firstName') +' ' + this.get('lastName');
+		}
+	});
+
+	// 集合
+	var contacts = new Backbone.Collection({
+		firstName: 'Jsonz',
+		lastName: 'xinxin'
+	},{model: Contact});
+
+	// list 视图
+	var ListView = Backbone.View.extend({
+		el: '#list',
+
+		events: {
+			'click button': 'removeItem'
+		},
+
+		initialize: function(contacts){
+			this.contacts = contacts;
+			this.render();
+			this.listenTo(this.contacts, 'add remove', this.render);
+		},
+
+		render: function(){
+			if (this.contacts.length) {
+				this.$el.empty();
+				
+				this.contacts.each(function(contact){
+					this.$el.append('<li><span>' + contact.getFullName() + '</span>' + '<button>x</button></li>');
+				}, this)
+			}
+		},
+
+		removeItem: function(e){
+			$(e.target).parent('li').remove();
+			
+			var name = $(e.target).prev().text().split(' ');
+
+			this.contacts.findWhere({
+				firstName: name[0].trim(),
+				lastName: name[1].trim()
+			}).destroy();
+		}
+	});
+
+	var contactListViewInstance = new ListView(contacts);
+
+	var AddView = Backbone.View.extend({
+		el: '#input',
+		events: {
+			'click button': 'addList'
+		},
+
+		initialize: function(contact) {
+			this.contact = contact;
+		},
+		addList: function(){
+			var firstName = this.$('#firstName').val().trim(),
+				lastName = this.$('#lastName').val().trim();
+
+			if (firstName && lastName) {
+				this.contact.add({
+					firstName: firstName,
+					lastName: lastName
+				});
+				this.$('input').val('').eq(0).focus();
+			}
+		}
+	})
+
+	var addViewInstance = new AddView(contacts);
+
+	</script>
+</body>
+</html>

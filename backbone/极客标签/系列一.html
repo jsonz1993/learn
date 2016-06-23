@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>模型</title>
+    <script src="../underscore-min.js"></script>
+    <script src="../backbone-min.js"></script>
+</head>
+
+<body>
+    <div id="container">
+    </div>
+    <script>
+    // 模型
+    var Person = Backbone.Model.extend({
+        initialize: function() {
+            console.log('hello world');
+        },
+
+        defaults: function() {
+            return {
+                age: 20
+            }
+        }
+    })
+    var p = new Person({
+        name: 'Jsonz',
+        height: '20'
+    })
+
+    // p.get('age'); p.get('name');
+    //  Backbone的绑定功能很强大，当Model数据变化的时候，能够自动的触发方法，更新视图View。
+
+    var Person1 = Backbone.Model.extend({
+        initialize: function() {
+            console.log('hello Person2');
+
+            // 当name 属性改变时，添加一个绑定函数
+            this.bind('change:name', function() {
+                console.log(this.get('name') + ' is now the value for name and prev value is ' + this.previous('name'));
+            })
+
+            // 添加一个和 error错误绑定的方法，用于处理错误数据
+            this.bind('error', function(model, error) {
+                console.error(error + ' biu');
+            })
+        },
+
+        defaults: {
+            name: 'Jsonz',
+            height: 'unKnow'
+        },
+
+        validate: function(attributes) {
+            if (attributes.name == 'job') {
+                // 返回出错信息
+                return 'oh, you are sb';
+            }
+        }
+    });
+
+    var person1 = new Person1();
+    person1.save({
+        name: 'job'
+    });
+
+    // 视图
+
+    // 一个简单的模型
+    try {
+        var Links = Backbone.Model.extend({
+            data: [{
+                text: "Google",
+                href: "http://google.com"
+            }, {
+                text: "Facebook",
+                href: "http://facebook.com"
+            }, {
+                text: "Youtube",
+                href: "http://youtube.com"
+            }]
+        });
+
+        var View = Backbone.View.extend({
+            initialize: function() {
+                console.log(this.el);
+            },
+
+            el: '#container'
+        });
+
+        var view = new View({
+            model: new Links()
+        })
+    } catch (e) {
+        console.log('view 报错')
+    }
+
+
+    var Router = Backbone.Router.extend({
+        routes: {
+            // 这个会匹配任何url 是符合 foo/<param>的，并且提供:bar座位参数，传输到paramtest方法中。
+            // 所以#foo/1 会调用paramtest(1)
+
+            "foo/:bar": "paramtest",
+
+            "*action": "func"
+        },
+
+        func: function(action) {
+            console.log(action);
+        },
+
+        paramtest: function(p) {
+            console.log('foo/' + p);
+        }
+    })
+
+    new Router();
+
+    Backbone.history.start();
+
+    // 集合
+    // 集合既是模型的集合体 Array
+
+    //最初的person模型
+    var Person = Backbone.Model.extend({
+        // initialize 在我们创建Person对象时被调用
+        initialize: function() {
+            console.log('person is initialized');
+        },
+
+        defaults: {
+            name: 'jsonz',
+            age: 'unKnow'
+        }
+    });
+
+    // 创建集合
+    var People = Backbone.Collection.extend({
+        // 当集合被创建时调用
+        initialize: function() {
+            console.log('People Collection is initiallzed');
+        },
+
+        // 定义存入集合的数据模型
+        model: Person
+    });
+
+    // 创建一个新的person对象
+    var person = new Person({name: 'Job'})
+
+    //创建一个集合，然后将Person对象加入这个集合中
+    var people = new People(person);
+    people.add([{name:'Bob'},{name:'Jim'}]);
+
+    // 在控制台中， 打出这个数据模型的数据
+    console.log(people.toJSON());
+
+    </script>
+</body>
+
+</html>

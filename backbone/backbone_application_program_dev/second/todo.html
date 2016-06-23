@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../underscore-min.js"></script>
+	<script src="../jquery-1.11.2.min.js"></script>
+	<script src="../backbone-min.js"></script>
+</head>
+<body>
+	<div id="todo"></div>
+	<script type="text/template" id="item-template">
+		<div>
+			<input type="checkbox" id="todo_complete" <%= completed ? 'checked' : '' %>>
+			<label><%- title %></label>
+			<button class="destroy">X</button>
+		</div>
+		<input value="<%= title %>" class="edit">
+	</script>
+
+	<script>
+	var Todo = Backbone.Model.extend({
+		defaults: {
+			title: '',
+			completed: false
+		}
+	});
+
+	var myTodo = new Todo({
+		title: 'check attributes property of the logge models in the console.'
+	});
+	
+	var TodoView = Backbone.View.extend({
+		tagName: 'li',
+		el: '#todo',
+		todoTemplate: _.template($('#item-template').html()),
+
+		events: {
+			'dblclick label': 'edit',
+			'keypress .edit': 'updateOnEnter',
+			'blur .edit': 'close'
+		},
+
+		initialize: function(){
+			this.render();
+		},
+		render: function(){
+			this.$el.html(this.todoTemplate(this.model.toJSON()));
+			this.input = this.$('.edit');
+			return this;
+		}
+	});
+
+	var todoView = new TodoView({model: myTodo});
+	</script>
+</body>
+</html>

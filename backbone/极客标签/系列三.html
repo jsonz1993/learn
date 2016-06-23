@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../underscore-min.js"></script>
+    <script src="../jquery-1.11.2.min.js"></script>
+    <script src="../backbone-min.js"></script>
+</head>
+
+<body>
+    <script>
+    (function() {
+        Backbone.Events = { /*事件函数混合到任意对象*/ }
+        Backbone.Model = function() { /*模型构造函数*/ };
+        Backbone.Collection = function() { /*集合构造函数*/ };
+        Backbone.Router = function() { /*路由器构造函数*/ };
+        Backbone.History = function() { /*历史构造函数*/ };
+        Backbone.sync = function() { /*同步函数*/ };
+        Backbone.View = function() { /*视图函数*/ };
+    }).call(this)
+    </script>
+</body>
+
+</html>

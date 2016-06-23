@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../underscore-min.js"></script>
+    <script src="../jquery-1.11.2.min.js"></script>
+    <script src="../backbone-min.js"></script>
+    <style>
+    div {
+        border: 1px solid #ccc;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="name"></div>
+    <div id="name1"></div>
+    <button id="btn1">按钮</button>
+    <button id="btn2">按钮</button>
+    <script type="text/template" id="item-template">
+        <div>
+            <input type="checkbox" id="todo_complete" <%=c ompleted ? 'checed' : '' %>>
+            <%= title %>
+        </div>
+    </script>
+    <script>
+    var Todo = Backbone.Model.extend({
+        initialize: function() {
+            this.on('change', function() {
+                console.log('.value for this model have changed');
+            })
+        },
+
+        defaults: {
+            title: '',
+            completed: false
+        }
+    });
+
+    var todo1 = new Todo({
+        title: [1]
+    });
+
+    var todo2 = new Todo({
+        title: 'Check the attributes of both model instances in the console',
+        ompleted: true
+    });
+
+    console.log(JSON.stringify(todo2));
+
+    // 赋值与取值
+    console.log(todo1.get('title'));
+
+    // toJSON() 返回模型数据的副本 object。 引用，对象会同时修改
+    todo1.toJSON().title.push(2);
+
+    // set
+    todo1.set({
+        name: '11'
+    });
+
+    // 设置  silent: true 可以不触发 change事件
+    todo1.set({
+        name: '12'
+    }, {
+        silent: true
+    });
+    console.log(todo1.toJSON())
+
+    // 如果直接访问  .attributes 上的属性来设置值，会绕过模型上绑定的触发器。
+    todo1.attributes.title.pop();
+
+    var Todo = Backbone.Model.extend({
+        defaults: {
+            title: '',
+            name: ''
+        },
+
+        initialize: function() {
+            this.on('change:title', function() {
+                console.log('title value for this model has changed');
+            })
+        },
+
+        setTitle: function(setTitle) {
+            this.set({
+                title: setTitle
+            });
+        }
+    });
+
+    var myTodo = new Todo();
+
+    myTodo.set('title', 'change');
+    myTodo.setTitle('new title');
+    myTodo.set('name', 'Jsonz');
+
+    // 验证
+    var Person = new Backbone.Model({
+        defaults: {
+            name: 'Jeremy'
+        },
+        validate: function(atributes) {
+            if (atributes.name === undefined) {
+                return 'Remember to set a title for you todo.';
+            }
+        },
+
+        initialize: function() {
+            this.on('invalid', function(model, erorr) {
+                console.log(error);
+            })
+        }
+    });
+
+    Person.validate = function(attrs) {
+        if (!attrs.name) {
+            return 'i need you name';
+        }
+    }
+
+    Person.set({
+        'name': 'Jsonz'
+    });
+    console.log(Person.get('name'));
+    console.log(Person.unset('name', {
+        validate: true
+    }))
+    console.log(Person.get('name'));
+
+    var myTodo = new Todo();
+    myTodo.set('name', true, {
+        validate: true
+    });
+    console.log(myTodo.get('name'));
+
+    console.log('------------------');
+
+    var Todo = Backbone.Model.extend({
+        defaults: {
+            completed: false
+        },
+
+        validate: function(attribs) {
+            if (attribs.title === undefined) {
+                return 'Remember to set a title for your todo';
+            }
+        },
+
+        initialize: function() {
+            this.on('invalid', function(model, error) {
+                console.log(error);
+            })
+        }
+    });
+
+    var myTodo = new Todo();
+    myTodo.set('completed', true, {
+        validate: true
+    });
+
+    console.log('completed: ' + myTodo.get('completed'));
+    console.log('-------------------------------------');
+
+    var MyModel = Backbone.Model.extend({
+
+        validate: function(attribs) {
+            if (attribs.hasOwnProperty('myString')) {
+                // Maybe trim it by default?
+                // or replace swear words?
+                attribs.myString = attribs.myString.trim();
+                // do validation here...
+            }
+            if (attribs.hasOwnProperty('myNumber')) {
+                // I don't really see a use for it, but it won't change.
+                attribs.myNumber = 43;
+                //validation
+            }
+            if (attribs.hasOwnProperty('myBoolean')) {
+                // again, no use case, but it won't change
+                attribs.myBoolean = false;
+                //validation
+            }
+            if (attribs.hasOwnProperty('myObject')) {
+                // WILL change, since _.extend is not a deep copy
+                attribs.myObject.foo = "baz";
+                //validation
+            }
+        }
+    });
+
+    //try and set our attribs using `set`
+    var someInstance = new MyModel();
+
+    var attribs = {
+        myString: "  Is an untrimmed String  ",
+        myNumber: 42,
+        myBoolean: true,
+        myObject: {
+            foo: "bar"
+        }
+    };
+
+    someInstance.set(attribs);
+
+    console.log(someInstance.get('myString')); // outputs '  Is an untrimmed string  ', should be trimmed
+    console.log(someInstance.get('myNumber')); // outputs 42, should be 43
+    console.log(someInstance.get('myBoolean')); //outputs true, should be false
+    console.log(someInstance.get('myObject').foo); //outputs "baz" !
+
+    function modifiesObject(obj) {
+        // bah hasOwnProperty checks.
+        obj.myString = obj.myString.trim();
+        obj.myNumber = 43;
+        obj.myBoolean = false;
+        obj.myObject.foo = "baztopia";
+    }
+
+    modifiesObject(attribs); //does what we want: change the object
+    console.log(attribs.myString); //outputs "Is a untrimmed String"
+    console.log(attribs.myNumber); //outputs 43
+    console.log(attribs.myBoolean); //outputs "false"
+    console.log(attribs.myObject.foo); //outputs "baztopia"
+    console.log('-----------------------------');
+
+    // 视图
+    console.log('----------视图---------------');
+
+    var TodoView = Backbone.View.extend({
+        tagName: 'li',
+        // el: '#name1',
+        todoTpl: _.template('An example template'),
+        events: {
+            'ablclick table': 'edit',
+            'keypress .edit': 'updateOnEnter',
+            'blur .edit': 'close'
+        },
+
+        initialize: function() {
+            this.render();
+        },
+
+        render: function() {
+            // this.$el.html( this.todoTpl(this.model.toJSON()));
+            this.$el.html('An example template');
+            this.input = this.$('.edit');
+            return this;
+        },
+
+        edit: function() {
+            //....
+        },
+
+        close: function() {
+            //....
+        },
+
+        updateOnEnter: function(e) {
+            //....
+        }
+    });
+
+    var todoView = new TodoView();
+
+    console.log(todoView.el); // <li></li>
+
+    var button1 = $('#btn1'),
+        button2 = $('#btn2');
+
+    // setElement
+    var View = Backbone.View.extend({
+        events: {
+            click: function(e) {
+                console.log(view.el === e.target);
+            }
+        }
+    });
+
+    var view = new View({
+        el: button1
+    });
+    view.setElement(button2);
+
+    button2.trigger('click');
+    console.log('------------------------------');
+
+    var view = new Backbone.View;
+    view.setElement('<p><a><b>test</b></a></p>');
+    console.log(view.$('a b').html())
+    console.log('------------------------------');
+
+    var ItemView = Backbone.View.extend({
+        events: {},
+        render: function() {
+            var items = this.model.get('items');
+
+            _.each(items, function(item) {
+                var itemView = new ItemView({
+                    mode: item
+                });
+                this.$el.append(itemView.render().el);
+            }, this)
+            return this;
+        }
+    });
+
+    var ItemView = Backbone.View.extend({
+        events: {
+            'click .toggle': 'toggleCompleted',
+            'dblclick label': 'edit',
+            'click .destory': 'clear',
+            'blur .edit': 'close'
+        },
+        render: function() {
+            this.$el.html(this.model.toJSON());
+            return this;
+        }
+    });
+    console.log('---------------集合-------------');
+
+    var Todo = Backbone.Model.extend({
+        defaults: {
+            title: '',
+            completed: false
+        }
+    });
+
+    var TodosCollection = Backbone.Collection.extend({
+        model: Todo
+    });
+
+    var myTodo = new Todo({
+        title: 'read the whold book',
+        id: 2
+    });
+    var todos = new TodosCollection([myTodo]);
+    console.log(todos.length);
+
+
+    var Todo = Backbone.Model.extend({
+        defaults: {
+            title: '',
+            completed: false
+        }
+    });
+    var TodosCollection = Backbone.Collection.extend({
+        model: Todo
+    });
+
+    var a = new Todo({
+            title: 'Go to Jamica'
+        }),
+        b = new Todo({
+            title: 'Go to China'
+        }),
+        c = new Todo({
+            title: 'Go to Disneyland'
+        });
+
+    var todos = new TodosCollection([a, b]);
+    console.log(todos.length);
+
+    todos.add(c);
+    console.log(todos.length);
+
+    todos.remove([a, b]);
+    console.log(todos.length);
+
+    todos.remove(c);
+    console.log(todos.length);
+
+    var myTodo = new Todo({
+        title: 'read the whole book',
+        id: 2
+    });
+    var todos = new TodosCollection([myTodo]);
+    // 使用 id get
+    var todo2 = todos.get(2);
+    console.log(todo2 === myTodo);
+    // 使用 cid get
+    var todoCid = todos.get(todo2.cid);
+    console.log(todoCid === todo2);
+
+    console.log('-----------------------');
+    var TodosCollection = new Backbone.Collection();
+    TodosCollection.on('add', function(todo) {
+        console.log(todo.get('title'));
+    });
+    TodosCollection.add([{
+        title: 'go to Jamaica'
+    }, {
+        title: 'go to China'
+    }, {
+        title: 'go to Disneyland'
+    }]);
+
+    // 可以绑定 change
+    var TodosCollection = new Backbone.Collection();
+    TodosCollection.on({
+        'change:title': function(model) {
+            console.log(model.get('title'));
+        },
+        'change:name': function(model) {
+            console.log(model.get('name'));
+        }
+    });
+    TodosCollection.add([{
+        title: 'go to Jamaica',
+        id: 3
+    }]);
+    var myTodo = TodosCollection.get(3);
+    myTodo.set('title', 'go to fishing');
+    console.log(myTodo.get('title'));
+    console.log('---------------------');
+
+    var TodoCounter = {
+        counterA: 0,
+        counterB: 0
+    };
+    _.extend(TodoCounter, Backbone.Events);
+    console.log(TodoCounter);
+    var incrA = function() {
+        TodoCounter.counterA += 1;
+        TodoCounter.trigger('event');
+    };
+    var incrB = function() {
+        TodoCounter.counterB += 1;
+    };
+    TodoCounter.once('event', incrA);
+    TodoCounter.once('event', incrB);
+    TodoCounter.trigger('event');
+    console.log(TodoCounter.counterA === 1); // true
+    console.log(TodoCounter.counterB === 1); // true
+
+    var TodosCollection = new Backbone.Collection();
+
+    TodosCollection.add([{
+        id: 1,
+        title: 'go to Jamaica',
+        completed: false
+    }, {
+        id: 2,
+        title: 'go to China',
+        completed: false
+    }, {
+        id: 3,
+        title: 'go to Disneyland',
+        completed: true
+    }]);
+
+    TodosCollection.on('add', function(model) {
+        console.log('added' + model.get('title'));
+    });
+
+    TodosCollection.on('remove', function(model) {
+        console.log('remove ' + model.get('title'));
+    });
+
+    TodosCollection.on('change:completed', function(model) {
+        console.log('completed ' + model.get('title'));
+    });
+
+    TodosCollection.set([{
+        id: 1,
+        title: 'go to Jamaica',
+        completed: true
+    }, {
+        id: 2,
+        title: 'go to China',
+        completed: false
+    }, {
+        id: 4,
+        title: 'go to Disney world',
+        completed: false
+    }]);
+
+    // 简单的替换整个集合内容
+    TodosCollection.on('reset', function(model, options) {
+        console.log('reset ');
+        console.log(options.previousModels);
+        console.log(model);
+        console.log('-------------')
+    })
+    TodosCollection.reset([{
+        title: 'go to Cuba',
+        completed: false
+    }]);
+    console.log(TodosCollection.toJSON());
+    console.log('----------------------');
+
+    var Todos = new Backbone.Collection([{
+        id: 1,
+        title: 'go to Jamaica',
+        completed: false
+    }, {
+        id: 2,
+        title: 'go to China',
+        completed: false
+    }, {
+        id: 3,
+        title: 'go to Disneyland',
+        completed: true
+    }]);
+    // forEach
+    Todos.forEach(function(model) {
+        console.log(model.get('title'));
+    });
+
+    // sortBy
+    var sortedByAlphabt = Todos.sortBy(function(todo) {
+        return todo.get('title').toLowerCase();
+    });
+    console.log('- now sorted: ');
+    sortedByAlphabt.forEach(function(model) {
+        console.log(model.get('title'));
+    });
+
+    // map
+    var count = 1;
+    console.log(Todos.map(function(model) {
+        return count++ + '. ' + model.get('title');
+    }));
+
+    //min()/max()
+    console.log(Todos.max(function(model) {
+        return model.id;
+    }).id)
+
+    console.log(Todos.min(function(model) {
+        return model.id;
+    }).id)
+
+    // pluck()
+    console.log(Todos.pluck('title'));
+
+    // filter()
+    var Todos = Backbone.Collection.extend({
+        model: Todo,
+        filterById: function(ids) {
+            return this.models.filter(function(c) {
+                return _.contains(ids, c.id);
+            })
+        }
+    });
+
+    // indexOf()
+    var People = new Backbone.Collection;
+    People.comparator = function(a, b) {
+        return a.get('name') < b.get('name') ? -1 : 1;
+    };
+    var tom = new Backbone.Model({
+        name: 'Tom'
+    });
+    var rob = new Backbone.Model({
+        name: 'Rob'
+    });
+    var tim = new Backbone.Model({
+        name: 'Tim'
+    });
+    People.add(tom);
+    People.add(rob);
+    People.add(tim);
+    console.log(People.indexOf(rob) === 0, People.indexOf(tim) === 1, People.indexOf(tom) === 02)
+
+    // groupBy
+    var Todos = new Backbone.Collection();
+
+    Todos.add([{
+        id: 1,
+        title: 'go to Jamaica',
+        completed: false
+    }, {
+        id: 2,
+        title: 'go to China',
+        completed: false
+    }, {
+        id: 3,
+        title: 'go to Disneyland',
+        completed: true
+    }]);
+    var byCompleted = Todos.groupBy('completed');
+    var completed = new Backbone.Collection(byCompleted[true]);
+    console.log(completed.pluck('title'));
+
+    // some
+    Todos.some(function(model) {
+        return model.id === 100;
+    })
+
+    // size
+    console.log(Todos.size(), Todos.length);
+
+    // isEmpty
+    var isEmpty = Todos.isEmpty();
+    console.log('-----------------')
+
+    // pick
+    var Todo = Backbone.Model.extend({
+        defaults: {
+            title: '',
+            completed: false
+        }
+    });
+    var todo = new Todo({title: 'go to Austria.'});
+    console.log(todo.pick('title'));
+
+    // omit
+    var todo = new Todo({title: 'go to Austria'});
+    console.log(todo.omit('title'));
+
+    // keys() 和 values() 获取key 和value
+    console.log(todo.keys());
+    console.log(todo.values());
+
+    // pairs()
+    console.log(todo.pairs());
+
+    // invert()
+    console.log(todo.invert());
+
+    </script>
+</body>
+
+</html>
