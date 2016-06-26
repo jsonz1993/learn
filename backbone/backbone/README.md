@@ -32,4 +32,6 @@
 
 ###### // 冲突机制，不理解   Backbone.noConflict
 
-###### eventSplitter
+###### eventSplitter 用来匹配 传入事件的空格。 /\s+/;
+
+###### eventsApi 有些不解
