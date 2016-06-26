@@ -9,6 +9,24 @@
 </head>
 <body>
 	
-	<script></script>
+	<button> anniu </button>
+
+	<script>
+		var View = Backbone.View.extend({
+			el: 'button',
+			initialize: function(){
+				this.render()
+			},
+			render: function(){
+				this.el.innerHTML = '1111';
+			},
+
+			events: {
+				'click ': ''
+			}
+		});
+
+		var view = new View();
+	</script>
 </body>
 </html>
