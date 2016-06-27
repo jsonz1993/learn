@@ -16,10 +16,26 @@
 - emulateJSON
 
 ## Events
+- on
+- once
+- off
+- trigger
+- stopListening
 
 ## eventSplitter
+- 用于分割事件名 `click focus` 分成[click,focus]
 
 ## eventsAPi
+- 封装用与处理 `on`,`off`,`once`,`trigger`
+
+## triggerEvents
+- 用于触发`trigger`事件， 根据传入参数callback
+
+## listenMethods
+- `key`: `val` listenTo && listenToOnce 分别调用 on && once
+
+## _each(listenMethods)
+- 将listenTo && listenToOnce 加到Events方法上，默认是用on 和 once 实现
 
 
 
