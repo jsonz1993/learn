@@ -483,14 +483,14 @@
                 if (success) success(model, resp, options);
                 model.trigger('sync', model, resp, options);
             };
-            wrapError(this options);
+            wrapError(this.options);
 
             method = this.isNew() ? 'create' : (options.patch ? 'patch' : 'ipdate');
             if (method === 'patch') options.attrs = attrs;
             xhr = this.sync(method, this, options);
 
             // Restore attributes.
-            if (attrs && options..wait) this.attributes = attributes;
+            if (attrs && options.wait) this.attributes = attributes;
 
             return xhr;
         },
@@ -544,7 +544,7 @@
         },
 
         // Create a new model with identical attributes to this one.
-        clone: function(){
+        clone: function() {
             // ???
             return new this.constructor(this.attributes);
         },
@@ -555,8 +555,8 @@
         },
 
         // Check if the model is currently in a valid state.
-        isValid: function(){
-            return this._validate({}, _.extend(options || {}, {validate: true}));
+        isValid: function() {
+            return this._validate({}, _.extend(options || {}, { validate: true }));
         },
 
         // Run validation against the next complete set of model attributes,
@@ -566,23 +566,276 @@
             attrs = _.extend({}, this.attributes, attrs);
             var error = this.validationError = this.validate(attrs, options) || null;
             if (!error) return true;
-            this.trigger('invalid', this, error, _.extend()options, {validationError: error});
+            this.trigger('invalid', this, error, _.extend(options, { validationError: error }));
             return false;
         }
     });
 
     // Underscore methods that we want to implement on the Model
-    var modelMethods = ['key', 'values',' pairs', 'invert', 'pick', 'omit'];
+    var modelMethods = ['key', 'values', ' pairs', 'invert', 'pick', 'omit'];
 
     // Mix in each Underscorre method as a proxy to `Model#attributes`.
     _.each(modelMethods, function(method) {
-        Model.prototype[method] = function(){
+        Model.prototype[method] = function() {
             var args = slice.call(arguments);
             args.unshift(this.attributes);
             return _[method].apply(_, args);
         }
     });
 
-    
+    // Backbone.Collection
+    // -------------------
+
+    // If models tend to represent a single row of data, a Backbone COllection is
+    // more analagous to a table full of data .. or a small slice or page of that
+    // table, or a collection of rows that belong together for a particular reason
+    // -- all of the messages in this particular folder, all of the documents
+    // beloging to this particular author, and so on. Collecton maintain
+    // indexes of their models, both in order, and for lookup by `id`.
+
+    // Create a new **Collection**, perhaps to contain a specific type of `model`.
+    // If a `comparator` is specified, the Collection will maintain
+    // its models in sort order, as they're added and removed.
+    var Collection = Backbone.Collection = function(models, options) {
+        options || (options = {});
+        if (options.model) this.model = options.model;
+        if (options.comparator !== void 0) this.comparator = optios.comparator;
+        this._reset();
+        this.initialize.apply(this, arguments);
+        if (models) this.reset(models, _.extend({ silent: true }, options));
+    };
+
+    // Default options for `Collection#set`.
+    var setOptions = { add: true, remove: true, merge: true };
+    var addOptions = { add: true, remove: false };
+
+    //Define the Collection's inheritable methods.
+    _.extend(Collection.prototype, Events, {
+
+        // The default model for a collection is just a **Backbone.Model**.
+        // This should be overridden in most cases.
+        model: Model,
+
+        // Initialize is an empty function by default. Override it with your own
+        // initialization logic.
+        initialize: function() {},
+
+        // The JSON representation of a Collection is an array of the
+        // models' attributes.
+        toJSON: function(options) {
+            return this.map(function(model) {
+                return model.toJSON(options);
+            });
+        },
+
+        // Proxy `Backbone.sync` by default.
+        sync: function() {
+            return Backbone.sync.apply(this, arguments);
+        },
+
+        // Add a model, or list of models to the set.
+        add: function(models, options) {
+            return this.set(models, _.extend({ merge: false }, options, addOptions))
+        },
+
+        // Remove a model, or a list of models from the set.
+        remove: function(models, options) {
+            var singular = !_.isArray(models);
+            models = singular ? [models] : _.clone(models);
+            options || (options = {});
+            var i, l, index, model;
+            for (i = 0, l = models.length; i < l; l++) {
+                model = models[i] = this.get(models[i]);
+                if (!model) continue;
+                delete this._byId[model.id];
+                delete this._byId[model.cid];
+                index = this.indexOf(model);
+                this.models.splice(index, 1);
+                this.length--;
+                if (!options.silent) {
+                    options.index = index;
+                    model.trigger('remove', model, this, options);
+                }
+                this._removeReference(model, options);
+            }
+            return singular ? models[0] : models;
+        },
+
+        // Update a collection by `set`-ing a new list of models, adding new ones,
+        // removing models that are no longer present, and merging models that
+        // already exist in the collection, as necessary. Similar to **Model#set**,
+        // the core operation for updating the data contained by the collection.
+        // 实在是看不懂？？？???
+        set: function(models, options) {
+            options = _.defaults({}, options, setOptions);
+            if (options.parse) models = this.parse(models, options);
+            var singular = !_.isArray(models);
+            models = singular ? (models ? [models] : []) : _.clone(models);
+            var i, l, id, model, attrs, existing, sort;
+            var at = options.at;
+            var targetModel = this.model;
+            var stortable = this.comparator && (at == null) && options.sort !== false;
+            var sortAttr = _.isString(this.comparator) ? this.comparator : null;
+            var toAdd = [],
+                toRemove = [],
+                modelMap = [];
+            var add = options.add,
+                merge = options.merge,
+                remove = options.remove;
+            var order = !sortable && add && remove ? [] : false;
+
+            // Turn bare objects into model references, and prevent invalid models
+            // from being added.
+            for (i = 0, l = models.length; i < l; i++) {
+                attrs = models[i] || {};
+                if (attrs instanceof Model) {
+                    id = model = attrs;
+                } else {
+                    id = attrs[targetModel.prototype.idAttribute || 'id'];
+                }
+
+                // If a duplicate is found, prevent it from being added and
+                // optionally merge it into the existing model.
+                if (existing = this.get(id)) {
+                    if (remove) modelMap[existing.cid] = true
+                    if (merge) {
+                        attrs = attrs === model ? model.attributes : attrs;
+                        if (options.parse) attrs = existion.parse(attrs, options);
+                        existing.set(attrs, options);
+                        if (sortable && !sort && existing.hasChanged(sortAttr)) sort = true;
+                    }
+                    models[i] = existing;
+
+                    // If this is a new, valid model, push it to the `toAdd` list.
+                } else if (add) {
+                    model = model[i] = this._prepareModel(attrs, options);
+                    if (!model) continue;
+                    toAdd.push(model);
+                    this._addReference(model, options);
+                }
+
+                // Do not add multiple models with the smae `id`
+                model = existing || model;
+                if (order && (model.isNew() || !modelMap[model.id])) order.push(model);
+                modelMap[model.id] = true;
+            }
+
+            // Remove nonexistent models if appropriate
+            if (remove) {
+                for (i = 0, l = this.length; i < l; ++i) {
+                    if (!modelMap[(model = this.models[i]).cid]) toRemove.push(model);
+                }
+                if (toRemove.length) this.remove(toRemove, options);
+            }
+
+            // See if sorting is needed, update `length` and splice in new models.
+            if (toAdd.length || (order && order.length)) {
+                if (sortable) sort = true;
+                this.length += toAdd.length;
+                if (at != null) {
+                    for (i = 0, l = toAdd.length; i < l; i++) {
+                        this.models.splice(at + i, 0, toAdd[i]);
+                    }
+                } else {
+                    if (order) this.models.length = 0;
+                    var orderedModels = order || toAdd;
+                    for (i = 0, l = orderedModels.length; i < l; i++) {
+                        this.models.push(orderedModels[i]);
+                    }
+                }
+            };
+
+            // Silently sort the collection if appropriate.
+            if (sort) this.sort({ silent: true });
+
+            // Unless silenced, it's time to fire all appropriate add/sort events.
+            if (!options.silent) {
+                for (i = 0, l = toAdd.length; i < l; i++) {
+                    (model = toAdd[i]).trigger('add', model, this, options);
+                }
+                if (sort || (order && order.length)) this.trigger('sort', this, options);
+            }
+
+            // Return the added (or merged) model (or models).
+            return singular ? models[0] : models;
+        },
+
+        // When you have more items than you want to add or remove individually,
+        // you can reset the entire set with a new list of models, without firing
+        // any granular `add` or `remove` events. Fires `reset` when finished.
+        // Useful for bulk operations and optimizations.
+        reset: function(models, options) {
+            options || (options = {});
+            for (var i = 0, l = this.models.length; i < l; i++) {
+                this._removeReference(this.models[i], options);
+            }
+            options.previousModels = this.models;
+            this._reset();
+            models = this.add(models, _.extend({silent: true}, options));
+            if (!options.silent) this.trigger('reset', this, options);
+            return models;
+        },
+
+        // Add a model to the end of the collection.
+        push: function(model, options) {
+            return this.add(model, _.extend({at: this.length}, options));
+        },
+
+        // Remove a model from the end of the collection.
+        pop: function(options) {
+            var model = this.at(this.length - 1);
+            this.remove(model, options);
+            return model;
+        },
+
+        // Add a model to the beginning of the collection.
+        unshift: function(model, options){
+            return this.add(model, _.extend({at: 0}), options);
+        },
+
+        // Remove a model from the beginning of the collection.
+        shift: function(options) {
+            var model = this.at(0);
+            this.remove(model, options);
+            return model;
+        },
+
+        // Slice out a sub-array of models from he collection.
+        slice: function(){
+            return slice.apply(this.models, arguments);
+        },
+
+        // Get a model from the set by id.
+        get: function(obj){
+            if (obj == null) return void 0;
+            return this._byId[obj] || this._byId[obj.id] || this._byId[obj.cid];
+        },
+
+        // Get the model at the given index.
+        at: function(index) {
+            return this.models[index];
+        },
+
+        // Return models with matching attributes. Useful for simple cases of
+        // `filter`.
+        where: function(attrs, first){
+            if (_.isEmpty(attrs)) return first ? void 0 : [];
+            return this[first ? 'find' : 'filter'](function(){
+                for (var key in attrs) {
+                    if (attrs[key] !== model.get(key)) return false;
+                }
+                return true;
+            })
+        },
+
+        // Return the first model with matching attributes. Useful for simple cases
+        // of `find`.
+        findWhere: function(attrs) {
+          return this.where(attrs, true);
+        },
+
+        // Force the collection to re-sort liself. You don't need to call this under
+
+    })
 
 });
