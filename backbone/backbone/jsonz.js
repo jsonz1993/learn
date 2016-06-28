@@ -942,7 +942,7 @@
         // events simply proxy through. "add" and "remove" events that originate
         // in other collections are ignored.
         _onModelEvent: function(event, model, collection, options) {
-            if ((event === 'add' || event === 'remove') && collection |= = this) return
+            if ((event === 'add' || event === 'remove') && collection !== this) return;
             if (event === 'destroy') this.remove(model, options);
             if (model && event === 'change:' + model.idAttribute) {
                 delete this._byId[model.previous(model.idAttribute)];
@@ -1045,7 +1045,7 @@
         // re-delegation.
         setElement: function(element, delegate) {
             if (this.$el) this.undelegateEvents();
-            this.$el = element instancelf Backbone.$ ? element : Backbone.$(element);
+            this.$el = element instanceof Backbone.$ ? element : Backbone.$(element);
             this.el = this.$el[0];
             if (delegate !== false) this.delegateEvents();
             return this;
@@ -1280,7 +1280,7 @@
             if (!this.routes) return;
             this.routes = _.result(this, 'routes');
             var route, routes = _.keys(this.routes);
-            whild((route = routes.pop()) != null) {
+            while ((route = routes.pop()) != null) {
                 this.route(route, this.routes[route]);
             }
         },
@@ -1319,7 +1319,7 @@
     // [onhashchange](https://developer.mozilla.org/en-US/docs/DOM/window.onhashchange)
     // and URL fragments. If the browser supports neither (old IE, natch),
     // falls back to polling.
-    var History = Bacbone.History = function(){
+    var History = Backbone.History = function(){
         this.handlers = [];
         _.bindAll(this, 'checkUrl');
 
@@ -1556,7 +1556,55 @@
     // Helper function to correctly set up the prototype chain, for subclasses.
     // Similar to `goog.inherits`, but uses a hash of prototype properties and
     // class properties to be extended.
+    var extend = function(protoProps, staticeProps) {
+        var parent = this;
+        var child;
 
+        // The constructor function for the new subclass is either defined by you
+        // (the "constructor" property in your `extend` definition), or defaulted
+        // by us to simply call the parent's constructor.
+        if (protoProps && _.has(protoProps, 'constructor')) {
+            child = protoProps.constructor;
+        } else {
+            child = function(){ return parent.apply(this, arguments)};
+        }
 
+        // Add static properties to the constructor function, if supplied.
+        _.extend(child, parent, staticProps);
 
+        // Set the prototype chain to inherit from `parent`, without calling
+        // `parent`'s constructor function.
+        var Surrogate = function() {this.constructor = child; };
+        Surrogate.prototype = parent.prototype;
+        child.prototype = new Surrogate;
+
+        // Add prototype properties (instance properties) to the subclass,
+        // if supplied.
+        if (protoProps) _.extend(child.prototype, protoProps);
+
+        // Set a convenience property in case the parent's prototype is needed
+        // later.
+        child.__super__ = parent.prototype;
+
+        return child;
+    }
+
+    // Set up inheritance for the model, collection, router, view and history.
+    Model.extend = Collection.extend = Router.extend = View.extend =  History.extend = extend;
+
+    // Throw an error when a URL is needed, and none is supplied.
+    var urlError = function() {
+      throw new Error('A "url" property or function must be specified');
+    };
+
+    // Wrap an optional error callback with a fallback error event.
+    var wrapError = function(model, options) {
+        var error = options.error;
+        options.error = function(resp){
+            if (error) error(model, resp, options);
+            model.trigger('error', model, resp, options);
+        };
+    };
+
+    return Backbone;
 });
