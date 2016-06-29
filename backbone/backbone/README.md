@@ -38,10 +38,6 @@
 - 将listenTo && listenToOnce 加到Events方法上，默认是用on 和 once 实现
 
 
-
-
-
-
 ## 疑问
 
 ###### exports
@@ -57,3 +53,14 @@
 ###### void 0; 在解绑事件的时候为什么不写  undefined
 
 ###### triggerEvents 为什么不是用统一的 callback.apply去实现，而是分参数个数去判断
+
+# Underscore
+
+## createReduce get 不到。 Line 175
+
+附带 `_.reduce`  `_.reduceRight`
+
+## optimizeCb Line 63
+
+## cb Line 91
+
