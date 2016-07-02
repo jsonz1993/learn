@@ -55,7 +55,6 @@ app.AppView = Backbone.View.extend({
 				remaining: remaining
 			}));
 
-			this.$('#filters')
 		} else {
 			this.$main.hide();
 			this.$footer.hide();
