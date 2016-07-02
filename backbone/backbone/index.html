@@ -3,9 +3,54 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<script src="underscore.js"></script>
-	<script src="jsonz.js"></script>
+	<script>
+		var _ = function(obj) {
+		    if (obj instanceof _) return obj;
+		    if (!(this instanceof _)) return new _(obj);
+		    this._wrapped = obj; // Exm ???
+		}
+		_.each = function(obj, iteratee){
+			var i, length;
+			if (Array.isArray(obj)) {
+				for (i = 0, length = obj.length; i < length; i++) {
+					iteratee(obj[i], i, obj);
+				}
+			} else {
+				var keys = Object.keys.call(this, obj);
+				for (i = 0, length = keys.length; i < length; i++) {
+					iteratee(obj[keys[i]], keys[i], obj);
+				}
+			}
+		};
 
+		_.map = function(obj, iteratee, context) {
+			var keys = !Array.isArray(obj) && Object.keys.call(null, obj),
+				length = (keys || obj).length,
+				results = Array(length);
+			for (var index = 0; index < length; index++) {
+				var currentKey = keys ? keys[index] : index;
+				results[index] = iteratee(obj[currentKey], currentKey, obj)
+			}
+			return results;
+		};
+
+		var obj = {
+			name : 'jsonz',
+			age: '23'
+		};
+		var arr = [1,23,12,4,124,124,4213,];
+
+		_.filter = function(obj, predicate) {
+			var results = [];
+			_.each(obj, function(item, index, obj) {
+				if (predicate(item, index, list)) results.push(item);
+			});
+			return results;
+		}
+
+
+		
+	</script>
 </head>
 <body>
 	
