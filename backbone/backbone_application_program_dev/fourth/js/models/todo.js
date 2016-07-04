@@ -3,12 +3,12 @@ var app = app || {};
 app.Todo = Backbone.Model.extend({
 	defaults: {
 		title: '',
-		complated: false
+		completed: false
 	},
 
 	toggle: function(){
 		this.save({
-			complated: !this.get('complated')
+			completed: !this.get('completed')
 		})
 	}
 });
