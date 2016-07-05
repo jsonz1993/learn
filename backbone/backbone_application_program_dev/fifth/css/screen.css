@@ -65,3 +65,8 @@ body {
 	font-size: 0;
 	line-height: 0;
 }
+
+#books {
+	width: 57%;
+	margin: 10px auto;
+}
