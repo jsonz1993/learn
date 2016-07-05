@@ -7,10 +7,12 @@ app.LibraryView = Backbone.View.extend({
 		'click #add': 'addBook'
 	},
 
-	initialize: function(initialBooks) {
-		this.collection = new app.Library(initialBooks);
+	initialize: function() {
+		window.t = this.collection = new app.Library();
+		this.collection.fetch({reset: true}); // 初始化后去后台请求数据。触发reset
 
 		this.listenTo(this.collection, 'add', this.renderBook);
+		this.listenTo(this.collection, 'reset', this.render); // 触发reset后，调用render
 
 		this.render();
 	},
@@ -37,8 +39,9 @@ app.LibraryView = Backbone.View.extend({
 			if ($(el).val() != '') {
 				formData[el.id] = $(el).val();
 			}
+			$(el).val('');
 		});
 
-		this.collection.add(new app.BookModel(formData));
+		this.collection.create(formData);
 	}
 })
