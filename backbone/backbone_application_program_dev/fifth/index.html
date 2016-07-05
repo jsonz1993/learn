@@ -7,6 +7,48 @@
 </head>
 <body>
 	
+	<!-- 添加书籍的表单 -->
+	<div id="books">
+		<form id="addBook" action="#">
+			<div>
+				<label for="coverImage">coverImage: </label>
+				<input id="coverImage" type="file">
+				<label for="title">title:</label>
+				<input id="title" type="text">
+				<label for="author">author:</label>
+				<input id="author" type="text">
+				<label for="releaseDate">release date:</label>
+				<input type="text" id="releaseDate">
+				<label for="keywords">keywords:</label>
+				<input type="text" id="keywords">
+				<button id="add">add</button>
+			</div>
+		</form>
+
+		<div class="bookContainer">
+			<img src="img/pic.jpg">
+			<ul>
+				<li>title</li>
+				<li>author</li>
+				<li>release</li>
+				<li>keywords</li>
+			</ul>
+			<button class="delete">Delete</button>
+		</div>
+	</div>
+
+	<!-- 显示书的模版 -->
+	<script type="text/template" id="bookTemplate">
+		<img src="<%= coverImage %>" alt="<%= title %>">
+		<ul>
+			<li><%= title %></li>
+			<li><% author %></li>
+			<li><%= releaseDate %></li>
+			<li><%= keywords %></li>
+		</ul>
+		<button class="delete">Delete</button>
+	</script>
+
     <script src="js/lib/underscore-min.js"></script>
     <script src="js/lib/jquery-1.11.2.min.js"></script>
     <script src="js/lib/backbone.js"></script>

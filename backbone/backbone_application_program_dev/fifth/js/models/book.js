@@ -1,15 +1,11 @@
 var app = app || {};
 
-app.Todo = Backbone.Model.extend({
+app.BookModel = Backbone.Model.extend({
 	defaults: {
-		title: '',
-		completed: false
-	},
-
-	toggle: function(){
-		this.save({
-			completed: !this.get('completed')
-		})
+		coverImage: 'img/pic.jpg',
+		title: 'title',
+		author: 'author',
+		releaseDate: 'releaseDate',
+		keywords: 'keywords'
 	}
 });
-
