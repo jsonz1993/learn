@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/screen.css">
+</head>
+<body>
+	<!-- 添加书籍的表单 -->
+	<div id="books">
+		<form id="addBook" action="#">
+			<div>
+				<label for="coverImage">coverImage: </label>
+				<input id="coverImage" type="file">
+				<label for="title">title:</label>
+				<input id="title" type="text">
+				<label for="author">author:</label>
+				<input id="author" type="text">
+				<label for="releaseDate">release:</label>
+				<input type="text" id="releaseDate">
+				<label for="keywords">keywords:</label>
+				<input type="text" id="keywords">
+				<button id="add">add</button>
+			</div>
+		</form>
+
+	</div>
+
+	<!-- 显示书的模版 -->
+	<script type="text/template" id="bookTemplate">
+		<img src="<%= coverImage %>" alt="<%= title %>">
+		<ul>
+			<li><%= title %></li>
+			<li><%= author %></li>
+			<li><%= releaseDate.slice(0, 10) %></li>
+			<li><%= keywords %></li>
+		</ul>
+		<button class="delete">Delete</button>
+	</script>
+
+    <script src="js/lib/underscore-min.js"></script>
+    <script src="js/lib/jquery-1.11.2.min.js"></script>
+    <script src="js/lib/backbone.js"></script>
+    <script src="js/lib/backbone.localStorage.js"></script>
+    <script src="js/models/book.js"></script>
+    <script src="js/collections/library.js"></script>
+    <script src="js/views/book.js"></script>
+    <script src="js/views/library.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -43,13 +43,11 @@ $(function() {
 
         // Filter down the list of all todo items that are finished.
         done: function() {
-        	// 返回被删除的数组，循环了4次 有问题
             return this.where({ done: true });
         },
 
         // Filter down the list to only todo items that are still not finished.
         remaining: function() {
-        	// 返回未被删除的数组，循环了4次 有问题
             return this.where({ done: false });
         },
 
