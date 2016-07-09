@@ -3,25 +3,17 @@
  */
 
 var paths = {
-    'underscore': 'lib/underscore-min',
-    'jquery': 'lib/jquery-1.11.2.min',
-    'backbone': 'lib/backbone'
+
 };
 
 require.config({
-    paths: paths,
-
-    //urlArgs: "bust=" +  (new Date()).getTime(),
-
-    shim: {
-        'underscore': {
-            exports: '_'
-        },
-        'backbone': {
-            deps: ['underscore', 'jquery'],
-            exports: 'Backbone'
-        }
-    }
+    baseUrl: '/require+backbone/js',
+    paths: {
+        'underscore': 'lib/underscore-min',
+        'jquery': 'lib/jquery-1.11.2.min',
+        'backbone': 'lib/backbone'
+    },
+    urlArgs: "bust=" +  (new Date()).getTime()
 });
 
 
@@ -37,7 +29,7 @@ var items = [
 require(
     ["jquery",
         "underscore",
-        'lib/backbone',
+        'backbone',
         "views/cartCollectionView"
     ],
     function($, _, Backbone, CartCollectionView) {

@@ -2,7 +2,7 @@
  * Created by Administrator on 2016/7/9.
  */
 define(
-    ['lib/backbone',
+    ['backbone',
      'views/ItemCollectionView',
      'collections/cart'
     ], function (Backbone, ItemCollectionView, Cart){

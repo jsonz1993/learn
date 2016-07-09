@@ -2,7 +2,7 @@
  * Created by Administrator on 2016/7/9.
  */
 
-define(['lib/backbone'], function(Backbone){
+define(['backbone'], function(Backbone){
     var Item = Backbone.Model.extend({
         defaults: {
             price: 35,

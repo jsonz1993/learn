@@ -2,7 +2,7 @@
  * Created by Administrator on 2016/7/9.
  */
 
-define(['lib/backbone', 'models/item', 'views/itemView'], function (Backbone, Item, ItemView){
+define(['backbone', 'models/item', 'views/itemView'], function (Backbone, Item, ItemView){
     var ItemCollectionView = Backbone.View.extend({
         el: '#yourcart',
         initialize: function (collection){
