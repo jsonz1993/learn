@@ -4,7 +4,7 @@
 
 最近目录有点乱，找个时间整理一下。
 
-新公司得储备一下 sass, backbone, framework7。
+新公司得储备一下 sass, backbone.
 
 暂停其他学习。
 
@@ -15,6 +15,7 @@ __imooc__
 
 __Backbone__
 
+__requireJs__
 ------
 
 # 文件目录
