@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>backbone+require</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<form id="add">
+    <label>Title</label>
+    <input id="title" type="text" />
+    <label>Price</label>
+    <input id="price" type="text" />
+    <input type="submit" value="save" />
+</form>
+
+<form id="filter">
+    <label>Less Than</label>
+    <input type="text" id="less-than" />
+    <input type="submit" value="Filter" />
+</form>
+
+<a href="#" id="clear-filter">Clear Filter</a>
+
+<div id="yourcart"></div>
+<script id="itemTemplate" type="text/template">
+    <img src="<%= photo %>" alt="<%= title %>">
+    <div>
+        <h2><%= title %></h2>
+        <h4>&pound;<%= price %></h4>
+    </div>
+</script>
+
+<script src="js/lib/require.js" data-main="js/app.js"></script>
+
+</body>
+</html>

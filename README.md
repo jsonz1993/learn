@@ -33,16 +33,29 @@ __requireJs__
 	+ [jsonz-cnode-vue](https://github.com/zhangxinxinWTB/learn/tree/master/finish/vue/jsonz-cnodejs-vue)
 		+ 参照 [https://github.com/beilunyang/cnodejs-vue](https://github.com/beilunyang/cnodejs-vue) 撸的，不理解vuex，不熟悉vue-route  
 
++ require
+
++ require + backbone
+
++ interview 
+
 ------
 
 ####learning
 #####存放正在学习的东西，但近期又不打算学习的。
+
+- framework7
+- group
+- Henry
+- python
+- uncle Tom
+- zhangxinxu
 	
 
 [http://htmlpreview.github.io/](http://htmlpreview.github.io/) 可以复制html链接看预览
 
 ------
-网上看到的好东西
+网上收藏
 ------
 
 ###### 图表

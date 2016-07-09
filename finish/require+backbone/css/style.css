@@ -1,0 +1,28 @@
+.item-wrap {
+  float: left;
+  width: 100px;
+  height: 300px;
+  border: 1px solid #111;
+  padding: 10px;
+  margin: 0 30px 20px 0;
+}
+
+.item-wrap h2 {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 20px;
+  text-align: center;
+}
+
+.item-wrap h4 {
+  text-align: center;
+  font-size: 40px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+img {
+  width: 90px;
+}
