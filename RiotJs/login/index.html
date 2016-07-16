@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <login></login>
+    <script type="riot/tag" src="login.tag"></script>
+    <script src="../riot.min.js"></script>
+    <script>
+    var auth = riot.observable();
+    auth.login = function(params) {
+        $.get('/api', params, function(json) {
+            auth.trigger('login', json);
+        })
+    };
+
+    riot.mount('login', auth);
+    </script>
+</body>
+
+</html>
