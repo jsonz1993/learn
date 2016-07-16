@@ -335,6 +335,7 @@ html属性或文本节点
 
 #### 事件对象
 
+做了兼容处理
 	e.currentTarget 指向事件处理器的所属元素.
 	e.target 是发起事件的元素，与 currentTarget 不一定相同.
 	e.which 是键盘事件(keypress, keyup, 等…)中的键值 .
