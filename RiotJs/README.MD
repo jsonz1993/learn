@@ -768,3 +768,222 @@ Riot使用特殊选择器 “*” 来加载页面上所有自定义标签
 	el.trigger('start', { fuel: 89 }, true)
 
 @返回值 `el`
+
+## 路由器
+
+#### 配置路由
+
+###### riot.route(callback)
+
+当URL变化时执行 callback 例如
+
+	riot.route(function(collection, id, action) {
+	
+	})
+
+举个例子，如果 url 变成 customers/987987/edit 则上例中的参数是:
+
+	collection = 'customers'
+	id = '987987'
+	action = 'edit'
+
+url 发生变化可能是以下几种情况:
+
+- 地址栏中输入的新的 hash 值
+- 当浏览器的 后退/前进按钮被点击
+- 当代码中调用了 `riot.route(to)`
+- 用户点击了锚点标签(a)
+
+###### riot.route(filter, callback)
+
+当 url 发生变化且新的 url 匹配 filter 时执行 callback. 例如：
+
+	// 精确匹配 `/fruit`
+	riot.route('/fruit', function(name) {
+	  console.log('The list of fruits')
+	})
+
+filter 支持 * 通配符，并且可以将其捕捉成参数：
+
+	// 如果 url 变成 `/fruit/apple`,
+	// 'apple' 将被捕捉成 `name` 参数
+	riot.route('/fruit/*', function(name) {
+	  console.log('The detail of ' + name)
+	})
+	
+	// 如果 url 变成 `/blog/2015-09/01`,
+	// 回调的参数将被捕捉成 '2015', '09' 和 '01'
+	riot.route('/blog/*-*/*', function(year, month, date) {
+	  console.log('The page of ' + year + '-' + month + '-' date)
+	})
+
+如果希望匹配url `/old` 和 `/old/and/anything` , 可以写成 `..`:
+
+	riot.route('/old..', function() {
+	  console.log('The pages under /old was moved.')
+	})
+
+这种写法在 url 中包含搜索参数时很有用。
+
+	// 如果 url 变成 `/search?keyword=Apple` 将会匹配
+	riot.route('/search..', function() {
+	  var q = riot.route.query()
+	  console.log('Search keyword: ' + q.keyword)
+	})
+	
+	// 可以象下面这么写，
+	// 但要注意 `*` 只能匹配字母，数字和下划线
+	riot.route('/search?keyword=*', function(keyword) {
+	  console.log('Search keyword: ' + keyword)
+	})
+
+###### riot.route.create()
+
+返回一个新的路由上下文。例如：
+
+	var subRoute = riot.route.create()
+	subRoute('/fruit/apple', function() { /* */ })
+
+#### 使用路由器
+
+###### riot.route(to[, title, shouldReplace])
+
+修改浏览器 url 并通知所有用 riot.route(callback) 注册的监听者。例如：
+
+	riot.route('customers/267393/edit')
+
+还可以设置 `title`
+
+	riot.route('customers/267393/edit', 'Editing customer page')
+
+可以利用第3个参数来替换当前的历史。当应用需要重定向到另一个页面时很有用。
+
+	riot.route('not-found', 'Not found', true)
+
+###### riot.route.start()
+
+开始监听url的变化.需要手动启动
+
+###### riot.route.start(autoExec)
+
+开始监听 url 变化，同时对当前 url 执行路由。
+
+	riot.route.start(true)
+
+这只是对下面写法的简写形式:
+
+	riot.route.start()
+	riot.route.exec()
+	
+###### riot.route.stop()
+
+停止所有的路由器。清除所有 监听器和回调.
+
+	riot.route.stop()
+
+通常这个方法会与 riot.route.start 联合使用。例如：
+	
+	riot.route.stop() // clear all the old router callbacks
+	riot.route.start() // start again
+
+###### 停止部分路由 subRoute.stop()
+
+仅停止subRoute的路由。将会删除监听器和回调函数。
+	
+	var subRoute = riot.route.create()
+	subRoute('/fruit/apple', function() { /* */ })
+	subRoute.stop()
+
+###### riot.route.query()
+
+这是个辅助函数，用来从url中提取query参数。 例如:
+
+	// 如果 url 变成 `/search?keyword=Apple&limit=30` 将会匹配
+	riot.route('/search..', function() {
+	  var q = riot.route.query()
+	  console.log('Search keyword: ' + q.keyword)
+	  console.log('Search limit: ' + q.limit)
+	})
+
+#### 自定义路由器
+
+###### riot.route.base(base)
+
+修改基础路径(base)。 如果 url 长成这样:
+
+	http://riotexample.com/app/fruit/apple
+
+可以将基础路径设置为 /app, 这样就只需要关注 /fruit/apple.
+
+	riot.route.base('/app')
+
+默认的 base 值是 “#”. 如果喜欢 hashbang, 可以改成 #!.
+
+	riot.route.base('#!')
+
+###### riot.route.parser(parser[, secondParser])
+
+= =高级暂时跳过
+
+
+#### 路由分组
+
+	<first-tag>
+	  <p>First tag</p>
+	  <script>
+	    riot.route('/fruit/*', function(name) {
+	      /* 公用的部分 */
+	    })
+	  </script>
+	</first-tag>
+	
+	<second-tag>
+	  <p>Second tag</p>
+	  <script>
+	    riot.route('/fruit/apple', function(name) {
+	      /* 个别的部分 */
+	    })
+	  </script>
+	</second-tag>
+
+两个标签有各自的路由，看起来没什么问题，但事实上它无法工作。因为只有一个路由会被触发，我们也不知道是哪一个。所以，我们必须为每个标签定义创建单独的路由分组。
+
+	<first-tag>
+	  <p>First tag</p>
+	  <script>
+	    var subRoute = riot.route.create() // 创建新的路由上下文
+	    subRoute('/fruit/*', function(name) {
+	      /* 公用的部分 */
+	    })
+	  </script>
+	</first-tag>
+	
+	<second-tag>
+	  <p>Second tag</p>
+	  <script>
+	    var subRoute = riot.route.create() // 创建新的路由上下文
+	    subRoute('/fruit/apple', function(name) {
+	      /* 个别的部分 */
+	    })
+	  </script>
+	</second-tag>
+
+#### 路由优先级
+
+这个路由器会从第一个路由开始尝试匹配。所以在下面的鸽子中， 路由-B 和 -C 将永远不会被触发.
+
+	riot.route('/fruit/*', function(name) { /* */ }) // 路由-A (1)
+	riot.route('/fruit/apple', function() { /* */ }) // 路由-B (2)
+	riot.route('/fruit/orange', function() { /* */ }) // 路由-C (3)
+
+这么写就好使了:
+
+	riot.route('/fruit/apple', function() { /* */ }) // 路由-B (1)
+	riot.route('/fruit/orange', function() { /* */ }) // 路由-C (2)
+	riot.route('/fruit/*', function(name) { /* */ }) // 路由-A (3)
+
+所有 带有过滤器 的路由优先级高于 不带过滤器 的路由. 这意味着下例中路由-X 虽然定义在前，但最后才执行匹配:
+
+	riot.route(function() { /* */ }) // 路由-X (3)
+	riot.route('/fruit/*', function() { /* */ }) // 路由-Y (1)
+	riot.route('/sweet/*', function() { /* */ }) // 路由-Z (2)
