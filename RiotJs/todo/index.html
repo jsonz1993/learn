@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="todo.css">
+</head>
+
+<body>
+    <todo></todo>
+    <script type="riot/tag" src="todo.tag"></script>
+    <script type="riot/tag" src="op.tag"></script>
+    <script src="../riot.min.js"></script>
+    <script>
+    // 实例化标签 参数第一个为标签，第二个为传入参数。 模版里用 opts.来获取
+    riot.mount('todo', {
+        title: 'i want to behave!',
+        items: [{
+            title: 'Avoid excessive caffeine',
+            done: true
+        }, {
+            title: 'Hidden item',
+            hidden: true
+        }, {
+            title: 'Be less provocative'
+        }, {
+            title: 'Be nice to people'
+        }],
+        plan: {
+        	name: 'small',
+        	term: 'aaa'
+        }
+    });
+    </script>
+</body>
+
+</html>
