@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="pure-min.css">
+    <link rel="stylesheet" href="style.css">
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="grids-responsive-old-ie-min.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="grids-responsive-min.css">
+    <!--<![endif]-->
+    <link rel="stylesheet" href="base-min.css">
+</head>
+<body>
+    <div class="pure-g border">
+        <div class="pure-u-1-3"><p>三分之一</p></div>
+        <div class="pure-u-1-3"><p>三分之一</p></div>
+        <div class="pure-u-1-3"><p>三分之一</p></div>
+    </div>
+
+    <div class="pure-g border">
+        <div class="pure-u-1">.pure-u-1</div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+            <p>.pure-u-1</p>
+            <p>.pure-u-md-1-2</p>
+            <p>pure-u-lg-1-4</p>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+            <p>.pure-u-1</p>
+            <p>.pure-u-md-1-2</p>
+            <p>pure-u-lg-1-4</p>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+            <p>.pure-u-1</p>
+            <p>.pure-u-md-1-2</p>
+            <p>pure-u-lg-1-4</p>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+            <p>.pure-u-1</p>
+            <p>.pure-u-md-1-2</p>
+            <p>pure-u-lg-1-4</p>
+        </div>
+    </div>
+
+<h1>给栅格系统加padding&&border</h1>
+1.多加一个div
+<div class="pure-g">
+    <div class="pure-u-1-2">
+        <div class="l-box">...</div>
+    </div>
+    <div class="pure-u-1-2">
+        <div class="l-box">...</div>
+    </div>
+</div>
+
+2.设置box-sizing:border-box;
+    <div class="pure-g border-sizing">
+        <div class="pure-u-1-2 l-box">
+            ...
+        </div>
+        <div class="pure-u-1-2 l-box">
+            ...
+        </div>
+    </div>
+</body>
+</html>
