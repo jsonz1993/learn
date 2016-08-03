@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>try</title>
+    <link rel="stylesheet" href="/css/mystyle.css">
+    <style>
+        .dotting{display: inline-block; min-width: 2px; min-height: 2px;
+                     box-shadow: 2px 0 currentColor, 6px 0 currentColor, 10px 0 currentColor;
+                     animation: dot 2s infinite step-start both;
+                     *zoom: expression(this.innerHTML = '...');
+                 }
+        .dotting:before { content: '...'; }
+        .dotting::before { content: ''; }
+        :root .dotting { margin-right: 8px; }
+        @keyframes dot{
+            25% { box-shadow: none; }                                  /* 0个点 */
+            50% { box-shadow: 2px 0 currentColor; }                    /* 1个点 */
+            75% { box-shadow: 2px 0 currentColor, 6px 0 currentColor;  /* 2个点 */ }
+        }
+    </style>
+</head>
+<body>
+    订单提交中<span class="dotting"></span>
+</body>
+</html>

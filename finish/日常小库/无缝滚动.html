@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#div1{
+			position: relative;
+			width: 330px;
+			height: 140px;
+			border:1px solid #000;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+		#ul1{
+			list-style: none;
+			position: absolute;
+			left: 0px;
+			margin: 20px 0;
+			padding: 0;
+			border: 1px solid yellow;
+		}
+		#ul1 li{
+			float: left;
+			width: 100px;
+			margin-right: 10px;
+			height: 100px;
+			background-color: #ccc;
+			
+		}
+		外面div{
+			width: 不能比ul大;
+			position:relative;
+		}
+		父级ul{
+			position: absolute;
+		}
+		子级li{
+			
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload = function(){
+		滚动();
+	}
+	function 滚动(){
+		var oDiv = 获取UL外包裹DIV;
+		var oUl = 获取UL;
+		var oLi = 获取UL中的LI;
+		var ox = 滚动速度;
+		var abtn = 控制方向的按钮;
+		var timer = null;
+		oUl.innerHTML += oUl.innerHTML;//动态加一倍
+		oUl.style.width = oLi[0].offsetWidth*oLi.length+'px';//动态改变宽度
+
+		remove();//调用滚动的函数
+		abtn[0].onmouseover = function(){
+			 ox = -1;
+		}//改变滚动的方向
+		abtn[1].onmouseover = function(){
+			 ox = 1;
+		}//改变滚动的方向
+		oUl.onmouseover = function(){
+			clearInterval(timer);
+		}//鼠标移入清除滚动
+		oUl.onmouseout  = function(){
+			remove();
+		}//鼠标移除调用滚动函数
+		
+		function remove(){
+			timer = setInterval(function(){
+						oUl.style.left = oUl.offsetLeft+ox+'px';//无缝滚动
+						if (oUl.offsetLeft < -oUl.offsetWidth/2) {
+							oUl.style.left = '0px';//判断如果太左就拉回0
+						}else if (oUl.offsetLeft > 0) {
+							oUl.style.left = -oUl.offsetWidth/2 +'px';//判断如果太右就拉回一半
+						};
+					},30)//30毫秒执行一次
+		}
+	}
+</script>
+</head>
+<body>
+
+<div>
+	<button id="btn1">按钮</button>
+	<div id="div1">
+		<ul id="ul1">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+	</div>
+	<button id="btn2">按钮2</button>
+</div>
+</body>
+
+</html>

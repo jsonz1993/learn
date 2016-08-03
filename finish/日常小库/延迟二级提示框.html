@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		父级{
+			position: relative;
+		}
+		子级{
+			position: absolute;
+		}
+	</style>
+	<script type="text/javascript">
+		function 延迟提示框(){
+				var div1 = document.getElementById('div1');
+				var div2 = document.getElementById('div2');
+				var times = null;
+				隐藏的子级.onmouseover = 父级显示的.onmouseover = function() {
+					clearTimeout(储存计时器);
+					setTimeout(function(){
+						隐藏的子级.style.display = 'block';
+					},300);
+				};
+				隐藏的子级.onmouseout = 父级显示的.onmouseout = function(){
+					储存计时器 = setTimeout(function(){
+						隐藏的子级.style.display = 'none';
+					},300);
+				};
+			}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
