@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .box {
+        width: 500px;
+        height: 500px;
+        background: url(http://image.zhangxinxu.com/image/study/s/s256/mm1.jpg) no-repeat;
+        position: relative;
+        overflow: hidden;
+        background-color: #ccc;
+    }
+    
+    .drag {
+        border: 2px solid red;
+        width: 150px;
+        height: 150px;
+        background: inherit;
+        -webkit-filter: blur(5px);
+        -moz-filter: blur(5px);
+        filter: blur(5px);
+        cursor: -webkit-grab;
+        cursor: -moz-grab;
+        cursor: grab;
+        position: absolute;
+        overflow: hidden;
+    }
+    
+    .drag:active {
+        cursor: -webkit-grabbing;
+        cursor: -moz-grabbing;
+        cursor: grabbing;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西这是除了图片外的其他东西
+        <div id="drag" class="drag"></div>    
+    </div>
+    
+    <script src="zxx.drag.1.0.js"></script>
+    <script>
+        var eleDrag = document.getElementById("drag");
+        if (eleDrag) {
+            startDrag(eleDrag, eleDrag, function(x, y) {
+                eleDrag.style.backgroundPosition = (-1 * x) + "px " + (-1 * y) + "px";    
+            });
+        }
+    </script>
+    <script src="app.js"></script>
+</body>
+
+</html>

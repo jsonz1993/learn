@@ -7,7 +7,7 @@
 npm install
 
 npm run dev
-
+:8080
 npm run build
 
 
