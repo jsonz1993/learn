@@ -1,0 +1,667 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"jq",
+				"jquery-2.1.1.js"
+			],
+			[
+				"visi",
+				"visited"
+			],
+			[
+				"last",
+				"lastDis〔variable〕"
+			],
+			[
+				"self",
+				"selfHeight〔variable〕"
+			],
+			[
+				"window",
+				"windowHeight〔variable〕"
+			],
+			[
+				"js",
+				"moment.js"
+			],
+			[
+				"mon",
+				"momentjs"
+			],
+			[
+				"jqu",
+				"jquery-1.7.2.min.js"
+			],
+			[
+				"m",
+				"movie.js"
+			],
+			[
+				"tr",
+				"transform"
+			],
+			[
+				"dra",
+				"drawNumber"
+			],
+			[
+				"tra",
+				"translate"
+			],
+			[
+				"padding",
+				"padding-left"
+			],
+			[
+				"box-s",
+				"box-shadow"
+			],
+			[
+				"tc",
+				"table-cell"
+			],
+			[
+				"background",
+				"background-color"
+			],
+			[
+				"co",
+				"cover"
+			],
+			[
+				"vue",
+				"vue-router/"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 150.0,
+		"last_filter": "install",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: List Packages"
+			],
+			[
+				"package list",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			],
+			[
+				"install l",
+				"Package Control: Install Local Dependency"
+			],
+			[
+				"pc",
+				"Package Control: List Packages"
+			],
+			[
+				"install package",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			]
+		],
+		"width": 528.0
+	},
+	"console":
+	{
+		"height": 987.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+	],
+	"file_history":
+	[
+		"/D/web/learn/finish/vue/vue-eat/index.html",
+		"/D/web/learn/finish/vue/vue-eat/src/main.js",
+		"/D/web/learn/finish/vue/vue-eat/src/components/add.vue",
+		"/D/web/learn/finish/vue/vue-eat/src/components/index.vue",
+		"/D/web/learn/finish/vue/vue-eat/src/components/popup.vue",
+		"/D/web/learn/finish/vue/vue-eat/src/components/show.vue",
+		"/F/桌面/study/html/studyService.html",
+		"/F/桌面/study/src/less/base.less",
+		"/F/桌面/Swiper-2.7.6/demos/01-default.html",
+		"/F/桌面/Swiper-2.7.6/demos/02-vertical-mode.html",
+		"/F/桌面/139 dowebok.com/139/index.html",
+		"/F/桌面/Swiper-2.7.6/demos/19-chaining.html",
+		"/F/桌面/Swiper-3.3.1/demos/14-nav-arrows.html",
+		"/F/桌面/Swiper-3.3.1/demos/05-slides-per-view.html",
+		"/F/桌面/Swiper-3.3.1/demos/01-default.html",
+		"/D/web/try/index.html",
+		"/D/web/try/app.js",
+		"/D/web/try/style.css",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/D/web/learn/try/wechat.html",
+		"/D/web/learn/try/style.css",
+		"/D/web/learn/try/foot.html",
+		"/D/web/learn/try/app.js",
+		"/D/web/learn/finish/日常小库/设置底部按钮等位置.js",
+		"/D/web/learn/try/from.html",
+		"/D/web/作品/喜聚/newPTV/gulp/sass/common.sass",
+		"/D/web/作品/喜聚/catwalk/gulp/sass/common.sass",
+		"/D/web/作品/喜聚/newCatWalk/gulp/style/base.less",
+		"/D/web/作品/喜聚/newCatWalk/gulp/style/common.less",
+		"/D/gulp-riot/node_modules/riot/node_modules/riot-observable/dist/riot.observable.js",
+		"/D/web/作品/喜聚/newPTV/gulpfile.js",
+		"/D/web/learn/finish/gulp/gulpfile.js",
+		"/D/jquery-date-range-picker/index.html",
+		"/D/jquery-date-range-picker/demo.js",
+		"/D/web/JavaScript/JavaScript高级程序设计/第五章 引用类型/Array.html",
+		"/D/web/JavaScript/JavaScript高级程序设计/try/try.js",
+		"/D/web/learn/node/imooc/views/pages/list.jade",
+		"/E/mongoDB/mongod.cfg",
+		"/D/web/learn/node/imooc/app.js",
+		"/D/web/learn/node/imooc/models/movie.js",
+		"/D/workTest/index.js",
+		"/D/workTest/requestHandles.js",
+		"/D/workTest/router.js",
+		"/D/workTest/server.js",
+		"/D/web/learn/node/imooc/fr/admin.js",
+		"/D/web/learn/node/express-generator/app.js",
+		"/D/web/learn/node/express-generator/routes/index.js",
+		"/D/web/learn/node/express-generator/views/layout.jade",
+		"/D/web/扩展框架和库/日常小库/ajax.js",
+		"/D/web/learn/learning/group/Promise/ajax.html",
+		"/D/web/learn/node/express-generator/routes/users.js",
+		"/D/web/learn/node/imooc/views/pages/index.jade",
+		"/D/web/learn/node/imooc/schemas/movie.js",
+		"/D/web/learn/node/imooc/views/layout.jade",
+		"/D/web/learn/node/imooc/views/includes/head.jade",
+		"/D/web/learn/node/imooc/views/pages/admin.jade",
+		"/D/web/learn/node/imooc/views/pages/detail.jade",
+		"/D/web/learn/node/imooc/fr/style.css",
+		"/D/web/learn/node/imooc/views/includes/header.jade",
+		"/D/web/learn/node/imooc/fr",
+		"/D/web/learn/node/imooc/views/detail.jade",
+		"/D/web/learn/node/app.js",
+		"/D/workTest/test.html",
+		"/D/web/learn/node/imooc/model/tModel.js",
+		"/D/web/learn/node/imooc/fr/try.js",
+		"/D/web/learn/node/imooc/fr/try.css",
+		"/D/web/JavaScript/JavaScript高级程序设计/try/try.html",
+		"/D/web/learn/node/imooc/views/includes",
+		"/D/web/learn/node/imooc/views/index.jade",
+		"/D/web/learn/node/imooc/views/list.jade",
+		"/D/web/learn/node/imooc/view/index.jade",
+		"/D/web/learn/node/imooc/view/list.jade",
+		"/D/web/learn/node/imooc/view",
+		"/D/web/learn/node/html",
+		"/D/web/learn/node/express-generator/bin/www",
+		"/D/web/learn/node/html/index.html",
+		"/D/web/learn/node/package.json",
+		"/H/workTest/test.html",
+		"/H/workTest/index.js",
+		"/D/examples/todo-app/index.html",
+		"/D/work/喜聚/catwalk/gulpfile.js",
+		"/D/web/扩展框架和库/日常小库/rem.js",
+		"/D/myJob/web-source/dist/js/common.js",
+		"/D/work/喜聚/catwalk/package.json",
+		"/D/gulp-riot/package.json",
+		"/D/myJob/riot.config",
+		"/D/web/learn/RiotJs/login/index.html",
+		"/D/web/learn/RiotJs/login/login.js",
+		"/D/examples/todo-app/plunker.json",
+		"/D/examples/todo-app/todo.css",
+		"/D/examples/todo-app/todo.tag",
+		"/D/myJob/web-source/src/todo-app/html/index.html",
+		"/D/examples/todo-app/README.md",
+		"/D/examples/todo-app-precompiled/index.html",
+		"/D/examples/e/index.html",
+		"/D/examples/todo-app-precompiled/todo.js",
+		"/D/examples/e/todo.js",
+		"/D/examples/e/todo.tag",
+		"/D/examples/todo-app-precompiled/todo.tag",
+		"/D/web/learn/RiotJs/login/login.tag",
+		"/D/examples/timer/index.html",
+		"/D/examples/timer/timer.tag",
+		"/E/download/adobe_photoshop_cs6_33lc/Adobe Photoshop CS6/命令行示例/静默安装.cmd",
+		"/D/web/learn/RiotJs/todo/op.tag",
+		"/D/web/learn/RiotJs/todo/todo.tag",
+		"/D/web/learn/RiotJs/todo/index.html",
+		"/D/web/learn/RiotJs/index.html",
+		"/D/examples/mixins/my-tag.tag",
+		"/D/examples/mixins/my-second-tag.tag",
+		"/D/examples/mixins/index.html",
+		"/D/examples/animated-list-reordering/index.html",
+		"/D/examples/color-palette/plunker.json",
+		"/D/examples/color-palette/README.md",
+		"/D/examples/README.md",
+		"/D/examples/animated-list-reordering/plunker.json",
+		"/D/examples/animated-list-reordering/style.css",
+		"/D/examples/animated-list-reordering/README.md",
+		"/D/examples/animated-list-reordering/list.tag",
+		"/D/web/作品/六色科技/基金/js/script.js",
+		"/D/web/扩展框架和库/日常小库/第一次用json设置样式.js",
+		"/D/work/喜聚/catwalk/gulp/sass/common.sass",
+		"/F/桌面/reset.css",
+		"/D/web/作品/六色科技/报价宝/js/tip.js",
+		"/D/web/learn/finish/backbone/backbone/backbone.js",
+		"/D/web/扩展框架和库/less 库/jsonz.less",
+		"/D/work/喜聚/newPTV/gulpfile.js",
+		"/D/work/喜聚/newPTV/gulp/sass/common.sass"
+	],
+	"find":
+	{
+		"height": 30.0
+	},
+	"find_in_files":
+	{
+		"height": 104.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"swiper-container",
+			"container",
+			"content-blurred",
+			"content-blurred ",
+			"content",
+			"data",
+			"distance",
+			"text",
+			"提交",
+			"over",
+			"overflow",
+			"date-range18",
+			"momentjs",
+			"mone",
+			"date-range50",
+			"momentjs",
+			"right",
+			"pam",
+			"remove",
+			"sort",
+			"secondFuc",
+			"save",
+			"res.",
+			"save",
+			"mongoose",
+			"get",
+			"params",
+			"post",
+			"delete",
+			"get",
+			"movie",
+			"inputPoster",
+			"summary",
+			"简介",
+			"id",
+			"res",
+			"console.log",
+			"results",
+			"req",
+			"movies",
+			"console.log",
+			"false",
+			"/movie/new",
+			"Movie",
+			"Movise",
+			"Movie",
+			"imooc",
+			"title",
+			"movie",
+			"res",
+			"req",
+			"res",
+			"req",
+			"res",
+			"req",
+			"res",
+			"list",
+			"首页",
+			"hello",
+			"list",
+			"summary",
+			"flash",
+			"summary",
+			"poster",
+			"summary",
+			"poster",
+			"language",
+			"poster",
+			"language",
+			"country",
+			"year",
+			"country",
+			"doctor",
+			"language",
+			"doctor",
+			"country",
+			"doctor",
+			"movie",
+			"详情",
+			"movie",
+			"movies",
+			"mongoose",
+			"var",
+			"language",
+			"lest",
+			"path",
+			"title",
+			"doctor",
+			"title",
+			"index",
+			"http",
+			"200",
+			"movies",
+			"movie",
+			"met",
+			"createdAt",
+			"title",
+			"doctor",
+			"title",
+			"summary",
+			"inputSummary",
+			"inputFlash",
+			"简介",
+			"title",
+			"summary",
+			"title",
+			"inputTitle",
+			"inputSummary",
+			"title",
+			"year",
+			"title",
+			"inputTitle",
+			"inputYear",
+			"title",
+			"language",
+			"title",
+			"inputTitle",
+			"inputLanguage",
+			"title",
+			"country",
+			"title",
+			"inputTitle",
+			"inputCountry",
+			"电影名字",
+			"title",
+			"doctor",
+			"title",
+			"inputTitle"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"default_dir": "D:\\web\\JavaScript\\JavaScript高级程序设计",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 30.0
+	},
+	"input":
+	{
+		"height": 34.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "DP.sublime-project",
+	"replace":
+	{
+		"height": 56.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"admin.js",
+				"imooc\\fr\\admin.js"
+			],
+			[
+				"movie.js",
+				"imooc\\models\\movie.js"
+			],
+			[
+				"demo.h",
+				"wantEat\\demo.html"
+			],
+			[
+				"base.",
+				"vue-eat\\src\\style\\base.less"
+			],
+			[
+				"base.les",
+				"vue-eat\\src\\style\\base.less"
+			],
+			[
+				"index.html",
+				"vue-eat\\index.html"
+			],
+			[
+				"data.js",
+				"vue-eat\\src\\js\\data.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 220.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
