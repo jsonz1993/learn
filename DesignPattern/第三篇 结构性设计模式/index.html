@@ -6,5 +6,43 @@
 </head>
 <body>
     <h2>结构性设计模式关注于如何将类或对象组合称更大、更复杂的解构，以简化设计</h2>
+
+
+    <p>代理模版</p>
+    <p>代理页面B调用被代理的页面A中对象的方式是可以的，所以只需要在被访问的域中，请求返回的Header重定向到代理页面，并在代理页面中处理被代理的页面A就可以了。</p>
+    <p>比如自己的域成为X，另外的域成为Y，X有一个被代理页面A。A中应该具备三个部分，第一部分是发送请求的模块，如form表单提交，负责向Y域发送请求，并提供额外两组数据，其一是要执行的回调函数名称，其二是X域中代理模版所在的路径，并将target目标指向响应目标target的指向，并将嵌入X域中的代理页面作为子页面，既B页面。第三部分是一个回调函数，负责处理返回的数据。 一脸愣比</p>
+    <script>
+        function callback(data) {
+            console.log('成功接收数据', data);
+        }
+    </script>
+    <iframe src="" frameborder="0" name="proxyIframe" id="proxyIframe"></iframe>
+    <form action="http://try.php" method="post" target="proxyIframe">
+        <input type="text" name="callback" value="callback">
+        <input type="text" name="proxy" value="http://try/proxy.html">
+        <input type="submit" value="提交">
+    </form>
+<p>其次在x域中我们也要有一个代理页面，主要负责将自己页面URL中searcher部分的数据解析出来，如http://www.a.com?type=1&title=aa这个url中searcher部分值得就是?type=1&titie=aa，调用A页面的回调函数，将组装好的数据作为参数传入父页面中定义的回调函数中并执行</p>
+
+<script>
+    // 页面加载后执行
+    window.onload = function(){
+        // 如果不在A页面中返回，不执行
+        if (top == self) return;
+        var arr = location.search.substr(1).split('&'),
+                fn, args;
+        for (var i = 0, len = arr.length, item; i <len; i++) {
+            item = arr[i].split('=');
+            if (item[0] == 'callback') {
+                fn = item[1];
+            } else if (item[0] == 'arg') {
+                args = item[1];
+            }
+        }
+        try {
+            eval('top.' + fn + '("' + args + '")');
+        } catch(e) {}
+    }
+</script>
 </body>
 </html>
