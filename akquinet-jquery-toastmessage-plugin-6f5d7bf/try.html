@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <!--<link rel="stylesheet" href="src/main/resources/css/jquery.toastmessage.css"/>-->
+    <link rel="stylesheet" href="try.css"/>
+</head>
+<body>
+
+<script src="jquery-2.1.1.js"></script>
+<script src="try.js"></script>
+<script>
+    Toast('showToast', {
+        text     : 'Hello World',
+        sticky   : true,
+        type     : 'success',
+        close    : function () {console.log("toast is closed ...")}
+    });
+    Toast('showToast', {
+        text     : 'Hello World',
+        sticky   : true,
+        type     : 'success',
+        close    : function () {console.log("toast is closed ...")}
+    });
+    Toast('showToast', {
+        text     : 'Hello World',
+        sticky   : true,
+        type     : 'success',
+        close    : function () {console.log("toast is closed ...")}
+    });
+    Toast('showNoticeToast', 'some message here');
+    Toast('showSuccessToast', "some message here");
+    Toast('showWarningToast', "some message here");
+    Toast('showErrorToast', "some message here");
+</script>
+</body>
+</html>

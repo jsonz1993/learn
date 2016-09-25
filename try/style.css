@@ -1,347 +1,110 @@
-/*
- * Created by Jsonz on 16/7/22.
- * reset 有关初始化和默认样式 path: wechat/less/reset
- * 参考 normalize 按照实际需要增删
- * 后期有优化空间
- */
-#main {
-  max-width: 375px;
-  min-width: 320px;
-  margin-left: auto;
-  margin-right: auto;
-  height: 100%;
-}
-/* 使用box-sizing: border-box*/
-* {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
-  margin: 0;
-  padding: 0;
-}
-em,
-i {
-  font-style: normal;
-}
-/**
- * 1. Change the default font family in all browsers (opinionated).
- * 2. Prevent adjustments of font size after orientation changes in IE and iOS.
- */
-html {
-  -ms-text-size-adjust: 100%;
-  /* 2 */
-  -webkit-text-size-adjust: 100%;
-  /* 2 */
-  height: 100%;
-}
-body {
-  font-family: "Helvetica Neue", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
-  height: 100%;
-  -webkit-font-smoothing: antialiased;
-}
-ul {
-  list-style-type: none;
-}
-/* HTML5 display definitions
-   ========================================================================== */
-/**
- * Add the correct display in iOS 4-7.
- */
-audio:not([controls]) {
-  display: none;
-  height: 0;
-}
-/**
- * Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
-progress {
-  vertical-align: baseline;
-}
-/* Links
-   ========================================================================== */
-/**
- * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
- */
-a {
-  -webkit-text-decoration-skip: objects;
-  /* 2 */
-  text-decoration: none;
-}
-/**
- * Remove the outline on focused links when they are also active or hovered
- * in all browsers (opinionated).
- */
-a:active,
-a:hover {
-  outline-width: 0;
-  text-decoration: none;
-}
-/* Text-level semantics
-   ========================================================================== */
-/**
- * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
- */
-b,
-strong {
-  font-weight: inherit;
-}
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-b,
-strong {
-  font-weight: bolder;
-}
-/**
- * Correct the font size and margin on `h1` elements within `section` and
- * `article` contexts in Chrome, Firefox, and Safari.
- */
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-}
-/**
- * Add the correct font size in all browsers.
- */
-small {
-  font-size: 80%;
-}
-/**
- * Prevent `sub` and `sup` elements from affecting the line height in
- * all browsers.
- */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-sub {
-  bottom: -0.25em;
-}
-sup {
-  top: -0.5em;
-}
-/* Embedded content
-   ========================================================================== */
-/**
- * Remove the border on images inside links in IE 10-.
- */
-img {
-  border-style: none;
-}
-/* Grouping content
-   ========================================================================== */
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-hr {
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
-  /* 1 */
-  height: 0;
-  /* 1 */
-  overflow: visible;
-  /* 2 */
-}
-/* Forms
-   ========================================================================== */
-/**
- * 1. Change font properties to `inherit` in all browsers (opinionated).
- * 2. Remove the margin in Firefox and Safari.
- */
-button,
-input,
-select,
-textarea {
-  font: inherit;
-  /* 1 */
-  margin: 0;
-  /* 2 */
-  outline: 0;
-}
-input {
-  border: 0;
-  -webkit-appearance: none;
-}
-/**
- * Restore the font weight unset by the previous rule.
- */
-optgroup {
-  font-weight: bold;
-}
-/**
- * Show the overflow in IE.
- * 1. Show the overflow in Edge.
- */
-button,
-input {
-  /* 1 */
-  overflow: visible;
-}
-/**
- * Remove the inheritance of text transform in Edge, Firefox, and IE.
- * 1. Remove the inheritance of text transform in Firefox.
- */
-button,
-select {
-  /* 1 */
-  text-transform: none;
-}
-/**
- * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
- *    controls in Android 4.
- * 2. Correct the inability to style clickable types in iOS and Safari.
- */
-button,
-html [type="button"],
-[type="reset"],
-[type="submit"] {
-  -webkit-appearance: button;
-  /* 2 */
-  cursor: pointer;
-}
-/**
- * Remove the inner border and padding in Firefox.
- */
-button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
-  border-style: none;
-  padding: 0;
-}
-/**
- * Restore the focus styles unset by the previous rule.
- */
-button:-moz-focusring,
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
-  outline: 1px dotted ButtonText;
-}
-/**
- * 1. Add the correct box sizing in IE 10-.
- * 2. Remove the padding in IE 10-.
- */
-[type="checkbox"],
-[type="radio"] {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  /* 1 */
-  padding: 0;
-  /* 2 */
-}
-/**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
-  height: auto;
-}
-/**
- * 1. Correct the odd appearance in Chrome and Safari.
- * 2. Correct the outline style in Safari.
- */
-[type="search"] {
-  -webkit-appearance: textfield;
-  /* 1 */
-  outline-offset: -2px;
-  /* 2 */
-}
-/**
- * Remove the inner padding and cancel buttons in Chrome and Safari on OS X.
- */
-[type="search"]::-webkit-search-cancel-button,
-[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-/**
- * Correct the text style of placeholders in Chrome, Edge, and Safari.
- */
-::-webkit-input-placeholder {
-  color: inherit;
-  opacity: 0.54;
-}
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Change font properties to `inherit` in Safari.
- */
-::-webkit-file-upload-button {
-  -webkit-appearance: button;
-  /* 1 */
-  font: inherit;
-  /* 2 */
-}
-.header {
-  height: 48px;
-  background: rgba(0, 0, 0, 0.8);
-}
-.memuicon {
-  height: 48px;
-  width: 48px;
+.Cube {
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  font-size: 12px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: -webkit-transform 0.5s 0.1s;
+  transition: transform 0.5s 0.1s;
+  perspective: 9999px;
+  color: #333;
+  margin: -40px 0 0 -40px;
+  margin: 0 auto;
   position: absolute;
-  cursor: pointer;
-  transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.4s cubic-bezier(0.4, 0.01, 0.165, 0.99), -webkit-transform 0.4s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+  left: 50%;
+  margin-left: -37px;
+  top: 65px;
+  opacity: 1;
 }
-.memuicon:hover {
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
+.Cube.panelLoad {
+  z-index: 11;
+  top: 50%;
+  margin-top: -60px;
+  -webkit-animation: panel 2.2s infinite forwards;
+  animation: panel 2.2s infinite forwards;
 }
-.memuicon:hover .top {
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+.Cube.panelLoad .cube-face {
+  color: black;
+  box-shadow: inset 0 0 0 1px #111, 0 0 1px 1px #111;
 }
-.memuicon:hover .top .span {
-  -webkit-transform: translateY(0);
-          transform: translateY(0);
-}
-.memuicon:hover .bottom {
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-}
-.memuicon:hover .bottom .span {
-  -webkit-transform: translateY(0);
-          transform: translateY(0);
-}
-.top,
-.bottom {
+.Cube .cube-face {
+  width: inherit;
+  height: inherit;
   position: absolute;
-  left: 0;
-  top: 0;
-  width: 48px;
-  height: 48px;
+  background: white;
+  box-shadow: inset 0 0 0 1px #333, 0 0 1px 1px #333;
+  opacity: 1;
 }
-.top .span,
-.bottom .span {
-  display: block;
-  width: 17px;
-  height: 1px;
-  background: #fff;
-  position: absolute;
-  left: 16px;
+.Cube .cube-face-front {
+  transform: translate3d(0, 0, 40px);
+  -webkit-transform: translate3d(0, 0, 40px);
+  font-size: 12px;
 }
-.top {
-  transition: transform 1s cubic-bezier(0.4, 0.01, 0.165, 0.99), -webkit-transform 0.25s cubic-bezier(0, 0.01, 0.165, 0.99);
-  -webkit-transform: rotate(0);
-          transform: rotate(0);
+.Cube .cube-face-back {
+  -webkit-transform: rotateY(180deg) translate3d(0, 0, 40px);
+  transform: rotateY(180deg) translate3d(0, 0, 40px);
 }
-.top .span {
-  transition: transform 0.2s 0.2s, -webkit-transform 0.2s 0.2s;
-  top: 23px;
-  -webkit-transform: translateY(-3px);
-          transform: translateY(-3px);
+.Cube .cube-face-left {
+  -webkit-transform: rotateY(-90deg) translate3d(0, 0, 40px);
+  transform: rotateY(-90deg) translate3d(0, 0, 40px);
 }
-.bottom {
-  transition: transform 0.25s cubic-bezier(0.4, 0.01, 0.165, 0.99), -webkit-transform 0.25s cubic-bezier(0.4, 0.01, 0.165, 0.99);
-  -webkit-transform: rotate(0);
-          transform: rotate(0);
+.Cube .cube-face-right {
+  -webkit-transform: rotateY(90deg) translate3d(0, 0, 40px);
+  transform: rotateY(90deg) translate3d(0, 0, 40px);
 }
-.bottom .span {
-  bottom: 23px;
-  -webkit-transform: translateY(3px);
-          transform: translateY(3px);
-  transition: transform 0.2s, -webkit-transform 0.2s;
+.Cube .cube-face-top {
+  -webkit-transform: rotateX(90deg) translate3d(0, 0, 40px);
+  transform: rotateX(90deg) translate3d(0, 0, 40px);
+}
+.Cube .cube-face-bottom {
+  -webkit-transform: rotateX(-90deg) translate3d(0, 0, 40px);
+  transform: rotateX(-90deg) translate3d(0, 0, 40px);
+}
+@-webkit-keyframes panel {
+  0% {
+    -webkit-transform: rotateY(0deg) rotateZ(0deg);
+  }
+  20% {
+    -webkit-transform: rotateY(90deg) rotateZ(0deg);
+  }
+  40% {
+    -webkit-transform: rotateX(45deg) rotateZ(45deg);
+  }
+  60% {
+    -webkit-transform: rotateX(90deg) rotateY(180deg) rotateX(90deg);
+  }
+  80% {
+    -webkit-transform: rotateX(310deg) rotateZ(230deg);
+  }
+  100% {
+    -webkit-transform: rotateX(360deg) rotateZ(360deg);
+  }
+}
+@keyframes panel {
+  0% {
+    -webkit-transform: rotateY(0deg) rotateZ(0deg);
+    transform: rotateY(0deg) rotateZ(0deg);
+  }
+  20% {
+    -webkit-transform: rotateY(90deg) rotateZ(0deg);
+    transform: rotateY(90deg) rotateZ(0deg);
+  }
+  40% {
+    -webkit-transform: rotateX(45deg) rotateZ(45deg);
+    transform: rotateX(45deg) rotateZ(45deg);
+  }
+  60% {
+    -webkit-transform: rotateX(90deg) rotateY(180deg) rotateX(90deg);
+    transform: rotateX(90deg) rotateY(180deg) rotateX(90deg);
+  }
+  80% {
+    -webkit-transform: rotateX(310deg) rotateZ(230deg);
+    transform: rotateX(310deg) rotateZ(230deg);
+  }
+  100% {
+    -webkit-transform: rotateX(360deg) rotateZ(360deg);
+    transform: rotateX(360deg) rotateZ(360deg);
+  }
 }
