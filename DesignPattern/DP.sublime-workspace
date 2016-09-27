@@ -92,10 +92,18 @@
 	"buffers":
 	[
 		{
-			"file": "第一篇 面向对象编程/index.html",
+			"file": "/F/桌面/20150521095827470/demo.html",
 			"settings":
 			{
-				"buffer_size": 281,
+				"buffer_size": 1571,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/F/桌面/20150521095827470/js/mobiscroll.js",
+			"settings":
+			{
+				"buffer_size": 27378,
 				"line_ending": "Windows"
 			}
 		}
@@ -165,11 +173,29 @@
 	},
 	"expanded_folders":
 	[
-		"/D/web/learn/DesignPattern",
-		"/D/web/learn/DesignPattern/第一篇 面向对象编程"
+		"/F/桌面/基于iScroll的jQuery可滑动手机日期选择插件",
+		"/F/桌面/基于iScroll的jQuery可滑动手机日期选择插件/js"
 	],
 	"file_history":
 	[
+		"/F/桌面/20150521095827470/js/mobiscroll_date.js",
+		"/F/桌面/基于iScroll的jQuery可滑动手机日期选择插件/index.html",
+		"/F/桌面/基于iScroll的jQuery可滑动手机日期选择插件/js/date.js",
+		"/F/桌面/基于iScroll的jQuery可滑动手机日期选择插件/js/iscroll.js",
+		"/D/web/作品/study/src/less/news.less",
+		"/D/web/作品/study/src/less/styleOversea.less",
+		"/D/web/作品/study/src/less/main.less",
+		"/D/web/作品/study/src/less/index.less",
+		"/D/web/作品/study/src/less/base.less",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap",
+		"/D/web/作品/study/gulpfile.js",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/D/Program Files/wechatTool/微信web开发者工具/package.nw/app/dist/stroes/projectStores.js",
+		"/D/python/python",
+		"/D/python/[imooc]-python入门/helloPython.py",
+		"/D/Program Files/wechatTool/微信web开发者工具/package.nw/app/dist/stroes/leftviewStores.js",
+		"/D/web/learn/DesignPattern/第一篇 面向对象编程/index.html",
 		"/D/web/learn/DesignPattern/第一篇 面向对象编程/app.js",
 		"/D/web/learn/finish/vue/vue-eat/index.html",
 		"/D/web/learn/finish/vue/vue-eat/src/main.js",
@@ -189,7 +215,6 @@
 		"/D/web/try/index.html",
 		"/D/web/try/app.js",
 		"/D/web/try/style.css",
-		"/C/Users/Administrator/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/C/Users/Administrator/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
 		"/D/web/learn/try/wechat.html",
 		"/D/web/learn/try/style.css",
@@ -280,28 +305,11 @@
 		"/D/web/learn/RiotJs/todo/index.html",
 		"/D/web/learn/RiotJs/index.html",
 		"/D/examples/mixins/my-tag.tag",
-		"/D/examples/mixins/my-second-tag.tag",
-		"/D/examples/mixins/index.html",
-		"/D/examples/animated-list-reordering/index.html",
-		"/D/examples/color-palette/plunker.json",
-		"/D/examples/color-palette/README.md",
-		"/D/examples/README.md",
-		"/D/examples/animated-list-reordering/plunker.json",
-		"/D/examples/animated-list-reordering/style.css",
-		"/D/examples/animated-list-reordering/README.md",
-		"/D/examples/animated-list-reordering/list.tag",
-		"/D/web/作品/六色科技/基金/js/script.js",
-		"/D/web/扩展框架和库/日常小库/第一次用json设置样式.js",
-		"/D/work/喜聚/catwalk/gulp/sass/common.sass",
-		"/F/桌面/reset.css",
-		"/D/web/作品/六色科技/报价宝/js/tip.js",
-		"/D/web/learn/finish/backbone/backbone/backbone.js",
-		"/D/web/扩展框架和库/less 库/jsonz.less",
-		"/D/work/喜聚/newPTV/gulpfile.js"
+		"/D/examples/mixins/my-second-tag.tag"
 	],
 	"find":
 	{
-		"height": 30.0
+		"height": 70.0
 	},
 	"find_in_files":
 	{
@@ -315,6 +323,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"command",
+			"ctrl",
+			"quick",
+			"switch",
+			"project",
+			"recent",
+			"open",
 			"TryFn",
 			"try",
 			"obj",
@@ -435,14 +450,7 @@
 			"inputTitle",
 			"inputYear",
 			"title",
-			"language",
-			"title",
-			"inputTitle",
-			"inputLanguage",
-			"title",
-			"country",
-			"title",
-			"inputTitle"
+			"language"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -466,19 +474,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "第一篇 面向对象编程/index.html",
+					"file": "/F/桌面/20150521095827470/demo.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 281,
+						"buffer_size": 1571,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								109,
-								109
+								1006,
+								1006
 							]
 						],
 						"settings":
@@ -489,27 +497,12 @@
 							{
 								"close":
 								{
-									"1":
-									[
-										268,
-										272
-									]
 								},
 								"icon":
 								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/tag.png",
-										"brackethighlighter.default"
-									]
 								},
 								"open":
 								{
-									"1":
-									[
-										104,
-										108
-									]
 								},
 								"unmatched":
 								{
@@ -517,41 +510,36 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
@@ -562,25 +550,148 @@
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
-								"bh_curly_content"
+								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
 							],
-							"open_with_edit": true,
 							"syntax": "Packages/HTML/HTML.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 132.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/F/桌面/20150521095827470/js/mobiscroll.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 27378,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								466,
+								466
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										467,
+										468
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/single_quote.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										461,
+										462
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/Riot Syntax/JavaScript Riot.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 14573.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -667,12 +778,12 @@
 	},
 	"select_project":
 	{
-		"height": 0.0,
+		"height": 500.0,
 		"last_filter": "",
 		"selected_items":
 		[
 		],
-		"width": 0.0
+		"width": 380.0
 	},
 	"select_symbol":
 	{
