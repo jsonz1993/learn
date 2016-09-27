@@ -7,9 +7,12 @@
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   -webkit-transition: -webkit-transform 0.5s 0.1s;
+  transition: -webkit-transform 0.5s 0.1s;
   transition: transform 0.5s 0.1s;
-  perspective: 9999px;
-  color: #333;
+  transition: transform 0.5s 0.1s, -webkit-transform 0.5s 0.1s;
+  -webkit-perspective: 9999px;
+          perspective: 9999px;
+  color: #75D0F6;
   margin: -40px 0 0 -40px;
   margin: 0 auto;
   position: absolute;
@@ -26,15 +29,17 @@
   animation: panel 2.2s infinite forwards;
 }
 .Cube.panelLoad .cube-face {
-  color: black;
-  box-shadow: inset 0 0 0 1px #111, 0 0 1px 1px #111;
+  color: #75D0F6;
+  -webkit-box-shadow: inset 0 0 0 1px #75D0F6, 0 0 1px 1px #75D0F6;
+          box-shadow: inset 0 0 0 1px #75D0F6, 0 0 1px 1px #75D0F6;
 }
 .Cube .cube-face {
   width: inherit;
   height: inherit;
   position: absolute;
   background: white;
-  box-shadow: inset 0 0 0 1px #333, 0 0 1px 1px #333;
+  -webkit-box-shadow: inset 0 0 0 1px #75D0F6, 0 0 1px 1px #75D0F6;
+          box-shadow: inset 0 0 0 1px #75D0F6, 0 0 1px 1px #75D0F6;
   opacity: 1;
 }
 .Cube .cube-face-front {
