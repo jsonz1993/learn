@@ -20,20 +20,13 @@
 </head>
 <body>
 <input style="width: 12rem;height: 3rem;text-align: right;border: 1px brown solid;margin-left: 2rem" id="datainput" par-code="620000" child-code="622900">
-<input style="width: 12rem;height: 3rem;text-align: right;border: 1px brown solid;margin-left: 2rem" id="data02">
-<input style="width: 12rem;height: 3rem;text-align: right;border: 1px brown solid;margin-left: 2rem" id="data03">
-<input style="width: 12rem;height: 3rem;text-align: right;border: 1px brown solid;margin-left: 2rem">
-<button id="data04">123</button>
+<input type="text" style="width: 12rem;height: 3rem;text-align: right;border: 1px brown solid;margin-left: 2rem" par-code="620000" child-code="622900" id="t"/>
 <script src="js/cityList.js"></script>
 <script>
     $(document).ready(function(){
         UseTwoLineData(provinceData,cityData,"#datainput","贷款期限");
-    })
-    $("#data04").click( function(event){
-        alert("123");
-        // 阻止事件冒泡到DOM树上
-        event.stopPropagation(); // 只执行button的click，如果注释掉该行，将执行button、p和div的click
-    } );
+        UseTwoLineData(provinceData,cityData,"#t","贷款期限");
+    });
 </script>
 </body>
 </html>
