@@ -1,13 +1,25 @@
 学习计划
 ======
------
 
-太久没写代码 都忘了怎么写
+这两天被文章炸出来了，又要开始刷怪升级，懒了两个月在熟悉公司。
+[谁跟你说编程就是高技术含量的事情了？ - 乱写 - 知乎专栏](https://zhuanlan.zhihu.com/p/22646254)
+
+[HW 2017校招，web前端开发岗，要么不招，要么请尊重！](https://zhuanlan.zhihu.com/p/22605301)
+
+[统一回复《怎么学JavaScript？》](http://www.w3cfuns.com/notes/17398/d3f6dd40e2d3ff15b209810dfa98be0b.html)
+
+[轻量级移动端日期选择器](http://www.cnblogs.com/lvdabao/p/mobile-datepicker.html)
+
+[基于zepto的移动端日期+时间选择插件](http://www.cnblogs.com/lvdabao/p/mobile-datetime-picker.html)
+
+[github tap](https://github.com/pukhalski/tap)
+
+-----
 
 ####更目录的其他文件夹
 #####存放正在学习的东西放在目录下方便查看，也是最高的学习优先级
 
-__imooc__
+
 ------
 
 # 文件目录
@@ -61,3 +73,11 @@ __imooc__
 ###### [火焰](http://www.html5tricks.com/demo/html5-fire-ball-shooter/index.html)
 ###### [小米寻找max力](http://s1.mi.com/m/ghd/2016/maxpre/index.html)
 ###### [轮子](https://github.com/jun-lu/SortAnimate)
+
+
+-----
+学习记录
+-------
+2016.7月找工作时 __imooc__
+
+
