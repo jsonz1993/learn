@@ -1,18 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" href="animate.css">
-	<style>
-		
-	</style>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="animate.css">
+    <style>
+
+    </style>
 </head>
+
 <body>
-	<h1>Hello animate</h1>
-	<script src="jquery-2.1.1.js"></script>
-	<script>
-		var a = 10;
-	</script>
+<h1>hello</h1>
+<h2 id="main">world</h2>
+    <script src="jquery-2.1.1.js"></script>
+    <script>
+    var Loading = function() {
+        this.main = main || '#main';
+    };
+    Loading.prototype = {
+    	init: function(){
+    		this.$el = this.getDom();
+    		this.$el.appendTo('body').hide();
+    		this.$main = $(this.main);
+    		return this;
+    	},
+    	getDom: function(){
+    		return $('<div id="loader" class="default">ddd</div>');
+    	},
+    	_show: function(){
+    		this.$el || this.init();
+    		this.$el.show();
+    		this.$main.hide();
+    	},
+    	show: function(){
+    		this._show();
+    	},
+    	_hide: function(){
+    		this.$el || this.init();
+    		this.$el.hide();
+    		this.$main.show();
+    	},
+    	hide: function(){
+    		this._hide();
+    	}
+    }
+
+    var a = new Loading();
+    a.getDom = function(){
+    	return $('<div id="loading"><div class="Cube panelLoad"><div class="cube-face cube-face-front">Herely</div><div class="cube-face cube-face-back">小时预订</div><div class="cube-face cube-face-left">移动办公</div><div class="cube-face cube-face-right">自助使用</div>  <div class="cube-face cube-face-bottom">多点分布</div><div class="cube-face cube-face-top">智能管理</div></div></div>');
+    }
+    a.show = function(){
+    	$('h1').hide();
+    	a._show();
+    }
+
+    a.hide = function(){
+    	$('h1').show();
+    	a._hide();
+    }
+
+    </script>
 </body>
+
 </html>
