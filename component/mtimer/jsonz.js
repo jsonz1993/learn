@@ -1114,24 +1114,10 @@
                     _this.hidePanel();
                     option.onOk && typeof option.onOk == 'function' && option.onOk(container);
                 });
-                $('.mt_canel', container).on('tap', function () {
-                    _this.hidePanel();
-                    option.onCancel && typeof option.onCancel == 'function' && option.onCancel(container);
-                });
-                $('.mt_mask').on('tap', function () {
-                    _this.hidePanel();
-                });
+
 
                 // 初始化所有数据
                 this.setValue();
-            },
-
-            // html填充部分
-            renderHTML: function () {
-                var stime = option.timeStart + ':00',
-                    etime = option.timeStart + option.timeNum + ':00',
-                    html = '<div class="mt_mask"></div><div id="mtimer" class="mt_poppanel"><div class="mt_panel"><h3 class="mt_title">请选择时间</h3><div class="mt_body"><div class="mt_date"><ul><li class="mt_note">上下滚动选取时间</li><li></li></ul></div><div class="mt_time"><ul><li class="mt_note">可选时间：' + stime + '-' + etime + '</li><li></li></ul></div><div class="mt_indicate"></div></div><div class="mt_confirm"><a href="javascript:void(0);" class="mt_ok">确定</a> <a href="javascript:void(0);" class="mt_cancel">取消</a></div></div></div>';
-                $(document.body).append(html);
             },
 
             // 更具滚动距离设置class
@@ -1139,16 +1125,6 @@
                 var index = parseInt((-iscroll.y) / itemHeight + 2),
                     current = container.find('li').eq(index);
                 current.addClass(selectedClass).siblings().removeClass(selectedClass);
-            },
-
-            // 显示滑动组件
-            showPanel: function (container) {
-                $('.mt_poppanel, .mt_mask').addClass('show');
-            },
-
-            // 隐藏滑动组件
-            hidePanel: function (container) {
-                $('.mt_poppanel, .mt_mask').removeClass('show');
             },
 
             // 设置值，传递该el

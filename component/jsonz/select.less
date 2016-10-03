@@ -1,0 +1,113 @@
+
+.select-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  background: #000000;
+  z-index: 10;
+  transition: opacity .5s linear 0s;
+  &.show {
+    visibility: visible;
+    opacity: .25;
+  }
+}
+
+@color: #4eccc4;
+.select-panel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  transition: transform .3s ease-in-out 0s;
+  z-index: 11;
+  -webkit-user-select: none;
+  transform: translate3d(0, 100%, 0);
+  background: #F7F7F7;
+  &.show {
+    transform: translate3d(0, 0, 0);
+  }
+  .select-title {
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    padding-left: 20px;
+    color: @color;
+    border-bottom: 1px solid @color;
+  }
+
+  .select-data {
+    text-align: center;
+    font-size: 18px;
+    height: 100%;
+    float: left;
+    ul {
+      position: relative;
+    }
+    li {
+      height: 48px;
+      line-height: 48px;
+      color: #000000;
+      overflow: hidden;
+    }
+    .selected {
+      color: @color;
+    }
+    .select-note {
+      font-size: 12px;
+    }
+  }
+
+  .select-body {
+    height: 240px;
+    overflow: hidden;
+    position: relative;
+    .select-data {
+      width: 100%;
+    }
+  }
+
+  // 两个的情况
+  .select-body-two {
+    .select-data {
+      width: 50%;
+    }
+  }
+
+  .select-indicate,
+  .select-indicate:after {
+    position: absolute;
+    border-top: 1px solid #e9e9e9;
+    width: 100%;
+    height: 0;
+    font-size: 0;
+    top: 94px;
+  }
+  .select-indicate:after {
+    content: " ";
+    top: 48px;
+  }
+
+  .select-confirm {
+    height: 68px;
+    line-height: 68px;
+    margin-top: 20px;
+    text-align: center;
+    border-top: 1px solid @color;
+    a {
+      width: 50%;
+      font-size: 16px;
+      display: inline-block;
+      height: 100%;
+      color: @color;
+    }
+    .select-ok {
+      border-right: 1px solid #4eccc4;
+    }
+  }
+}

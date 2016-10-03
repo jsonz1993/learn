@@ -188,3 +188,5 @@ function TwoLineDataLoadPage(){
         +'<div class="topBorder"></div><div class="bottomBorder"></div>';
     $("body").append(str);
 }
+
+
