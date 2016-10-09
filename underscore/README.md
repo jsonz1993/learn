@@ -8,6 +8,8 @@
 
 [API](http://api.qunitjs.com/)
 
+详细见 []()
+
 
 
 ## underscore `v1.8.3`
