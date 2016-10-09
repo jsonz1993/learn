@@ -21,7 +21,7 @@
 
 #### 路径
 
-`underscore.js源码` => `《javascript函数式编程》`
+`qunit使用` => `` => `《》`
  
 `《javascript 设计模式》`
 
@@ -48,3 +48,12 @@ BEM命名
 
 vue基础 包括vuex vue-rount vue webpack
 
+#### underscore.js 源码
+
+[qunit测试工具](https://github.com/jquery/qunit)
+
+[underscore.js源码](http://www.css88.com/doc/underscore/docs/underscore.html)
+
+[underscore api](http://www.css88.com/doc/underscore/)
+
+[javascript函数式编程]()
