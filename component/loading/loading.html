@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="loading.css">
+</head>
+
+<body>
+    <div class='Cube panelLoad'>
+        <div class='cube-face cube-face-front'></div>
+        <div class='cube-face cube-face-back'></div>
+        <div class='cube-face cube-face-left'></div>
+        <div class='cube-face cube-face-right'></div>
+        <div class='cube-face cube-face-bottom'></div>
+        <div class='cube-face cube-face-top'></div>
+    </div>
+    <input type="text" id="a" autofocus>
+    <input type="text" id="b">
+    <input type="text" id="c">
+    <button>确定</button>
+
+    <div id="wrap"></div>
+</body>
+<script src="../../try/jquery-2.1.1.js"></script>
+<script>
+var input = document.getElementsByTagName('input'),
+    v1, v2, v3,
+    css;
+
+$(input).on('keyup', function() {
+    v1 = parseInt(input[0].value),
+        v2 = parseInt(input[1].value),
+        v3 = parseInt(input[2].value),
+        css = 'rotateX(' + (v1 || 0) + 'deg) rotateY(' + (v2 || 0) + 'deg) rotateZ(' + (v3 || 0) + 'deg)';
+    $('.Cube').css('transform', css);
+})
+
+$('#wrap').html(window.localStorage.getItem('ddd'));
+$('.Cube').css('transform', $('#wrap').find('p').last().html());
+$('button').on('click submit', function(){
+	$('#wrap').append('<p>'+ css +'</p>');
+	window.localStorage.setItem('ddd', $('#wrap').html());
+})
+
+</script>
+
+</html>

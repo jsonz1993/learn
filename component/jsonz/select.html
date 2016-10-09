@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="demo.css">
+    <meta name="viewport" content="width=375, user-scalable=no, target-densitydpi=device-dpi">
+</head>
+<body>
+
+<input type="text" placeholder="请选择" id="province" value="10月03日 星期一 02:00" data-value="10-03 02:00">
+<input type="text" placeholder="城市" id="city" value="2" data-value="2"/>
+
+<script src="./jquery-2.1.1.js"></script>
+<script src="tap.js"></script>
+<script src="./scroll.js"></script>
+<script src="./selectTool.js"></script>
+<script src="inherit.js"></script>
+<script src="dateTimeSelectTool.js"></script>
+
+<script>
+new Select({
+    el: '#city',
+    data1: [1,2]
+});
+    new dateTimeSelect({
+        el: '#province'
+//        initValue: {id: '10月3日 星期一 19:00', text: '10月3日 星期一 19:00'}
+    })
+</script>
+</body>
+</html>

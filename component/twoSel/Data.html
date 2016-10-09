@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" id="<viewport></viewport>" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title></title>
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/remDefine.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/DataSel.css">
+    <script src="js/TwoLineDataSel.js"></script>
+    <style>
+        body{
+            margin: 0;
+        }
+        @media (min-width:640px){html{font-size:100px!important;}}
+    </style>
+</head>
+<body>
+<input style="width: 12rem;height: 3rem;text-align: right;border: 1px brown solid;margin-left: 2rem" id="datainput" par-code="620000" child-code="622900">
+<input type="text" style="width: 12rem;height: 3rem;text-align: right;border: 1px brown solid;margin-left: 2rem" par-code="620000" child-code="622900" id="t"/>
+<script src="js/cityList.js"></script>
+<script>
+    $(document).ready(function(){
+        UseTwoLineData(provinceData,cityData,"#datainput","贷款期限");
+        UseTwoLineData(provinceData,cityData,"#t","贷款期限");
+    });
+</script>
+</body>
+</html>

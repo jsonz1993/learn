@@ -1,0 +1,54 @@
+.menu ul {
+  border-top: 15px solid black;
+  padding: 0 10px;
+}
+.menu ul li a {
+  color: #fff;
+  float: left;
+  margin: 0 5px;
+  font-size: 14px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  width: 65px;
+  padding: 10px 5px;
+  background: #151515;
+  border-radius: 0 0 5px 5px;
+  -webkit-box-shadow: 0 0 1px #ccc,inset 0 0 2px #fff;
+  box-shadow: 0 0 1px #ccc,inset 0 0 2px #fff;
+  text-shadow: 0 1px 1px #686868;
+  text-decoration: none;
+}
+.menu ul li.translate a {
+  background: #2EC7D2;
+}
+.menu ul li.translate-x a {
+  background: #8FDD21;
+}
+.menu ul li.translate-y a {
+  background: #F45917;
+}
+.menu ul li.rotate a {
+  background: #D50E19;
+}
+.menu ul li.scale a {
+  background: #cdddf2;
+}
+.menu ul li.scale-x a {
+  background: #0fDD21;
+}
+.menu ul li.scale-y a {
+  background: #cd5917;
+}
+.menu ul li.skew a {
+  background: #519;
+}
+.menu ul li.skew-x a {
+  background: #D50;
+}
+.menu ul li.skew-y a {
+  background: #E19;
+}
+.menu ul li.matrix a {
+  background: #919;
+}
