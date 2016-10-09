@@ -3,7 +3,7 @@
  */
 // 监听touchstart, touchmove, touchend
 // 发布事件 回调参数 this
-var IScroll = (function () {
+var HerelyScroll = (function () {
 
     var _iscroll = function (el) {
         this.$el = $(el);
