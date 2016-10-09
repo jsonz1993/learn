@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="select.css">
+    <meta name="viewport" content="width=375, user-scalable=no, target-densitydpi=device-dpi">
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    </style>
+</head>
+
+<body>
+    <input type="text" placeholder="请选择" id="province" value="10月03日 星期一 02:00" data-value="10-03 02:00">
+    <br>
+    <input type="text" placeholder="城市" id="city" value="2" data-value="2" />
+    <script src="../common/js/jquery-2.1.1.js"></script>
+    <script src="./iscroll.js"></script>
+    <script src="./selectTool.js"></script>
+    <script src="inherit.js"></script>
+    <script src="dateTimeSelectTool.js"></script>
+    <script>
+    new Select({
+        el: '#city',
+        data1: [{
+            id: 1,
+            text: '01'
+        },{
+        	id: 2,
+        	text: '02'
+        }],
+        id: 'id',
+        text: 'text',
+        postfix: '小时',
+        onOk: function(){
+        	console.log('ok');
+        },
+        onCancel: function() {
+        	console.log('cancel');
+        },
+        title: '选择时间'
+    });
+    new dateTimeSelect({
+        el: '#province',
+        dateStart: new Date(),
+        dateNum: 20,
+        timeStart: 9,
+        timeNum: 12
+    })
+    </script>
+</body>
+
+</html>

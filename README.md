@@ -14,6 +14,17 @@
 
 [github tap](https://github.com/pukhalski/tap)
 
+开始新一轮的学习！！！
+
+纠结要不要搞个静态博客 github.io  hexo
+
+接下来的学习方式：
+
+- 看书
+- 看源码
+- 造轮子
+- 做案例
+
 -----
 
 ####更目录的其他文件夹
