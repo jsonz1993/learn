@@ -42,8 +42,6 @@
 [使用Flexible实现手淘H5页面的终端适配](https://github.com/amfe/article/issues/17)
 
 BEM命名
-[http://www.tuicool.com/articles/EzMBNnr](http://www.tuicool.com/articles/EzMBNnr)
-
 [https://segmentfault.com/a/1190000000391762](https://segmentfault.com/a/1190000000391762)
 
 vue基础 包括vuex vue-rount vue webpack
