@@ -1,0 +1,132 @@
+* {
+  box-sizing: border-box;
+}
+.clear-fix {
+  *zoom: 1;
+}
+.clear-fix:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.input {
+  margin-top: 0.8rem;
+  height: 1.12rem;
+  width: 100%;
+  padding-left: 0.53333333rem;
+  border-width: 0;
+  border-top: 1px solid #EAEAEA;
+  border-bottom: 1px solid #EAEAEA;
+}
+.button {
+  width: 4.26666667rem;
+  height: 0.93333333rem;
+  line-height: 0.93333333rem;
+  font-size: 16px;
+  color: #fff;
+  border-radius: 2.66666667rem;
+  background-color: #80D4F6;
+  text-align: center;
+  margin: 0.8rem auto;
+}
+[data-dpr='2'] .button {
+  font-size: 32px;
+}
+[data-dpr="3"] .button {
+  font-size: 48px;
+}
+.p {
+  font-size: 13px;
+  padding-left: 0.93333333rem;
+  margin-bottom: 0.4rem;
+}
+[data-dpr='2'] .p {
+  font-size: 26px;
+}
+[data-dpr="3"] .p {
+  font-size: 39px;
+}
+.wrap {
+  padding-left: 0.93333333rem;
+  padding-top: 0.26666667rem;
+  padding-bottom: 0.13333333rem;
+  background-color: #F3F3F3;
+}
+.wrap .info {
+  font-size: 15px;
+}
+[data-dpr='2'] .wrap .info {
+  font-size: 30px;
+}
+[data-dpr="3"] .wrap .info {
+  font-size: 45px;
+}
+.wrap .item {
+  width: 8.53333333rem;
+  height: 2.93333333rem;
+  padding-left: 1.81333333rem;
+  padding-right: 0.50666667rem;
+  background-color: #fff;
+  border-radius: 0.13333333rem;
+  margin-top: 0.66666667rem;
+  margin-bottom: 0.13333333rem;
+}
+.wrap .item .p1 {
+  line-height: 0.42666667rem;
+  padding-top: 0.50666667rem;
+  margin-bottom: 0.13333333rem;
+}
+.wrap .item .p2 {
+  font-size: 18px;
+  line-height: 0.66666667rem;
+}
+[data-dpr='2'] .wrap .item .p2 {
+  font-size: 36px;
+}
+[data-dpr="3"] .wrap .item .p2 {
+  font-size: 54px;
+}
+.wrap .item .span1 {
+  font-size: 13px;
+  color: #4A4A4A;
+}
+[data-dpr='2'] .wrap .item .span1 {
+  font-size: 26px;
+}
+[data-dpr="3"] .wrap .item .span1 {
+  font-size: 39px;
+}
+.wrap .item .span2 {
+  font-size: 11px;
+  color: #9B9B9B;
+}
+[data-dpr='2'] .wrap .item .span2 {
+  font-size: 22px;
+}
+[data-dpr="3"] .wrap .item .span2 {
+  font-size: 33px;
+}
+.wrap .item .hr {
+  background-color: #EAEAEA;
+  height: 0.02666667rem;
+  width: 100%;
+  margin-top: 0.33333333rem;
+  margin-bottom: 0.14666667rem;
+}
+.wrap .item .footer {
+  font-size: 11px;
+  color: #9B9B9B;
+  line-height: 0.42666667rem;
+}
+[data-dpr='2'] .wrap .item .footer {
+  font-size: 22px;
+}
+[data-dpr="3"] .wrap .item .footer {
+  font-size: 33px;
+}
