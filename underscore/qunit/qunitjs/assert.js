@@ -171,6 +171,44 @@ QUnit.test('notPropEqual test', function (assert) {
 
 });
 
+/**
+ * notStrictEqual( actual, expected [, message ] )
+ * Description: A strict comparison, checking for inequality.
+ */
+
+QUnit.test( "notStrictEqual test", function( assert ) {
+    assert.notStrictEqual( 1, "1", "String '1' and number 1 have the same value but not the same type" );
+});
+
+
+/**
+ * ok(state[, message]
+ */
+
+QUnit.test( "ok test", function( assert ) {
+    assert.ok( true, "true succeeds" );
+    assert.ok( "non-empty", "non-empty string succeeds" );
+
+    //assert.ok( false, "false fails" );
+    //assert.ok( 0, "0 fails" );
+    //assert.ok( NaN, "NaN fails" );
+    //assert.ok( "", "empty string fails" );
+    //assert.ok( null, "null fails" );
+    //assert.ok( undefined, "undefined fails" );
+});
+
+
+/**
+ * propEqual( actual, expected [, message ] )
+ * Description: A strict type and value comparison of an object's own properties.
+ */
+// Compare the properties values of two objects.
+QUnit.test('propEqual', function(){
+    function Foo(x, y, z)
+});
+
+
+
 
 
 
