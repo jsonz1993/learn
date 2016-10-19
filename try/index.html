@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+function move(n, a, b, c) {
+	if (n == 1) {
+		console.log(a, '-->', c);
+		return;
+	}
+	move(n - 1, a, c, b);
+	console.log(a, '-->', c);
+	move(n - 1, b, a, c);
+}
+</script>
+</body>
+</html>
