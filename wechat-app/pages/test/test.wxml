@@ -1,0 +1,4 @@
+<view>{{name}}</view>
+<view>{{age[0].jsonz}}</view>
+<view>{{page}}</view>
+<button bindtap="fn1">Content<button/>

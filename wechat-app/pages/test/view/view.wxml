@@ -1,0 +1,82 @@
+<view>{{message}}</view>
+
+<block>
+
+<switch wx:for="{{objectArray}}" wx:key="unique" style="display:block">{{item.id}}</switch>
+<button bindtap="switch">Switch</button>
+<button bindtap="addToFront">Add To The Front</button>
+
+<switch wx:for="{{numberArray}}" wx:key="*this" style="display:block">{{item}}</switch>
+<button bindtap="addNumberToFront">Add to the front</button>
+
+</block>
+
+<view class="br"></view>
+
+// 列表渲染
+<view wx:for="{{list}}">{{item}}</view>
+
+// 条件渲染
+<view wx:if="{{view == 'view'}}">View</view>
+<view wx:elif="{{ view=='index'}}">not-view</view>
+<view wx:else>isView</view>
+
+// 模板
+<template name="staffName">
+    <view>
+        FirstName: {{firstName}}, LastName: {{lastName}}
+    </view>
+</template>
+
+<template is="staffName" data="{{...staffA}}"></template>
+<template is="staffName" data="{{...staffB}}"></template>
+<template is="staffName" data="{{...staffC}}"></template>
+
+<view bindtap="add">{{count}}</view>
+<view class="br"></view>
+
+// 数据绑定
+// 组件属性，需要在引号内
+<view id="item-{{id}}">{{id}}</view>
+// 控制属性(需要在双引号之内)
+<view if="{{id}}">{{id}}<view>
+// 关键字(需要在双引号之内)
+<checkbox checked="{{false}}" hidden="{{flag? true: false}}"></checkbox>
+// {{}} 可以三元运算，算数运算，逻辑判断，字符串运算，数据路径运算
+<view>{{(3+5>4) + ' hello'}}</view>
+<view>{{name[0].lastName}}<view>
+
+<template name="obj"> <view> {{b}} </view></template>   
+<template is="obj" data="{{...obj1, ...obj2, e: 5}}"></template>
+
+<view class="br"></view>
+
+<view wx:if="{{message}}">{{message}}</view>
+<block wx:if="{{message}}">
+    <view>{{message}}</view><view>多个需要if控制，可以包裹在block内</view>
+    <view>if 与 hide 的区别在于  一个有渲染 一个只是显示隐藏</view>
+</block>
+
+<view class="br"></view>
+
+// 默认是 item, index 可以用wx:for-item和 wx:for-index修改
+<view wx:for="{{name}}" wx:for-item="itemObj">
+{{index}}: {{itemObj.lastName}}
+</view>
+<view wx:for="{{[1,2,3,4,5,6,7,8,9]}}" wx:for-item="i">
+    <view wx:for="{{[1,2,3,4,5,6,7,8,9]}}" wx:for-item="j">
+        <view wx:if="{{i <= j}}">
+            {{i}} * {{j}} = {{i * j}}
+        </view>
+    </view>
+</view>
+
+<block wx:for="{{[1, 2, 3]}}">
+  <view> {{index}}: </view>
+  <view> {{item}} </view>
+</block>
+
+
+
+
+<view class="br"></view>
