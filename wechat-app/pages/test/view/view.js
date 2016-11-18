@@ -41,13 +41,15 @@ Page({
         })
     },
     switch: function(e) {
+        // const 定义常亮
         const length = this.data.objectArray.length
-        for (let i = 0; i < length; ++i) {
-        const x = Math.floor(Math.random() * length)
-        const y = Math.floor(Math.random() * length)
-        const temp = this.data.objectArray[x]
-        this.data.objectArray[x] = this.data.objectArray[y]
-        this.data.objectArray[y] = temp
+        // let 块级作用域
+        for (let i = 0; i < length; i++) {
+            const x = Math.floor(Math.random() * length);
+            const y = Math.floor(Math.random() * length);
+            const temp = this.data.objectArray[x];
+            this.data.objectArray[x] = this.data.objectArray[y];
+            this.data.objectArray[y] = temp;
         }
         this.setData({
             objectArray: this.data.objectArray
