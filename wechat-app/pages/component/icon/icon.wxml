@@ -1,0 +1,26 @@
+<text>
+    type String icon的类型，有效值：success, success_no_circle, info, warn, waiting, cancel, download, search, clear
+
+    size	Number	23	icon的大小，单位px
+
+    color	Color		icon的颜色，同css的color    
+</text>
+
+<view class="group">
+  <block wx:for="{{iconSize}}" wx:key="*this">
+    <icon type="success" size="{{item}}"/>
+  </block>
+</view>
+
+<view class="group">
+  <block wx:for="{{iconType}}" wx:key="*this">
+    <icon type="{{item}}" size="45"/>
+  </block>
+</view>
+
+
+<view class="group">
+  <block wx:for="{{iconColor}}" wx:key="*this">
+    <icon type="success" size="45" color="{{item}}"/>
+  </block>
+</view>
