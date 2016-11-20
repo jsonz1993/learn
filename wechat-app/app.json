@@ -1,10 +1,13 @@
 {
   "pages":[
+    "pages/test/wxss/wxss",
+    "pages/test/Scope/c",
     "pages/test/view/view",
     "pages/test/test",
     "pages/space/independent/independent",
     "pages/index/index",
     "pages/logs/logs"
+    
   ],
   "window":{
     "backgroundTextStyle":"dark",
@@ -22,14 +25,10 @@
     "borderStyle": "white",
     "list": [{
       "pagePath": "pages/test/test",
-      "text":"TEST",
-      "iconPath": "iconPath",
-      "selectedIconPath": "selectedIconPath"
+      "text":"TEST"
     }, {
       "pagePath": "pages/index/index",
-      "text":"index",
-      "iconPath": "iconPath",
-      "selectedIconPath": "selectedIconPath"
+      "text":"index"
     }]
   },
   "networkTimeout": {

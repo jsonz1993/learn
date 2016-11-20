@@ -30,7 +30,12 @@ var pageData = {
       {id: 1, unique: 'unique_1'},
       {id: 0, unique: 'unique_0'},
     ],
-    numberArray: [1, 2, 3, 4]
+    numberArray: [1, 2, 3, 4],
+    item: {
+        index: 1,
+        msg: 'this is a msg',
+        time: new Date().getFullYear()
+    }
 };
 
 Page({
@@ -67,5 +72,23 @@ Page({
         this.setData({
             numberArray: this.data.numberArray
         })
+    },
+    touchstart: function(e) {
+        console.log('touchstart 手指触摸开始');
+    },
+    touchmove: function(e) {
+        console.log('touchmove 手指触摸后移动');
+    },
+    touchcancel: function(e) {
+        console.log('手指触摸动作被打断，如来电提醒，弹窗');
+    },
+    touchend: function(e) {
+        console.log('手指触摸结束');
+    },
+    tap: function(e) {
+        console.log('手指触摸后马上离开');
+    },
+    longtap: function(e) {
+        console.log('longtap');
     }
 })
