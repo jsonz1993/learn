@@ -1,5 +1,8 @@
 {
   "pages":[
+    "pages/api/net/upload&download/upload",
+    "pages/api/net/request/request",
+
     "pages/component/canvas/canvas",
     "pages/component/map/map",
     "pages/component/video/video",
