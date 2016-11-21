@@ -1,0 +1,10 @@
+<text>
+    checked	Boolean	false	是否选中
+    type	String	switch	样式，有效值：switch, checkbox
+    bindchange	EventHandle		checked改变时触发change事件，event.detail={ value:checked}
+</text>
+
+<view class="body-view">
+    <switch checked bindchange="switch1Change"/>
+    <switch bindchange="switch2Change"/>
+</view>

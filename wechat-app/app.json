@@ -1,5 +1,16 @@
 {
   "pages":[
+    "pages/component/canvas/canvas",
+    "pages/component/map/map",
+    "pages/component/video/video",
+    "pages/component/image/image",
+    "pages/component/audio/audio",
+    "pages/component/navigator/navigator",
+    "pages/component/textarea/textarea",
+    "pages/component/switch/switch",
+    "pages/component/slider/slider",
+    "pages/component/radio/radio",
+    "pages/component/picker/picker",
     "pages/component/label/label",
     "pages/component/input/input",
     "pages/component/form/form",
