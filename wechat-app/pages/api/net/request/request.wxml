@@ -1,0 +1,13 @@
+<text>
+wx.request(OBJECT)
+wx.request发起的是https请求。一个微信小程序，同时只能有5个网络请求连接。
+
+url	String	是	开发者服务器接口地址
+data	Object、String	否	请求的参数
+header	Object	否	设置请求的 header , header 中不能设置 Referer
+method	String	否	默认为 GET，有效值：OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+success	Function	否	收到开发者服务成功返回的回调函数，res = {data: '开发者服务器返回的内容'}
+fail	Function	否	接口调用失败的回调函数
+complete	Function	否	接口调用结束的回调函数（调用成功、失败都会执行）
+</text>
+

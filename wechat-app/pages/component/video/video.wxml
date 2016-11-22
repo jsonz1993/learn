@@ -1,0 +1,33 @@
+<text>
+video
+视频。
+
+src	String		要播放视频的资源地址
+controls	Boolean	true	是否显示默认播放控件（播放/暂停按钮、播放进度、时间）
+danmu-list	Object Array		弹幕列表
+danmu-btn	Boolean	false	是否显示弹幕按钮，只在初始化时有效，不能动态变更
+enable-danmu	Boolean	false	是否展示弹幕，只在初始化时有效，不能动态变更
+autoplay	Boolean	false	是否自动播放
+bindplay	EventHandle		当开始/继续播放时触发play事件
+bindpause	EventHandle		当暂停播放时触发 pause 事件
+bindended	EventHandle		当播放到末尾时触发 ended 事件
+binderror	EventHandle		当发生错误时触发error事件，event.detail = {errMsg: 'something wrong'}
+
+video标签认宽度300px、高度225px，设置宽高需要通过wxss设置width和height。
+</text>
+
+<view class="section tc">
+  <video src="{{src}}"   controls ></video>
+  <view class="btn-area">
+    <button bindtap="bindButtonTap">获取视频</button>
+  </view>
+</view>
+
+<view class="section tc">
+  <video id="myVideo" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" binderror="videoErrorCallback" danmu-list="{{danmuList}}" enable-danmu danmu-btn controls></video>
+  <view class="btn-area">
+    <button bindtap="bindButtonTap">获取视频</button>
+    <input bindblur="bindInputBlur"/>
+    <button bindtap="bindSendDanmu">发送弹幕</button>
+  </view>
+</view>

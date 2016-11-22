@@ -1,0 +1,68 @@
+{
+  "pages":[
+    "pages/api/view/animation/animation",
+    "pages/api/net/upload&download/upload",
+    "pages/api/net/request/request",
+
+    "pages/component/canvas/canvas",
+    "pages/component/map/map",
+    "pages/component/video/video",
+    "pages/component/image/image",
+    "pages/component/audio/audio",
+    "pages/component/navigator/navigator",
+    "pages/component/textarea/textarea",
+    "pages/component/switch/switch",
+    "pages/component/slider/slider",
+    "pages/component/radio/radio",
+    "pages/component/picker/picker",
+    "pages/component/label/label",
+    "pages/component/input/input",
+    "pages/component/form/form",
+    "pages/component/checkbox/checkbox",
+    "pages/component/button/button",
+    "pages/component/progress/progress",
+    "pages/component/text/text",
+    "pages/component/icon/icon",
+    "pages/component/swiper/swiper",
+    "pages/component/scroll-view/scroll-view",
+    "pages/component/view/view",
+    "pages/component/component",
+    "pages/test/wxss/wxss",
+    "pages/test/Scope/c",
+    "pages/test/view/view",
+    "pages/test/test",
+    "pages/space/independent/independent",
+    "pages/index/index",
+    "pages/logs/logs"
+    
+  ],
+  "window":{
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#abcdef",
+    "navigationBarTitleText": "WeChat-app",
+    "navigationBarTextStyle":"white",
+    "backgroundColor": "#00ff00",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#aaaaaa",
+    "selectedColor": "#abcdef",
+    "backgroundColor": "#efefef",
+    "position": "bottom",
+    "borderStyle": "white",
+    "list": [{
+      "pagePath": "pages/test/test",
+      "text":"TEST"
+    }, {
+      "pagePath": "pages/index/index",
+      "text":"index"
+    }]
+  },
+  "networkTimeout": {
+    "request": 20000,
+    "connectSocket": 20000,
+    "uploadFile": 20000,
+    "downloadFile": 20000
+  },
+  "debug": "false"
+}
