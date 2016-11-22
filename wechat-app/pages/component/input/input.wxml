@@ -1,0 +1,54 @@
+<text>
+value	String		输入框的初始内容
+type	String	text	input 的类型，有效值：text, number, idcard, digit, time, date
+password	Boolean	false	是否是密码类型
+placeholder	String		输入框为空时占位符
+placeholder-style	String		指定 placeholder 的样式
+placeholder-class	String	input-placeholder	指定 placeholder 的样式类
+disabled	Boolean	false	是否禁用
+maxlength	Number	140	最大输入长度，设置为 -1 的时候不限制最大长度
+auto-focus	Boolean	false	自动聚焦，拉起键盘。页面中只能有一个 <input/> 或 <textarea/> 设置 auto-focus 属性
+focus	Boolean	false	获取焦点（开发工具暂不支持）
+bindinput	EventHandle		除了date/time类型外的输入框，当键盘输入时，触发input事件，event.detail = {value: value}，处理函数可以直接 return 一个字符串，将替换输入框的内容。
+bindfocus	EventHandle		输入框聚焦时触发，event.detail = {value: value}
+bindblur	EventHandle		输入框失去焦点时触发，event.detail = {value: value}
+</text>
+
+<!--input.wxml-->
+<view class="section">
+  <input placeholder="这是一个可以自动聚焦的input" auto-focus/>
+</view>
+<view class="section">
+  <input placeholder="这个只有在按钮点击的时候才聚焦" focus="{{focus}}" />
+  <view class="btn-area">
+    <button bindtap="bindButtonTap">使得输入框获取焦点</button>
+  </view>
+</view>
+<view class="section">
+  <input  maxlength="10" placeholder="最大输入长度10" />
+</view>
+<view class="section">
+  <view class="section__title">你输入的是：{{inputValue}}</view>
+  <input  bindinput="bindKeyInput" placeholder="输入同步到view中"/>
+</view>
+<view class="section">
+  <input  bindinput="bindReplaceInput" placeholder="连续的两个1会变成2" />
+</view>
+<view class="section">
+  <input  bindinput="bindHideKeyboard" placeholder="输入123自动收起键盘" />
+</view>
+<view class="section">
+  <input password type="number" />
+</view>
+<view class="section">
+  <input password type="text" />
+</view>
+<view class="section">
+  <input type="digit" placeholder="带小数点的数字键盘"/>
+</view>
+<view class="section">
+  <input type="idcard" placeholder="身份证输入键盘" />
+</view>
+<view class="section">
+  <input placeholder-style="color:red" placeholder="占位符字体是红色的" />
+</view>

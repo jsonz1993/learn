@@ -1,0 +1,45 @@
+<text>
+wx.getNetworkType(OBJECT)
+获取网络类型。
+success	Function	是	接口调用成功，返回网络类型 networkType
+fail	Function	否	接口调用失败的回调函数
+complete	Function	否	接口调用结束的回调函数（调用成功、失败都会执行）
+wx.getNetworkType({
+  success: function(res) {
+    var networkType = res.networkType // 返回网络类型2g，3g，4g，wifi
+  }
+})
+
+wx.getSystemInfo(OBJECT)
+获取系统信息。
+success	Function	是	接口调用成功的回调
+fail	Function	否	接口调用失败的回调函数
+complete	Function	否	接口调用结束的回调函数（调用成功、失败都会执行）
+model	手机型号
+pixelRatio	设备像素比
+windowWidth	窗口宽度
+windowHeight	窗口高度
+language	微信设置的语言
+version	微信版本号
+
+wx.getSystemInfoSync()
+获取系统信息同步接口
+
+wx.onAccelerometerChange(CALLBACK)
+监听重力感应数据，频率：5次/秒
+x	Number	X 轴
+y	Number	Y 轴
+z	Number	Z 轴
+
+wx.onCompassChange(CALLBACK)
+监听罗盘数据，频率：5次/秒
+direction	Number	面对的方向度数
+
+wx.makePhoneCall(OBJECT)
+phoneNumber	String	是	需要拨打的电话号码
+success	Function	否	接口调用成功的回调
+fail	Function	否	接口调用失败的回调函数
+complete	Function	否	接口调用结束的回调函数（调用成功、失败都会执行）
+
+
+</text>

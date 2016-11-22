@@ -1,0 +1,16 @@
+text
+文本。
+
+支持转义符"\\"。
+
+<text/> 组件内只支持 "text" 嵌套。
+
+除了文本节点以外的其他节点都无法长按选中。
+
+<view class="btn-area">
+  <view class="body-view">
+    <text>{{text}}</text>
+    <button bindtap="add">add line</button>
+    <button bindtap="remove">remove line</button>
+  </view>
+</view>
