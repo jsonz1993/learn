@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/api/view/animation/animation",
     "pages/api/net/upload&download/upload",
     "pages/api/net/request/request",
 
