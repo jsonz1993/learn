@@ -64,5 +64,8 @@ ________
 BEM命名
 [https://segmentfault.com/a/1190000000391762](https://segmentfault.com/a/1190000000391762)
 
+小程序基础api
+[小程序](https://mp.weixin.qq.com/debug/wxadoc/dev/?t=20161107)
+
 vue基础 包括vuex vue-rount vue webpack
 
