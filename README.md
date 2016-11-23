@@ -67,5 +67,9 @@ BEM命名
 小程序基础api
 [小程序](https://mp.weixin.qq.com/debug/wxadoc/dev/?t=20161107)
 
-vue基础 包括vuex vue-rount vue webpack
+vue基础
+vuex
+vue-rount
+webpack
+
 
