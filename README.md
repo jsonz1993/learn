@@ -1,13 +1,23 @@
 学习计划
 ======
 
-这两天被文章炸出来了，又要开始刷怪升级，懒了两个月在熟悉公司。
-[谁跟你说编程就是高技术含量的事情了？ - 乱写 - 知乎专栏](https://zhuanlan.zhihu.com/p/22646254)
+一个分支代表一个学习内容
 
-[HW 2017校招，web前端开发岗，要么不招，要么请尊重！](https://zhuanlan.zhihu.com/p/22605301)
+DP: 百度出的《javascript设计模式》
 
-[统一回复《怎么学JavaScript？》](http://www.w3cfuns.com/notes/17398/d3f6dd40e2d3ff15b209810dfa98be0b.html)
+es6: ECMAScript 6
 
+examination: vue 驾校
+
+nightmarejs: 功能测试框架（测试驱动开发模式）
+
+react: react 生态链（react redux webpack RN)
+
+response-css: 响应式css
+
+underscore: underscore工具库源码
+
+webchat-app: 微信小程序学习
 ____
 git 提交规范
 
