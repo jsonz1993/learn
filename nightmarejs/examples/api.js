@@ -258,9 +258,219 @@ nightmare
 // Returns the url of the current page.
 
 
-// Cookies 
 
-// 未完待续 [https://github.com/segmentio/nightmare#cookies]
+// Cookies 
+// cookies.get(name)
+// Get a cookie by it's `name`. The url will be the current url.
+
+// .cookies.get(query)
+// Query multiple cookies with the `query` object. If a `query.name` is set, it will return the first cookie it finds with that name, otherwise it will query for an array of cookies. If no `query.url` is set , it will use the current url. Here's an example:
+
+nightmare
+	.goto('https://www.baidu.com')
+	.cookies.get({
+		path: '/query',
+		secure: true
+	})
+	.then(function(cookies) {
+		// do something with the cookies
+	})
+
+// .cookies.get()
+// Get all the cookies for the current url. If you'd like get all cookies for all urls,use: `.get({url: null})`
+
+// .cookies.set(name, value)
+// Set a cookie's `name` and `value`. Most basic form, the url will be the current url.
+
+// .cookies.set(cookie)
+// Set a `cookie`. If `cookie.url` is not set, it will set the cookie on the current url. Here's an example:
+nightmare
+	.goto('http://www.baidu.com')
+	.cookies.set({
+		name: 'token',
+		value: 'some token',
+		path: '/query',
+		secure: true
+	})
+	.then(function() {
+		// ...
+	})
+
+// .cookies.set(cookies)
+// Set multiple cookies at once. `cookies` is an array of `cookie` objects. Take a look at the `.cookies.set(cookie)` dcoumentation above for a better idea of what `cookie` should look like.
+
+//cookies.clear([name])
+// Clear a cookie for the current domain. If `name` is not spaceified, all cookies for the current domain will be cleared.
+nightmare
+	.goto('http://www.baidu.com')
+	.cookies.clear('SomeCookieName')
+	.then(function() {
+		// ...
+	});
+
+// .cookies.clearAll()
+// Clears all cookies for all domains.
+nightmare
+	.goto('https://www.baidu.com')
+	.cookies.clearAll()
+	// ... other actions ...
+	.then(function() {
+		// ...
+	});
+
+// Proxies
+// 代理。应该很少会用到。忽略掉
+
+// Extending Nightmare
+// 扩展Nightmare
+// Nightmare.action(name, [electronAction|electronNamespace], action| namespace)
+
+Nightmare.action('size', function(done) {
+	this.evaluate_now(function() {
+		var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+		var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+		return {
+			height: h,
+			width: w
+		}
+	}, done)
+});
+
+Nightmare()
+	.goto('http://cnn.com')
+	.size()
+	.then(function(size) {
+		// ... do someting with the size information
+	});
+
+// Remember, this is attached to the static class `Nightmare`, not the instance.
+// Your'll notice we used an internal function `evaluate_now`.This function is different than `nightmare.evaluate` because it runs it immediately, whereas `nightmare.evaluate` is queued.
+// An easy way to remember: when in doubt, use `evaluate`.If you're creating custom actions, use `evaluate_now`. The technical reson is that since our action has already been queued and we're running it now, we shouldn't re-queue the evaluate function.
+// We can also create custom namespaces. We do this internally for nightmare.cookies.get and nightmare.cookies.set. These are useful if you have a bundle of actions you want to expose, but it will clutter up the main nightmare object. Here's an example of that:
+Nightmare.action('stype', {
+	background: function(done) {
+		this.evaluate_now(function() {
+			return window.getComputedStyle(document.body, null).backgroundColor
+		}, done)
+	}
+});
+
+nightmare()
+	.goto('https:www.baidu.com')
+	.style.background()
+	.then(function(background) {
+		// background
+	});
+
+// You can also add custom Electron actions. The additional Electron action or nimespace actions task `name`, `options`, `parent`, `win`, `renderer` and `done`. Note the Electron action comes first, mirroring how `.evaluate()` works.Fof Example:
+Nightmare.action('clearCache', function(name, options, parent, win, renderer, done) {
+	parent.respondTo('clearCache', function(done) {
+		win.webContents.session.clearCache(done);
+	});
+	done();
+}, function(message, done) {
+	this.child.call('clearCache', done);
+});
+
+Nightmare()
+	.clearCache()
+	.goto('http://www.baicu.com')
+	then(function() {
+
+	});
+//... would clear the browser's cache before navigation to `baidu.com`.
+
+// .use(plugin)
+// `nightmare.use` is useful for reusing a set of tasks on an instance. Check out  [https://github.com/segmentio/nightmare-swiftly]
+
+
+// Custom preload script
+// If you need to do something custom when you first load the window environment, you can sapecify a custom preload script. Here's how you do that:
+const path = requre('path');
+var nightmare = Nightmare({
+	webPreferences: {
+		preload: path.resolve('custom-script.js');
+		// alternative: preload: 'absoulte/path/to/custom-script.js'
+	}
+});
+
+// The only requirement for that script is that you'll need the following prelude:
+window.__nightmare = {};
+__nightmare.ipc = require('electron').ipcRenderer;
+
+// To benefit of all of nightmare's feedback from the browser, you can instead copy the contents of nightmare's preload.[https://github.com/segmentio/nightmare/blob/master/lib/preload.js]
+
+
+
+
+// Usage
+// Installation
+// Nightmare is a Node.js module, so you'll need to have Node.js installed.Then you just need to `npm install` the module: `npm install --save nightmare`
+
+// Execution
+// Nightmare is a node module that can be used in a Node.js script or module. Here's a simple script to open a web page:
+var Nightmare = require('nightmare'),
+	nightmare = Nightmare();
+
+nightmare.goto('https://www.baidu.com')
+	.evaluate(function() {
+		return document.title;
+	})
+	.end()
+	.then(function(title) {
+		console.log(title);
+	});
+
+// If you save this as `cnn.js`, you can run it on the command line like this:
+// npm install nightmare
+// node cnn.js
+
+
+
+// Debugging
+// There are three good ways to get more information about what's happening inside the headless browser: 
+// 1. Use the `DEBUG=*` flag described below.
+// 2. Pass `{show: true }` to the nightmare constructor to have it create a visible,rendered window that you can watch what's happening.
+// 3. Listen for specifi events.[https://github.com/segmentio/nightmare#onevent-callback]
+// To run the same file with debugging output, run it like this `DEBUG=ngngmare node cnn.js`(on window use `set DEBUG=nigthmare & node cnn.js`).
+// This will print out some additional information about what's going on:
+//  nightmare queueing action "goto" +0ms
+//  nightmare queueing action "evaluate" +4ms
+//  Breaking News, U.S., World, Weather, Entertainment & Video News - CNN.com
+
+// Debug Flags
+// All nightmare messages
+// `DEBUG=nightmare*`
+// only actions
+// `DEBUG=nightmare:actions*`
+// Only logs
+// `DEBUG=nightmare:log*`
+
+
+// TESTS .......
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
