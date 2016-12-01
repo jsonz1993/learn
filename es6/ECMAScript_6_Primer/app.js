@@ -1,2 +1,3 @@
 
-require('./let&const/main.js');
+// require('./let&const/main.js');
+require('./destructuring/main');

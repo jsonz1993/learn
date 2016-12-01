@@ -1,0 +1,1 @@
+require('./array.js'); // 数据的解构赋值
