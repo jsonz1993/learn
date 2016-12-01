@@ -26,3 +26,12 @@ for (let i = 0; i < 10; i++) {
 	}
 }
 b[6](); // 6;
+
+// 不存在变量提升
+var aa;
+typeof aa; // undefined
+if (aa == 10) {console.log(10)}; aa = 20;
+
+try {let bb;typeof bb /*Error*/; if (bb) {true}; bb = 2}catch(e) {/* 报错 */ }
+
+
