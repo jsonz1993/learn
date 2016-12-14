@@ -8,6 +8,6 @@ describe('async.test.js 异步测试', function() {
 			.end(function(err, res) {
 				expect(res).to.be.an('object');
 				done();
-			})
+			});
 	});
 });
