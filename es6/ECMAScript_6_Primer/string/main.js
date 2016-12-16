@@ -30,7 +30,7 @@ var basket = {};
 // 传统模版
 var str = 'There are <b>' + basket.count + '</b>' +
 	'items in your basket,' +
-	'<em>' basket.onSale +
+	'<em>' + basket.onSale +
 	'</em> are on sale!';
 // ES6
 var strEs6 = `There are <b>${basket.count}</b> items
@@ -39,10 +39,10 @@ var strEs6 = `There are <b>${basket.count}</b> items
 
 // 模版字符串，用 ` 标识，也可以当多行字符串，和普通字符串
 // 单行
-`In Javascript '\n' is a line-feed.`
+`In Javascript '\n' is a line-feed.`;
 // 多行
 ` In Javascript this is
-	not legal.`
+	not legal.`;
 // 字符串变量
 var name = "bob", time = 'today';
 `hello ${name}, how are you ${time}?`;
@@ -56,27 +56,19 @@ var str = `
 `.trim();
 
 // 大括号内可以放javacript 表达式
-var x1 = 1, y1 = 2, fn1 = function() { return 'hello world'};
+var x = 1, y = 2, fn = function() { return 'hello world'};
 `${x} + ${y} = ${x + y + fn()}`;
 
 // 如果字符串内的变量没有声明 会报错
-try { var msg = `hello, ${place}`} catch(e) { console.log('如果字符串内的变量没有声明 会报错')}
+// try { 
+// 	var msg = `hello, ${place}`
+// } catch(e) { 
+// 	console.log('如果字符串内的变量没有声明 会报错')
+// }
 
-// 模板字符串支持嵌套
-const temp = addrs => ` 
-	<table> 
-	${ addrs.map(addr => ` 
-		<tr><td> ${addr.first}</td></tr>
-		<tr><td> ${addr.last}</td></tr>
-	`).join('')}
-	</table>
-`; // 可读性很差
-
-
+// 模板字符串支持嵌套 可读性很差
 // 11. 模板编译 .... 暂时用不上，平时都是用框架模板 可读性一般
 // 标签模板 
-
-// 未完待续 [http://es6.ruanyifeng.com/#docs/string#标签模板]
 
 
 
