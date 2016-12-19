@@ -11,5 +11,7 @@
 // require('./Set&Map/main'); //set && map
 // require('./Proxy&&Reflect/main'); // Proxy 代理
 // require('./Iterator/main.js'); // iterator 遍历
-require('./generator/main.js');
+// require('./generator/main.js'); // generator * yield
+// require('./Promise/main.js'); // Promise 对象
+require('./async/main.js'); // 异步操作与async
 
