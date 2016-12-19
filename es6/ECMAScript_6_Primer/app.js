@@ -16,5 +16,6 @@
 // require('./async/main.js'); // 异步操作与async
 // require('./class/main.js'); // calss
 // require('./decorator/main.js'); // 装饰器
-require('./module/main.js'); //Module
+// require('./module/main.js'); //Module
+require('./style/main.js'); // 编程风格
 
