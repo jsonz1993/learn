@@ -8,4 +8,5 @@
 // require('./function/main'); // 函数扩展
 // require('./object/main'); // 对象扩展
 // require('./symbol/main'); // symbol
-require('./Set&Map/main'); //set && map
+// require('./Set&Map/main'); //set && map
+require('./Proxy&&Reflect/main');
