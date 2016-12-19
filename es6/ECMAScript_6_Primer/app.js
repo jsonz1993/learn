@@ -9,5 +9,7 @@
 // require('./object/main'); // 对象扩展
 // require('./symbol/main'); // symbol
 // require('./Set&Map/main'); //set && map
-// require('./Proxy&&Reflect/main'); // Proxy
-require('./Iterator/main.js');
+// require('./Proxy&&Reflect/main'); // Proxy 代理
+// require('./Iterator/main.js'); // iterator 遍历
+require('./generator/main.js');
+
