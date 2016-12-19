@@ -15,5 +15,6 @@
 // require('./Promise/main.js'); // Promise 对象
 // require('./async/main.js'); // 异步操作与async
 // require('./class/main.js'); // calss
-require('./decorator/main.js'); // 装饰器
+// require('./decorator/main.js'); // 装饰器
+require('./module/main.js'); //Module
 
