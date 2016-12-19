@@ -14,5 +14,6 @@
 // require('./generator/main.js'); // generator * yield
 // require('./Promise/main.js'); // Promise 对象
 // require('./async/main.js'); // 异步操作与async
-require('./class/main.js'); // calss
+// require('./class/main.js'); // calss
+require('./decorator/main.js'); // 装饰器
 
