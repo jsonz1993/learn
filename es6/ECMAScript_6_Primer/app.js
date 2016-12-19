@@ -9,4 +9,5 @@
 // require('./object/main'); // 对象扩展
 // require('./symbol/main'); // symbol
 // require('./Set&Map/main'); //set && map
-require('./Proxy&&Reflect/main');
+// require('./Proxy&&Reflect/main'); // Proxy
+require('./Iterator/main.js');
