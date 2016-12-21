@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React</title>
+    <script src="http://cdn.bootcss.com/react/15.3.1/react.js"></script>
+    <script src="http://cdn.bootcss.com/react/15.3.1/react-dom.min.js"></script>
+    <script src="http://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+</head>
+
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+      var MyComponent = React.createClass({
+  handleClick: function() {
+    this.myTextInput.focus();
+  },
+  render: function() {
+    return (
+      <div>
+        <input type="text" ref={(ref) => this.myTextInput = ref} />
+        <input 
+          type="button"
+          value="focus the text input"
+          onClick={this.handleClick}
+        />
+      </div>
+     );
+  }
+});
+
+ReactDOM.render(
+  <MyComponent />,
+  document.getElementById('example')
+);
+    </script>
+</body>
+
+</html>
