@@ -1,4 +1,4 @@
-// Array.from() 将类数组转为数组
+Array.from() 将类数组转为数组
 // 一般可用在 NodeList && arguments
 let arrayLike = {
     '0': 'a',
@@ -7,7 +7,7 @@ let arrayLike = {
     length: 3
 };
 var arr1 = [].slice.call(arrayLike); //es5 [a,b,c]
-let arr2 = Array.from(arrayLike); // es6 
+let arr2 = Array.from(arrayLike); // es6
 
 // Array.of() 将一组数值转为数组
 Array.of(3, 11, 8); // [3, 11, 8]
@@ -37,37 +37,3 @@ for (let elem of ['a', 'b'].values()) {
 for (let [index,elem] of ['a', 'b'].entries()) {
 	console(index, elem); // 0 'a', 1 'b'
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
