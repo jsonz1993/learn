@@ -3,8 +3,15 @@ const ReactDOM = require('react-dom');
 const Remarkable = require('remarkable');
 const $ = require('jQuery');
 const data = [
-  {id: 1, author: "Pete Hunt", text: "This is one comment"},
-  {id: 2, author: "Jordan Walke", text: "This is *another* comment"}
+  {
+    id: 1,
+    author: "Pete Hunt",
+    text: "This is one comment"
+  }, {
+    id: 2,
+    author: "Jordan Walke",
+    text: "This is *another* comment"
+  }
 ];
 
 const CommentBox = React.createClass({
@@ -17,18 +24,16 @@ const CommentBox = React.createClass({
       url: this.props.url,
       dataType: 'json',
       cache: false,
-      success:(data)=> {
+      success: (data) => {
         this.setState({data});
       },
-      error:(xhr, status, err) =>{
+      error: (xhr, status, err) => {
         console.error(this.props.url, status, err.toString());
       }
     })
   },
 
-  handleCommentSubmit(comment) {
-
-  },
+  handleCommentSubmit(comment) {},
 
   componentDidMount() {
     this.loadCommentsFromeServer();
@@ -40,7 +45,7 @@ const CommentBox = React.createClass({
       <div className="commentBox">
         <h1>Comments</h1>
         <CommentList data={this.state.data}/>
-        <CommentForm onCommentSubmit={this.handleCommentSubmit} />
+        <CommentForm onCommentSubmit={this.handleCommentSubmit}/>
       </div>
     );
   }
@@ -50,7 +55,7 @@ const CommentList = React.createClass({
   render: function() {
     const commentNodes = this.props.data.map(function(comment) {
       return (
-        <Comment author={comment.author} key={comment.id} >
+        <Comment author={comment.author} key={comment.id}>
           {comment.text}
         </Comment>
       )
@@ -69,33 +74,25 @@ const CommentForm = React.createClass({
     return {author: '', text: ''};
   },
   handleAuthorChange() {
-    this.setState({ author: e.target.value });
+    this.setState({author: e.target.value});
   },
   handleTextChange() {
-    this.setState({ text: e.target.value });
+    this.setState({text: e.target.value});
   },
   handleSubmit() {
     e.preventDefault();
     let author = this.state.author.trim();
     let text = this.state.text.trim();
-    if (!text || !author) return;
+    if (!text || !author)
+      return;
     this.setState({author: '', text: ''});
   },
   render: function() {
     return (
       <form className="commentForm" onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          placeholder="Your name"
-          value={this.state.author}
-          onChange={this.handleAuthorChange}
-        />
-        <input
-          type="text"
-          placeholder="say something..."
-          value={this.state.text}
-          onChange={this.handleTextChange}/>
-        <input type="submit" value="post" />
+        <input type="text" placeholder="Your name" value={this.state.author} onChange={this.handleAuthorChange}/>
+        <input type="text" placeholder="say something..." value={this.state.text} onChange={this.handleTextChange}/>
+        <input type="submit" value="post"/>
       </form>
     );
   }
@@ -105,7 +102,7 @@ const Comment = React.createClass({
   rawMarkup: function() {
     const md = new Remarkable();
     const rawMarkup = md.render(this.props.children.toString());
-    return { __html: rawMarkup };
+    return {__html: rawMarkup};
   },
 
   render: function() {
@@ -115,13 +112,11 @@ const Comment = React.createClass({
         <h2 className="commentAuthor">
           {this.props.author}
         </h2>
-        <span dangerouslySetInnerHTML={ this.rawMarkup() }></span>
+        <span dangerouslySetInnerHTML={this.rawMarkup()}></span>
       </div>
     )
   }
 });
 
 ReactDOM.render(
-  <CommentBox url="/api/comments" pollInterval={2000}/>,
-  document.getElementById('root')
-);
+  <CommentBox url="/api/comments" pollInterval={2000}/>, document.getElementById('root'));
