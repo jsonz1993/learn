@@ -1,0 +1,146 @@
+<view class="wrap container" id="wrap">
+    <!--顶部-->
+    <view class="top">
+        <image src="{{myAvatar}}" class="my-avatar"></image>
+        <text>我是第{{userIndex}}位参加一起跨界盛会的人</text>
+    </view>
+
+    <!-- 头部 -->
+    <view class="header">
+        <text><text class="header-logo blue">Herely</text> 带你一起做爱做的事情</text>
+    </view>
+
+    <!-- 主要部分 -->
+    <view class="content">
+    
+        <!--鱼人码头-->
+        <view class="item">
+            <view class="item__header mlr-20">活动嘉年华 - 渔人码头</view>
+            <view class="item__info mlr-20">查看摊位介绍，在爱做的事中游走</view>
+            <view class="corporation-list">
+                <view wx:for="{{corConfig}}" wx:key="*this">
+                    <image src="{{item.img}}" data-type="{{index}}" bindtap="showGame"></image>
+                </view>
+            </view>
+        </view>
+
+        <!-- 谁在现场 -->
+        <view class="item">
+            <view class="item__header mlr-20">
+                谁在现场 
+            </view>
+            <view class="user-list">
+                <view wx:for="{{userList}}" wx:key="*this" class="user-item">
+                    <image src="{{item.img}}"></image>
+                    <text>{{item.name}}</text>
+                </view>
+                <view class="user-item">
+                    <navigator url="/pages/user/user">
+                        <view class="more">
+                            +{{overNumber}}
+                        </view>
+                        <text>点击查看</text>
+                    </navigator>
+                </view>
+            </view>
+        </view>
+
+        <!-- 无边界协作 -->
+        <view class="item mlr-20">
+            <view class="item__header">
+                无边界协作
+            </view>
+            <view class="item__info">
+                未来公司的界限将会被跨越，取而代之的会是更多通过以解决问题为目的组成无边界组织的方式联合起来，以己所长与所有，共同解决所面临的问题，创造出价值。
+            </view>
+            <view class="item__info">
+                <text class="blue">Herely</text> 在空间上为无边界协作团队提供基础的空间服务，独立便是安静，移动便是灵感。为团队提供会议、头脑风暴、短暂办公等不同需求服务。
+            </view>
+            
+            <swiper indicator-dots="{{swipe.indicatorDots}}" 
+                class="herely-swiper" autoplay="{{swipe.autoplay}}" 
+                interval="{{swipe.interval}}" duration="{{swipe.duration}}" 
+                bindtap="showSwiper" data-list="swipeList1" bindchange="chooseIndex">
+                <block wx:for="{{swipeList1}}" wx:key="*this">
+                    <swiper-item>
+                    <image src="{{item}}" class="slide-image" width="355" height="150"/>
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
+
+        <!-- 移动办公-->
+        <view class="item mlr-20">
+            <view class="item__header">Herely - 移动办公</view>
+            <view class="item__info">
+                Herely 移动办公空间适用于个人或小型团队办公，成为会员后可随意使用遍布城市各个角落的会员空间。空间每天固定时间开放，会员凭开门密码随意进入自助使用。
+            </view>
+            
+            <view class="img-wrap">
+                <view wx:for="{{concertList}}" wx:key="*this">
+                    <image src="{{item}}" alt="" bindtap="openImg" data-src="{{item}}"></image>
+                </view>
+            </view>
+            <view class="item__info">
+                联合办公空间点少，咖啡厅人声嘈杂网速慢，在家太懒惰Herely 的移动办公空间模式便是你的最佳选择
+            </view>
+
+            <swiper indicator-dots="{{swipe.indicatorDots}}" class="herely-swiper"
+                autoplay="{{swipe.autoplay}}" interval="{{swipe.interval}}" duration="{{swipe.duration}}"  data-list="swipeList2" bindchange="chooseIndex" bindtap="showSwiper">
+                <block wx:for="{{swipeList2}}" wx:key="*this">
+                    <swiper-item>
+                    <image src="{{item}}" class="slide-image" width="355" height="150"/>
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
+
+        <!-- 独立空间-->
+        <view class="item mlr-20">
+            <view class="item__header">
+                Herely - 独立空间 
+            </view>
+            <view class="item__info">
+                独立空间按小时出租，灵活私密，随订随用可用于开会、培训、聚会、手工等各种活动
+            </view>
+            <view class="img-wrap">
+                <view wx:for="{{IndependentList}}" wx:key="*this">
+                    <image data-src="{{item}}" bindtap="openImg" src="{{item}}" alt=""></image>
+                </view>
+            </view>
+            <view class="item__info">
+                空间遍布城市，交通方便，微信随查随用，配备高速网络
+            </view>
+        </view>
+
+        <!--底部-->
+        <view class="footer mlr-20">
+            <!-- TODO 不支持svg -->
+            <view class="logo"></view>
+            <!--<image src="/libs/image/herely.svg"></image>-->
+            <view class="footer-info">如有需要可关注微信公众号「Herely这里」</view>
+            <image src="{{herelyCode}}" class="herely-code" data-src="{{herelyCode}}" bindtap="openImg"></image>
+        </view>
+    </view>
+
+    <!-- 游戏介绍 -->
+    <view class="corporation-item animated {{animatedClass}}" hidden="{{!gameIsShow}}" id="corItem">
+        <view class="corporation__header">
+            <image src="{{gameInfo.img}}"></image>
+        </view>
+        <view class="corporation__body">
+            <text class="corporation__title">
+                {{gameInfo.name}}
+            </text>
+            <view class="corporation__info">
+                {{gameInfo.info}}
+            </view>
+        </view>
+        <view class="corporation__footer" bindtap="hideGame">
+            <image src="/libs/image/close.png" class="corporation__btn"></image>
+        </view>
+    </view>
+    <!-- 遮罩层 -->
+    <view class="mask" hidden="{{!gameIsShow}}"></view>
+</view>
+
