@@ -1,0 +1,8 @@
+body {
+  padding: 0;
+  margin: 0;
+  /*background-color: red;*/
+  background: url('../assets/img.jpeg') no-repeat;
+  display: flex;
+  height: 1000px;
+}
