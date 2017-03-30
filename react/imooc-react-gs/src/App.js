@@ -1,37 +1,24 @@
-// React入门 生命周期
 import React from 'react';
-import './App.css';
+import ReactDOM from 'react-dom';
 
-const App = React.createClass({
-  getInitialState() {
-    console.info('init');
-    return {
-      opacity: 1.0,
-      fontSize: '18px'
-    }
-  },
+import { AppContainer } from 'react-hot-loader';
+// AppContainer is a necessary wrapper component for HMR
 
-  componentWillMount() {
-    console.info('willMount');
-  },
+import App from './components/App';
 
-  componentDidMount() {
-    console.info('didMount');
-    window.setTimeout(()=> {
-      this.setState({
-        opacity: .5,
-        fontSize: '24px'
-      });
-    }, 1000)
-  },
+const render= Component=> {
+  ReactDOM.render(
+    <AppContainer>
+      <Component />
+    </AppContainer>,
+    document.getElementById('root')
+  )
+};
 
-  render() {
-    return (
-      <div className="App">
-        <h2 style={{opacity:this.state.opacity, fontSize: this.state.fontSize}}>Welcome to React</h2>
-      </div>
-    );
-  }
-})
+render(App);
 
-export default App;
+if (module.hot) {
+  module.hot.accept('./components/App', ()=> {
+    render(App);
+  });
+}
