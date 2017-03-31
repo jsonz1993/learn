@@ -1,0 +1,94 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: #222;
+}
+
+.content {
+  height: 100%;
+  width: 100%;
+}
+
+/* stage -- start */
+.stage {
+  position: relative;
+  width: 100%;
+  height: 680px;
+  -webkit-perspective: 1000px;
+  -moz-perspective: 1000px;
+}
+/* stage -- end */
+
+/* image -- start */
+.img-sec {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #ddd;
+  
+  // scss 函数 可以把img-figure 提到最外层 提高性能和可移植性
+  @at-root {
+    .img-figure {
+      position: absolute;
+      margin: 0;
+      padding: 20px;
+      background-color: #fff;
+      box-sizing: border-box;
+      transition: .5s;
+      height: 260px;
+      width: 280px;
+      cursor: pointer;
+      // transform-origin: 0 50% 0;
+      // transform-style: preserve-3d;
+      // transition: transform .6s ease-in-out, left .6s ease-in-out, top .6s ease-in-out;
+      .img {
+        height: 200px;
+        width: 240px; 
+        background-position: center;
+        background-size: cover;
+      }
+    }
+    .is-inverse {
+      transform: rotateY(180deg);
+      figcaption {
+        display: none;
+      }
+      .img-back {
+        display: block;
+        transform: rotateY(180deg);
+      }
+    }
+
+    .img-back {
+      display: none;
+      transform: rotateY(0);
+      transition: .5s;
+      font-size: 24px;
+      color: #ddd;
+      font-weight: 600;
+    }
+
+    figcaption {
+      text-align: center;
+      .img-title {
+        margin: 10px 0 0 0;
+        color: #a7a0a2;
+        font-size: 16px;
+      }
+    }
+
+  }
+}
+/* image -- end */
+
+/* controller -- start */
+.controller-nav {
+  position: absolute;
+  left: 0;
+  bottom: 30px;
+  z-index: 101;
+  width: 100%;
+  text-align: center;
+}
+/* controller -- end */
