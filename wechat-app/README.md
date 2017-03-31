@@ -1,1 +1,0 @@
-https://mp.weixin.qq.com/debug/wxadoc/dev/component/picker.html?t=20161107
