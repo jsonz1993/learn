@@ -1,7 +1,6 @@
 {
   "pages":[
-    "pages/app/app",
-    "pages/user/user"
+
   ],
   "window":{
     "navigationBarTitleText": "共创日",
