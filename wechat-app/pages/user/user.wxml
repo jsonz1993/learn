@@ -1,0 +1,11 @@
+<view class="container">
+    <view class="user-top">
+        谁在现场
+    </view>
+    <view class="user-wrap" id="userWrap">
+        <view class="user-item" wx:for="{{userList}}" wx:key="*this">
+            <image src="{{item.img}}"></image>
+            <text>{{item.name}}</text>
+        </view>
+    </view>
+</view>

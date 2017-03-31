@@ -1,4 +1,0 @@
-<import src="b.wxml">
-<template is="a"></template> // Error! Can not use template when not import A
-<template is="b"></template>
-<text>a</text>

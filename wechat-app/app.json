@@ -1,30 +1,12 @@
 {
   "pages":[
-    "pages/index/index",
-    "pages/logs/logs"
-    
+
   ],
   "window":{
-    "backgroundTextStyle":"dark",
-    "navigationBarBackgroundColor": "#abcdef",
-    "navigationBarTitleText": "WeChat-app",
-    "navigationBarTextStyle":"white",
-    "backgroundColor": "#00ff00",
-    "enablePullDownRefresh": true
-  },
-  "tabBar": {
-    "color": "#aaaaaa",
-    "selectedColor": "#abcdef",
-    "backgroundColor": "#efefef",
-    "position": "bottom",
-    "borderStyle": "white",
-    "list": [{
-      "pagePath": "pages/test/test",
-      "text":"TEST"
-    }, {
-      "pagePath": "pages/index/index",
-      "text":"index"
-    }]
+    "navigationBarTitleText": "共创日",
+    "enablePullDownRefresh": "true",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#eee"
   },
   "networkTimeout": {
     "request": 20000,
@@ -32,5 +14,5 @@
     "uploadFile": 20000,
     "downloadFile": 20000
   },
-  "debug": "false"
+  "debug": "true"
 }
