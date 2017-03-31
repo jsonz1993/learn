@@ -1,0 +1,62 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: #222;
+}
+
+.content {
+  height: 100%;
+  width: 100%;
+}
+
+/* stage -- start */
+.stage {
+  position: relative;
+  width: 100%;
+  height: 680px;
+}
+/* stage -- end */
+
+/* image -- start */
+.img-sec {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #ddd;
+  
+  // scss 函数 可以把img-figure 提到最外层 提高性能和可移植性
+  @at-root {
+    .img-figure {
+      position: absolute;
+      margin: 0;
+      padding: 10px;
+      background-color: #fff;
+      box-sizing: border-box;
+      img {
+        max-width: 240px;
+        max-height: 240px;
+      }
+    }
+    figcaption {
+      text-align: center;
+      .img-title {
+        margin: 10px 0 0 0;
+        color: #a7a0a2;
+        font-size: 16px;
+      }
+    }
+  }
+}
+/* image -- end */
+
+/* controller -- start */
+.controller-nav {
+  position: absolute;
+  left: 0;
+  bottom: 30px;
+  z-index: 101;
+  width: 100%;
+  text-align: center;
+}
+/* controller -- end */
