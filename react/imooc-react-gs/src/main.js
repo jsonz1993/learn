@@ -17,21 +17,58 @@ const imageDatas = (imageDataArr => {
 const getRangeRandom= (min, max)=> 
   Math.floor(Math.random() * (max - min) + min);
 
+// 获取0到30度的任意正负值
+const get30DegRandom= ()=> 
+  (Math.random() > .5? '': '-') + getRangeRandom(0,30);
+
+
 // 单个img
 const ImgFigure = React.createClass({
+
+  handleClick(e) {
+    
+    if (this.props.arr.isCenter) {
+      this.props.inverse();
+    } else {
+      this.props.center();
+    }
+
+    e.stopPropagation();
+    e.preventDefault();
+  },
+
   render() {
     // 如果props属性中指定了这张图片的位置，则使用
     let styleObj = this.props.arr.pos || {};
+    // 如果图片旋转角度不为0，添加旋转角度
+    if (this.props.arr.rotate) {
+        styleObj['transform']= `rotate(${this.props.arr.rotate}deg)`;
+    }
+
+    if (this.props.arr.isCenter) {
+      styleObj.zIndex = 11;
+    }
+
+    let imgClassName = 'img-figure';
+    imgClassName += this.props.arr.isInverse? ' is-inverse': '';
+    let srcStyle = {
+      backgroundImage: `url(${this.props.data.imageUrl})`
+    };
 
     return (
-      <figure className="img-figure" style={styleObj}>
-        <img 
-          src={this.props.data.imageUrl}
-          alt={this.props.data.title}
-        />
+      <figure className={imgClassName} 
+        style={styleObj} 
+        onClick={this.handleClick}>
         <figcaption>
+          <div style={srcStyle} className="img">
+          </div>
           <h2 className="img-title">{this.props.data.title}</h2>
         </figcaption>
+        <div className="img-back" onClick={this.handleClick}>
+            <p>
+              {this.props.data.desc}
+            </p>
+          </div>
       </figure>
     )
   }
@@ -58,6 +95,17 @@ const GallerByReactApp = React.createClass({
   getInitialState() {
     return {
       imgsArrangeArr: [
+        /*
+        {
+          pos: {
+            left: 0,
+            top: 0,
+          },
+          rotate: 0,
+          isInverse: false,
+          isCenter: false,
+        }
+        */
       ]
     }
   },
@@ -78,6 +126,24 @@ const GallerByReactApp = React.createClass({
     }
   },
 
+  // 居中图片
+  center(index) {
+    return ()=> {
+      this.rearrange(index);
+    }
+  },
+
+  // 翻转图片
+  inverse(index) {
+    return ()=> {
+      let imgArr = this.state.imgsArrangeArr;
+      imgArr[index].isInverse = !imgArr[index].isInverse;
+      this.setState({
+        imgsArrangeArr: imgArr
+      })
+    }
+  },
+
   // 重新布局宿友图片 参数为居中的index
   rearrange(centerIndex) {
     var imgArr = this.state.imgsArrangeArr,
@@ -95,8 +161,12 @@ const GallerByReactApp = React.createClass({
       topImgSpliceIndex = 0,
       imgsArrangeCenterArr = imgArr.splice(centerIndex, 1);
 
-    // 居中centerIndex的图片
-    imgsArrangeCenterArr[0].pos = centerPos;
+    // 居中centerIndex的图片布局
+    imgsArrangeCenterArr[0] = {
+      pos: centerPos,
+      rotate: 0,
+      isCenter: true
+    };
 
     // 取出要布局上侧图片的状态信息
     topImgSpliceIndex = Math.floor(Math.random() * (imgArr.length - topImgNum));
@@ -104,21 +174,29 @@ const GallerByReactApp = React.createClass({
 
     // 布局上侧图片
     imgsArrangeTopArr.forEach((item, index)=> {
-      item.pos = {
-        top: getRangeRandom(vPosRangeTopY[0], vPosRangeTopY[1]),
-        left: getRangeRandom(vPosRangeX[0], vPosRangeX[1])
+      item = {
+        pos: {
+          top: getRangeRandom(vPosRangeTopY[0], vPosRangeTopY[1]),
+          left: getRangeRandom(vPosRangeX[0], vPosRangeX[1])
+        },
+        rotate: get30DegRandom(),
+        isCenter: false
       }
     });
 
-    // 布局两侧的图片
+    // 布局左右两侧两侧的图片
     for (let i= 0, j= imgArr.length, k = j/2; i < j; i++) {
       // 前半部分左边, 后半部分右边
       let hPosRangeLORX = i< k? hPosRangeLeftSecX: hPosRangeRightSecX;
 
-      imgArr[i].pos = {
-        top: getRangeRandom(hPosRangeY[0], hPosRangeY[1]),
-        left: getRangeRandom(hPosRangeLORX[0], hPosRangeLORX[1])
-      };
+      imgArr[i] = {
+        pos: {
+          top: getRangeRandom(hPosRangeY[0], hPosRangeY[1]),
+          left: getRangeRandom(hPosRangeLORX[0], hPosRangeLORX[1])
+        },
+        rotate: get30DegRandom(),
+        isCenter: false
+      }
     }
 
     // 上侧重新加入数组
@@ -157,10 +235,10 @@ const GallerByReactApp = React.createClass({
       top: halfStageH - halfImgH,
     }
 
-    // 计算左侧，右侧区域图片排布位置的取值范围
+    // TODO 计算左侧，右侧区域图片排布位置的取值范围
     this.Constant.hPosRange.leftSecX[0] = -halfImgW;
-    this.Constant.hPosRange.leftSecX[1] = halfStageW - halfImgW*4;
-    this.Constant.hPosRange.rightSecX[0] = halfStageW + halfImgW*2;
+    this.Constant.hPosRange.leftSecX[1] = halfStageW - halfImgW*3;
+    this.Constant.hPosRange.rightSecX[0] = halfStageW + halfImgW;
     this.Constant.hPosRange.rightSecX[1] = stageW - halfImgW;
 
     this.Constant.hPosRange.y[0] = -halfImgH;
@@ -168,7 +246,7 @@ const GallerByReactApp = React.createClass({
 
     // 计算上侧图片排布位置取值范围
     this.Constant.vPosRange.topY[0] = -halfImgH;
-    this.Constant.vPosRange.topY[1] = halfStageH - halfImgH*3;
+    this.Constant.vPosRange.topY[1] = halfStageH - halfImgH;
     this.Constant.vPosRange.x[0] = halfImgW - imgW;
     this.Constant.vPosRange.x[1] = halfImgW;
 
@@ -187,7 +265,10 @@ const GallerByReactApp = React.createClass({
           pos: {
             left: 0,
             top: 0
-          }
+          },
+          rotate: 0,
+          isInverse: false,
+          isCenter: false
         }
       }
 
@@ -198,11 +279,11 @@ const GallerByReactApp = React.createClass({
           key={i}
           data={item}
           arr={this.state.imgsArrangeArr[i]}
+          inverse={this.inverse(i)}
+          center={this.center(i)}
         />
       );
     });
-
-    console.log()
 
     return (
       <section className="stage" ref="stage">

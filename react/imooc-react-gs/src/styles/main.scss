@@ -14,6 +14,8 @@ html, body {
   position: relative;
   width: 100%;
   height: 680px;
+  -webkit-perspective: 1000px;
+  -moz-perspective: 1000px;
 }
 /* stage -- end */
 
@@ -30,14 +32,43 @@ html, body {
     .img-figure {
       position: absolute;
       margin: 0;
-      padding: 10px;
+      padding: 20px;
       background-color: #fff;
       box-sizing: border-box;
-      img {
-        max-width: 240px;
-        max-height: 240px;
+      transition: .5s;
+      height: 260px;
+      width: 280px;
+      cursor: pointer;
+      // transform-origin: 0 50% 0;
+      // transform-style: preserve-3d;
+      // transition: transform .6s ease-in-out, left .6s ease-in-out, top .6s ease-in-out;
+      .img {
+        height: 200px;
+        width: 240px; 
+        background-position: center;
+        background-size: cover;
       }
     }
+    .is-inverse {
+      transform: rotateY(180deg);
+      figcaption {
+        display: none;
+      }
+      .img-back {
+        display: block;
+        transform: rotateY(180deg);
+      }
+    }
+
+    .img-back {
+      display: none;
+      transform: rotateY(0);
+      transition: .5s;
+      font-size: 24px;
+      color: #ddd;
+      font-weight: 600;
+    }
+
     figcaption {
       text-align: center;
       .img-title {
@@ -46,6 +77,7 @@ html, body {
         font-size: 16px;
       }
     }
+
   }
 }
 /* image -- end */
