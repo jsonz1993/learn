@@ -9,3 +9,7 @@ function addLoadEvent(func){
 		}
 	}
 }
+
+window.on('click', function(){
+
+})

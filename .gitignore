@@ -57,3 +57,6 @@ Temporary Items
 .idea
 .idea/
 *.xml
+wechat-app/app.json
+
+wechat-app/pages/index/index.wxml
