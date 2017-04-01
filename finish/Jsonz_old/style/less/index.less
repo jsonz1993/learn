@@ -1,0 +1,39 @@
+@import "myjsonz";
+@base-img:'../../image/';
+@liColor :#828282;
+
+body {
+  background :url("@{base-img}bg.png") repeat;
+  background-attachment: fixed;
+}
+
+
+//导航
+.navbar {
+  background: url("@{base-img}bg.png");
+}
+//主页列表
+.index-list {
+  .f-s(30px);
+  color: @liColor;
+  margin-top:3rem;
+  dt {
+    color: @info;
+    .f-s(1.2em);
+    text-transform:Capitalize ;
+  }
+  dd {
+    .f-s(1.1em);
+    text-indent: 2em;
+    .cu-p;
+    time {
+      color: #999;
+      font-size: 0.7em;
+      padding-right: 1em;
+    }
+    .transition(all .3s);
+    &:hover {
+      color: @success;
+    }
+  }
+}

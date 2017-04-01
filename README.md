@@ -15,7 +15,9 @@
 ------
 finish 文件夹 存放学完/暂时放弃学习的东西
 
+React React全家桶
 
+blog 搭建github.io博客
 ____
 git 提交规范
 
@@ -29,5 +31,6 @@ style： 格式（不影响代码运行的变动）
 
 refactor：重构（即不是新增功能，也不是修改bug的代码变动）
 
+migration: 文件迁移
 
 chore：构建过程或辅助工具的变动

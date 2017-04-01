@@ -1,0 +1,74 @@
+@import "myjsonz";
+/****路径相关****/
+@base-img:'../../image/';
+@navbarHig:94px;
+
+body {
+  padding-top: @navbarHig;
+}
+
+
+/****icon****/
+.icon(){
+  display: inline-block;
+}
+.icon-jsonz {
+  .icon();
+  background: url("@{base-img}jsonz.png") no-repeat;
+  .bg-size(contain);
+  @s:70px;
+  width: @s;
+  height: @s;
+}
+
+
+/****font****/
+@font-face {
+  font-family: 'xiangsu';
+  src: url('../../fonts/bb3281.ttf') format('truetype');
+}
+
+/****导航****/
+.navbar {
+  @hig : @navbarHig;
+  min-height: @hig;
+  .indexA {
+    .f-s(30px);
+  }
+  .navbar-header {
+    @h : @hig - 1;
+    .txt-ver(@h);
+  }
+  .nav {
+    font-family: 'xiangsu';
+    .f-s(40px);
+    a {
+      &:hover {
+        .animation(anim_nav .5s linear);
+      }
+    }
+  }
+}
+
+@keyframes anim_nav {
+  @rot : 10deg;
+  0% {
+    .rotate(@rot);
+  }
+  20%{
+    .rotate(-@rot);
+  }
+  40%{
+    .rotate(@rot);
+  }
+  60%{
+    .rotate(-@rot);
+  }
+  80%{
+    .rotate(@rot);
+  }
+}
+
+.frontend,.demo {
+  margin-top: 3em;
+}

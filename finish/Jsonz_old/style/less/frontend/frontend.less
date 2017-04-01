@@ -1,0 +1,146 @@
+@import "../myjsonz";
+@base-img:'../../../image/';
+
+body {
+  padding-bottom: 100px;
+}
+
+/****前端列表****/
+
+
+.frontend-list {
+  .b-r(0)!important;
+  &-header {
+    h2 {
+      .f-w(600);
+      margin-bottom: 0;
+      color: rgb(138, 109, 59);
+    }
+    time {
+      .f-s(.5em);
+      color: @gray-light;
+    }
+  }
+  &-article{
+    color: #666;
+    p {
+      text-indent: 2em;
+    }
+  }
+}
+
+.frontend-tags {
+  @bgc :@gray-lighter;
+  .p-lr(0);
+
+  section {
+    background-color:@bgc;
+    margin-bottom: 2em;
+  }
+
+  header {
+    .txt-ver(50px);
+    .f-s(1.1em);
+    border-bottom:5px solid #fff;
+    padding-left: 20px;
+    .cu-p;
+    .transition(all .5s);
+    color: @text-success;
+    &:hover {
+      background-color: @success;
+      color: @text-danger;
+    }
+  }
+
+  article {
+    padding: 20px 0 10px 10px;
+    .o-f(h);
+    .label {
+      display: inline-block;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      padding: .4em .7em .4em;
+      .cu-p;
+      .transition(all .3s);
+      &:hover {
+        .translate(5px,0px);
+      }
+    }
+    a {
+      color: #fff;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+
+}
+/****通用二级列表****/
+.frontend-cfy {
+  li {
+    .f-s(1.8em);
+    color: @gray-light;
+    .mtb(.5em);
+    padding: .5em;
+    .cu-p;
+    .transition(transform .3s);
+    &:hover {
+      .b-s(0 0 15px rgba(0,0,0,0.3));
+      .b-r(.2em);
+      color: @success;
+      .translate-x(.5em);
+    }
+    time {
+      .f-s(50%);
+      color:  @gray-light;
+      padding-left: (1.2em);
+    }
+  }
+}
+
+/****前端内容部分****/
+.frontend-con {
+  h2 {
+    margin-top: 0;
+    .clearfix;
+    .btn {
+      .fr;
+    }
+  }
+  .panel-heading {
+    .cu-p;
+  }
+}
+/**** 前端内容导航部分 ****/
+.frontend-con-nav {
+  margin-top: 40px;
+  .cu-p;
+
+  li {
+    &:nth-of-type(2) {
+      border-top-width: 0;
+    }
+
+    .txt-ver(50px);
+    .f-s(1.1em);
+    padding-left: 20px;
+    .p-tb(0);
+    .cu-p;
+    .transition(all .3s);
+    color: @text-success;
+    .auto-doc;
+    &:hover,&.active {
+      background-color: @success;
+      color: @text-danger;
+    }
+  }
+
+  a {
+    .pd0!important;
+    &:hover {
+      background-color: transparent!important;
+      color: @text-danger;
+    }
+  }
+}

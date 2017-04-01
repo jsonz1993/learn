@@ -1,0 +1,263 @@
+@info :#5bc0de;
+@success:#5cb85c;
+@warning:#f0ad4e;
+@dange:#d9534f;
+@primary: #337ab7;
+@gray-light:#777;
+@gray-lighter:#eee;
+@gray-dark: #555;
+@text-danger:rgb(242, 222, 222);
+@text-success:rgb(60, 118, 61);
+@dark-blue : #34495E;
+
+//清除默认
+.reset(){
+   html, body, div, span, applet, object, iframe,
+   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+   a, abbr, acronym, address, big, cite, code,
+   del, dfn, em, img, ins, kbd, q, s, samp,
+   small, strike, strong, sub, sup, tt, var,
+   b, u, i, center,
+   dl, dt, dd, ol, ul, li,
+   fieldset, form, label, legend,
+   table, caption, tbody, tfoot, thead, tr, th, td,
+   article, aside, canvas, details, embed, 
+   figure, figcaption, footer, header, hgroup, 
+   menu, nav, output, ruby, section, summary,
+   time, mark, audio, video {
+       margin: 0;
+       padding: 0;
+       border: 0;
+       font-size: 100%;
+       font: inherit;
+       vertical-align: baseline;
+   }
+   /* HTML5 display-role reset for older browsers */
+   article, aside, details, figcaption, figure, 
+   footer, header, hgroup, menu, nav, section {
+       display: block;
+   }
+   body {
+       line-height: 1;
+   }
+   ol, ul {
+       list-style: none;
+   }
+   blockquote, q {
+       quotes: none;
+   }
+   blockquote:before, blockquote:after,
+   q:before, q:after {
+       content: '';
+       content: none;
+   }
+   table {
+       border-collapse: collapse;
+       border-spacing: 0;
+   }
+}
+// 有关margin 和padding
+.b-c(){
+  margin-left: auto;
+  margin-right: auto;
+}
+.mlr(@m:auto){
+  margin-left: @m;
+  margin-right: @m;
+}
+.mtb(@m:auto){
+  margin-top: @m;
+  margin-bottom: @m;
+}
+.mg0(@m:0){
+  margin:@m;
+}
+.pd0(@p:0){
+  padding: @p;
+}
+.p-lr(@p:auto){
+  padding-left: @p;
+  padding-right: @p;
+}
+.p-tb(@p:auto){
+  padding-top: @p;
+  padding-bottom: @p;
+}
+// 排版相关
+.txt-ver(@h){
+  height:@h;
+  line-height: @h;
+}
+.ta-c(){
+  text-align: center;
+}
+.ta-r(){
+  text-align: right;
+}
+.ta-l(){
+  text-align: left;
+}
+.td-n(){
+  text-decoration: none;
+}
+.td-u(){
+  text-decoration: underline;
+}
+.va-m(){
+  vertical-align: middle;
+}
+.va-t(){
+  vertical-align: top;
+}
+.va-b(){
+  vertical-align: bottom;
+}
+.tih(@t:-999px){
+  text-indent: -999px;
+}
+.o-f(h){
+  overflow: hidden;
+}
+.o-f(a){
+  overflow:auto;
+}
+.oln(){
+  outline: none;
+}
+.d-b(){
+  display: block;
+}
+.d-i(){
+  display: inline;
+}
+.d-ib(){
+  display: inline-block;
+}
+.d-n(){
+  display: none;
+}
+.f-s(@s:12px){
+  font-size: @s;
+}
+.f-w(@w:400){
+  font-weight: @w;
+}
+// 定位
+.clearfix() {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    line-height: 0;
+  }
+  &:after {
+    clear: both;
+  }
+}
+.fl(@f:left;){
+    float: @f;
+    display: inline;
+}
+.fr(@f:right){
+  float: @f;
+  display: inline;
+}
+.pos (r){
+  position: relative;
+}
+.pos (a){
+  position: absolute;
+}
+.pos (f){
+  position: fixed;
+}
+//图片相关
+.bg-size(@type){
+  -webkit-background-size: @type;
+  background-size: @type;
+}
+// C3
+.b-s(@shadow: 0px 0px 5px #ccc,@rest...) {
+  -webkit-box-shadow: @shadow,@rest;
+     -moz-box-shadow: @shadow,@rest;
+          box-shadow: @shadow,@rest;
+}
+.border(@color:#ccc,@w:1px,@style:solid){
+    border:@w @style @color;
+}
+.b-r(@radius: 5px) {
+  -webkit-border-radius: @radius;
+     -moz-border-radius: @radius;
+          border-radius: @radius;
+}
+.cu-p(){
+    cursor:pointer;
+}
+.cu-d(){
+    cursor:default;
+}
+.transition(@all) {//property duration function delay
+  -webkit-transition:@all;
+    -moz-transition: @all;
+       -o-transition: @all;
+          transition: @all;
+}
+.translate(@x: 0px, @y: 0px) {
+  -webkit-transform: translate(@x,@y);
+     -moz-transform: translate(@x,@y);
+      -ms-transform: translate(@x,@y);
+       -o-transform: translate(@x,@y);
+          transform: translate(@x,@y);
+}
+.translate-x(@x:0) {
+  -webkit-transform: translate(@x);
+  -moz-transform: translate(@x);
+  -ms-transform: translate(@x);
+  -o-transform: translate(@x);
+  transform: translate(@x);
+}
+// animation name 
+.animation-name(@name){//动画名字
+  -webkit-animation-name: @name;
+  animation : @name;
+}
+.animation-duration(@time){//执行时间
+  -webkit-animation-duration: @time;
+  animation-duration : @time;
+}
+.animation-iteration-count(@i){//播放次数 infinite 无限
+  -webkit-animation-iteration-count: @i;
+  animation-iteration-count: @i;
+}
+.animation-direction(@i){//normal正常播放 alternate 轮流反向播放
+  -webkit-animation-direction: @i;
+  animation-direction: @i;
+}
+.animation-delay(@time){//等待几秒开始
+  animation-delay:@time;
+  -webkit-animation-delay:@time;
+}
+.animation-timing-function(@fn){//动画函数 linear ease ease-in ease-out ease-in-out cubic-bezier(n,n,n,n) n=[0,1]
+  -webkit-animation-timing-function:@fn;
+  animation-timing-function:@fn;
+}
+.animation(@all) {//name duration timing-function delay iteration-count direction;
+  -webkit-animation: @all;
+  animation: @all;
+}
+.rotate(@degrees: 0deg) {
+  -webkit-transform: rotate(@degrees);
+     -moz-transform: rotate(@degrees);
+      -ms-transform: rotate(@degrees);
+       -o-transform: rotate(@degrees);
+          transform: rotate(@degrees);
+}
+//...自动隐藏
+.auto-doc (@w:auto){
+  width: @w;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  -o-text-overflow:ellipsis;
+  overflow:hidden;
+}

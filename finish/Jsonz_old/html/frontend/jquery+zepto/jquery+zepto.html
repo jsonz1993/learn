@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <script src="/Jsonz/js/addHead.js"></script>
+    <title>Frontendi</title>
+    <link rel="stylesheet" href="/Jsonz/style/css/frontend/frontend.css"/>
+    <link rel="stylesheet" href="/Jsonz/style/css/media.css"/>
+</head>
+<body data-_type="jquery+zepto" ms-controller="module_html" ms-data-type="'frontend'">
+<!-- 导航START-->
+<div ms-include-src="header_html" data-include-replace="true"></div>
+<!-- 导航END-->
+<!-- 主体START-->
+<section class="container frontend">
+    <div class="row">
+        <!-- 左边内容区START-->
+        <article class="col-xs-10 col-sm-8 col-xs-offset-1 col-sm-offset-0 frontend-cfy">
+            <ul class="list-unstyled" id="frontend_list">
+                <!--<li>JavaScript DOM 编程艺术</li>-->
+            </ul>
+        </article>
+        <!-- 左边内容区END-->
+        <!-- 右边导航区START-->
+        <div ms-include-src="tags_html" data-include-replace="true" data-include-rendered="tagRe"></div>
+        <!-- 右边导航区END-->
+    </div>
+</section>
+<!-- 主体END-->
+
+<script src="/Jsonz/js/addJs.js"></script>
+</body>
+</html>

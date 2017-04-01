@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <script src="/Jsonz/js/addHead.js"></script>
+    <title>Frontendi</title>
+    <link rel="stylesheet" href="/Jsonz/style/css/frontend/frontend.css"/>
+    <link rel="stylesheet" href="/Jsonz/style/css/media.css"/>
+</head>
+<body ms-controller="module_html" ms-data-type="'frontend'" data-_type="javascript">
+<!-- 导航START-->
+<div ms-include-src="header_html" data-include-replace="true"></div>
+<!-- 导航END-->
+<!-- 主体START-->
+<section class="container frontend">
+    <div class="row">
+        <!-- 左边内容区START-->
+        <article class="col-xs-12 col-sm-9 frontend-con" id="frontend_con">
+            <h2>
+                javascript高级程序设计
+                <button class="btn btn-success">
+                    返回
+                </button>
+            </h2>
+            <div class="panel">
+                <div class="panel-heading" >第一章 简介</div>
+                <div class="panel-body">
+                    Panel content
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-heading">第二章 HTML中使用JavaScript</div>
+                <div class="panel-body">
+<pre>
+<code>frontTagRe : function(){//右侧标签填充
+        var that = this,msg = '',i;
+        var $tagCon = that._obj.tagPar,
+        _type = that._obj._type,
+        _JsonFr = Json['frontend'];
+
+        for (i in _JsonFr) {
+        var _thisCon = $tagCon.find('header:contains(' + i + ')').next();
+        var _thisFr = _JsonFr[i];
+        $.each(_thisFr, function (index) {
+        msg += _thisFr[index]['title'];
+        });
+        _thisCon.html()
+        }
+    }
+</code>
+</pre>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-heading" >第三章  基本概念</div>
+                <div class="panel-body">
+<pre>
+<code>
+    function demo(a,b){
+        arguments[1] = 10;
+            console.log(a + " : " + b  + " : " + arguments[0]  + " : " +  arguments[1]);
+        }
+        demo(1);
+
+        var str = '{"张三": 85,"李四": 88,"王五": 79}';
+        var jsonObj = eval( "(" + str + ")" );
+        var arr=[];
+        for (var name in jsonObj) {
+            arr.push({"name":name,"value":jsonObj[name]});
+        }
+        console.log(arr)
+
+        arr.sort(function compare(a,b){return b.value-a.value});
+        var jsonObj = {};
+        for(var i=0;i<arr.length;i++) {
+            jsonObj[arr[i].name] = arr[i].value;
+        }
+
+        var a = 10;
+        while ( a > 0 ){
+        a--;
+    }
+    alert(a);
+</code>
+</pre>
+                </div>
+            </div>
+        </article>
+        <!-- 左边内容区END-->
+        <!-- 右边导航区START-->
+        <aside class="col-xs-offset-1 col-sm-offset-0 col-sm-3 col-xs-10 frontend-con-nav" id="frontend_con_nav">
+            <ul class="list-group nav" id="frontend_con_ul">
+                <!--<li class="list-group-item">Cras justo odio</li>-->
+            </ul>
+        </aside>
+        <!-- 右边导航区END-->
+    </div>
+</section>
+<!-- 主体END-->
+
+<script src="/Jsonz/js/addJs.js"></script>
+</body>
+</html>

@@ -80,6 +80,9 @@
 - vue+webpack
 	- vue+webpack demo
 
+- jsonz_old
+	-  刚入门的时候写的一个在线简历 停止更新
+
 - zhangxinxu
 	- 腾讯一个大佬，主要重构方面。
 	- css与html很多疑难杂症 基础知识等都可以在里面找到

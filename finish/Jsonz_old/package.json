@@ -1,0 +1,31 @@
+{
+  "name": "less",
+  "version": "1.0.0",
+  "description": "less to css",
+  "main": "index.js",
+  "dependencies": {
+    "gulp-less": "^3.0.3"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangxinxinWTB/Jsonz.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhangxinxinWTB/Jsonz/issues"
+  },
+  "homepage": "https://github.com/zhangxinxinWTB/Jsonz#readme",
+  "directories": {
+    "doc": "docs"
+  }
+}

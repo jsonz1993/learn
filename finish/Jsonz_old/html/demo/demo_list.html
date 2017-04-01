@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <script src="/Jsonz/js/addHead.js"></script>
+    <title>Frontendi</title>
+    <link rel="stylesheet" href="/Jsonz/style/css/frontend/frontend.css"/>
+    <link rel="stylesheet" href="/Jsonz/style/css/media.css"/>
+
+</head>
+<body ms-controller="module_html" data-type="demo">
+<!-- 导航START-->
+<div ms-include-src="header_html" data-include-replace="true"></div>
+<!-- 导航END-->
+<!-- 主体START-->
+
+<section class="container frontend">
+    <div class="row">
+        <!-- 左边内容区START-->
+        <article class="col-md-8 col-xs-10 frontend-list jumbotron hidden-xs">
+            <header class="frontend-list-header">
+                <h2 class="text-center">近日计划</h2>
+                <p class="text-right">
+                    <time> 2015-09-01</time>
+                </p>
+            </header>
+
+            <article class="frontend-list-article">
+                <p>Seaport是小剧客栈精炼代码替换Sea.js走的最后一公里，并不适合所有情况，如果你的项目同时满足下面的这些条件，还是可以一试的。1、全部需要的 JS 都都已合并至同一个文件，2、除了主文件，没有通过seajs.use引用其他文件，3、没有使用seajs插件。</p>
+                <p>爱凑热闹的小剧这次又混进了iWeb峰会，不过想想我七点就爬起床，上班都没有这般热情，也是蛮不容易的。</p>
+                <p>伴随着移动端的发展，触摸交互的手势也越来越丰富，从起初最简单的点击发展到现在的长按、侧滑、拖动等，更为复杂的还会有双指缩放等事件。可以说，手势设计在移动页面上起到了简化界面元素，增加交互多样性的重要角色。</p>
+                <p>撤销功能是一款现实生活绝对买不到的后悔药。穿越时空的超能力，撤销可以带你回到你最想去更改的某个时间点，也可以抹去刚刚不小心犯下的错误。重做，也称之为恢复，假如你只是想回到过去看一眼，那你还有机会选择重做立即回到未来，继续现在的生活。</p>
+                <p><kbd>kbd一般用于键盘按键</kbd></p>
+                <p><pre>&lt;p&gt;代码块&lt;/p&gt;</pre></p>
+                <p><code>&lt;内联代码&gt;</code></p>
+                <p><abbr title="attribute">缩略语</abbr></p>
+                <p><mark>markText</mark></p>
+            </article>
+        </article>
+        <!-- 左边内容区END-->
+        <!-- 右边导航区START-->
+        <div ms-include-src="tags_html" data-include-replace="true" data-include-rendered="tagRe"></div>
+        <!-- 右边导航区END-->
+    </div>
+</section>
+<!-- 主体END-->
+
+
+
+<script src="/Jsonz/js/addJs.js"></script>
+</body>
+</html>
