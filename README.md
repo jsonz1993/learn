@@ -8,16 +8,12 @@
 也就是说根目录最多只会有finish && 3个其他学习内容目录
 
 
-
-
-
-
 ------
 finish 文件夹 存放学完/暂时放弃学习的东西
 
 React React全家桶
 
-blog 搭建github.io博客
+
 ____
 git 提交规范
 
