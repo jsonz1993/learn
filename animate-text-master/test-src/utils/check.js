@@ -11,3 +11,7 @@ const checkNode= el=> {
 }
 
 const errorList = el=> console.error('找不到当前节点', el);
+
+export {
+  checkNode
+}

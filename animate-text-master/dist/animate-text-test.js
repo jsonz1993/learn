@@ -83,6 +83,10 @@ return /******/ (function(modules) { // webpackBootstrap
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var checkNode = function checkNode(el) {
@@ -100,6 +104,8 @@ var checkNode = function checkNode(el) {
 var errorList = function errorList(el) {
   return console.error('找不到当前节点', el);
 };
+
+exports.checkNode = checkNode;
 
 /***/ }),
 /* 1 */
@@ -133,15 +139,15 @@ var AnimateText = function () {
       this.el = (0, _check.checkNode)(el);
       if (!this.el) return;
       this.options = this.checkOptions(options);
-      if (options.isNumber) {
+      if (this.options.isNumber) {
         this.animateFn();
       } else {
         this.textFn();
       }
-      this.isNumber = options.isNumber;
-      this.time = options.time;
+      this.isNumber = this.options.isNumber;
+      this.time = this.options.time;
       this.el.innerText = '';
-      this.onAnimated = options.onAnimated;
+      this.onAnimated = this.options.onAnimated;
       return true;
     }
 
@@ -154,13 +160,13 @@ var AnimateText = function () {
     value: function checkOptions(options) {
       if (typeof options === 'number') options = { time: options };
       options = options || {};
-      return Object.assign(options, {
+      return Object.assign({
         time: 500,
         isNumber: false,
         startNumber: 0,
         changeCount: 32,
         onAnimated: function onAnimated() {}
-      });
+      }, options);
     }
   }, {
     key: 'init',
@@ -180,8 +186,8 @@ var AnimateText = function () {
         this.options.isNumber = false;
         return this.initData(el, this.options);
       }
-      this.startNumber = options.startNumber - 0 || 0;
-      this.changeCount = options.changeCount - 0 || 24;
+      this.startNumber = this.options.startNumber - 0 || 0;
+      this.changeCount = this.options.changeCount - 0 || 24;
     }
 
     /**
@@ -192,7 +198,7 @@ var AnimateText = function () {
     key: 'textFn',
     value: function textFn() {
       this.text = this.el.innerText;
-      this.textArr = this.textFn.split('');
+      this.textArr = this.text.split('');
     }
 
     /**
@@ -204,15 +210,17 @@ var AnimateText = function () {
     value: function playNumberAnimation() {
       var _this = this;
 
+      var time = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.time;
+
       var changeCount = this.changeCount;
-      if (targetNumber === 0) return;
+      if (this.number === 0) return;
       var targetNumber = this.number;
       var targetNumberDecimalLength = this.getDecimalLength(targetNumber);
       var StartNumberDecimalLength = this.getDecimalLength(this.startNumber);
       var decimalLength = Math.max(targetNumberDecimalLength, StartNumberDecimalLength);
       var d = this.number - this.startNumber;
-      var everyD = (d / changeCount).toFixed(getDecimalLength) - 0;
-      if (everyD === 0) {
+      var everyD = (d / changeCount).toFixed(decimalLength) - 0;
+      if (everyD <= 0) {
         console.warn('差值过小无法动画');
         return this.el.innerText = targetNumber;
       }
@@ -227,6 +235,9 @@ var AnimateText = function () {
         _this.el.innerText = curNumber;
       }, time / changeCount);
     }
+
+    // 获取数字小数点位数
+
   }, {
     key: 'getDecimalLength',
     value: function getDecimalLength(number) {
@@ -242,6 +253,8 @@ var AnimateText = function () {
     key: 'playTextAnimateion',
     value: function playTextAnimateion() {
       var _this2 = this;
+
+      var time = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.time;
 
       var textArr = [].concat(this.textArr);
       var curTextArr = [];
@@ -264,7 +277,7 @@ var AnimateText = function () {
       if (typeof callBack !== 'function') return;
       setTimeout(function () {
         _this3.options.onAnimated();
-      }, 10);
+      }, 0);
     }
   }, {
     key: 'play',

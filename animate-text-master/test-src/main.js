@@ -13,15 +13,15 @@ class AnimateText {
     this.el = checkNode(el);
     if (!this.el) return;
     this.options = this.checkOptions(options);
-    if (options.isNumber) {
+    if (this.options.isNumber) {
       this.animateFn();
     } else {
       this.textFn();
     }
-    this.isNumber = options.isNumber;
-    this.time = options.time;
+    this.isNumber = this.options.isNumber;
+    this.time = this.options.time;
     this.el.innerText = '';
-    this.onAnimated = options.onAnimated;
+    this.onAnimated = this.options.onAnimated;
     return true;
   }
 
@@ -31,13 +31,13 @@ class AnimateText {
   checkOptions(options) {
     if (typeof options === 'number') options = {time: options};
     options = options || {};
-    return Object.assign(options, {
+    return Object.assign({
       time: 500,
       isNumber: false,
       startNumber: 0,
       changeCount: 32,
       onAnimated() {}
-    });
+    }, options);
   }
 
   init () {
@@ -53,8 +53,8 @@ class AnimateText {
       this.options.isNumber = false;
       return this.initData(el, this.options);
     }
-    this.startNumber = options.startNumber - 0 || 0;
-    this.changeCount = options.changeCount - 0 || 24;
+    this.startNumber = this.options.startNumber - 0 || 0;
+    this.changeCount = this.options.changeCount - 0 || 24;
   }
 
   /**
@@ -62,27 +62,80 @@ class AnimateText {
    */
   textFn() {
     this.text = this.el.innerText;
-    this.textArr = this.textFn.split('');
+    this.textArr = this.text.split('');
   }
 
   /**
    * 数字动画
    */
-  playNumberAnimation() {
+  playNumberAnimation(time= this.time) {
     let changeCount = this.changeCount;
-    if (targetNumber === 0) return;
+    if (this.number === 0) return;
     let targetNumber = this.number;
-    
+    let targetNumberDecimalLength = this.getDecimalLength(targetNumber);
+    let StartNumberDecimalLength = this.getDecimalLength(this.startNumber);
+    let decimalLength = Math.max(targetNumberDecimalLength, StartNumberDecimalLength);
+    let d = this.number - this.startNumber;
+    let everyD = (d / changeCount).toFixed(decimalLength) - 0;
+    if (everyD <= 0) {
+      console.warn('差值过小无法动画');
+      return this.el.innerText = targetNumber;
+    }
+    let curNumber = this.startNumber;
+    this.tid = setInterval(()=> {
+      curNumber = (curNumber + everyD).toFixed(decimalLength) - 0;
+      if (Math.abs(curNumber - targetNumber) < Math.abs(everyD)) {
+        this.el.innerText = targetNumber;
+        this.onEnd();
+        return clearInterval(this.tid);
+      }
+      this.el.innerText = curNumber;
+    }, time/ changeCount);
+  }
 
+  // 获取数字小数点位数
+  getDecimalLength(number) {
+    let numberStr = number + '';
+    return numberStr.split('.')[1] && numberStr.split('.')[1].length || 0;
   }
 
   /**
    * 文本动画
    */
-  playTextAnimateion() {
-
+  playTextAnimateion(time= this.time) {
+    let textArr = [].concat(this.textArr);
+    let curTextArr = [];
+    this.tid = setInterval(()=> {
+      let word= textArr.shift();
+      if (!word) {
+        this.onEnd();
+        return clearInterval(this.tid);
+      }
+      curTextArr.push(word);
+      this.el.innerText = curTextArr.join('');
+    }, time/ this.textArr.length);
   }
 
+  onEnd() {
+    let callBack = this.options.onAnimated;
+    if (typeof callBack !== 'function') return;
+    setTimeout(()=> {
+      this.options.onAnimated();
+    }, 0);
+  }
+
+  play(time= this.time) {
+    clearInterval(this.tid);
+    this.el.innerText = this.isNumber? this.number: this.text;
+    let options = {
+      time: this.time,
+      isNumber: this.isNumber,
+      startNumber: this.startNumber,
+      changeCount: this.changeCount,
+      onAnimated: this.onAnimated
+    }
+    this.initData(this.el, options) && this.init();
+  }
 
 };
 
