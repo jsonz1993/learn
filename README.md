@@ -16,12 +16,9 @@ React React全家桶
 
 fork `animate-text`
 
-mock 一个前端本地node服务（用于模拟数据 单元测试等)[https://github.com/nuysoft/Mock](https://github.com/nuysoft/Mock)
-
 ####ing:
 fork `animate-text`， 敲一遍 优化 造轮子
 
-`Mock 使用`
 ____
 git 提交规范
 
