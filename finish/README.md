@@ -2,6 +2,11 @@
 
 大多是零零散散的demo， 没有系统整理，但一般会在README.md附上学习的地址
 
+- animate-text
+	- 一个简单的文字 && 数字 动画小插件。
+	- [demo](https://jsonz1993.github.io/demo/animate-text/index.html)
+	- [文档](https://jsonz1993.github.io/2017/04/animate-text/)
+
 - 平日工作demo
 	- 以后很少会改动
 
