@@ -19,7 +19,7 @@ class AnimateText {
     this.options = this.formatOptions(options);
     this.options.isNumber? this.numberInit(): this.textInit();
     this.isNumber = this.options.isNumber;
-    this.time = this.options.time
+    this.time = this.options.time;
     this.el.innerText = '';
     this.onAnimated = this.options.onAnimated;
     return true;
@@ -49,7 +49,7 @@ class AnimateText {
   }
 
   // 文字类型处理
-  textFn() {
+  textInit() {
     this.text = this.el.innerText;
     this.textArr = this.text.split('');
   }
@@ -107,6 +107,11 @@ class AnimateText {
     let numberStr = number + '';
     return numberStr.split('.')[1] && numberStr.split('.')[1].length || 0;
   }
+
+  play() {
+    clearInterval(this.tid);
+    this.isNumber? this.numberAnimation(this.time): this.textAnimateion(this.time)
+  }
 }
 
-export default AnimateText;
+module.exports = AnimateText;

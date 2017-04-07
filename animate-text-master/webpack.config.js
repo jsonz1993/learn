@@ -4,10 +4,10 @@ var libraryName = 'AnimateText';
 
 
 module.exports = {
-  entry: "./test-src/main.js",
+  entry: "./src/app.js",
   output: {
     path: __dirname,
-    filename: "dist/animate-text-test.js",
+    filename: "dist/animate-text.js",
     library: libraryName,
     libraryTarget: 'umd',
     umdNamedDefine: true

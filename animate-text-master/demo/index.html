@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <script type="text/javascript" src="../dist/animate-text.js"></script>
 
+
     <style>
       html, body {
         width: 100%;
@@ -70,12 +71,6 @@
   </head>
   <body>
     <div class="app-root">
-      <header class="header">
-        <h1>animate-text 文字动画</h1>
-        <div class="addr">
-          <span>说明文档: </span><a id="addr" href="">https://github.com/qgh810/animate-text</a>
-        </div>
-      </header>
       <div class="part">
         <div class="demo">
           <span class="string">
@@ -121,13 +116,6 @@
       btn2.addEventListener('click', function () {
         animateNumber.play()
       }, false)
-
-      var addrBtn = document.getElementById('addr')
-      addrBtn.addEventListener('click', function (e) {
-        e.preventDefault()
-        window.open('https://github.com/qgh810/animate-text')
-      }, false)
-
     }
   </script>
 </html>

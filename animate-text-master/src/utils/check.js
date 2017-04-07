@@ -1,19 +1,17 @@
-
-export function checkNode (el) {
-  let result = el
-  if (!result) {
-    return console.error('找不到当前节点', el)
-  }
+const checkNode= el=> {
+  if (!el)  return errorList(el);
+  let dom = null;
   if (typeof el === 'string') {
-    let domName = el
-    result = document.querySelector(domName)
-    if (!result) {
-      return console.error('找不到当前节点', el)
-    }
+    dom = document.querySelector(el);
+    if (!dom) return errorList(el);
   } else if (typeof el === 'object') {
-    if (!el.nodeName) {
-      return console.error('找不到当前节点', el)
-    }
+    if (!el.nodeName) return errorList(el);
   }
-  return result
+  return dom || el;
+}
+
+const errorList = el=> console.error('找不到当前节点', el);
+
+export {
+  checkNode
 }

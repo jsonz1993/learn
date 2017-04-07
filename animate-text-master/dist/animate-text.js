@@ -83,6 +83,10 @@ return /******/ (function(modules) { // webpackBootstrap
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var checkNode = function checkNode(el) {
@@ -101,6 +105,8 @@ var errorList = function errorList(el) {
   return console.error('找不到当前节点', el);
 };
 
+exports.checkNode = checkNode;
+
 /***/ }),
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -118,176 +124,159 @@ var AnimateText = function () {
   function AnimateText(el, options) {
     _classCallCheck(this, AnimateText);
 
-    this.initData(el, options) && this.init();
-    this.play = this.play.bind(this); // 避免这种情况
+    this.init(el, options);
   }
 
-  /**
-   * 检查和初始化传入参数
-   */
+  // 初始化 包括检查el， 数据初始化，动画运行等
 
 
   _createClass(AnimateText, [{
+    key: 'init',
+    value: function init(el, options) {
+      return this.initData(el, options) ? this.isNumber ? this.numberAnimation(this.time) : this.textAnimateion(this.time) : '';
+    }
+
+    // 初始化数据
+
+  }, {
     key: 'initData',
     value: function initData(el, options) {
       this.el = (0, _check.checkNode)(el);
       if (!this.el) return;
-      this.options = this.checkOptions(options);
-      if (options.isNumber) {
-        this.animateFn();
-      } else {
-        this.textFn();
-      }
-      this.isNumber = options.isNumber;
-      this.time = options.time;
+      this.options = this.formatOptions(options);
+      this.options.isNumber ? this.numberInit() : this.textInit();
+      this.isNumber = this.options.isNumber;
+      this.time = this.options.time;
       this.el.innerText = '';
-      this.onAnimated = options.onAnimated;
+      this.onAnimated = this.options.onAnimated;
       return true;
     }
 
-    /**
-     * 检查并初始化options
-     */
+    // 格式化参数
 
   }, {
-    key: 'checkOptions',
-    value: function checkOptions(options) {
+    key: 'formatOptions',
+    value: function formatOptions(options) {
       if (typeof options === 'number') options = { time: options };
-      options = options || {};
-      return Object.assign(options, {
+      return Object.assign({
         time: 500,
         isNumber: false,
         startNumber: 0,
         changeCount: 32,
         onAnimated: function onAnimated() {}
-      });
-    }
-  }, {
-    key: 'init',
-    value: function init() {
-      this.isNumber ? this.playNumberAnimation(this.time) : this.playTextAnimateion(this.time);
+      }, options || {});
     }
 
-    /**
-     * 数字类型处理
-     */
+    // 数字类型的初始化数据
 
   }, {
-    key: 'animateFn',
-    value: function animateFn() {
+    key: 'numberInit',
+    value: function numberInit() {
       this.number = Number(this.el.innerText);
       if (!this.number && this.number !== 0) {
         this.options.isNumber = false;
         return this.initData(el, this.options);
       }
-      this.startNumber = options.startNumber - 0 || 0;
-      this.changeCount = options.changeCount - 0 || 24;
+      this.startNumber = this.options.startNumber - 0 || 0;
+      this.changeCount = this.options.changeCount - 0 || 24;
     }
 
-    /**
-     * 文字类型处理
-     */
+    // 文字类型处理
 
   }, {
-    key: 'textFn',
-    value: function textFn() {
+    key: 'textInit',
+    value: function textInit() {
       this.text = this.el.innerText;
-      this.textArr = this.textFn.split('');
+      this.textArr = this.text.split('');
     }
 
-    /**
-     * 数字动画
-     */
+    //  
 
   }, {
-    key: 'playNumberAnimation',
-    value: function playNumberAnimation() {
+    key: 'numberAnimation',
+    value: function numberAnimation() {
       var _this = this;
 
-      var changeCount = this.changeCount;
-      if (targetNumber === 0) return;
-      var targetNumber = this.number;
-      var targetNumberDecimalLength = this.getDecimalLength(targetNumber);
-      var StartNumberDecimalLength = this.getDecimalLength(this.startNumber);
-      var decimalLength = Math.max(targetNumberDecimalLength, StartNumberDecimalLength);
-      var d = this.number - this.startNumber;
-      var everyD = (d / changeCount).toFixed(getDecimalLength) - 0;
-      if (everyD === 0) {
-        console.warn('差值过小无法动画');
-        return this.el.innerText = targetNumber;
+      var time = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.time;
+
+      if (this.number === 0) return;
+      var targetNum = this.number,
+          targetNumberDecimalLen = this.getDecimaLen(targetNum),
+          startDecimalLen = this.getDecimaLen(this.startNumber),
+          decimalLength = Math.max(targetNumberDecimalLen, startDecimalLen),
+          d = this.number - this.startNumber,
+          everyD = (d / this.changeCount).toFixed(decimalLength) - 0,
+          curNumber = this.startNumber;
+      if (everyD <= 0) {
+        console.warn('差值过小');
+        return this.el.innerText = targetNum;
       }
-      var curNumber = this.startNumber;
+
       this.tid = setInterval(function () {
         curNumber = (curNumber + everyD).toFixed(decimalLength) - 0;
-        if (Math.abs(curNumber - targetNumber) < Math.abs(everyD)) {
-          _this.el.innerText = targetNumber;
+        if (Math.abs(curNumber - targetNum) < Math.abs(everyD)) {
+          _this.el.innerText = targetNum;
           _this.onEnd();
-          return clearInterval(_this.tid);
         }
         _this.el.innerText = curNumber;
-      }, time / changeCount);
-    }
-  }, {
-    key: 'getDecimalLength',
-    value: function getDecimalLength(number) {
-      var numberStr = number + '';
-      return numberStr.split('.')[1] && numberStr.split('.')[1].length || 0;
+      }, time / this.changeCount);
     }
 
-    /**
-     * 文本动画
-     */
+    // 文本动画
 
   }, {
-    key: 'playTextAnimateion',
-    value: function playTextAnimateion() {
+    key: 'textAnimateion',
+    value: function textAnimateion() {
       var _this2 = this;
 
-      var textArr = [].concat(this.textArr);
-      var curTextArr = [];
+      var time = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.time;
+
+      var textArr = [].concat(this.textArr),
+          curTextArr = [];
       this.tid = setInterval(function () {
         var word = textArr.shift();
         if (!word) {
           _this2.onEnd();
-          return clearInterval(_this2.tid);
         }
         curTextArr.push(word);
         _this2.el.innerText = curTextArr.join('');
       }, time / this.textArr.length);
     }
+
+    // 结束函数
+
   }, {
     key: 'onEnd',
     value: function onEnd() {
       var _this3 = this;
 
-      var callBack = this.options.onAnimated;
-      if (typeof callBack !== 'function') return;
+      clearInterval(this.tid);
+      if (typeof this.onAnimated !== 'function') return;
       setTimeout(function () {
-        _this3.options.onAnimated();
-      }, 10);
+        _this3.onAnimated();
+      }, 0);
+    }
+
+    // 返回小数点长度
+
+  }, {
+    key: 'getDecimaLen',
+    value: function getDecimaLen() {
+      var number = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '0';
+
+      var numberStr = number + '';
+      return numberStr.split('.')[1] && numberStr.split('.')[1].length || 0;
     }
   }, {
     key: 'play',
     value: function play() {
-      var time = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.time;
-
       clearInterval(this.tid);
-      this.el.innerText = this.isNumber ? this.number : this.text;
-      var options = {
-        time: this.time,
-        isNumber: this.isNumber,
-        startNumber: this.startNumber,
-        changeCount: this.changeCount,
-        onAnimated: this.onAnimated
-      };
-      this.initData(this.el, options) && this.init();
+      this.isNumber ? this.numberAnimation(this.time) : this.textAnimateion(this.time);
     }
   }]);
 
   return AnimateText;
 }();
-
-;
 
 module.exports = AnimateText;
 
