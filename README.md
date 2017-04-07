@@ -10,9 +10,12 @@
 ----
 ####root: 
 
-finish 文件夹 存放学完/暂时放弃学习的东西
+`finish` 存放学完/暂时放弃学习的东西
 
-React React全家桶
+`React` React全家桶
+
+`chrome-extension` chrome 浏览器扩展插件入门
+
 
 ####ing:
 
