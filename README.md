@@ -14,10 +14,7 @@ finish 文件夹 存放学完/暂时放弃学习的东西
 
 React React全家桶
 
-fork `animate-text`
-
 ####ing:
-fork `animate-text`， 敲一遍 优化 造轮子
 
 ____
 git 提交规范
