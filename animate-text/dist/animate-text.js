@@ -270,8 +270,10 @@ var AnimateText = function () {
   }, {
     key: 'play',
     value: function play() {
+      var time = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.time;
+
       clearInterval(this.tid);
-      this.isNumber ? this.numberAnimation(this.time) : this.textAnimateion(this.time);
+      this.isNumber ? this.numberAnimation(time) : this.textAnimateion(time);
     }
   }]);
 

@@ -2,35 +2,19 @@
 
 ##### 文字动画和数字动画 animate text
 
-[查看DEMO](http://qgh810.github.io/src/animate-text/index.html)
+[查看DEMO](http://qgh810.github.io/src/animate-text/index.html) 改
 
-轻巧的文字动画库, 使用简单, 文件大小4k<br>可以给文字添加出现动画, 支持字符串打字效果和数字变化效果, 支持监听动画结束事件<br>项目持续更新和维护
+轻巧的文字动画库, 使用简单, 文件大小4k<br>可以给文字添加出现动画, 支持字符串打字效果和数字变化效果, 支持监听动画结束事件
+
+__[项原项目地址](https://github.com/qgh810/animate-text), 这里对其代码改造优化。__
 
 <img src="https://raw.githubusercontent.com/qgh810/qgh810.github.io/master/src/animate-text/assets/images/demo.gif" />
 <br>
 
-### 安装方法
--  方式一
-```bash
-npm install animate-text --save
-```
-
-- 方式二
-
-```bash
-下载项目中的dist/animate-text.min.js, 然后用script标签插入到你的项目中, 如下
-这种方式可以通过window.AnimateText访问
-```
-
-```html
-<script type="text/javascript" src="dist/animate-text.min.js"></script>
-```
-<br>
-<br>
 
 ### 使用方法
 ```js
-import AnimateText from 'animate-text'
+import AnimateText from './animate-text'
 
 // 最简单的使用方法
 new AnimateText('.text')

@@ -7,7 +7,7 @@ module.exports = {
   entry: "./src/app.js",
   output: {
     path: __dirname,
-    filename: "dist/animate-text.js",
+    filename: "./dist/animate-text.js",
     library: libraryName,
     libraryTarget: 'umd',
     umdNamedDefine: true

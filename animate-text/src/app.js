@@ -108,9 +108,9 @@ class AnimateText {
     return numberStr.split('.')[1] && numberStr.split('.')[1].length || 0;
   }
 
-  play() {
+  play(time= this.time) {
     clearInterval(this.tid);
-    this.isNumber? this.numberAnimation(this.time): this.textAnimateion(this.time)
+    this.isNumber? this.numberAnimation(time): this.textAnimateion(time)
   }
 }
 

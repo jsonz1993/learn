@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>文本动画DEMO</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <script type="text/javascript" src="../dist/animate-text.js"></script>
 
 
     <style>
@@ -94,28 +93,7 @@
       </div>
 
     </div>
+
+    <script type="text/javascript" src="../dist/test.js"></script>
   </body>
-  <script>
-    window.onload = function () {
-      var animateText = new AnimateText('.app-root .string', 1200)
-
-      var animateNumber = new AnimateText('.app-root .number', {
-        time: 1000,
-        isNumber: true,
-        startNumber: 0,
-        changeCount: 32,
-        onAnimated: function () {console.log('数字动画结束')}
-      })
-
-      var btn1 = document.getElementById('btn1')
-      btn1.addEventListener('click', function () {
-        animateText.play()
-      }, false)
-
-      var btn2 = document.getElementById('btn2')
-      btn2.addEventListener('click', function () {
-        animateNumber.play()
-      }, false)
-    }
-  </script>
 </html>
