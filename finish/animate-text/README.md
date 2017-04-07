@@ -1,6 +1,6 @@
 ## animate-text
 
-##### 文字动画和数字动画 animate text
+### 文字动画和数字动画 animate text
 
 [查看DEMO](https://jsonz1993.github.io/demo/animate-text/index.html)
 
@@ -32,9 +32,8 @@ new AnimateText('.text', {
 })
 
 ```
-<br>
 
-###### 参数说明
+### 参数说明
 AnimateText接收两个参数, 例如: new AnimateText(element, options)
 
 | 参数 | 类型 | 是否必填 | 描述 |
@@ -43,7 +42,7 @@ AnimateText接收两个参数, 例如: new AnimateText(element, options)
 | options | Number or Object | 否 | 如果第二个参数是数字, 则当作动画时间处理, 如果有其他参数, 以对象格式传递, 具体每个属性的描述请看下方的 options说明 |
 <br>
 
-###### options说明
+#### options说明
 
 第二个参数options详细说明
 
@@ -55,9 +54,8 @@ AnimateText接收两个参数, 例如: new AnimateText(element, options)
 | changeCount | Number | 32 | 否 | 数字动画变化次数 也就是数字经过多少次跳动才变为最终数字 |
 | onAnimated | Function | null | 否 | 动画结束监听函数 |
 
-<br>
 
-##### 实例对象方法说明
+### 实例对象方法说明
 
 ```js
 // 实例化
