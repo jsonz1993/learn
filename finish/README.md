@@ -2,6 +2,12 @@
 
 大多是零零散散的demo， 没有系统整理，但一般会在README.md附上学习的地址
 
+- chrome-extension
+	- 学习chrome插件开发入门
+	- 暂存finish，后面会重新学习 比较感兴趣
+	- 目前想法是做一个可以在页面比较方便加载js的插件
+	- TODO
+
 - animate-text
 	- 一个简单的文字 && 数字 动画小插件。
 	- [demo](https://jsonz1993.github.io/demo/animate-text/index.html)
