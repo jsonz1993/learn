@@ -8,16 +8,18 @@
 也就是说根目录最多只会有finish && 3个其他学习内容目录
 
 ----
+#### future:
+
+` react`, `redux`, `php入门`, `sass`, `clipboard 复制插件`
+
+----
 ####root: 
 
 `finish` 存放学完/暂时放弃学习的东西
 
 `React` React全家桶
 
-
 ####ing:
-
-
 
 `chrome-extension` chrome 浏览器扩展插件入门
 https://developer.chrome.com/extensions/getstarted 一直访问不了 暂停更新&&学习
