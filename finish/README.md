@@ -14,7 +14,7 @@
 	- [文档](https://jsonz1993.github.io/2017/04/animate-text/)
 
 - 平日工作demo
-	- 以后很少会改动
+	- 工作积累的轮子 时不时会更新，但很少会继续维护
 
 - 日常小库 
 	- 以后很少会改动
@@ -98,3 +98,4 @@
 	- 腾讯一个大佬，主要重构方面。
 	- css与html很多疑难杂症 基础知识等都可以在里面找到
 	- [http://www.zhangxinxu.com/](http://www.zhangxinxu.com/)
+
