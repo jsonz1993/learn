@@ -1,0 +1,110 @@
+@import 'variable'; // 引入
+
+// 变量
+$color: red;
+
+// mixin
+@mixin box-sizing($sizing) {
+	-webkit-box-sizing: $sizing;
+	-moz-box-sizing: $sizing;
+	box-sizing: $sizing;
+}
+.box-border {
+	border: 1px solid #ccc;
+	@include box-sizing(border-box);
+}
+
+body {
+	color: $primaryColor;
+	// 嵌套
+	ul {
+		color: $color;
+	}
+}
+
+// 扩展
+.message {
+	border: 1px solid #ccc;
+	padding: 10px;
+	color: #333;
+}
+.success {
+	@extend .message;
+	border-color: green;
+}
+.error {
+	@extend .message;
+	border-color: red;
+}
+
+// 运算
+.container {width: 100%; }
+
+article[role="main"] {
+	float: left;
+	width: 600px / 960px * 100%;
+}
+// 一般来说 基础文件名会以下划线开始，如 _mixin.scss 引入的时候直接 @import 'mixin';
+
+// @at-rppt 跳出选择器嵌套
+//没有跳出
+.parent-1 {
+  color:#f00;
+  .child {
+    width:100px;
+  }
+}
+
+//单个选择器跳出
+.parent-2 {
+  color:#f00;
+  @at-root .child {
+    width:200px;
+  }
+}
+
+//多个选择器跳出
+.parent-3 {
+  background:#f00;
+  @at-root {
+    .child1 {
+      width:300px;
+    }
+    .child2 {
+      width:400px;
+    }
+  }
+}
+//  .parent-3 {}; .child1 {}; .child2 {};
+
+// @at-root 与 &
+.child {
+	@at-root .parent & {
+		color: #f00;
+	}
+}
+// .parent .child {}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
