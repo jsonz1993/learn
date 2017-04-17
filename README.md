@@ -10,7 +10,12 @@
 ----
 #### future:
 
-` react`, `redux`, `php入门`, `sass`, `clipboard 复制插件`
+- chrome 插件开发入门 !!!
+- php 简单入门 !!!
+- react !!!!!
+- redux !!!!!
+- ios 简单入门 !!!!
+- andriod 简单入门 !!!!
 
 ----
 ####root: 
