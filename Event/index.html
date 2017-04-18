@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="E.js"></script>
+</head>
+<body>
+<script src="E.js"></script>
+	<script>
+		var e = new JsonzEmitter();
+		e.on('event', scb)
+			.emit('event')
+			.off('event', scb)
+			.emit('event');
+
+		function scb() {
+			console.log(1);
+		}
+	</script>
+</body>
+</html>
