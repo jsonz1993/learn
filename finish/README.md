@@ -2,6 +2,9 @@
 
 大多是零零散散的demo， 没有系统整理，但一般会在README.md附上学习的地址
 
+- Event
+	- 最简单的事件系统
+
 - handlebars
 	- 简单的模板引擎[http://handlebarsjs.com](http://handlebarsjs.com)
 
@@ -9,7 +12,6 @@
 	- 简单的PHP模板， 文档很不全 {value}
 	- <!-- IF login_id --><!-- ENDIF login_id -->  `if`
 	- <!-- BEGIN question_tags_list --><!-- END question_tags_list --> `for`
-
 
 - sass
   - 简单的入门语法，因为用过less 所以基本无障碍
