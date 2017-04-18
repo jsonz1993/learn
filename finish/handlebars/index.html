@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script id="tpl" type="text/x-handlebars-template">
+		<div class="demo">
+	        <h1>{{name}}</h1>
+	        <p>{{content}}</p>
+	    </div>
+
+	    <ul>
+	    	{{#list}}
+	    		<li>{{name}}- <b>{{age}}</b></li>
+	    	{{/list}}
+	    </ul>
+
+	    <ul>  
+		    {{#each list}}
+		        <li><b>{{this.name}}</b> - {{this.age}}</li>
+		    {{/each}}
+		</ul>
+
+		{{#if list}}
+		<ul id="list">  
+		    {{#each list}}
+		        <li>{{this.name}}</li>
+		    {{/each}}
+		</ul>  
+		{{else}}
+		    <p>{{error}}</p>
+		{{/if}}
+
+		{{#unless list}}
+		<ul id="list">  
+		    {{#each list}}
+		        <li>{{this.name}}</li>
+		    {{/each}}
+		</ul>  
+		{{else}}
+		    <p>{{error}}</p>
+		{{/unless}}
+
+		<div class="entry">  
+		  <h1>{{title}}</h1>
+		  {{#with author}}
+		  <h5>By {{firstName}} {{lastName}}</h5>
+		  {{/with}}
+		</div>
+		{{{html}}}
+
+		<h2><a href="/posts/{{../permalink}}#{{id}}">{{name}}</a></h2>
+	</script>
+
+	<script src="./handlebars.js"></script>
+	<script>
+		var source = document.getElementById('tpl').innerHTML;
+		var _tpl = Handlebars.compile(source);
+		var context = { 
+			name: "Jsonz", 
+			content: "learn Handlebars",
+			list: [{
+				name: 'Jsonz-1',
+				age: 20
+			}, {
+				name: 'Jsonz-2',
+				age: 30
+			}],
+			error: '报错了',
+			author: {
+				firstName: '第一个名字',
+				lastName: '最后个名字'
+			},
+			html: '<div>k</div>',
+			id: 'iddjsadjsaklj',
+			permalink: {
+				permalink: 'bili'
+			}
+		};
+		var html = _tpl(context);
+		document.body.innerHTML = html;
+	</script>
+</body>
+</html>
