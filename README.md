@@ -19,6 +19,7 @@
 - 简单事件系统 !!!!
 - 简单移动端swipe ✨
 - Handlebars ✨
+- touch 事件
 
 ----
 ####root: 
