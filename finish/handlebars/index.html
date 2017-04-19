@@ -12,6 +12,7 @@
 	        <p>{{content}}</p>
 	    </div>
 
+	<!-- FOR -->
 	    <ul>
 	    	{{#list}}
 	    		<li>{{name}}- <b>{{age}}</b></li>
@@ -24,6 +25,7 @@
 		    {{/each}}
 		</ul>
 
+	<!-- IF -->
 		{{#if list}}
 		<ul id="list">  
 		    {{#each list}}
@@ -44,6 +46,7 @@
 		    <p>{{error}}</p>
 		{{/unless}}
 
+	<!-- 模板 -->
 		<div class="entry">  
 		  <h1>{{title}}</h1>
 		  {{#with author}}
