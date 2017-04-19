@@ -10,7 +10,6 @@
 ----
 #### future:
 
-- chrome 插件开发入门 !!!
 - php 简单入门 !!!
 - react !!!!!
 - redux !!!!!
@@ -18,7 +17,6 @@
 - andriod 简单入门 !!!!
 - 简单事件系统 !!!!
 - 简单移动端swipe ✨
-- Handlebars ✨
 - touch 事件
 
 ----
@@ -30,8 +28,6 @@
 
 ####ing:
 
-`chrome-extension` chrome 浏览器扩展插件入门
-https://developer.chrome.com/extensions/getstarted 一直访问不了 暂停更新&&学习
 
 ____
 git 提交规范
