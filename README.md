@@ -12,12 +12,13 @@
 
 - php 简单入门 !!!
 - react !!!!!
-- redux !!!!!
-- ios 简单入门 !!!!
-- andriod 简单入门 !!!!
-- 简单事件系统 !!!!
-- 简单移动端swipe ✨
-- touch 事件
+- redux !!!!
+- ios 简单入门 !!!
+- andriod 简单入门 !!!
+- 简单事件系统 !!!
+- 简单移动端swipe !!!
+- touch 事件 !!!
+- React Native !!!!!!
 
 ----
 ####root: 
@@ -27,7 +28,6 @@
 `React` React全家桶
 
 ####ing:
-
 
 ____
 git 提交规范
