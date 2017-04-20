@@ -27,10 +27,18 @@
 
 `React` React全家桶
 
+_________
+
 ####ing:
 
+不会Objective-C 不会xCode 不会ios开发的基本知识，学React-Native举步艰难。
+
+决定抽出一个星期以上学习传统IOS开发
+
+
+
 ____
-git 提交规范
+#### git 提交规范
 
 feat：新功能（feature）
 
