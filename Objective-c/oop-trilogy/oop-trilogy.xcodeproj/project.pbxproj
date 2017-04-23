@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		64646B031EAC4F6600F57D1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 64646B021EAC4F6600F57D1A /* main.m */; };
+		64646B0B1EAC54FC00F57D1A /* MyClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 64646B0A1EAC54FC00F57D1A /* MyClass.m */; };
+		64646B0F1EAC5C6500F57D1A /* ParentClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 64646B0E1EAC5C6500F57D1A /* ParentClass.m */; };
+		64646B121EAC5C7200F57D1A /* ChildClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 64646B111EAC5C7200F57D1A /* ChildClass.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +28,12 @@
 /* Begin PBXFileReference section */
 		64646AFF1EAC4F6600F57D1A /* oop-trilogy */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "oop-trilogy"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64646B021EAC4F6600F57D1A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		64646B091EAC54FC00F57D1A /* MyClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyClass.h; sourceTree = "<group>"; };
+		64646B0A1EAC54FC00F57D1A /* MyClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyClass.m; sourceTree = "<group>"; };
+		64646B0D1EAC5C6500F57D1A /* ParentClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParentClass.h; sourceTree = "<group>"; };
+		64646B0E1EAC5C6500F57D1A /* ParentClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentClass.m; sourceTree = "<group>"; };
+		64646B101EAC5C7200F57D1A /* ChildClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildClass.h; sourceTree = "<group>"; };
+		64646B111EAC5C7200F57D1A /* ChildClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildClass.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +67,12 @@
 			isa = PBXGroup;
 			children = (
 				64646B021EAC4F6600F57D1A /* main.m */,
+				64646B091EAC54FC00F57D1A /* MyClass.h */,
+				64646B0A1EAC54FC00F57D1A /* MyClass.m */,
+				64646B0D1EAC5C6500F57D1A /* ParentClass.h */,
+				64646B0E1EAC5C6500F57D1A /* ParentClass.m */,
+				64646B101EAC5C7200F57D1A /* ChildClass.h */,
+				64646B111EAC5C7200F57D1A /* ChildClass.m */,
 			);
 			path = "oop-trilogy";
 			sourceTree = "<group>";
@@ -119,7 +134,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64646B0B1EAC54FC00F57D1A /* MyClass.m in Sources */,
+				64646B121EAC5C7200F57D1A /* ChildClass.m in Sources */,
 				64646B031EAC4F6600F57D1A /* main.m in Sources */,
+				64646B0F1EAC5C6500F57D1A /* ParentClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
