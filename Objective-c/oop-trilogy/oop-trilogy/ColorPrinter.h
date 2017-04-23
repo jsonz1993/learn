@@ -1,5 +1,5 @@
 //
-//  ChildClass.h
+//  ColorPrinter.h
 //  oop-trilogy
 //
 //  Created by Jsonz on 2017/4/23.
@@ -8,7 +8,6 @@
 
 #import "ParentClass.h"
 
-@interface ChildClass : ParentClass
--(void)show;
+@interface ColorPrinter : ParentClass
 
 @end

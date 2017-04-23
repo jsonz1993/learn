@@ -14,5 +14,6 @@
     _classStr = @"ClassStr bilibilii";
     NSLog(@"ClassName - %@", _className);
     NSLog(@"classInt - %d", _classInt);
+    
 }
 @end
