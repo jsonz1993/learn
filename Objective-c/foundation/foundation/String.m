@@ -105,7 +105,28 @@
     NSString *str19 = [str18 stringByReplacingCharactersInRange:NSMakeRange(0, 5)  withString:@"你好"];
     NSLog(@"str19 = %@", str19);
     
+    // 用指定字符串替换原字符串
+    NSString *str20 = [str18 stringByReplacingOccurrencesOfString:@"Hello ios" withString: @"第一个参数为源字符串中要被替换的内容， 第二个为替换成的字符串"];
+    NSLog(@"str20 = %@", str20);
     
-    
+    // 读取文件
+    // 1. 本地文件； 2.网络文件
+    // 路径类
+    NSString *str21 = @"www.baidu.com";
+    // 网络路径
+    NSURL *httpURL = [NSURL URLWithString:str21];
+    //本地路径
+//    NSString *fileURL = [NSURL fileURLWithPath:str21];
+    // 读取网络文件
+    NSString *httpStr = [NSString stringWithContentsOfURL:httpURL encoding:NSUTF8StringEncoding error:nil];
+    NSLog(@"httpStr = %@", httpStr);
+    // 读取本地文件
+    NSString *fileStr = [NSString stringWithContentsOfFile: @"/Users/jsonz/Documents/learn/Objective-c/foundation/foundation/app.txt" encoding:NSUTF8StringEncoding error: nil];
+    NSLog(@"fileStr = %@", fileStr);
+    // 写入文件
+    NSString *str22 = @"Hello JSer";
+    BOOL isOk = [str22 writeToFile:@"/Users/jsonz/Documents/learn/Objective-c/foundation/foundation/app.js" atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    if (isOk) NSLog(@"文件写入成功");
+    else NSLog(@"文件写入失败");
 }
 @end
