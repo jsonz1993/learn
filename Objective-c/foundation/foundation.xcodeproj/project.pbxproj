@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		640302C31EACD180008A5310 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 640302C21EACD180008A5310 /* main.m */; };
 		640302CB1EACEEB0008A5310 /* String.m in Sources */ = {isa = PBXBuildFile; fileRef = 640302CA1EACEEB0008A5310 /* String.m */; };
+		6465950E1EAF910600AA9CD6 /* NSMutableStringClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6465950D1EAF910600AA9CD6 /* NSMutableStringClass.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,8 @@
 		640302C21EACD180008A5310 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		640302C91EACEEB0008A5310 /* String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = String.h; sourceTree = "<group>"; };
 		640302CA1EACEEB0008A5310 /* String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = String.m; sourceTree = "<group>"; };
+		6465950C1EAF910600AA9CD6 /* NSMutableStringClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMutableStringClass.h; sourceTree = "<group>"; };
+		6465950D1EAF910600AA9CD6 /* NSMutableStringClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMutableStringClass.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +66,8 @@
 				640302C21EACD180008A5310 /* main.m */,
 				640302C91EACEEB0008A5310 /* String.h */,
 				640302CA1EACEEB0008A5310 /* String.m */,
+				6465950C1EAF910600AA9CD6 /* NSMutableStringClass.h */,
+				6465950D1EAF910600AA9CD6 /* NSMutableStringClass.m */,
 			);
 			path = foundation;
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				640302CB1EACEEB0008A5310 /* String.m in Sources */,
+				6465950E1EAF910600AA9CD6 /* NSMutableStringClass.m in Sources */,
 				640302C31EACD180008A5310 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,6 +260,7 @@
 				640302C81EACD180008A5310 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

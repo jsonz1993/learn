@@ -7,13 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "String.h"
+#import "String.h" // foundation 的 string常见方法
+#import "NSMutableStringClass.h" // NSMutableStringClass
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        String *str = [[String alloc] init];
-        [str stringBaseFn];
-        
+//        String *str = [[String alloc] init];
+//        [str stringBaseFn];
+        NSMutableStringClass *_NSMutableString = [[NSMutableStringClass alloc] init];
+        [_NSMutableString ShowNSMutableString];
     }
     return 0;
 }
