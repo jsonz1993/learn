@@ -49,8 +49,10 @@
         NSLog(@"for in str2 = %@", str2);
     }
     
-    // 迭代枚举
-    // 迭代枚举呢？ 只有for && for in ?
+    // 枚举（慕课没有该点视频)
+    [arr1 enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSLog(@"id= %@", obj);
+    }];
     
 }
 @end
