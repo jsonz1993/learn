@@ -12,6 +12,7 @@
 #import "Arr.h"
 #import "NSMutableArrClass.h"
 #import "NSDic.h"
+#import "NSDic2.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -19,12 +20,14 @@ int main(int argc, const char * argv[]) {
 //        [str stringBaseFn];
 //        NSMutableStringClass *_NSMutableString = [[NSMutableStringClass alloc] init];
 //        [_NSMutableString ShowNSMutableString];
-        Arr *arr = [[Arr alloc] init];
-        [arr showArrFn];
+//        Arr *arr = [[Arr alloc] init];
+//        [arr showArrFn];
 //        NSMutableArrClass *arr2 = [[NSMutableArrClass alloc] init];
 //        [arr2 showArrFn];
 //        NSDic *dic = [[NSDic alloc] init];
 //        [dic showNSDictionaryFn];
+        NSDic2 *dic2 = [[NSDic2 alloc] init];
+        [dic2 showFn];
         
     }
     return 0;

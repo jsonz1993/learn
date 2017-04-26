@@ -13,6 +13,7 @@
 		6465950E1EAF910600AA9CD6 /* NSMutableStringClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 6465950D1EAF910600AA9CD6 /* NSMutableStringClass.m */; };
 		646595111EAFAB7000AA9CD6 /* Arr.m in Sources */ = {isa = PBXBuildFile; fileRef = 646595101EAFAB7000AA9CD6 /* Arr.m */; };
 		647A95681EB0EE81003975B9 /* NSDic.m in Sources */ = {isa = PBXBuildFile; fileRef = 647A95671EB0EE81003975B9 /* NSDic.m */; };
+		647A956B1EB0F5F9003975B9 /* NSDic2.m in Sources */ = {isa = PBXBuildFile; fileRef = 647A956A1EB0F5F9003975B9 /* NSDic2.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,6 +41,8 @@
 		646595101EAFAB7000AA9CD6 /* Arr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Arr.m; sourceTree = "<group>"; };
 		647A95661EB0EE81003975B9 /* NSDic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDic.h; sourceTree = "<group>"; };
 		647A95671EB0EE81003975B9 /* NSDic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDic.m; sourceTree = "<group>"; };
+		647A95691EB0F5F9003975B9 /* NSDic2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDic2.h; sourceTree = "<group>"; };
+		647A956A1EB0F5F9003975B9 /* NSDic2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDic2.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +86,8 @@
 				646595101EAFAB7000AA9CD6 /* Arr.m */,
 				64096E551EAFB54100AF6A02 /* NSMutableArrClass.h */,
 				64096E561EAFB54100AF6A02 /* NSMutableArrClass.m */,
+				647A95691EB0F5F9003975B9 /* NSDic2.h */,
+				647A956A1EB0F5F9003975B9 /* NSDic2.m */,
 			);
 			path = foundation;
 			sourceTree = "<group>";
@@ -146,6 +151,7 @@
 			files = (
 				640302CB1EACEEB0008A5310 /* String.m in Sources */,
 				64096E571EAFB54100AF6A02 /* NSMutableArrClass.m in Sources */,
+				647A956B1EB0F5F9003975B9 /* NSDic2.m in Sources */,
 				647A95681EB0EE81003975B9 /* NSDic.m in Sources */,
 				646595111EAFAB7000AA9CD6 /* Arr.m in Sources */,
 				6465950E1EAF910600AA9CD6 /* NSMutableStringClass.m in Sources */,
