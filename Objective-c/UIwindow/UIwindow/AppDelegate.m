@@ -17,6 +17,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    // 设置大小和位置 `UIScreen mainScreen` 可以得到手机主屏幕 `bounds`是获得大小
+    _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    // 设置颜色为红色
+    _window.backgroundColor = [UIColor redColor];
+    _window.rootViewController = [[UIViewController alloc] init];
+    // 将window设置为我们的主window
+    [_window makeKeyAndVisible];
     return YES;
 }
 
