@@ -1,8 +1,8 @@
 //
 //  AppDelegate.m
-//  UIwindow
+//  UILabel
 //
-//  Created by Jsonz on 2017/4/27.
+//  Created by Jsonz on 2017/4/29.
 //  Copyright © 2017年 Jsonz. All rights reserved.
 //
 
@@ -16,14 +16,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-//     Override point for customization after application launch.
-    // 设置大小和位置 `UIScreen mainScreen` 可以得到手机主屏幕 `bounds`是获得大小
-    _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // 设置颜色为红色
-    _window.backgroundColor = [UIColor blueColor];
-    _window.rootViewController = [[UIViewController alloc] init];
-    // 将window设置为我们的主window
-    [_window makeKeyAndVisible];
+    // Override point for customization after application launch.
     return YES;
 }
 

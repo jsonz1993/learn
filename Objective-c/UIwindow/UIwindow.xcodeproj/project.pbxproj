@@ -509,6 +509,7 @@
 				646288901EB249410001A122 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		646288911EB249410001A122 /* Build configuration list for PBXNativeTarget "UIwindowTests" */ = {
 			isa = XCConfigurationList;
@@ -517,6 +518,7 @@
 				646288931EB249410001A122 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		646288941EB249410001A122 /* Build configuration list for PBXNativeTarget "UIwindowUITests" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +527,7 @@
 				646288961EB249410001A122 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
