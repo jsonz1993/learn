@@ -42,6 +42,19 @@ _________
 
 [http://www.imooc.com/learn/486](http://www.imooc.com/learn/486)
 
+_________
+
+#### next:
+[安卓webview内存](https://developers.google.cn/web/tools/chrome-devtools/memory-problems/#dom)
+
+[github-cookie](https://github.com/jaywcjlove/cookie.js)
+
+[github-store](https://github.com/jaywcjlove/store.js)
+
+[github-validator]自己实现小轮子
+
+
+
 ____
 #### git 提交规范
 

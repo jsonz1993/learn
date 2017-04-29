@@ -62,8 +62,6 @@
     label.lineBreakMode = NSLineBreakByCharWrapping;
     label.numberOfLines = 2; // 如果设置到-1或0 就不会限制行数，能显示多少行就显示多少行
     
-    // 根据字符串大小计算label大小 参数 [font, 宽高, 换行模式]
-    
     
     [self.view addSubview:label];
     
