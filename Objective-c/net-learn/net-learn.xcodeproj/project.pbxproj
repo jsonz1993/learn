@@ -1,0 +1,532 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		64B85CB51EB8E7A0003CCD69 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B85CB41EB8E7A0003CCD69 /* main.m */; };
+		64B85CB81EB8E7A0003CCD69 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B85CB71EB8E7A0003CCD69 /* AppDelegate.m */; };
+		64B85CBB1EB8E7A0003CCD69 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B85CBA1EB8E7A0003CCD69 /* ViewController.m */; };
+		64B85CBE1EB8E7A0003CCD69 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64B85CBC1EB8E7A0003CCD69 /* Main.storyboard */; };
+		64B85CC01EB8E7A0003CCD69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64B85CBF1EB8E7A0003CCD69 /* Assets.xcassets */; };
+		64B85CC31EB8E7A0003CCD69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64B85CC11EB8E7A0003CCD69 /* LaunchScreen.storyboard */; };
+		64B85CCE1EB8E7A0003CCD69 /* net_learnTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B85CCD1EB8E7A0003CCD69 /* net_learnTests.m */; };
+		64B85CD91EB8E7A0003CCD69 /* net_learnUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B85CD81EB8E7A0003CCD69 /* net_learnUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		64B85CCA1EB8E7A0003CCD69 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 64B85CA81EB8E7A0003CCD69 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 64B85CAF1EB8E7A0003CCD69;
+			remoteInfo = "net-learn";
+		};
+		64B85CD51EB8E7A0003CCD69 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 64B85CA81EB8E7A0003CCD69 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 64B85CAF1EB8E7A0003CCD69;
+			remoteInfo = "net-learn";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		64B85CB01EB8E7A0003CCD69 /* net-learn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "net-learn.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		64B85CB41EB8E7A0003CCD69 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		64B85CB61EB8E7A0003CCD69 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		64B85CB71EB8E7A0003CCD69 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		64B85CB91EB8E7A0003CCD69 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		64B85CBA1EB8E7A0003CCD69 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		64B85CBD1EB8E7A0003CCD69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		64B85CBF1EB8E7A0003CCD69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		64B85CC21EB8E7A0003CCD69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		64B85CC41EB8E7A0003CCD69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64B85CC91EB8E7A0003CCD69 /* net-learnTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "net-learnTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		64B85CCD1EB8E7A0003CCD69 /* net_learnTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = net_learnTests.m; sourceTree = "<group>"; };
+		64B85CCF1EB8E7A0003CCD69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64B85CD41EB8E7A0003CCD69 /* net-learnUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "net-learnUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		64B85CD81EB8E7A0003CCD69 /* net_learnUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = net_learnUITests.m; sourceTree = "<group>"; };
+		64B85CDA1EB8E7A0003CCD69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		64B85CAD1EB8E7A0003CCD69 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64B85CC61EB8E7A0003CCD69 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64B85CD11EB8E7A0003CCD69 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		64B85CA71EB8E7A0003CCD69 = {
+			isa = PBXGroup;
+			children = (
+				64B85CB21EB8E7A0003CCD69 /* net-learn */,
+				64B85CCC1EB8E7A0003CCD69 /* net-learnTests */,
+				64B85CD71EB8E7A0003CCD69 /* net-learnUITests */,
+				64B85CB11EB8E7A0003CCD69 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		64B85CB11EB8E7A0003CCD69 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				64B85CB01EB8E7A0003CCD69 /* net-learn.app */,
+				64B85CC91EB8E7A0003CCD69 /* net-learnTests.xctest */,
+				64B85CD41EB8E7A0003CCD69 /* net-learnUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		64B85CB21EB8E7A0003CCD69 /* net-learn */ = {
+			isa = PBXGroup;
+			children = (
+				64B85CB61EB8E7A0003CCD69 /* AppDelegate.h */,
+				64B85CB71EB8E7A0003CCD69 /* AppDelegate.m */,
+				64B85CB91EB8E7A0003CCD69 /* ViewController.h */,
+				64B85CBA1EB8E7A0003CCD69 /* ViewController.m */,
+				64B85CBC1EB8E7A0003CCD69 /* Main.storyboard */,
+				64B85CBF1EB8E7A0003CCD69 /* Assets.xcassets */,
+				64B85CC11EB8E7A0003CCD69 /* LaunchScreen.storyboard */,
+				64B85CC41EB8E7A0003CCD69 /* Info.plist */,
+				64B85CB31EB8E7A0003CCD69 /* Supporting Files */,
+			);
+			path = "net-learn";
+			sourceTree = "<group>";
+		};
+		64B85CB31EB8E7A0003CCD69 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				64B85CB41EB8E7A0003CCD69 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		64B85CCC1EB8E7A0003CCD69 /* net-learnTests */ = {
+			isa = PBXGroup;
+			children = (
+				64B85CCD1EB8E7A0003CCD69 /* net_learnTests.m */,
+				64B85CCF1EB8E7A0003CCD69 /* Info.plist */,
+			);
+			path = "net-learnTests";
+			sourceTree = "<group>";
+		};
+		64B85CD71EB8E7A0003CCD69 /* net-learnUITests */ = {
+			isa = PBXGroup;
+			children = (
+				64B85CD81EB8E7A0003CCD69 /* net_learnUITests.m */,
+				64B85CDA1EB8E7A0003CCD69 /* Info.plist */,
+			);
+			path = "net-learnUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		64B85CAF1EB8E7A0003CCD69 /* net-learn */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64B85CDD1EB8E7A0003CCD69 /* Build configuration list for PBXNativeTarget "net-learn" */;
+			buildPhases = (
+				64B85CAC1EB8E7A0003CCD69 /* Sources */,
+				64B85CAD1EB8E7A0003CCD69 /* Frameworks */,
+				64B85CAE1EB8E7A0003CCD69 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "net-learn";
+			productName = "net-learn";
+			productReference = 64B85CB01EB8E7A0003CCD69 /* net-learn.app */;
+			productType = "com.apple.product-type.application";
+		};
+		64B85CC81EB8E7A0003CCD69 /* net-learnTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64B85CE01EB8E7A0003CCD69 /* Build configuration list for PBXNativeTarget "net-learnTests" */;
+			buildPhases = (
+				64B85CC51EB8E7A0003CCD69 /* Sources */,
+				64B85CC61EB8E7A0003CCD69 /* Frameworks */,
+				64B85CC71EB8E7A0003CCD69 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				64B85CCB1EB8E7A0003CCD69 /* PBXTargetDependency */,
+			);
+			name = "net-learnTests";
+			productName = "net-learnTests";
+			productReference = 64B85CC91EB8E7A0003CCD69 /* net-learnTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		64B85CD31EB8E7A0003CCD69 /* net-learnUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64B85CE31EB8E7A0003CCD69 /* Build configuration list for PBXNativeTarget "net-learnUITests" */;
+			buildPhases = (
+				64B85CD01EB8E7A0003CCD69 /* Sources */,
+				64B85CD11EB8E7A0003CCD69 /* Frameworks */,
+				64B85CD21EB8E7A0003CCD69 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				64B85CD61EB8E7A0003CCD69 /* PBXTargetDependency */,
+			);
+			name = "net-learnUITests";
+			productName = "net-learnUITests";
+			productReference = 64B85CD41EB8E7A0003CCD69 /* net-learnUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		64B85CA81EB8E7A0003CCD69 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = Jsonz;
+				TargetAttributes = {
+					64B85CAF1EB8E7A0003CCD69 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
+					64B85CC81EB8E7A0003CCD69 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 64B85CAF1EB8E7A0003CCD69;
+					};
+					64B85CD31EB8E7A0003CCD69 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 64B85CAF1EB8E7A0003CCD69;
+					};
+				};
+			};
+			buildConfigurationList = 64B85CAB1EB8E7A0003CCD69 /* Build configuration list for PBXProject "net-learn" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 64B85CA71EB8E7A0003CCD69;
+			productRefGroup = 64B85CB11EB8E7A0003CCD69 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				64B85CAF1EB8E7A0003CCD69 /* net-learn */,
+				64B85CC81EB8E7A0003CCD69 /* net-learnTests */,
+				64B85CD31EB8E7A0003CCD69 /* net-learnUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		64B85CAE1EB8E7A0003CCD69 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64B85CC31EB8E7A0003CCD69 /* LaunchScreen.storyboard in Resources */,
+				64B85CC01EB8E7A0003CCD69 /* Assets.xcassets in Resources */,
+				64B85CBE1EB8E7A0003CCD69 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64B85CC71EB8E7A0003CCD69 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64B85CD21EB8E7A0003CCD69 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		64B85CAC1EB8E7A0003CCD69 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64B85CBB1EB8E7A0003CCD69 /* ViewController.m in Sources */,
+				64B85CB81EB8E7A0003CCD69 /* AppDelegate.m in Sources */,
+				64B85CB51EB8E7A0003CCD69 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64B85CC51EB8E7A0003CCD69 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64B85CCE1EB8E7A0003CCD69 /* net_learnTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64B85CD01EB8E7A0003CCD69 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64B85CD91EB8E7A0003CCD69 /* net_learnUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		64B85CCB1EB8E7A0003CCD69 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 64B85CAF1EB8E7A0003CCD69 /* net-learn */;
+			targetProxy = 64B85CCA1EB8E7A0003CCD69 /* PBXContainerItemProxy */;
+		};
+		64B85CD61EB8E7A0003CCD69 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 64B85CAF1EB8E7A0003CCD69 /* net-learn */;
+			targetProxy = 64B85CD51EB8E7A0003CCD69 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		64B85CBC1EB8E7A0003CCD69 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				64B85CBD1EB8E7A0003CCD69 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		64B85CC11EB8E7A0003CCD69 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				64B85CC21EB8E7A0003CCD69 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		64B85CDB1EB8E7A0003CCD69 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		64B85CDC1EB8E7A0003CCD69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		64B85CDE1EB8E7A0003CCD69 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "net-learn/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Jsonz.net-learn";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		64B85CDF1EB8E7A0003CCD69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "net-learn/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Jsonz.net-learn";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		64B85CE11EB8E7A0003CCD69 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "net-learnTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Jsonz.net-learnTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/net-learn.app/net-learn";
+			};
+			name = Debug;
+		};
+		64B85CE21EB8E7A0003CCD69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "net-learnTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Jsonz.net-learnTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/net-learn.app/net-learn";
+			};
+			name = Release;
+		};
+		64B85CE41EB8E7A0003CCD69 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "net-learnUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Jsonz.net-learnUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "net-learn";
+			};
+			name = Debug;
+		};
+		64B85CE51EB8E7A0003CCD69 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "net-learnUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Jsonz.net-learnUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "net-learn";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		64B85CAB1EB8E7A0003CCD69 /* Build configuration list for PBXProject "net-learn" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64B85CDB1EB8E7A0003CCD69 /* Debug */,
+				64B85CDC1EB8E7A0003CCD69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		64B85CDD1EB8E7A0003CCD69 /* Build configuration list for PBXNativeTarget "net-learn" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64B85CDE1EB8E7A0003CCD69 /* Debug */,
+				64B85CDF1EB8E7A0003CCD69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		64B85CE01EB8E7A0003CCD69 /* Build configuration list for PBXNativeTarget "net-learnTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64B85CE11EB8E7A0003CCD69 /* Debug */,
+				64B85CE21EB8E7A0003CCD69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		64B85CE31EB8E7A0003CCD69 /* Build configuration list for PBXNativeTarget "net-learnUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64B85CE41EB8E7A0003CCD69 /* Debug */,
+				64B85CE51EB8E7A0003CCD69 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 64B85CA81EB8E7A0003CCD69 /* Project object */;
+}
