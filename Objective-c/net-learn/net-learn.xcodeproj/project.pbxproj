@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		644667851EBA2B95001EE39A /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644667841EBA2B95001EE39A /* UserInfoViewController.m */; };
+		644667881EBA2E3A001EE39A /* KeyValueView.m in Sources */ = {isa = PBXBuildFile; fileRef = 644667871EBA2E3A001EE39A /* KeyValueView.m */; };
 		64B85CB51EB8E7A0003CCD69 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B85CB41EB8E7A0003CCD69 /* main.m */; };
 		64B85CB81EB8E7A0003CCD69 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B85CB71EB8E7A0003CCD69 /* AppDelegate.m */; };
 		64B85CBB1EB8E7A0003CCD69 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B85CBA1EB8E7A0003CCD69 /* ViewController.m */; };
@@ -35,6 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		644667831EBA2B95001EE39A /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
+		644667841EBA2B95001EE39A /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
+		644667861EBA2E3A001EE39A /* KeyValueView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyValueView.h; sourceTree = "<group>"; };
+		644667871EBA2E3A001EE39A /* KeyValueView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyValueView.m; sourceTree = "<group>"; };
 		64B85CB01EB8E7A0003CCD69 /* net-learn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "net-learn.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64B85CB41EB8E7A0003CCD69 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		64B85CB61EB8E7A0003CCD69 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -78,6 +84,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		644667811EBA2B1F001EE39A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				644667831EBA2B95001EE39A /* UserInfoViewController.h */,
+				644667841EBA2B95001EE39A /* UserInfoViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		644667821EBA2B39001EE39A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				644667861EBA2E3A001EE39A /* KeyValueView.h */,
+				644667871EBA2E3A001EE39A /* KeyValueView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		64B85CA71EB8E7A0003CCD69 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +125,8 @@
 		64B85CB21EB8E7A0003CCD69 /* net-learn */ = {
 			isa = PBXGroup;
 			children = (
+				644667821EBA2B39001EE39A /* View */,
+				644667811EBA2B1F001EE39A /* Controller */,
 				64B85CB61EB8E7A0003CCD69 /* AppDelegate.h */,
 				64B85CB71EB8E7A0003CCD69 /* AppDelegate.m */,
 				64B85CB91EB8E7A0003CCD69 /* ViewController.h */,
@@ -274,6 +300,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				64B85CBB1EB8E7A0003CCD69 /* ViewController.m in Sources */,
+				644667881EBA2E3A001EE39A /* KeyValueView.m in Sources */,
+				644667851EBA2B95001EE39A /* UserInfoViewController.m in Sources */,
 				64B85CB81EB8E7A0003CCD69 /* AppDelegate.m in Sources */,
 				64B85CB51EB8E7A0003CCD69 /* main.m in Sources */,
 			);
@@ -509,6 +537,7 @@
 				64B85CDF1EB8E7A0003CCD69 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		64B85CE01EB8E7A0003CCD69 /* Build configuration list for PBXNativeTarget "net-learnTests" */ = {
 			isa = XCConfigurationList;
@@ -517,6 +546,7 @@
 				64B85CE21EB8E7A0003CCD69 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		64B85CE31EB8E7A0003CCD69 /* Build configuration list for PBXNativeTarget "net-learnUITests" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +555,7 @@
 				64B85CE51EB8E7A0003CCD69 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

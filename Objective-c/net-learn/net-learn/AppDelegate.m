@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "UserInfoViewController.h"
 
 @interface AppDelegate ()
 
@@ -18,23 +19,25 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    // 第一节 Hello World
     // 创建一个url对象 用来表示访问的服务器
-    NSURL *url = [NSURL URLWithString:@"http://www.imooc.com"];
-    
+//    NSURL *url = [NSURL URLWithString:@"http://www.imooc.com"];
     // 客户端发起的网络请求的请求内容
-    NSURLRequest *request = [NSURLRequest requestWithURL: url];
-    
-    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
+//    NSURLRequest *request = [NSURLRequest requestWithURL: url];
+//    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     // 启动网络请求
-    [connection start];
+//    [connection start];
     
+    // 第二节 get请求
+    UserInfoViewController *userInfoVC = [[UserInfoViewController alloc] init];
+    self.window.rootViewController = userInfoVC;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
 - (void) connection: (NSURLConnection *) connection didReceiveResponse: (NSURLResponse * )response {
     // 服务器给客户端的响应结果
-    NSLog(@"response: %@", response);
+//    NSLog(@"response: %@", response);
 }
 
 
