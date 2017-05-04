@@ -88,6 +88,7 @@
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     // 当 delegate参数为self时，我们的类应该要遵从该协议<NSURLConnectionDelegate>
     
+    
     // 4. 发起连接 启动网络连接
     [connection start];
 }
