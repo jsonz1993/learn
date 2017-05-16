@@ -1,9 +1,11 @@
 学习计划
 ======
 
-准备进新公司，新一波的学习。
+好久没更新学习计划了，入职租租车也有一个多月了。
 
-为了提高学习效率，最多只能并行学习三个。
+本来以为来了部门用react，没想到转了部门后 改成 handlebars 和 jq 生无可恋脸
+
+修改学习计划，从 react 全家桶改为杂七杂八
 
 也就是说根目录最多只会有finish && 3个其他学习内容目录
 
@@ -12,24 +14,14 @@
 ----
 #### future:
 
-- php 简单入门 !!!
-- react !!!!!
-- redux !!!!
-- ios 简单入门 !!!!!
-- andriod 简单入门 !!!
-- 简单事件系统 !!!
-- 简单移动端swipe !!!
-- touch 事件 !!!
-- React Native !!!!!!
+- React Native
+
+
 
 ----
 ####root: 
 
 `finish` 存放学完/暂时放弃学习的东西
-
-`React` React全家桶
-
-`Objective-C` ios 入门
 
 `React_Native`  RN 入门
 
@@ -37,26 +29,20 @@ _________
 
 ####ing:
 
-不会Objective-C 不会xCode 不会ios开发的基本知识，学React-Native举步艰难。
-决定抽出一段时间学习传统IOS开发
-
-[http://www.imooc.com/learn/486](http://www.imooc.com/learn/486)
-
+`React_Native`  RN 入门
 _________
 
 #### next:
+
 [安卓webview内存](https://developers.google.cn/web/tools/chrome-devtools/memory-problems/#dom)
 
 [github-cookie](https://github.com/jaywcjlove/cookie.js)
 
 [github-store](https://github.com/jaywcjlove/store.js)
 
-[github-validator]自己实现小轮子
+[promise](http://javascript.ruanyifeng.com/advanced/promise.html)
 
-__RN__ 
-重点看: 聊天问题, 地理位置图片
-
-
+[node入门](http://javascript.ruanyifeng.com/nodejs/basic.html)
 
 ____
 #### git 提交规范
