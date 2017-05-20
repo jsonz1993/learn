@@ -35,12 +35,6 @@ _________
 
 #### next:
 
-[公司前端内部分享 —— 跨域资源共享,Cross-Origin Resource Sharing]
-
-[cors](http://www.cnblogs.com/Darren_code/p/cors.html)
-
-[cors](http://www.ruanyifeng.com/blog/2016/04/cors.html)
-
 [部门前端内部分享 —— 本地https开发]
 
 [github-cookie](https://github.com/jaywcjlove/cookie.js)
