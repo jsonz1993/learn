@@ -1,0 +1,14 @@
+# 演示 HTTP 请求报文
+
+## POST
+
+POST /api HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json
+Cookie: age=18; time=1495120413329
+
+{
+  "name": "zuzuche",
+  "age": 6
+}
+
