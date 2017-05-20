@@ -35,8 +35,6 @@ _________
 
 #### next:
 
-[部门前端内部分享 —— 本地https开发]
-
 [github-cookie](https://github.com/jaywcjlove/cookie.js)
 
 [github-store](https://github.com/jaywcjlove/store.js)
