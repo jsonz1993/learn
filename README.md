@@ -35,8 +35,6 @@ _________
 
 #### next:
 
-[github-cookie](https://github.com/jaywcjlove/cookie.js)
-
 [github-store](https://github.com/jaywcjlove/store.js)
 
 [promise](http://javascript.ruanyifeng.com/advanced/promise.html)
