@@ -37,8 +37,6 @@ _________
 
 [node入门](http://javascript.ruanyifeng.com/nodejs/basic.html)
 
-[webpack 异步加载](require.ensure)
-
 ____
 #### git 提交规范
 
