@@ -35,11 +35,9 @@ _________
 
 #### next:
 
-[github-store](https://github.com/jaywcjlove/store.js)
-
-[promise](http://javascript.ruanyifeng.com/advanced/promise.html)
-
 [node入门](http://javascript.ruanyifeng.com/nodejs/basic.html)
+
+[webpack 异步加载](require.ensure)
 
 ____
 #### git 提交规范
