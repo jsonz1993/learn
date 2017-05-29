@@ -37,6 +37,10 @@ _________
 
 js报错机制
 
+chrome 插件开发
+
+[针对其他设备的移动版网站搜索引擎优化 (SEO)](https://developers.google.com/webmasters/mobile-sites/mobile-seo/other-devices?hl=zh-cn)
+
 [node入门](http://javascript.ruanyifeng.com/nodejs/basic.html)
 
 ____
