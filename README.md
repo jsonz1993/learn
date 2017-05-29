@@ -35,6 +35,8 @@ _________
 
 #### next:
 
+js报错机制
+
 [node入门](http://javascript.ruanyifeng.com/nodejs/basic.html)
 
 ____
