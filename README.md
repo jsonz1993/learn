@@ -29,8 +29,6 @@ _________
 
 ####ing:
 
-`react-native-countdown` 封装加npm
-
 `React_Native`  RN 入门
 
 _________ 

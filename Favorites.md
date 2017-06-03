@@ -12,6 +12,9 @@
 [viewport](https://aotu.io/notes/2017/04/28/2017-4-28-CSS-viewport-units/)
 
 ### ios
+
+[ios touch事件与点击穿透问题](https://segmentfault.com/a/1190000003848737)
+
 [ios滚动条问题](https://zhuanlan.zhihu.com/p/24837233)
 
 [ios滚动条问题](https://fe.ele.me/momentum-scrolling-on-ios/)
