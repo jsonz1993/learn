@@ -59,4 +59,4 @@
 
 [next 置顶文章](https://ehlxr.me/2016/08/30/%E4%BD%BF%E7%94%A8Hexo%E5%9F%BA%E4%BA%8EGitHub-Pages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E4%B8%89%EF%BC%89/#%E5%8D%81%E3%80%81%E5%8D%9A%E6%96%87%E7%BD%AE%E9%A1%B6)
 
-
+[测速优化](https://www.webpagetest.org/)
