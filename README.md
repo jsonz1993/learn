@@ -11,6 +11,8 @@
 
 如果发现链接项目找不到，可以到`finish`里面找
 
+C++ http://www.imooc.com/video/6578
+
 ----
 #### future:
 
