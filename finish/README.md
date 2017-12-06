@@ -2,11 +2,12 @@
 
 大多是零零散散的demo， 没有系统整理，但一般会在README.md附上学习的地址
 
+- React 入门的一些学习
+- ​
 - PhantomJs
  - Full web stack No browser required
  - [http://phantomjs.org/](http://phantomjs.org/)
  - 可用于测试网页打开速度，抓包等
-
 - cookie
   - 封装了一些cookie常用的api
   - `get` `set` `remove` `clear` `getAll`
