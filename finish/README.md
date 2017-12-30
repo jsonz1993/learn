@@ -2,8 +2,14 @@
 
 大多是零零散散的demo， 没有系统整理，但一般会在README.md附上学习的地址
 
+- Promise
+  - Promise/A+ 规范实现
+  - 为了做技术分享 了解实现原理
+  - [在线文章](https://jsonz1993.github.io/2017/12/浅析Promise/)
+  - [在线ppt](https://ppt.baomitu.com/d/5624aeb7)
+
 - React 入门的一些学习
-- ​
+
 - PhantomJs
  - Full web stack No browser required
  - [http://phantomjs.org/](http://phantomjs.org/)
