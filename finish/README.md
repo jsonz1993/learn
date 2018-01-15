@@ -1,6 +1,8 @@
 该文件夹下存放的为目前学习完成或者暂不学习的内容
 
-大多是零零散散的demo， 没有系统整理，但一般会在README.md附上学习的地址
+大多是零零散散的demo， 没有系统整理，但一般会在README.md附上学习的地址, 后面会和 [wheel](https://github.com/jsonz1993/wheel) 耦合度越来越高
+
+- min-compiler 简单的用js实现一个编译器，主要了解编译器的原理
 
 - Promise
   - Promise/A+ 规范实现
