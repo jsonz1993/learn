@@ -1,6 +1,6 @@
 // 执行环境
 var page = require('webpage').create()
-var url = 'https://m.easyrentcars.com'
+var url = 'your url'
 
 // page.open(url, function(status) {
 // 	var title = page.evaluate(function() {
