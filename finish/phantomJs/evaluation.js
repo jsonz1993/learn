@@ -1,6 +1,10 @@
 // 执行环境
 var page = require('webpage').create()
+<<<<<<< HEAD
 var url = 'you url'
+=======
+var url = 'your url'
+>>>>>>> 7693b3adb9d094f7db95917f1254e333c0936225
 
 // page.open(url, function(status) {
 // 	var title = page.evaluate(function() {
