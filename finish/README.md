@@ -2,6 +2,11 @@
 
 大多是零零散散的demo， 没有系统整理，但一般会在README.md附上学习的地址, 后面会和 [wheel](https://github.com/jsonz1993/wheel) 耦合度越来越高
 
+- auto_test
+  - auto_test 利用 puppeteer 来进行功能测试 将测试结果发送到后台记录
+  - auto_test_backend 存取测试结果，方便查看
+  - [链接](https://jsonz1993.github.io/2018/04/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B%E6%96%B9%E6%A1%88/)
+
 - babel-plugin-jsonz_test babel官网demo
   - 附上[babel官方插件手册 babel-handbook](https://github.com/thejameskyle/babel-handbook/blob/master/translations/zh-Hans/plugin-handbook.md)
 

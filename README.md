@@ -22,14 +22,11 @@ _________
 
 ####ing:
 
-C++ http://www.imooc.com/video/6578
-
-http && https
+node mongo egg rn
 
 _________ 
 
 #### next:
-
 
 
 ____
