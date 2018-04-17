@@ -22,8 +22,20 @@ _________
 
 ####ing:
 
-node mongo egg rn
+react: diy-react
+1. [https://www.jianshu.com/p/d3cc1b74b538](https://www.jianshu.com/p/d3cc1b74b538)
 
+node+mongo+egg: 公司前端练手项目
+
+webpack 工程化: 优化pc打包构建（打包时间与缓存机制）
+1. https://mp.weixin.qq.com/s/Ez0jxE3XA1_RGgUHyjC73A
+
+javascript: [stopImmediatePropagation](https://developer.mozilla.org/zh-CN/docs/Web/API/Event/stopImmediatePropagation)
+
+git: [https://mubu.com/doc/21wNPB_ZJp](https://mubu.com/doc/21wNPB_ZJp)
+
+ui&&javascript: 
+[ui库](https://ant.design/components/select-cn/)
 _________ 
 
 #### next:

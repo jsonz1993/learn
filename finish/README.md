@@ -7,6 +7,19 @@
   - auto_test_backend 存取测试结果，方便查看
   - [链接](https://jsonz1993.github.io/2018/04/%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B%E6%96%B9%E6%A1%88/)
 
+
+- 项目代码规范工作流——editor、prettier、eslint、git-check
+  - 项目集成 代码规范 格式化 提交git仓库前检查功能等
+  - [链接]((http://l.easyrentcars.com:4000/2018/03/%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E5%B7%A5%E4%BD%9C%E6%B5%81%E2%80%94%E2%80%94editor%E3%80%81prettier%E3%80%81eslint%E3%80%81git-check/))
+
+- 自动化测试 puppeteer 与qq空间
+  - 尝试用 puppeteer 做一些自动化的小脚本 [链接]((http://l.easyrentcars.com:4000/2018/03/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95puppeteer-%E4%B8%8Eqq%E7%A9%BA%E9%97%B4/))
+  - [源码](https://github.com/jsonz1993/wheel/tree/master/qqZone)
+
+- react全家桶 + dva 实践整理总结
+  - 关于工作中使用dva的一些总结
+  - [链接](http://l.easyrentcars.com:4000/2018/02/react%E5%85%A8%E5%AE%B6%E6%A1%B6-dva-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E6%95%B4%E7%90%86%E6%80%BB%E7%BB%93/)
+
 - babel-plugin-jsonz_test babel官网demo
   - 附上[babel官方插件手册 babel-handbook](https://github.com/thejameskyle/babel-handbook/blob/master/translations/zh-Hans/plugin-handbook.md)
 
