@@ -2,6 +2,10 @@
 
 大多是零零散散的demo， 没有系统整理，但一般会在README.md附上学习的地址, 后面会和 [wheel](https://github.com/jsonz1993/wheel) 耦合度越来越高
 
+- [min-redux]
+  - 学习一个框架/库/插件，最简单粗暴直接明了的方法就是写一个最小的可运行脚本，虽然现在没办法做到直接写，但是照着敲也可以很深入的理解实现的原理
+  - 参照掘金一篇文章敲的[https://juejin.im/post/5a1ebe3b51882575d42f2629](https://juejin.im/post/5a1ebe3b51882575d42f2629)
+
 - auto_test
   - auto_test 利用 puppeteer 来进行功能测试 将测试结果发送到后台记录
   - auto_test_backend 存取测试结果，方便查看

@@ -25,6 +25,8 @@ _________
 react: diy-react
 1. [https://www.jianshu.com/p/d3cc1b74b538](https://www.jianshu.com/p/d3cc1b74b538)
 
+2. [diy-redux](https://juejin.im/post/5a1ebe3b51882575d42f2629)
+
 node+mongo+egg: 公司前端练手项目
 
 webpack 工程化: 优化pc打包构建（打包时间与缓存机制）
