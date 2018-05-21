@@ -1,8 +1,27 @@
 该文件夹下存放的为目前学习完成或者暂不学习的内容
 
-大多是零零散散的demo， 没有系统整理，但一般会在README.md附上学习的地址, 后面会和 [wheel](https://github.com/jsonz1993/wheel) 耦合度越来越高
+大多是零零散散的demo， 没有系统整理，但一般会在README.md附上学习的地址, 后面会和 [wheel](https://github.com/jsonz1993/wheel) [blog](https://jsonz1993.github.io/)耦合度越来越高
 
-- [min-redux]
+
+- 《css世界》常用技巧 —— 读书笔记
+  - 之前面荔枝被说css不扎实，所以就来看了一下，真·挺好的一本书，从刚入行就会看张鑫旭的博客，这次算是比较系统的过了一遍基础css知识，强烈推荐!
+  - [文章传送门](https://jsonz1993.github.io/2018/05/css-world/)
+
+- 浏览器恢复滚动行为 —— history.scrollRestoration
+  - 实验性的属性，比如我们在谷歌搜索一个东西，然后拉到下面点击当前页面跳转过去，再返回的时候，会返回到刚才点击的位置。
+  - [相关的文章与API介绍](https://jsonz1993.github.io/2018/05/history-scroll-restoration/)
+
+- create-react-app 源码解析
+  - 这个就有点骚了，第一次尝试看脚手架源码，虽然实际上看了没有想象中的难或复杂
+  - 给个传送门到博客文章看，写的比较良心，虽然比较啰嗦，但是有教怎么本地断点调试查看源码， __学了以后可以举一反三__。
+  - [掘金系列一](https://juejin.im/post/5af452fd518825671c0e96e5)   [掘金系列二](https://juejin.im/post/5af98aaf518825426d2d4142)
+  - [博客文章系列一](https://jsonz1993.github.io/2018/05/create-react-app-o/)   [博客文章系列二](https://jsonz1993.github.io/2018/05/create-react-app-t/)
+
+- 事件重复绑定问题与stopImmediatePropagation
+  - 关于事件重复绑定问题的探讨，与stopImmediatePropagation API的介绍
+  - [博客传送门](https://jsonz1993.github.io/2018/04/%E4%BA%8B%E4%BB%B6%E9%87%8D%E5%A4%8D%E7%BB%91%E5%AE%9A%E4%B8%8EstopImmediatePropagation/)
+
+- min-redux
   - 学习一个框架/库/插件，最简单粗暴直接明了的方法就是写一个最小的可运行脚本，虽然现在没办法做到直接写，但是照着敲也可以很深入的理解实现的原理
   - 参照掘金一篇文章敲的[https://juejin.im/post/5a1ebe3b51882575d42f2629](https://juejin.im/post/5a1ebe3b51882575d42f2629)
 
