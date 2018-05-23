@@ -1,0 +1,15 @@
+{
+  "name": "http_mini_book",
+  "version": "1.0.0",
+  "description": "啦啦啦啦啦啦 我是卖报的小行家",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}

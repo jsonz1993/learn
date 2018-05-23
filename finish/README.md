@@ -2,6 +2,10 @@
 
 大多是零零散散的demo， 没有系统整理，但一般会在README.md附上学习的地址, 后面会和 [wheel](https://github.com/jsonz1993/wheel) [blog](https://jsonz1993.github.io/)耦合度越来越高
 
+- 《http小书》
+  - 同样是面试引出的知识盲区
+  - [部分示例代码]()
+  - [梳理总结](https://jsonz1993.github.io/2018/05/http-mini-book/)
 
 - 《css世界》常用技巧 —— 读书笔记
   - 之前面荔枝被说css不扎实，所以就来看了一下，真·挺好的一本书，从刚入行就会看张鑫旭的博客，这次算是比较系统的过了一遍基础css知识，强烈推荐!

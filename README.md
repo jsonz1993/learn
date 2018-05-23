@@ -12,8 +12,6 @@
 
 #ing:
 
-《http小书》
-
 ui&&javascript: 
 [ui库](https://ant.design/components/select-cn/)
 
@@ -36,3 +34,8 @@ migration: 文件迁移
 chore：构建过程或辅助工具的变动
 
 del: 删除
+
+# done
+- [x]《http小书》
+- [x]《css世界》
+- [x] create-react-app源码
