@@ -4,7 +4,7 @@
 
 - 《http小书》
   - 同样是面试引出的知识盲区
-  - [部分示例代码]()
+  - [部分示例代码](https://github.com/jsonz1993/learn/tree/master/finish/http_mini_book)
   - [梳理总结](https://jsonz1993.github.io/2018/05/http-mini-book/)
 
 - 《css世界》常用技巧 —— 读书笔记
