@@ -2,6 +2,9 @@
 
 大多是零零散散的demo， 没有系统整理，但一般会在README.md附上学习的地址, 后面会和 [wheel](https://github.com/jsonz1993/wheel) [blog](https://jsonz1993.github.io/)耦合度越来越高
 
+- babel-plugin-jsonz
+  - 学习babel插件编写
+
 - 《http小书》
   - 同样是面试引出的知识盲区
   - [部分示例代码](https://github.com/jsonz1993/learn/tree/master/finish/http_mini_book)
@@ -46,9 +49,6 @@
 - react全家桶 + dva 实践整理总结
   - 关于工作中使用dva的一些总结
   - [链接](http://l.easyrentcars.com:4000/2018/02/react%E5%85%A8%E5%AE%B6%E6%A1%B6-dva-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E6%95%B4%E7%90%86%E6%80%BB%E7%BB%93/)
-
-- babel-plugin-jsonz_test babel官网demo
-  - 附上[babel官方插件手册 babel-handbook](https://github.com/thejameskyle/babel-handbook/blob/master/translations/zh-Hans/plugin-handbook.md)
 
 - min-compiler 简单的用js实现一个编译器，主要了解编译器的原理
 

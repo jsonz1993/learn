@@ -1,3 +1,1 @@
-function demo() {
-  return "sebmck" === "dork";
-}
+var c = 406;

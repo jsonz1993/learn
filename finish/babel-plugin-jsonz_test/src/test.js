@@ -1,3 +1,1 @@
-function demo() {
-  return 1===2;
-}
+var c = 1+2+3+20**2;
