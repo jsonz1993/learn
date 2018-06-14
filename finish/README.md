@@ -4,6 +4,7 @@
 
 - babel-plugin-jsonz
   - 学习babel插件编写
+  - next 项目上的小插件
 
 - 《http小书》
   - 同样是面试引出的知识盲区
