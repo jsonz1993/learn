@@ -1,6 +1,10 @@
 学习计划
 ======
 
+更多欢迎 watch jsonz-blog-source 或者 following。
+
+[学习记录博客](http://jsonz1993.github.io)
+
 根目录最多只会有`finish` && 3个其他学习内容目录
 
 如果发现链接项目找不到，可以到`finish`里面找
@@ -11,9 +15,6 @@
 `finish` 存放学完/暂时放弃学习的东西
 
 #ing:
-
-ui&&javascript: 
-[ui库](https://ant.design/components/select-cn/)
 
 # next:
 
